@@ -1,0 +1,150 @@
+// === i18n: ES / EN ===
+const TRANSLATIONS = {
+  es: {
+    nav: { home: "inicio", about: "sobre mí", work: "trabajos", contact: "contacto" },
+    hero: {
+      kicker: "PORTFOLIO · 2026",
+      role: "Diseñadora UX/UI · Visual Designer",
+      lede: "Diseño productos digitales: apps, webs, dashboards, landings, y la parte visual de las marcas. Investigación, prototipos y un poco de IA donde suma.",
+      cta1: "Ver trabajos",
+      cta2: "Contactame",
+      stat1: "años diseñando",
+      stat2: "proyectos",
+      stat3: "países",
+      portrait: "retrato",
+      botanic: "botánica",
+      badge: "Diseñadora",
+    },
+    philosophy: {
+      kicker: "— FILOSOFÍA",
+      title1: "Let your visuals",
+      title2: "Tell a story",
+      body: "Lo visual es la primera capa de la experiencia. Si un producto se ve bien, se entiende; si se entiende, se usa. Así de simple, y así de complejo.",
+    },
+    work: {
+      kicker: "— PROYECTOS SELECCIONADOS",
+      title: "Trabajos recientes",
+      lede: "Producto, branding y todo lo que pasa en el medio. Estos son algunos de los que más me gustaron.",
+      seeAll: "Ver todos los trabajos",
+      caseLink: "Ver caso →",
+      projects: [
+        { title: "ALEO Brandbook", subtitle: "Indumentaria deportiva · Branding", desc: "Identidad visual completa para una marca de ropa deportiva argentina: logo, paleta, brandbook digital e impreso.", metricLabel: "seguidores nuevos" },
+        { title: "Rediseño E-commerce", subtitle: "Moda online · Mobile-first", desc: "Le dimos una vuelta completa al checkout para que comprar desde el celu sea más fácil que pensar en comprar.", metricLabel: "conversión" },
+        { title: "App de Bienestar", subtitle: "Meditación · B2C", desc: "Una app de mindfulness con onboarding que se adapta a vos en vez de que vos te adaptes a ella.", metricLabel: "retención d7" },
+      ],
+    },
+    process: {
+      kicker: "— CÓMO TRABAJO",
+      title: "Mi proceso",
+      lede: "Sin fórmulas mágicas: investigar, diseñar, iterar. Y usar IA donde realmente ahorra tiempo, no como adorno.",
+      steps: [
+        { title: "Escuchar", desc: "Antes de abrir Figma, entender qué problema estamos resolviendo, y para quién." },
+        { title: "Explorar", desc: "Flujos, referencias, bocetos rápidos. Probar muchas ideas baratas antes de comprometerse con una." },
+        { title: "Prototipar", desc: "Iterar hasta que se sienta bien. No hasta que se vea bien, eso es fácil." },
+        { title: "Pulir", desc: "Detalles, accesibilidad y un handoff a desarrollo que no haga llorar a nadie." },
+      ],
+    },
+    tools: { kicker: "— SERVICIOS", title: "Mis servicios" },
+    contact: {
+      kicker: "— HABLEMOS",
+      title1: "Contactame",
+      lede: "¿Tenés un proyecto, una idea o ganas de tomar un café virtual? Respondo en menos de 24hs, prometido.",
+      email: "melinabelenchinni@gmail.com",
+    },
+    footer: "© 2026 Melina Chinni · diseñado con",
+  },
+  en: {
+    nav: { home: "home", about: "about", work: "work", contact: "contact" },
+    hero: {
+      kicker: "PORTFOLIO · 2026",
+      role: "UX/UI & Visual Designer",
+      lede: "I design digital products: apps, websites, dashboards, landings, and the visual side of brands. Research, prototypes and a bit of AI where it actually helps.",
+      cta1: "See my work",
+      cta2: "Get in touch",
+      stat1: "years designing",
+      stat2: "projects",
+      stat3: "countries",
+      portrait: "portrait",
+      botanic: "botanic",
+      badge: "Designer",
+    },
+    philosophy: {
+      kicker: "— PHILOSOPHY",
+      title1: "Let your visuals",
+      title2: "Tell a story",
+      body: "Visuals are the first layer of any experience. If a product looks good, it feels clear; if it feels clear, it gets used. That simple, and that hard.",
+    },
+    work: {
+      kicker: "— SELECTED PROJECTS",
+      title: "Recent work",
+      lede: "Product, branding and everything in between. Here are a few I had the most fun making.",
+      seeAll: "See all projects",
+      caseLink: "View case →",
+      projects: [
+        { title: "ALEO Brandbook", subtitle: "Sportswear · Branding", desc: "Full visual identity for an Argentine sportswear brand: logo, palette, digital and print brandbook.", metricLabel: "new followers" },
+        { title: "E-commerce Redesign", subtitle: "Online fashion · Mobile-first", desc: "Rebuilt the checkout so buying from your phone feels easier than thinking about buying.", metricLabel: "conversion" },
+        { title: "Wellness App", subtitle: "Meditation · B2C", desc: "A mindfulness app with onboarding that adapts to you instead of the other way around.", metricLabel: "d7 retention" },
+      ],
+    },
+    process: {
+      kicker: "— HOW I WORK",
+      title: "My process",
+      lede: "No magic formula: research, design, iterate. And AI where it actually saves time, not as decoration.",
+      steps: [
+        { title: "Listen", desc: "Before opening Figma, understanding what we're really solving, and for whom." },
+        { title: "Explore", desc: "Flows, references, fast sketches. Try a lot of cheap ideas before committing to one." },
+        { title: "Prototype", desc: "Iterate until it feels right. Not until it looks right, that part is easy." },
+        { title: "Polish", desc: "Details, accessibility and a handoff to dev that nobody cries over." },
+      ],
+    },
+    tools: { kicker: "— SERVICES", title: "My services" },
+    contact: {
+      kicker: "— LET'S TALK",
+      title1: "Get in touch",
+      lede: "Got a project, an idea, or just feel like a virtual coffee? I reply within 24hs, promise.",
+      email: "melinabelenchinni@gmail.com",
+    },
+    footer: "© 2026 Melina Chinni · designed with",
+  },
+};
+
+const LangContext = React.createContext({ lang: "es", t: TRANSLATIONS.es, setLang: () => {} });
+
+const LangProvider = ({ children }) => {
+  const [lang, setLangState] = React.useState(() => {
+    try { return localStorage.getItem("mc_lang") || "es"; } catch { return "es"; }
+  });
+  const setLang = React.useCallback((l) => {
+    setLangState(l);
+    try { localStorage.setItem("mc_lang", l); } catch {}
+    document.documentElement.lang = l;
+  }, []);
+  React.useEffect(() => { document.documentElement.lang = lang; }, [lang]);
+  const value = React.useMemo(() => ({ lang, setLang, t: TRANSLATIONS[lang] }), [lang, setLang]);
+  return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
+};
+
+const useT = () => React.useContext(LangContext);
+
+const LangSwitch = () => {
+  const { lang, setLang } = useT();
+  return (
+    <div className="lang-switch" role="group" aria-label="Language">
+      <button
+        type="button"
+        className={lang === "es" ? "active" : ""}
+        onClick={() => setLang("es")}
+        aria-pressed={lang === "es"}
+      >ES</button>
+      <span className="lang-divider">/</span>
+      <button
+        type="button"
+        className={lang === "en" ? "active" : ""}
+        onClick={() => setLang("en")}
+        aria-pressed={lang === "en"}
+      >EN</button>
+    </div>
+  );
+};
+
+Object.assign(window, { LangProvider, LangContext, useT, LangSwitch, TRANSLATIONS });

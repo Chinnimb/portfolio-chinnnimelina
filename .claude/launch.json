@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portfolio",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "3000", "."],
+      "port": 3000
+    },
+    {
+      "name": "portfolio-mayra",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--dir", "C:\\Users\\Melina\\Downloads\\portfolio mayra", "run", "dev", "--port", "5174"],
+      "port": 5174
+    }
+  ]
+}

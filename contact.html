@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Contacto · Melina Chinni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+
+const SERVICES = [
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+      </svg>
+    ),
+    label: "UX / UI Design",
+    desc: "Apps, webs, dashboards y landings — diseño y rediseño con foco en claridad y conversión.",
+    color: "var(--rust)",
+    process: [
+      { step: "01", title: "Descubrir", body: "Entrevistas con stakeholders, revisión del producto actual y definición del problema real. Nada de Figma todavía." },
+      { step: "02", title: "Wireframing", body: "Flujos y estructuras en baja fidelidad. Rápido y barato para validar antes de invertir en detalles." },
+      { step: "03", title: "Prototipo", body: "Diseño en alta fidelidad con interacciones reales. Testeo con usuarios y ajuste hasta que se sienta bien." },
+      { step: "04", title: "Handoff", body: "Entrega a desarrollo con specs, tokens y documentación. Sin lagunas, sin llamadas de 'qué medía esto'." },
+    ],
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+      </svg>
+    ),
+    label: "Branding & Visual Design",
+    desc: "Identidad visual, sistemas de diseño, paletas, tipografías y guidelines para que la marca hable sola.",
+    color: "var(--terracotta)",
+    process: [
+      { step: "01", title: "Brief", body: "Entender el negocio, el público y la competencia. Qué proyecta la marca hoy y qué debería proyectar." },
+      { step: "02", title: "Moodboard", body: "Exploración visual de referencias, estética y dirección. Alineamos antes de diseñar." },
+      { step: "03", title: "Diseño", body: "Logo, paleta, tipografías y elementos visuales. Múltiples propuestas, iteración y refinamiento." },
+      { step: "04", title: "Sistema", body: "Manual de marca o brandbook completo: reglas de uso, variantes, aplicaciones en diferentes soportes." },
+    ],
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+      </svg>
+    ),
+    label: "Diseño de Ads",
+    desc: "Piezas para redes sociales, campañas digitales y contenido que para el scroll.",
+    color: "var(--mustard)",
+    process: [
+      { step: "01", title: "Briefing", body: "Objetivo de la campaña, canal, formatos y público. Con esto claro el resto fluye." },
+      { step: "02", title: "Concepto", body: "Idea creativa central, copies y referencias visuales. Definimos el tono antes de producir." },
+      { step: "03", title: "Producción", body: "Diseño de piezas estáticas, animadas o en formato carrusel, adaptadas a cada red." },
+      { step: "04", title: "Entrega", body: "Archivos exportados en los formatos y medidas exactas de cada plataforma. Listos para publicar." },
+    ],
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
+    label: "Producto & Research",
+    desc: "Investigación de usuario, entrevistas, auditorías UX y síntesis de hallazgos para tomar mejores decisiones de diseño.",
+    color: "var(--olive)",
+    process: [
+      { step: "01", title: "Investigación", body: "Entrevistas, encuestas, análisis de métricas y benchmarking. Entender antes de opinar." },
+      { step: "02", title: "Síntesis", body: "Afinidad de hallazgos, journey maps y definición de pain points prioritarios." },
+      { step: "03", title: "Insights", body: "Hallazgos accionables presentados de forma clara para el equipo de producto y negocio." },
+      { step: "04", title: "Plan", body: "Recomendaciones concretas con priorización por impacto, para que cada decisión esté respaldada." },
+    ],
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2a10 10 0 1 0 10 10"/><path d="M22 2 12 12"/><path d="m17 2 5 5-5 5"/>
+      </svg>
+    ),
+    label: "Claude Design",
+    desc: "Prototipos y flujos de diseño potenciados con IA generativa — más iteraciones, menos tiempo.",
+    color: "var(--rust)",
+    process: [
+      { step: "01", title: "Contexto", body: "Definimos el problema, la estética y los constraints del proyecto. Cuanto más claro el input, mejor el output." },
+      { step: "02", title: "Generación", body: "Múltiples variantes de layouts, paletas y componentes generadas con IA en minutos, no días." },
+      { step: "03", title: "Curaduría", body: "Selección y refinamiento de lo mejor. La IA propone, el criterio diseñador decide." },
+      { step: "04", title: "Output", body: "Entrega de mockups, prototipos navegables o especificaciones listas para desarrollo." },
+    ],
+  },
+  {
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22" opacity="0.4"/>
+      </svg>
+    ),
+    label: "Claude Code",
+    desc: "Prototipado funcional con código asistido por IA — del concepto al HTML/React navegable en horas.",
+    color: "var(--olive)",
+    process: [
+      { step: "01", title: "Diseño", body: "Wireframes o mockups de base. Con algo visual de referencia el código tiene dirección." },
+      { step: "02", title: "Componentes", body: "Generación de componentes React o HTML con IA, iterando rápido sobre estructura y estilos." },
+      { step: "03", title: "Integración", body: "Ensamblado de la UI completa, responsiva y navegable. Con lógica real, no solo visual." },
+      { step: "04", title: "Entrega", body: "Prototipo funcional listo para testear, mostrar a inversores o pasar a producción." },
+    ],
+  },
+];
+
+const CONTACT_LINKS = [
+  {
+    label: "Email",
+    value: "melinabelenchinni@gmail.com",
+    href: "mailto:melinabelenchinni@gmail.com",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
+      </svg>
+    ),
+  },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/melinachinni",
+    href: "https://www.linkedin.com/in/melinachinni/",
+    target: "_blank",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+      </svg>
+    ),
+  },
+  {
+    label: "WhatsApp",
+    value: "+54 9 11 2289-6457",
+    href: "https://wa.me/5491122896457",
+    target: "_blank",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+      </svg>
+    ),
+  },
+];
+
+// ── Hero ──────────────────────────────────────────────────────────────────────
+const ContactHero = () => (
+  <section style={{ paddingTop: 64, paddingBottom: 20, position: "relative", overflow: "hidden" }}>
+    <ParallaxSticker speed={-0.15} top="12%" left="4%">
+      <div className="sticker floating" style={{ "--r": "-10deg" }}>
+        <BranchSticker size={130} color="var(--olive)" rotate={-10} />
+      </div>
+    </ParallaxSticker>
+    <ParallaxSticker speed={-0.18} top="8%" right="5%">
+      <div className="sticker floating" style={{ "--r": "12deg", animationDelay: "0.8s" }}>
+        <FlowerSticker size={44} color="var(--terracotta)" rotate={12} />
+      </div>
+    </ParallaxSticker>
+
+    <div className="container-narrow" style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
+      <div className="mono" style={{ marginBottom: 20 }}>
+        <a href="index.html" className="link-animated" style={{ color: "var(--rust)" }}>← volver al inicio</a>
+      </div>
+      <div className="mono" style={{ color: "var(--rust)", marginBottom: 18, letterSpacing: "0.12em" }}>— CONTACTO</div>
+      <h1 style={{ fontSize: "clamp(52px, 7vw, 96px)", marginBottom: 20, lineHeight: 1 }}>
+        Hablemos de tu <span className="hl-rust">proyecto</span>
+      </h1>
+      <p style={{ fontSize: 19, color: "var(--ink-soft)", maxWidth: 540, margin: "0 auto" }}>
+        Respondo en menos de 24hs. Si tenés un proyecto o una idea, escribime.
+      </p>
+    </div>
+  </section>
+);
+
+// ── Contact cards ─────────────────────────────────────────────────────────────
+const ContactCards = () => (
+  <section style={{ paddingTop: 60, paddingBottom: 60 }}>
+    <div className="container">
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 20,
+      }}>
+        {CONTACT_LINKS.map(({ label, value, href, target, icon }) => (
+          <a
+            key={label}
+            href={href}
+            target={target}
+            rel={target ? "noopener noreferrer" : undefined}
+            className="reveal"
+            style={{
+              display: "flex", alignItems: "center", gap: 16,
+              padding: "22px 24px",
+              background: "var(--paper)",
+              borderRadius: 16,
+              border: "1px solid rgba(43,36,32,0.08)",
+              textDecoration: "none",
+              color: "var(--ink)",
+              transition: "transform 0.2s, box-shadow 0.2s",
+              boxShadow: "0 2px 12px -4px rgba(43,36,32,0.08)",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 8px 24px -8px rgba(43,36,32,0.14)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 2px 12px -4px rgba(43,36,32,0.08)"; }}
+          >
+            <span style={{ color: "var(--rust)", flexShrink: 0 }}>{icon}</span>
+            <div style={{ minWidth: 0 }}>
+              <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.1em", marginBottom: 3 }}>{label}</div>
+              <div style={{ fontSize: 13, fontFamily: "var(--font-mono)", color: "var(--ink)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{value}</div>
+            </div>
+            <span style={{ marginLeft: "auto", color: "var(--ink-mute)", fontSize: 16, lineHeight: 1, flexShrink: 0 }}>↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// ── Service card with expandable process ──────────────────────────────────────
+const ServiceCard = ({ icon, label, desc, color, process: steps, index }) => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <div className="reveal" style={{ transitionDelay: `${index * 70}ms`, height: "100%" }}>
+      <div style={{
+        background: "var(--paper)",
+        borderRadius: 20,
+        height: "100%",
+        border: `1px solid ${open ? color : "rgba(43,36,32,0.07)"}`,
+        transition: "border-color 0.25s, box-shadow 0.25s, transform 0.2s",
+        boxShadow: open ? `0 12px 40px -10px rgba(43,36,32,0.13)` : "0 2px 16px -6px rgba(43,36,32,0.07)",
+        position: "relative", overflow: "hidden",
+        transform: open ? "translateY(-2px)" : "",
+      }}>
+        {/* accent bar */}
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 3, background: color, borderRadius: "20px 20px 0 0", opacity: open ? 1 : 0.5, transition: "opacity 0.25s" }} />
+
+        {/* header — always visible, clickable */}
+        <button
+          onClick={() => setOpen(o => !o)}
+          style={{
+            width: "100%", textAlign: "left", background: "none", border: "none",
+            cursor: "pointer", padding: "28px 28px 24px", display: "flex", flexDirection: "column", gap: 12,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+            <span style={{ color }}>{icon}</span>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11, color: open ? color : "var(--ink-mute)",
+              transition: "color 0.2s", letterSpacing: "0.06em",
+              display: "flex", alignItems: "center", gap: 6,
+            }}>
+              {open ? "cerrar" : "ver proceso"}
+              <span style={{ display: "inline-block", transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.25s", fontSize: 13 }}>↓</span>
+            </span>
+          </div>
+          <h3 style={{ fontSize: 20, margin: 0, lineHeight: 1.2, color: "var(--ink)" }}>{label}</h3>
+          <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.6, margin: 0 }}>{desc}</p>
+        </button>
+
+        {/* expandable process */}
+        <div style={{
+          maxHeight: open ? 500 : 0,
+          overflow: "hidden",
+          transition: "max-height 0.4s cubic-bezier(0.4,0,0.2,1)",
+        }}>
+          <div style={{
+            padding: "0 28px 28px",
+            borderTop: `1px solid rgba(43,36,32,0.08)`,
+            paddingTop: 20,
+          }}>
+            <div className="mono" style={{ fontSize: 10, color: color, letterSpacing: "0.12em", marginBottom: 16 }}>— MI PROCESO</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {steps.map(({ step, title, body }) => (
+                <div key={step} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div style={{
+                    fontFamily: "var(--font-hand)", fontSize: 22, color: color, opacity: 0.6,
+                    lineHeight: 1, flexShrink: 0, width: 28,
+                  }}>{step}</div>
+                  <div>
+                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink)", marginBottom: 3, letterSpacing: "0.04em" }}>{title}</div>
+                    <div style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55 }}>{body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ── Services ──────────────────────────────────────────────────────────────────
+const Services = () => (
+  <section style={{ paddingTop: 20, paddingBottom: 100, position: "relative" }}>
+    <ParallaxSticker speed={-0.1} bottom="10%" right="4%">
+      <div className="sticker floating" style={{ "--r": "8deg", animationDelay: "1.2s" }}>
+        <LeafSticker size={52} color="var(--moss)" rotate={8} />
+      </div>
+    </ParallaxSticker>
+
+    <div className="container">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14, letterSpacing: "0.12em" }}>— SERVICIOS</div>
+        <h2 style={{ fontSize: "clamp(36px, 5vw, 60px)", marginBottom: 8, lineHeight: 1.1 }}>
+          Servicios que <span className="underline-wavy">ofrezco</span>
+        </h2>
+        <p style={{ fontSize: 15, color: "var(--ink-mute)", fontFamily: "var(--font-mono)" }}>hacé click en cada servicio para ver cómo trabajo</p>
+      </div>
+
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 20,
+      }}>
+        {SERVICES.map((s, i) => (
+          <ServiceCard key={s.label} {...s} index={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// ── CTA final ─────────────────────────────────────────────────────────────────
+const CtaBar = () => (
+  <section style={{
+    background: "var(--ink)", color: "var(--cream)",
+    padding: "64px 24px", textAlign: "center",
+  }}>
+    <div className="container-narrow">
+      <div style={{ marginBottom: 12 }}>
+        <SquiggleSticker size={48} color="var(--mustard)" style={{ display: "inline-block" }} />
+      </div>
+      <h2 style={{ color: "var(--cream)", fontSize: "clamp(28px, 4vw, 48px)", marginBottom: 16, lineHeight: 1.15 }}>
+        ¿Empezamos?
+      </h2>
+      <p style={{ color: "rgba(250,245,234,0.7)", fontSize: 17, marginBottom: 36, maxWidth: 440, margin: "0 auto 36px" }}>
+        Contame de tu proyecto y te respondo con ideas antes de que te arrepientas de no escribir antes.
+      </p>
+      <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+        <a href="mailto:melinabelenchinni@gmail.com" style={{
+          padding: "15px 32px", background: "var(--cream)", color: "var(--ink)",
+          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
+          textDecoration: "none", transition: "opacity 0.2s",
+        }}>
+          ✉ escribime →
+        </a>
+        <a href="https://wa.me/5491122896457" target="_blank" rel="noopener" style={{
+          padding: "15px 32px", background: "transparent", color: "var(--cream)",
+          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
+          border: "1px solid rgba(250,245,234,0.3)", textDecoration: "none", transition: "border-color 0.2s",
+        }}>
+          💬 WhatsApp →
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+// ── App ───────────────────────────────────────────────────────────────────────
+const App = () => {
+  useReveal();
+  return (
+    <LangProvider>
+      <CursorSticker />
+      <Nav active="contact" />
+      <ContactHero />
+      <ContactCards />
+      <Services />
+      <CtaBar />
+      <Footer />
+      <TweaksPanel />
+    </LangProvider>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

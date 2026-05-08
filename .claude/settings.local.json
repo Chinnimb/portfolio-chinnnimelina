@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.flaticon.com)",
+      "WebSearch",
+      "WebFetch(domain:svgsilh.com)",
+      "WebFetch(domain:www.premiumsvg.com)",
+      "WebFetch(domain:api.iconify.design)",
+      "WebFetch(domain:openclipart.org)",
+      "Bash(dir \"C:\\\\Users\\\\Melina\\\\Downloads\\\\Prototipo\\\\assets\\\\photos\" /OD)"
+    ]
+  }
+}

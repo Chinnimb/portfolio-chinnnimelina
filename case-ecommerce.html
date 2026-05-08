@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Rediseño E-commerce · Caso de estudio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const CaseHero = () => (
+  <section style={{ paddingTop: 60, paddingBottom: 40, position: "relative", overflow: "hidden" }}>
+    <ParallaxSticker speed={-0.15} top="18%" left="5%">
+      <div className="sticker floating" style={{ "--r": "-8deg" }}>
+        <BranchSticker size={120} color="var(--olive)" rotate={-8} />
+      </div>
+    </ParallaxSticker>
+    <ParallaxSticker speed={-0.2} top="10%" right="6%">
+</ParallaxSticker>
+
+    <div className="container-narrow">
+      <div className="mono" style={{ marginBottom: 20 }}>
+        <a href="index.html" className="link-animated" style={{ color: "var(--rust)" }}>← volver al portfolio</a>
+      </div>
+      <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.1em" }}>
+        CASO DE ESTUDIO · 2025 · 01
+      </div>
+      <h1 style={{ fontSize: "clamp(56px, 7vw, 92px)", marginBottom: 20, lineHeight: 1.02 }}>
+        Rediseño <span className="hl-rust">E-commerce</span>
+        <SquiggleSticker size={150} color="var(--rust)" style={{ display: "block", marginTop: 4 }} />
+      </h1>
+      <p style={{ fontSize: 21, color: "var(--ink-soft)", lineHeight: 1.5, maxWidth: 680 }}>
+        Cómo rediseñar un checkout mobile para una tienda de moda online con 180k usuarios/mes — y subir la conversión en <span className="underline-wavy">47%</span> en 8 semanas.
+      </p>
+
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 24, marginTop: 50, padding: "30px 0", borderTop: "1px dashed rgba(43,36,32,0.15)", borderBottom: "1px dashed rgba(43,36,32,0.15)" }}>
+        <div>
+          <div className="mono" style={{ color: "var(--ink-mute)", fontSize: 10, letterSpacing: "0.12em", marginBottom: 6 }}>CLIENTE</div>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500 }}>Bruma & Co.</div>
+          <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>Tienda de moda</div>
+        </div>
+        <div>
+          <div className="mono" style={{ color: "var(--ink-mute)", fontSize: 10, letterSpacing: "0.12em", marginBottom: 6 }}>MI ROL</div>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500 }}>Lead UX/UI</div>
+          <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>Research → UI → QA</div>
+        </div>
+        <div>
+          <div className="mono" style={{ color: "var(--ink-mute)", fontSize: 10, letterSpacing: "0.12em", marginBottom: 6 }}>TIMELINE</div>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500 }}>8 semanas</div>
+          <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>Ene–Mar 2025</div>
+        </div>
+        <div>
+          <div className="mono" style={{ color: "var(--ink-mute)", fontSize: 10, letterSpacing: "0.12em", marginBottom: 6 }}>EQUIPO</div>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500 }}>4 personas</div>
+          <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>PM, 2 devs, yo</div>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 28 }}>
+        <span className="tag rust">UX Research</span>
+        <span className="tag olive">UI Design</span>
+        <span className="tag mustard">Conversion</span>
+        <span className="tag sage">Mobile-first</span>
+        <span className="tag">Checkout</span>
+        <span className="tag">A/B testing</span>
+      </div>
+    </div>
+  </section>
+);
+
+const HeroImage = () => (
+  <section className="tight" style={{ position: "relative" }}>
+    <div className="container">
+      <div className="reveal" style={{
+        aspectRatio: "16/9",
+        borderRadius: 24,
+        backgroundImage: "url(assets/work/ecommerce.svg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
+        overflow: "hidden",
+        boxShadow: "var(--shadow-card)",
+      }}>
+        <WashiTape width={180} rotate={-8} style={{ position: "absolute", top: 16, left: 20 }} color1="var(--mustard-soft)" color2="var(--sage-soft)" />
+      </div>
+    </div>
+  </section>
+);
+
+const Challenge = () => (
+  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
+    <div className="container-narrow">
+      <div className="reveal">
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>① EL CONTEXTO</div>
+        <h2 style={{ marginBottom: 28 }}>El problema</h2>
+        <p style={{ fontSize: 19, lineHeight: 1.65, color: "var(--ink-soft)", marginBottom: 20 }}>
+          Bruma & Co. tenía un checkout de <strong>6 pasos</strong> en mobile, con una tasa de abandono del <span style={{ color: "var(--rust)", fontWeight: 500 }}>78%</span> entre carrito y pago. El tráfico mobile era el 82% pero solo generaba el 44% de los ingresos.
+        </p>
+        <p style={{ fontSize: 19, lineHeight: 1.65, color: "var(--ink-soft)" }}>
+          Me llamaron pidiendo "algo bonito". Les dije que primero necesitaba entender por qué la gente se iba.
+        </p>
+
+        <div style={{
+          background: "#fff", padding: 36, borderRadius: 20,
+          marginTop: 40, boxShadow: "var(--shadow-card)", position: "relative",
+        }}>
+          <WashiTape width={100} rotate={-5} style={{ position: "absolute", top: -12, left: 40 }} color1="var(--rust-soft)" color2="var(--clay)" />
+          <div className="mono" style={{ color: "var(--rust)", marginBottom: 12 }}>— PREGUNTA GUÍA</div>
+          <p style={{ fontFamily: "var(--font-hand)", fontSize: 36, lineHeight: 1.2, margin: 0, color: "var(--ink)" }}>
+            ¿Por qué nuestras clientas <span className="hl-rust">abandonan</span> el checkout justo antes de pagar?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Discovery = () => (
+  <section style={{ position: "relative", overflow: "hidden" }}>
+    <div className="container-narrow">
+      <div className="reveal">
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>② DESCUBRIMIENTO</div>
+        <h2 style={{ marginBottom: 28 }}>Escuchar antes de dibujar</h2>
+        <p style={{ fontSize: 18, color: "var(--ink-soft)", marginBottom: 40 }}>
+          Dediqué las primeras 2 semanas a investigar. Combiné analytics cuantitativa con entrevistas en profundidad — y puse a Claude a analizar los transcripts para encontrar patrones más rápido.
+        </p>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20, marginBottom: 50 }}>
+          {[
+            { n: "12", l: "entrevistas con clientas" },
+            { n: "340h", l: "grabadas en Hotjar" },
+            { n: "8", l: "sesiones de usability testing" },
+            { n: "6", l: "competidores analizados" },
+          ].map((m, i) => (
+            <div key={i} style={{
+              background: i % 2 === 0 ? "var(--sage-soft)" : "var(--mustard-soft)",
+              padding: 24, borderRadius: 16,
+              transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.2}deg)`,
+            }}>
+              <div style={{ fontFamily: "var(--font-hand)", fontSize: 44, color: "var(--ink)", lineHeight: 1 }}>{m.n}</div>
+              <div className="mono" style={{ fontSize: 11, color: "var(--ink-soft)", marginTop: 6 }}>{m.l}</div>
+            </div>
+          ))}
+        </div>
+
+        <h3 style={{ fontSize: 32, marginBottom: 20 }}>Lo que encontré</h3>
+        <div style={{ display: "grid", gap: 16 }}>
+          {[
+            { q: "\"Pongo los datos y me pide que cree una cuenta… me da pereza\"", a: "Forced account creation — punto de fuga #1" },
+            { q: "\"No sé cuánto me va a salir el envío hasta el final\"", a: "Costos ocultos hasta el último paso" },
+            { q: "\"El teclado me tapa los botones y no puedo ver lo que escribo\"", a: "Inputs con errores de foco en iOS" },
+            { q: "\"Quiero pagar con Mercado Pago pero no aparece al principio\"", a: "Método de pago preferido escondido" },
+          ].map((insight, i) => (
+            <div key={i} className="reveal" style={{
+              background: "#fff",
+              padding: "20px 24px",
+              borderRadius: 14,
+              borderLeft: "4px solid var(--rust)",
+              boxShadow: "0 4px 12px -6px rgba(74,60,45,0.15)",
+              transitionDelay: `${i * 80}ms`,
+            }}>
+              <p style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500, color: "var(--ink)", margin: "0 0 6px", lineHeight: 1.3 }}>{insight.q}</p>
+              <div className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.05em" }}>→ {insight.a}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Decisions = () => {
+  const decisions = [
+    {
+      n: "01",
+      title: "De 6 pasos a 1 scroll",
+      desc: "Unificamos todo el checkout en una sola pantalla scrolleable. Menos clics, menos fricción. Cada sección se autovalida al pasar a la siguiente.",
+      color: "var(--rust)",
+    },
+    {
+      n: "02",
+      title: "Guest checkout por default",
+      desc: "La cuenta se ofrece después del pago, no antes. Eliminamos el 'muro de registro' que causaba el 31% del abandono.",
+      color: "var(--olive)",
+    },
+    {
+      n: "03",
+      title: "Envío visible desde el carrito",
+      desc: "Calculadora de envío con autocompletar por código postal. La usuaria sabe cuánto pagará antes de empezar.",
+      color: "var(--mustard)",
+    },
+    {
+      n: "04",
+      title: "Mercado Pago primero",
+      desc: "El método preferido del 68% de las clientas argentinas, arriba de todo. Tarjetas debajo. Mismo flow en iOS y Android.",
+      color: "var(--terracotta)",
+    },
+  ];
+
+  return (
+    <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
+      <ParallaxSticker speed={-0.1} top="8%" right="5%">
+        <LeafSticker size={50} color="var(--olive)" rotate={20} />
+      </ParallaxSticker>
+      <div className="container-narrow">
+        <div className="reveal" style={{ marginBottom: 48 }}>
+          <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>③ DECISIONES</div>
+          <h2>Las <span className="hl-olive">cuatro</span> decisiones clave</h2>
+          <p style={{ fontSize: 18, color: "var(--ink-soft)", marginTop: 16 }}>
+            De un universo de 40+ hipótesis priorizadas con RICE, estas cuatro movieron la aguja.
+          </p>
+        </div>
+        <div style={{ display: "grid", gap: 20 }}>
+          {decisions.map((d, i) => (
+            <div key={d.n} className="reveal" style={{
+              background: "#fff",
+              padding: 32,
+              borderRadius: 18,
+              display: "grid",
+              gridTemplateColumns: "80px 1fr",
+              gap: 28,
+              alignItems: "start",
+              boxShadow: "var(--shadow-card)",
+              transitionDelay: `${i * 80}ms`,
+            }}>
+              <div style={{
+                fontFamily: "var(--font-hand)",
+                fontSize: 72,
+                color: d.color,
+                lineHeight: 0.9,
+                fontWeight: 500,
+              }}>{d.n}</div>
+              <div>
+                <h3 style={{ fontSize: 30, marginBottom: 10 }}>{d.title}</h3>
+                <p style={{ fontSize: 16, color: "var(--ink-soft)", margin: 0 }}>{d.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const BeforeAfter = () => (
+  <section style={{ position: "relative", overflow: "hidden" }}>
+    <div className="container">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 50 }}>
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>④ ANTES / DESPUÉS</div>
+        <h2>El <span className="underline-wavy">cambio</span> visual</h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32 }}>
+        <div className="reveal polaroid" style={{ transform: "rotate(-2deg)" }}>
+          <div className="img-placeholder" style={{ aspectRatio: "9/16", background: "linear-gradient(180deg, #e8e3d8, #d4cdbe)" }}>
+            <svg width="60" height="100" viewBox="0 0 60 100" fill="none">
+              <rect x="8" y="8" width="44" height="84" rx="6" stroke="var(--ink-mute)" strokeWidth="1.5"/>
+              <line x1="14" y1="20" x2="46" y2="20" stroke="var(--ink-mute)" strokeWidth="1"/>
+              <line x1="14" y1="30" x2="36" y2="30" stroke="var(--ink-mute)" strokeWidth="1"/>
+              <rect x="14" y="40" width="32" height="8" stroke="var(--ink-mute)" strokeWidth="1"/>
+              <rect x="14" y="52" width="32" height="8" stroke="var(--ink-mute)" strokeWidth="1"/>
+              <rect x="14" y="64" width="32" height="8" stroke="var(--ink-mute)" strokeWidth="1"/>
+              <rect x="14" y="78" width="32" height="10" fill="var(--ink-mute)" opacity="0.4"/>
+            </svg>
+            <div style={{ fontSize: 11, color: "var(--ink-soft)", marginTop: 10 }}>
+              MOCKUP ANTES<br/>checkout de 6 pasos
+            </div>
+          </div>
+          <div className="caption" style={{ color: "var(--ink-mute)" }}>antes · 78% abandono</div>
+        </div>
+        <div className="reveal polaroid" style={{ transform: "rotate(3deg)", transitionDelay: "120ms" }}>
+          <div className="img-placeholder" style={{ aspectRatio: "9/16", background: "linear-gradient(180deg, #f4c6b3, #d88a5a)" }}>
+            <svg width="60" height="100" viewBox="0 0 60 100" fill="none">
+              <rect x="8" y="8" width="44" height="84" rx="6" stroke="#fff" strokeWidth="1.5"/>
+              <rect x="14" y="16" width="32" height="12" rx="6" fill="#fff" opacity="0.9"/>
+              <rect x="14" y="32" width="32" height="8" fill="#fff" opacity="0.6"/>
+              <rect x="14" y="44" width="32" height="20" rx="4" fill="#fff" opacity="0.8"/>
+              <rect x="14" y="70" width="32" height="12" rx="6" fill="var(--ink)" opacity="0.9"/>
+            </svg>
+            <div style={{ fontSize: 11, color: "#fff", marginTop: 10 }}>
+              MOCKUP DESPUÉS<br/>checkout de 1 scroll
+            </div>
+          </div>
+          <div className="caption" style={{ color: "var(--rust)" }}>después · 31% abandono</div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Chart = () => (
+  <section style={{ position: "relative", overflow: "hidden" }}>
+    <div className="container-narrow">
+      <div className="reveal" style={{ marginBottom: 30 }}>
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>— LA CURVA</div>
+        <h3>conversión semana a semana</h3>
+        <p style={{ color: "var(--ink-soft)", marginTop: 8 }}>6 semanas post-launch. Eje Y: conversion rate. Dibujada a mano — los datos son reales, la estética es cariño.</p>
+      </div>
+
+      <div className="reveal" style={{
+        background: "#fff", padding: 40, borderRadius: 20, boxShadow: "var(--shadow-card)", position: "relative",
+      }}>
+        <svg viewBox="0 0 600 280" style={{ width: "100%", height: "auto" }}>
+          {[0, 1, 2, 3, 4].map(i => (
+            <line key={i} x1="40" y1={40 + i * 50} x2="580" y2={40 + i * 50} stroke="var(--ink-mute)" strokeDasharray="2 4" strokeWidth="0.5" opacity="0.3" />
+          ))}
+          {["6%", "5%", "4%", "3%", "2%"].map((l, i) => (
+            <text key={l} x="30" y={45 + i * 50} textAnchor="end" style={{ fontFamily: "var(--font-mono)", fontSize: 10, fill: "var(--ink-mute)" }}>{l}</text>
+          ))}
+          {["pre", "s1", "s2", "s3", "s4", "s5", "s6"].map((l, i) => (
+            <text key={l} x={70 + i * 80} y="260" textAnchor="middle" style={{ fontFamily: "var(--font-mono)", fontSize: 11, fill: "var(--ink-mute)" }}>{l}</text>
+          ))}
+          <line x1="40" y1="190" x2="580" y2="190" stroke="var(--ink-mute)" strokeDasharray="4 4" strokeWidth="1" />
+          <text x="575" y="184" textAnchor="end" style={{ fontFamily: "var(--font-mono)", fontSize: 10, fill: "var(--ink-mute)" }}>baseline 2.7%</text>
+          <path d="M 70 190 Q 110 185, 150 140 Q 200 100, 250 95 Q 300 85, 350 70 Q 400 65, 450 60 Q 500 55, 550 52"
+                fill="none" stroke="var(--rust)" strokeWidth="3" strokeLinecap="round" />
+          {[
+            { x: 70, y: 190 }, { x: 150, y: 140 }, { x: 230, y: 105 }, { x: 310, y: 85 }, { x: 390, y: 68 }, { x: 470, y: 58 }, { x: 550, y: 52 },
+          ].map((p, i) => (
+            <circle key={i} cx={p.x} cy={p.y} r="5" fill="#fff" stroke="var(--rust)" strokeWidth="2" />
+          ))}
+          <g transform="translate(430, 20)">
+            <path d="M 0 25 Q 20 10, 60 30" stroke="var(--olive)" strokeWidth="1.5" fill="none" />
+            <text x="0" y="20" style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500, fill: "var(--olive)" }}>+47%!</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+);
+
+const Results = () => {
+  const metrics = [
+    { n: "+47%", l: "tasa de conversión checkout", desc: "medido en 60 días post-launch vs. baseline", color: "var(--rust)" },
+    { n: "-60%", l: "abandono de carrito", desc: "de 78% a 31%", color: "var(--olive)" },
+    { n: "+$2.3M", l: "ingresos adicionales anuales", desc: "proyección con tráfico estable", color: "var(--mustard)" },
+    { n: "1.8★", l: "mejora en NPS", desc: "de 6.2 a 8.0 en el flujo de compra", color: "var(--terracotta)" },
+    { n: "42s", l: "tiempo promedio de checkout", desc: "antes eran 2m 14s", color: "var(--moss)" },
+    { n: "98%", l: "éxito en primer intento", desc: "menos errores de validación", color: "var(--sage)" },
+  ];
+  return (
+    <section style={{ background: "var(--olive)", color: "var(--cream)", position: "relative", overflow: "hidden" }}>
+      <div className="sticker" style={{ top: 30, left: "5%" }}>
+        <BranchSticker size={140} color="var(--cream)" rotate={-15} />
+      </div>
+      <div className="sticker" style={{ bottom: 30, right: "5%" }}>
+        <BranchSticker size={140} color="var(--cream)" rotate={165} />
+      </div>
+      <div className="container">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
+          <div className="mono" style={{ color: "var(--mustard-soft)", marginBottom: 14 }}>⑤ RESULTADOS</div>
+          <h2 style={{ color: "var(--cream)" }}>El <span style={{ color: "var(--mustard-soft)" }}>impacto</span> real</h2>
+          <p style={{ fontSize: 18, color: "rgba(244,237,224,0.85)", marginTop: 16, maxWidth: 600, margin: "16px auto 0" }}>
+            Medido 60 días después del launch, comparando contra el trimestre anterior.
+          </p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
+          {metrics.map((m, i) => (
+            <div key={i} className="reveal" style={{
+              background: "rgba(250,245,234,0.08)",
+              backdropFilter: "blur(6px)",
+              border: "1px solid rgba(250,245,234,0.15)",
+              padding: 28,
+              borderRadius: 18,
+              transitionDelay: `${i * 70}ms`,
+            }}>
+              <div style={{ fontFamily: "var(--font-hand)", fontSize: 64, color: "var(--mustard-soft)", lineHeight: 0.95, fontWeight: 500 }}>{m.n}</div>
+              <div style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 500, marginTop: 6, marginBottom: 8, color: "var(--cream)" }}>{m.l}</div>
+              <div className="mono" style={{ fontSize: 11, color: "rgba(244,237,224,0.7)" }}>{m.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Gallery = () => (
+  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
+    <div className="container">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>⑥ PROTOTIPO FINAL</div>
+        <h2>El <span className="hl-rust">resultado</span></h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 28 }}>
+        {[
+          { t: "home rediseñada", bg: "linear-gradient(180deg, #f4c6b3, #d88a5a)", r: -2 },
+          { t: "lista de productos", bg: "linear-gradient(180deg, #cdd4b4, #8a9960)", r: 2 },
+          { t: "carrito + envío visible", bg: "linear-gradient(180deg, #e4c67a, #c79a3a)", r: -1 },
+          { t: "checkout 1-scroll", bg: "linear-gradient(180deg, #f4c6b3, #b4532a)", r: 3 },
+        ].map((p, i) => (
+          <div key={i} className="reveal polaroid" style={{ transform: `rotate(${p.r}deg)`, transitionDelay: `${i * 70}ms` }}>
+            <div className="img-placeholder" style={{ aspectRatio: "9/16", background: p.bg }}>
+              <svg width="40" height="70" viewBox="0 0 40 70" fill="none">
+                <rect x="4" y="4" width="32" height="62" rx="5" stroke="#fff" strokeWidth="1.2"/>
+              </svg>
+              <div style={{ fontSize: 10, color: "#fff", marginTop: 8 }}>MOCKUP MOBILE</div>
+            </div>
+            <div className="caption">{p.t}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Learnings = () => (
+  <section style={{ position: "relative", overflow: "hidden" }}>
+    <div className="container-narrow">
+      <div className="reveal">
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 14 }}>⑦ REFLEXIONES</div>
+        <h2 style={{ marginBottom: 28 }}>Lo que me llevo</h2>
+
+        <div style={{ display: "grid", gap: 24 }}>
+          {[
+            { t: "Los datos cuantitativos te dicen qué; los cualitativos te dicen por qué", d: "Sin las 12 entrevistas, jamás hubiéramos entendido que 'me da pereza crear cuenta' era el verdadero enemigo, no la UI." },
+            { t: "La IA aceleró el análisis, no lo reemplazó", d: "Claude me ayudó a sintetizar 340h de grabación en un mapa de insights en 3 horas. Pero las conclusiones salieron de mi cabeza, no de un prompt." },
+            { t: "Defender simplicidad cuesta más que agregar features", d: "Pasé tres reuniones convenciendo a stakeholders de que menos pasos no significaba 'menos profesional'. Los datos finales cerraron la discusión." },
+            { t: "Mobile-first no es una frase, es un dolor de espalda", d: "Probé el flow en mi propio iPhone durante un viaje en subte. Encontré 4 bugs que en Figma no se ven." },
+          ].map((l, i) => (
+            <div key={i} className="reveal" style={{
+              display: "grid", gridTemplateColumns: "28px 1fr", gap: 18, alignItems: "start",
+              transitionDelay: `${i * 70}ms`,
+            }}>
+              <LeafSticker size={28} color="var(--olive)" rotate={i * 20} />
+              <div>
+                <h3 style={{ fontSize: 26, marginBottom: 6, lineHeight: 1.15 }}>{l.t}</h3>
+                <p style={{ fontSize: 15.5, color: "var(--ink-soft)", margin: 0 }}>{l.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Quote = () => (
+  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden", textAlign: "center" }}>
+    <div className="sticker floating" style={{ top: 40, left: "12%", "--r": "-10deg" }}>
+      <LeafSticker size={44} color="var(--moss)" rotate={-10} />
+    </div>
+    <div className="container-narrow reveal">
+      <div style={{ fontFamily: "var(--font-hand)", fontSize: 100, color: "var(--rust)", lineHeight: 0.5, marginBottom: 0 }}>"</div>
+      <p style={{ fontFamily: "var(--font-hand)", fontSize: 36, lineHeight: 1.25, color: "var(--ink)", margin: "0 0 24px" }}>
+        Meli entendió nuestro negocio en dos semanas más que nuestro equipo interno en dos años.
+      </p>
+      <div className="mono" style={{ fontSize: 12, color: "var(--ink-mute)" }}>
+        — S. Vidal, CPO en Bruma & Co.
+      </div>
+    </div>
+  </section>
+);
+
+const Next = () => (
+  <section style={{ position: "relative", overflow: "hidden", textAlign: "center" }}>
+    <div className="container-narrow reveal">
+      <div className="mono" style={{ color: "var(--rust)", marginBottom: 16 }}>SIGUIENTE PROYECTO</div>
+      <a href="case-wellness.html" style={{
+        display: "inline-block",
+        fontFamily: "var(--font-hand)",
+        fontSize: 56,
+        color: "var(--ink)",
+      }} className="link-animated">
+        App de Bienestar →
+      </a>
+      <div style={{ marginTop: 40 }}>
+        <a href="index.html#work" style={{
+          fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink-soft)",
+        }} className="link-animated">← ver todos los trabajos</a>
+      </div>
+    </div>
+  </section>
+);
+
+const App = () => {
+  useReveal();
+  return (
+    <>
+      <CursorSticker />
+      <Nav active="work" />
+      <CaseHero />
+      <HeroImage />
+      <Challenge />
+      <Discovery />
+      <Decisions />
+      <BeforeAfter />
+      <Chart />
+      <Results />
+      <Gallery />
+      <Learnings />
+      <Quote />
+      <Next />
+      <Footer />
+      <TweaksPanel />
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

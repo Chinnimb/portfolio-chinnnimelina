@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Melina Chinni · Diseñadora UX/UI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const Hero = () => {
+  const { t } = useT();
+  return (
+  <section style={{ paddingTop: 60, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
+    {/* Floating stickers */}
+    <ParallaxSticker speed={-0.15} top="8%" left="4%">
+      <div className="sticker floating" style={{ "--r": "-10deg" }}>
+        <BranchSticker size={140} color="var(--olive)" rotate={-10} />
+      </div>
+    </ParallaxSticker>
+    <ParallaxSticker speed={-0.25} top="24%" right="6%">
+      <div className="sticker floating" style={{ "--r": "15deg", animationDelay: "1.2s" }}>
+        <LeafSticker size={50} color="var(--moss)" rotate={15} />
+      </div>
+    </ParallaxSticker>
+    <ParallaxSticker speed={-0.1} bottom="12%" left="10%">
+      <div className="sticker floating" style={{ "--r": "-5deg", animationDelay: "2s" }}>
+        <CircleSticker size={60} color="var(--mustard)" />
+      </div>
+    </ParallaxSticker>
+    <div className="sticker" style={{ top: "55%", right: "12%", zIndex: 0 }}>
+      <SquiggleSticker size={90} color="var(--rust-soft)" rotate={-10} />
+    </div>
+
+    <div className="container hero-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 60, alignItems: "center", paddingTop: 40, paddingBottom: 40 }}>
+      <div style={{ position: "relative", zIndex: 2 }}>
+        <div className="mono" style={{ marginBottom: 24, color: "var(--rust)", letterSpacing: "0.12em" }}>
+          <span style={{ display: "inline-block", width: 30, height: 1, background: "var(--rust)", marginRight: 12, verticalAlign: "middle" }}></span>
+          {t.hero.kicker}
+        </div>
+        <h1 style={{ marginBottom: 16, fontFamily: "var(--font-serif)", fontWeight: 400, letterSpacing: "-0.02em", fontSize: "clamp(56px, 7vw, 92px)", lineHeight: 1.02 }}>
+          Melina<br/>
+          <span style={{ color: "var(--olive-deep)" }}>Chinni</span>
+          <SquiggleSticker size={110} color="var(--rust)" style={{ display: "block", marginTop: -8 }} />
+        </h1>
+        <p style={{ fontSize: 22, color: "var(--ink-soft)", lineHeight: 1.3, marginBottom: 28, fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}>
+          {t.hero.role}
+        </p>
+        <p style={{ fontSize: 17, maxWidth: 460, color: "var(--ink-soft)", marginBottom: 36, lineHeight: 1.5 }}>
+          {t.hero.lede}
+        </p>
+        <div style={{ display: "flex", gap: 16 }}>
+          <a href="index.html#work" style={{
+            padding: "14px 28px", background: "var(--ink)", color: "var(--cream)",
+            borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13,
+            letterSpacing: "0.05em",
+          }}>{t.hero.cta1} →</a>
+          <a href="index.html#contact" style={{
+            padding: "14px 28px", background: "transparent", border: "1px solid var(--ink)",
+            color: "var(--ink)", borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13,
+            letterSpacing: "0.05em",
+          }}>{t.hero.cta2}</a>
+        </div>
+
+        <div style={{ display: "flex", gap: 32, marginTop: 48, flexWrap: "wrap" }}>
+          <div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: 48, fontWeight: 500, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.03em" }}>+3</div>
+            <div className="mono" style={{ color: "var(--ink-mute)" }}>{t.hero.stat1}</div>
+          </div>
+          <div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: 48, fontWeight: 500, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.03em" }}>+15</div>
+            <div className="mono" style={{ color: "var(--ink-mute)" }}>{t.hero.stat2}</div>
+          </div>
+          <div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: 48, fontWeight: 500, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.03em" }}>6</div>
+            <div className="mono" style={{ color: "var(--ink-mute)" }}>{t.hero.stat3}</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Right: Polaroid stack */}
+      <div className="hero-polaroid-col" style={{ position: "relative", height: 520 }}>
+        <WashiTape width={140} rotate={-12} style={{ position: "absolute", top: 10, right: 80, zIndex: 5 }} />
+        <div className="polaroid tilt-r" style={{ position: "absolute", top: 40, right: 20, width: 340, transform: "rotate(4deg)" }}>
+          <div style={{ aspectRatio: "3/4", overflow: "hidden", borderRadius: 2 }}>
+            <img src="assets/photos/retrato.jpg" alt="Melina Chinni" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+          </div>
+          <div className="caption">UX/UI Designer</div>
+        </div>
+        <div className="polaroid" style={{ position: "absolute", top: 160, left: 0, width: 250, transform: "rotate(-8deg)", zIndex: 2 }}>
+          <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 2 }}>
+            <img src="assets/photos/bandido.jpg" alt="Bandido" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+          </div>
+          <div className="caption" style={{ whiteSpace: "normal", lineHeight: 1.4 }}>Bandido,<br/>mi ayudante de diseño 🐾</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  );
+};
+
+const Philosophy = () => {
+  const { t } = useT();
+  return (
+  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
+    <div className="sticker" style={{ top: 30, left: "8%" }}>
+      <DotDashSticker size={120} color="var(--olive)" rotate={-20} />
+    </div>
+    <div className="sticker" style={{ bottom: 40, right: "8%" }}>
+      <BranchSticker size={120} color="var(--moss)" rotate={180} />
+    </div>
+    <div className="container-narrow reveal" style={{ textAlign: "center" }}>
+      <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 20, letterSpacing: "0.15em" }}>{t.philosophy.kicker}</div>
+      <h2 style={{ marginBottom: 24, fontStyle: "italic" }}>
+        {t.philosophy.title1}<br/>
+        <span className="hl-rust">{t.philosophy.title2}</span>
+      </h2>
+      <p style={{ fontSize: 18, color: "var(--ink-soft)", maxWidth: 580, margin: "0 auto" }}>
+        {t.philosophy.body}
+      </p>
+    </div>
+  </section>
+  );
+};
+
+const Work = () => {
+  const { t } = useT();
+  const meta = [
+    { id: "aleo",      img: "assets/photos/aleo-cover.jpg", metric: "+2k", color: "var(--rust)",        href: "case-aleo.html",      rotate: 2,  tags: ["Branding", "Identity", "Print"], isPhoto: true },
+    { id: "ecommerce", img: "assets/work/ecommerce.svg",    metric: "+47%", color: "var(--terracotta)", href: "case-ecommerce.html", rotate: -3, tags: ["UX", "UI", "Research"] },
+    { id: "wellness",  img: "assets/work/wellness.svg",     metric: "87%",  color: "var(--olive)",      href: "case-wellness.html",  rotate: 2,  tags: ["Mobile", "AI", "UX"] },
+  ];
+  const projects = meta.map((m, i) => ({ ...m, ...t.work.projects[i] }));
+
+  return (
+    <section id="work" style={{ position: "relative", overflow: "hidden" }}>
+<div className="container">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
+          <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.work.kicker}</div>
+          <h2>
+            <span className="underline-wavy">{t.work.title}</span>
+          </h2>
+          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 520, margin: "20px auto 0" }}>
+            {t.work.lede}
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 40 }}>
+          {projects.map((p, i) => (
+            <a href={p.href} key={p.id} className="reveal polaroid" style={{
+              padding: "16px 16px 30px",
+              transform: `rotate(${p.rotate}deg)`,
+              textDecoration: "none",
+              display: "block",
+              transitionDelay: `${i * 100}ms`,
+            }}>
+              <div style={{
+                aspectRatio: "4/3",
+                backgroundImage: p.isPhoto ? "none" : `url(${p.img})`,
+                background: p.isPhoto ? "none" : undefined,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                borderRadius: 2,
+                position: "relative",
+                overflow: "hidden",
+                marginBottom: 16,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                padding: 20,
+              }}>
+                {p.isPhoto && <img src={p.img} alt={p.id} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", zIndex: 0 }} />}
+                <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {p.tags.map(tag => (
+                    <span key={tag} className="mono" style={{
+                      background: "rgba(252,247,232,0.9)", padding: "3px 10px", borderRadius: 100,
+                      fontSize: 10, color: "var(--ink)",
+                      backdropFilter: "blur(4px)",
+                    }}>{tag}</span>
+                  ))}
+                </div>
+                <div style={{
+                  alignSelf: "flex-end",
+                  background: "rgba(26,20,16,0.86)",
+                  color: "#fcf7e8",
+                  padding: "10px 16px",
+                  borderRadius: 8,
+                  textAlign: "right",
+                  backdropFilter: "blur(4px)",
+                }}>
+                  <div style={{ fontFamily: "var(--font-serif)", fontSize: 38, lineHeight: 1, fontWeight: 500, letterSpacing: "-0.03em" }}>{p.metric}</div>
+                  <div className="mono" style={{ fontSize: 10, opacity: 0.85, marginTop: 2 }}>{p.metricLabel}</div>
+                </div>
+                </div>
+              </div>
+
+              <h3 style={{ fontSize: 28, marginBottom: 4 }}>{p.title}</h3>
+              <div className="mono" style={{ color: p.color, marginBottom: 10 }}>{p.subtitle}</div>
+              <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5, marginBottom: 14 }}>{p.desc}</p>
+              <span className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink)" }}>
+                {t.work.caseLink}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div className="reveal" style={{ textAlign: "center", marginTop: 56, position: "relative" }}>
+          <a href="work.html" style={{
+            display: "inline-flex", alignItems: "center", gap: 12,
+            padding: "18px 36px", background: "var(--ink)", color: "var(--cream)",
+            borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 14,
+            letterSpacing: "0.05em", position: "relative",
+          }}>
+            {t.work.seeAll}
+            <span style={{ fontSize: 16, lineHeight: 1 }}>→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Process = () => {
+  const { t } = useT();
+  const meta = [
+    { n: "01", color: "var(--sage-soft)" },
+    { n: "02", color: "var(--mustard-soft)" },
+    { n: "03", color: "var(--rust-soft)" },
+    { n: "04", color: "var(--clay)" },
+  ];
+  const steps = meta.map((m, i) => ({ ...m, ...t.process.steps[i] }));
+
+  return (
+    <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
+      <ParallaxSticker speed={-0.1} top="5%" right="5%">
+        <LeafSticker size={60} color="var(--olive)" rotate={25} />
+      </ParallaxSticker>
+
+      <div className="container">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
+          <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.process.kicker}</div>
+          <h2>{t.process.title}</h2>
+          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 540, margin: "18px auto 0" }}>
+            {t.process.lede}
+          </p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
+          {steps.map((s, i) => (
+            <div key={s.n} className="reveal" style={{
+              background: s.color,
+              padding: 28,
+              borderRadius: 18,
+              position: "relative",
+              transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.5}deg)`,
+              transitionDelay: `${i * 80}ms`,
+              boxShadow: "0 10px 24px -12px rgba(74,60,45,0.2)",
+            }}>
+              <WashiTape width={60} rotate={-8} style={{ position: "absolute", top: -10, left: 20 }} />
+              <div className="mono" style={{ color: "var(--ink-soft)", marginBottom: 16, fontSize: 11 }}>{s.n}</div>
+              <h3 style={{ fontSize: 30, marginBottom: 8 }}>{s.title}</h3>
+              <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.5 }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Tools = () => {
+  const { t } = useT();
+  const groups = [
+    {
+      cat: "UX / UI Design",
+      color: "var(--rust)",
+      rotate: -1.5,
+      tape: { width: 80, rotate: -6, right: 24 },
+      items: ["Apps", "Webs", "Dashboards", "Landings", "Rediseños", "Design Systems"],
+      tools: ["Figma", "Framer", "Maze", "Zeroheight", "Lottie"],
+    },
+    {
+      cat: "Branding & Ads",
+      color: "var(--terracotta)",
+      rotate: 1.5,
+      tape: { width: 90, rotate: 5, right: 16 },
+      items: ["Identidad visual", "Brandbook", "Diseño de ads", "Visual Design", "Guidelines"],
+      tools: ["Figma", "Midjourney", "Canva", "Adobe Express", "Spline"],
+    },
+    {
+      cat: "Producto & IA",
+      color: "var(--olive)",
+      rotate: -1,
+      tape: { width: 70, rotate: -4, right: 30 },
+      items: ["UX Research", "Auditorías UX", "Entrevistas", "Claude Design", "Claude Code"],
+      tools: ["Notion", "Claude", "Miro", "Dovetail", "ChatGPT"],
+    },
+  ];
+  return (
+    <section style={{ position: "relative", overflow: "hidden" }}>
+      <div className="container">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
+          <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.tools.kicker}</div>
+          <h2>{t.tools.title}</h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32 }}>
+          {groups.map((group, i) => (
+            <div key={group.cat} className="reveal polaroid" style={{
+              padding: "28px 28px 32px",
+              transform: `rotate(${group.rotate}deg)`,
+              transitionDelay: `${i * 100}ms`,
+            }}>
+              <WashiTape width={group.tape.width} rotate={group.tape.rotate} style={{ position: "absolute", top: -10, right: group.tape.right }} />
+              <div className="mono" style={{ color: group.color, marginBottom: 16, fontSize: 11, letterSpacing: "0.12em" }}>— {group.cat.toUpperCase()}</div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
+                {group.items.map(item => (
+                  <span key={item} style={{
+                    background: "var(--cream)", padding: "6px 14px", borderRadius: 100,
+                    fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-soft)",
+                    border: "1px solid rgba(28,43,58,0.1)",
+                  }}>{item}</span>
+                ))}
+              </div>
+              <div style={{ borderTop: "1px solid rgba(28,43,58,0.08)", paddingTop: 14, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                <span className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.1em", marginRight: 4 }}>tools:</span>
+                {group.tools.map(tool => (
+                  <span key={tool} style={{
+                    background: group.color, opacity: 0.85, padding: "4px 12px", borderRadius: 100,
+                    fontFamily: "var(--font-mono)", fontSize: 11, color: "#fff",
+                  }}>{tool}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Contact = () => {
+  const { t } = useT();
+  return (
+  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }} id="contact-section">
+    <div className="sticker floating" style={{ top: 40, left: "10%", "--r": "-15deg" }}>
+      <LeafSticker size={40} color="var(--olive)" rotate={-15} />
+    </div>
+<div className="container-narrow reveal" style={{ textAlign: "center" }}>
+      <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.contact.kicker}</div>
+      <h2 style={{ marginBottom: 20 }}>{t.contact.title1}</h2>
+      <p style={{ fontSize: 18, color: "var(--ink-soft)", marginBottom: 36 }}>
+        {t.contact.lede}
+      </p>
+      <a href={`mailto:${t.contact.email}`} style={{
+        display: "inline-block",
+        background: "#fff",
+        padding: "20px 40px",
+        borderRadius: 100,
+        fontFamily: "var(--font-mono)",
+        fontSize: 16,
+        color: "var(--ink)",
+        boxShadow: "var(--shadow-card)",
+        marginBottom: 40,
+      }} className="link-animated">
+        {t.contact.email}
+      </a>
+      <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap" }}>
+        <a href={`mailto:${t.contact.email}`} className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          {t.contact.email}
+        </a>
+        <a href="https://www.linkedin.com/in/melinachinni/" target="_blank" rel="noopener" className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn ↗
+        </a>
+        <a href="https://wa.me/5491122896457" target="_blank" rel="noopener" className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp ↗
+        </a>
+      </div>
+    </div>
+  </section>
+  );
+};
+
+const App = () => {
+  useReveal();
+  return (
+    <LangProvider>
+      <CursorSticker />
+      <Nav active="home" />
+      <Hero />
+      <Philosophy />
+      <Work />
+      <Process />
+      <Tools />
+      <Contact />
+      <Footer />
+      <TweaksPanel />
+    </LangProvider>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

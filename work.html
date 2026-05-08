@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Todos los trabajos · Melina Chinni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const allProjects = [
+  {
+    id: "aleo", year: "2024", title: "ALEO Brandbook", subtitle: "Indumentaria deportiva · Branding",
+    desc: "Identidad visual completa para marca argentina de ropa deportiva: logo, paleta, brandbook digital e impreso.",
+    tags: ["Branding", "Identity", "Print"], metric: "+2k", metricLabel: "seguidores nuevos",
+    color: "var(--rust)",
+    bg: "linear-gradient(135deg, #e8a070 0%, #c07898 50%, #9878c0 100%)",
+    href: "case-aleo.html", rotate: 2, category: "Branding", isPhoto: true, photoSrc: "assets/photos/aleo-cover.jpg",
+  },
+  {
+    id: "ecommerce", year: "2025", title: "Rediseño E-commerce", subtitle: "Moda online · Mobile-first",
+    desc: "Rediseño completo del checkout mobile. Investigación + UI + A/B testing.",
+    tags: ["UX", "UI", "Research"], metric: "+47%", metricLabel: "conversión",
+    color: "var(--terracotta)",
+    bg: "linear-gradient(135deg, #e8a87c 0%, #d88a5a 50%, #c67856 100%)",
+    href: "case-ecommerce.html", rotate: -3, category: "E-commerce",
+  },
+  {
+    id: "wellness", year: "2025", title: "App de Bienestar", subtitle: "Meditación · B2C",
+    desc: "App de mindfulness impulsada por IA. Onboarding conversacional y sesiones de 3 min.",
+    tags: ["Mobile", "AI", "UX"], metric: "87%", metricLabel: "retención d7",
+    color: "var(--olive)",
+    bg: "linear-gradient(135deg, #cdd4b4 0%, #a8b088 50%, #8a9960 100%)",
+    href: "case-wellness.html", rotate: 2, category: "Mobile",
+  },
+  {
+    id: "saas", year: "2024", title: "Dashboard SaaS", subtitle: "B2B · Analytics",
+    desc: "Dashboard de analytics limpio e intuitivo + design system Sprout.",
+    tags: ["B2B", "Data Viz", "DS"], metric: "-62%", metricLabel: "time-to-insight",
+    color: "var(--mustard)",
+    bg: "linear-gradient(135deg, #e4c67a 0%, #c79a3a 50%, #a87d2a 100%)",
+    href: "case-saas.html", rotate: -2, category: "SaaS",
+  },
+  {
+    id: "fintech", year: "2024", title: "App de Pagos", subtitle: "Fintech · Mobile",
+    desc: "Rediseño de app de pagos con 1.2M de usuarios. De 3.2★ a 4.7★ en stores.",
+    tags: ["Fintech", "Mobile", "UX"], metric: "4.7★", metricLabel: "app rating",
+    color: "var(--rust)",
+    bg: "linear-gradient(135deg, #8a9a4a 0%, #6b7848 50%, #4a5530 100%)",
+    href: "#", rotate: 3, category: "Fintech",
+  },
+  {
+    id: "marketplace", year: "2024", title: "Marketplace Local", subtitle: "C2C · Comunidad",
+    desc: "Marketplace hyper-local para productoras artesanales. Onboarding en 90 seg.",
+    tags: ["Marketplace", "C2C", "UX"], metric: "+3.1k", metricLabel: "vendedoras",
+    color: "var(--terracotta)",
+    bg: "linear-gradient(135deg, #d9b896 0%, #c67856 50%, #a85838 100%)",
+    href: "#", rotate: -1, category: "Marketplace",
+  },
+  {
+    id: "edtech", year: "2023", title: "Plataforma EdTech", subtitle: "B2C · Aprendizaje",
+    desc: "Experiencia de aprendizaje gamificada para adolescentes. Activation +31%.",
+    tags: ["EdTech", "Web", "Gamification"], metric: "+31%", metricLabel: "activation",
+    color: "var(--olive)",
+    bg: "linear-gradient(135deg, #e4c67a 0%, #b89a3a 50%, #8a7020 100%)",
+    href: "#", rotate: 2, category: "EdTech",
+  },
+  {
+    id: "brand", year: "2023", title: "Rebranding SaaS", subtitle: "Identidad · Guidelines",
+    desc: "Sistema visual completo: logo, tipografías, paleta, guidelines, templates.",
+    tags: ["Branding", "DS", "Identity"], metric: "68", metricLabel: "componentes",
+    color: "var(--mustard)",
+    bg: "linear-gradient(135deg, #c89890 0%, #a86c5a 50%, #804838 100%)",
+    href: "#", rotate: -2, category: "Branding",
+  },
+  {
+    id: "crypto", year: "2023", title: "Wallet Cripto", subtitle: "DeFi · Onboarding",
+    desc: "Simplificar el primer uso de una wallet. Bajamos el tiempo de setup de 12 a 3 min.",
+    tags: ["Web3", "Onboarding", "UX"], metric: "-75%", metricLabel: "setup time",
+    color: "var(--rust)",
+    bg: "linear-gradient(135deg, #b4a898 0%, #8a7e6e 50%, #5a5044 100%)",
+    href: "#", rotate: 1, category: "Web3",
+  },
+  {
+    id: "health", year: "2022", title: "Portal de Salud", subtitle: "Healthtech · Pacientes",
+    desc: "Portal para gestionar turnos y estudios. Accesibilidad WCAG AA certificada.",
+    tags: ["Health", "A11y", "Web"], metric: "AA", metricLabel: "WCAG nivel",
+    color: "var(--olive)",
+    bg: "linear-gradient(135deg, #b4c6b4 0%, #8aa890 50%, #5a7868 100%)",
+    href: "#", rotate: -3, category: "Health",
+  },
+];
+
+const categories = ["Todos", ...new Set(allProjects.map(p => p.category))];
+
+const WorkHero = () => (
+  <section style={{ paddingTop: 60, paddingBottom: 40, position: "relative", overflow: "hidden" }}>
+    <ParallaxSticker speed={-0.15} top="15%" left="5%">
+      <div className="sticker floating" style={{ "--r": "-8deg" }}>
+        <BranchSticker size={140} color="var(--olive)" rotate={-8} />
+      </div>
+    </ParallaxSticker>
+    <ParallaxSticker speed={-0.2} top="10%" right="6%">
+</ParallaxSticker>
+    <div className="container-narrow" style={{ textAlign: "center" }}>
+      <div className="mono" style={{ marginBottom: 20 }}>
+        <a href="index.html" className="link-animated" style={{ color: "var(--rust)" }}>← volver al inicio</a>
+      </div>
+      <div className="mono" style={{ color: "var(--rust)", marginBottom: 18, letterSpacing: "0.12em" }}>— ARCHIVO · 2022–2026</div>
+      <h1 style={{ fontSize: "clamp(60px, 8vw, 110px)", marginBottom: 24, lineHeight: 1 }}>
+        Todos los <span className="underline-wavy">trabajos</span>
+      </h1>
+      <p style={{ fontSize: 19, color: "var(--ink-soft)", maxWidth: 600, margin: "0 auto" }}>
+        Un recorrido completo por los proyectos en los que dejé huella. Desde startups tempranas hasta plataformas con millones de usuarios.
+      </p>
+      <div style={{ display: "flex", justifyContent: "center", gap: 40, marginTop: 40, flexWrap: "wrap" }}>
+        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--rust)", lineHeight: 1 }}>40+</div><div className="mono" style={{ color: "var(--ink-mute)" }}>proyectos</div></div>
+        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--olive)", lineHeight: 1 }}>12</div><div className="mono" style={{ color: "var(--ink-mute)" }}>países</div></div>
+        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--mustard)", lineHeight: 1 }}>6+</div><div className="mono" style={{ color: "var(--ink-mute)" }}>años</div></div>
+      </div>
+    </div>
+  </section>
+);
+
+const Filters = ({ active, onChange }) => (
+  <div className="container" style={{ marginBottom: 40 }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
+      {categories.map(c => (
+        <button key={c} onClick={() => onChange(c)} style={{
+          padding: "10px 20px", borderRadius: 100,
+          border: "1px solid " + (active === c ? "var(--ink)" : "rgba(43,36,32,0.15)"),
+          background: active === c ? "var(--ink)" : "transparent",
+          color: active === c ? "var(--cream)" : "var(--ink-soft)",
+          fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.05em",
+          cursor: "pointer", transition: "all 0.2s",
+        }}>{c}</button>
+      ))}
+    </div>
+  </div>
+);
+
+const ProjectCard = ({ p, i }) => (
+  <a href={p.href} className="reveal polaroid" style={{
+    padding: "16px 16px 30px",
+    transform: `rotate(${p.rotate}deg)`,
+    textDecoration: "none",
+    display: "block",
+    transitionDelay: `${(i % 6) * 80}ms`,
+  }}>
+    <div style={{
+      aspectRatio: "4/3", background: p.bg, borderRadius: 2,
+      position: "relative", overflow: "hidden", marginBottom: 16,
+      display: "flex", flexDirection: "column", justifyContent: "space-between",
+      padding: 20,
+    }}>
+      {p.isPhoto && <img src={p.photoSrc} alt={p.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />}
+      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        {p.tags.map(t => (
+          <span key={t} className="mono" style={{
+            background: "rgba(255,255,255,0.85)", padding: "3px 10px", borderRadius: 100,
+            fontSize: 10, color: "var(--ink)",
+          }}>{t}</span>
+        ))}
+      </div>
+      <div style={{ textAlign: "right", color: "#fff" }}>
+        <div style={{ fontFamily: "var(--font-hand)", fontSize: 52, lineHeight: 1, fontWeight: 500 }}>{p.metric}</div>
+        <div className="mono" style={{ fontSize: 10, opacity: 0.9 }}>{p.metricLabel}</div>
+      </div>
+      </div>
+    </div>
+    <div className="mono" style={{ color: "var(--ink-mute)", fontSize: 10, letterSpacing: "0.1em", marginBottom: 4 }}>{p.year}</div>
+    <h3 style={{ fontSize: 26, marginBottom: 4, lineHeight: 1.1 }}>{p.title}</h3>
+    <div className="mono" style={{ color: p.color, marginBottom: 10, fontSize: 12 }}>{p.subtitle}</div>
+    <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 16 }}>{p.desc}</p>
+    <span className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink)" }}>
+      {p.href === "#" ? "Próximamente ↗" : "Ver caso de estudio ↗"}
+    </span>
+  </a>
+);
+
+const WorkGrid = () => {
+  const [filter, setFilter] = React.useState("Todos");
+  const filtered = filter === "Todos" ? allProjects : allProjects.filter(p => p.category === filter);
+
+  return (
+    <section style={{ paddingTop: 20, paddingBottom: 80, position: "relative" }}>
+      <Filters active={filter} onChange={setFilter} />
+      <div className="container">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 40 }}>
+          {filtered.map((p, i) => <ProjectCard key={p.id} p={p} i={i} />)}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Contact = () => (
+  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden", textAlign: "center" }}>
+    <div className="sticker floating" style={{ top: 40, left: "12%", "--r": "-10deg" }}>
+      <LeafSticker size={40} color="var(--olive)" rotate={-10} />
+    </div>
+<div className="container-narrow reveal">
+      <div className="mono" style={{ color: "var(--rust)", marginBottom: 16 }}>— ¿TE GUSTÓ LO QUE VISTE?</div>
+      <h2 style={{ marginBottom: 20 }}>Hablemos de tu <span className="hl-rust">proyecto</span></h2>
+      <a href="mailto:hello@melinachinni.com" style={{
+        display: "inline-block", marginTop: 20,
+        background: "var(--ink)", color: "var(--cream)", padding: "16px 36px",
+        borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 14,
+      }}>escribime →</a>
+    </div>
+  </section>
+);
+
+const App = () => {
+  useReveal();
+  return (
+    <LangProvider>
+      <CursorSticker />
+      <Nav active="work" />
+      <WorkHero />
+      <WorkGrid />
+      <Contact />
+      <Footer />
+      <TweaksPanel />
+    </LangProvider>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
