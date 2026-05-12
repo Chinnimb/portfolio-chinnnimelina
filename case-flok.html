@@ -326,7 +326,7 @@ const FlokScreens = () => (
       {/* Screen showcase — staggered */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 24, flexWrap: "wrap", paddingBottom: 40 }}>
         {[
-          { src: "assets/photos/flok/Device 14PM 1 (1).png", label: "Onboarding", rotate: -5, mt: 40 },
+          { src: "assets/photos/flok/Device 14PM 1 (1).png", label: "Registro", rotate: -5, mt: 40 },
           { src: "assets/photos/flok/Device 14PM.png",   label: "Home",       rotate: -2, mt: 0  },
           { src: "assets/photos/flok/Device 14PM (1).png", label: "Semana",   rotate:  2, mt: 20 },
           { src: "assets/photos/flok/Device 14PM (2).png", label: "Nuevo ítem", rotate: 5, mt: 50 },
@@ -431,8 +431,9 @@ const FlokDeliverables = () => (
       <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         {/* App brand block */}
         <div style={{
-          background: "linear-gradient(135deg, #2D4A6B 0%, #3D6A9B 50%, #4A7FB8 100%)",
-          borderRadius: 20, padding: "40px 32px", color: "#fff", textAlign: "center",
+          backgroundImage: "url('assets/photos/flok/Image 11.jpg')",
+          backgroundSize: "cover", backgroundPosition: "center",
+          borderRadius: 20, padding: "40px 32px", textAlign: "center",
           position: "relative", overflow: "hidden",
         }}>
           <img
@@ -440,8 +441,8 @@ const FlokDeliverables = () => (
             alt="Flok birds"
             style={{ width: 160, display: "block", margin: "0 auto 20px" }}
           />
-          <div style={{ fontFamily: "var(--font-serif)", fontSize: 52, lineHeight: 1, marginBottom: 6, fontWeight: 300, letterSpacing: "-2px" }}>Flok</div>
-          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.2em", opacity: 0.7 }}>FAMILY PLANNER · 2025</div>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: 52, lineHeight: 1, marginBottom: 6, fontWeight: 300, letterSpacing: "-2px", color: "#1C2B3A" }}>Flok</div>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.2em", color: "#2D5B8A", opacity: 0.8 }}>FAMILY PLANNER · 2025</div>
         </div>
         {/* Roles */}
         <div style={{ background: "#EEF4FB", borderRadius: 16, padding: "20px 24px" }}>
