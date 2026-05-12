@@ -360,25 +360,42 @@ const FlokUIKit = () => (
     <div className="container">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
         <div className="mono" style={{ color: "#2D5B8A", marginBottom: 16, letterSpacing: "0.15em", fontSize: 12 }}>— UI KIT</div>
-        <h2 style={{ color: "#1C2B3A" }}>Componentes diseñados</h2>
+        <h2 style={{ color: "#1C2B3A" }}>Beautiful components</h2>
         <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 480, margin: "16px auto 0" }}>
           Cada componente construido con sus variantes, estados e interacciones para un handoff limpio al equipo de desarrollo.
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: 20, paddingBottom: 20 }}>
         {[
-          { src: "assets/photos/flok/Nav Bar.png",           label: "Navigation Bar"     },
-          { src: "assets/photos/flok/CarrouselWeek.png",     label: "Week Selector"      },
-          { src: "assets/photos/flok/Frame 2609753.png",     label: "Add Item Sheet"     },
-          { src: "assets/photos/flok/Hamburguer menu.png",   label: "Side Menu"          },
-          { src: "assets/photos/flok/Frame 2609728.png",     label: "Event Card"         },
-          { src: "assets/photos/flok/Frame 2609765.png",     label: "Deadline Component" },
-          { src: "assets/photos/flok/Frame 2011.png",        label: "CTA Buttons"        },
-        ].map(({ src, label }) => (
-          <div key={label} className="reveal component-card">
-            <img src={src} alt={label} style={{ maxWidth: "100%", maxHeight: 180, objectFit: "contain", borderRadius: 8 }} />
-            <span className="component-label">{label}</span>
+          { src: "assets/photos/flok/Nav Bar.png",           label: "Navigation Bar",     rotate:  3,  mt:  0,  maxW: 280 },
+          { src: "assets/photos/flok/CarrouselWeek.png",     label: "Week Selector",      rotate: -4,  mt: 30,  maxW: 320 },
+          { src: "assets/photos/flok/Frame 2609728.png",     label: "Event Card",         rotate:  2,  mt: -10, maxW: 260 },
+          { src: "assets/photos/flok/Frame 2609765.png",     label: "Deadline Component", rotate: -3,  mt: 40,  maxW: 260 },
+          { src: "assets/photos/flok/Frame 2011.png",        label: "CTA Buttons",        rotate:  5,  mt: 10,  maxW: 240 },
+          { src: "assets/photos/flok/Frame 2609753.png",     label: "Add Item Sheet",     rotate: -2,  mt: -20, maxW: 200 },
+          { src: "assets/photos/flok/Hamburguer menu.png",   label: "Side Menu",          rotate:  4,  mt: 20,  maxW: 180 },
+        ].map(({ src, label, rotate, mt, maxW }) => (
+          <div key={label} className="reveal" style={{
+            display: "flex", flexDirection: "column", alignItems: "center", gap: 12,
+            transform: `rotate(${rotate}deg)`,
+            marginTop: mt,
+            transition: "transform 0.3s ease",
+          }}
+            onMouseEnter={e => e.currentTarget.style.transform = `rotate(0deg) translateY(-6px)`}
+            onMouseLeave={e => e.currentTarget.style.transform = `rotate(${rotate}deg)`}
+          >
+            <div style={{
+              background: "rgba(255,255,255,0.8)",
+              borderRadius: 16,
+              padding: 16,
+              boxShadow: "0 8px 32px rgba(45,91,138,0.12), 0 2px 8px rgba(45,91,138,0.08)",
+              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(255,255,255,0.9)",
+            }}>
+              <img src={src} alt={label} style={{ maxWidth: maxW, width: "100%", display: "block", borderRadius: 8 }} />
+            </div>
+            <span className="component-label" style={{ color: "rgba(45,91,138,0.6)" }}>{label}</span>
           </div>
         ))}
       </div>
