@@ -326,19 +326,19 @@ const FlokScreens = () => (
       {/* Screen showcase — staggered */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 24, flexWrap: "wrap", paddingBottom: 40 }}>
         {[
-          { src: "assets/photos/flok/Device 14PM 1 (1).png", label: "Registro", rotate: -5, mt: 40 },
+          { src: "assets/photos/flok/Device 14PM 1 (1).png", label: "Registro", rotate: -5, mt: 40, w: 230 },
           { src: "assets/photos/flok/Device 14PM.png",   label: "Home",       rotate: -2, mt: 0  },
           { src: "assets/photos/flok/Device 14PM (1).png", label: "Semana",   rotate:  2, mt: 20 },
           { src: "assets/photos/flok/Device 14PM (2).png", label: "Nuevo ítem", rotate: 5, mt: 50 },
           { src: "assets/photos/flok/Device 14PM (3).png", label: "IA Comidas", rotate: -3, mt: 10 },
-        ].map(({ src, label, rotate, mt }) => (
+        ].map(({ src, label, rotate, mt, w }) => (
           <div key={label} className="reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, marginTop: mt }}>
             <img
               src={src}
               alt={label}
               className="screen-float"
               style={{
-                width: 180,
+                width: w || 180,
                 transform: `rotate(${rotate}deg)`,
                 borderRadius: 28,
               }}
