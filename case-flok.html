@@ -27,14 +27,16 @@
     transform: translateY(-8px) rotate(0deg) !important;
   }
   .component-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.9);
     border-radius: 16px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 24px rgba(45,91,138,0.1);
   }
   .component-card img {
     max-width: 100%;
@@ -44,7 +46,7 @@
   .component-label {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(45,91,138,0.65);
     letter-spacing: 0.1em;
     text-align: center;
   }
@@ -203,7 +205,7 @@ const FlokMoodboard = () => (
       {/* Color palette */}
       <div className="reveal" style={{ maxWidth: 700, margin: "0 auto" }}>
         <img
-          src="assets/photos/flok/Frame 1 (3).png"
+          src="assets/photos/flok/Frame 2609771.png"
           alt="Flok color palette"
           style={{ width: "100%", display: "block", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}
         />
@@ -242,6 +244,67 @@ const FlokProcess = () => {
               <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.6 }}>{s.desc}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ─── MVP ────────────────────────────────────────────────────── */
+const FlokMVP = () => {
+  const sections = [
+    { n: "01", title: "Account & Onboarding", icon: "👤", items: ["Pantalla de bienvenida (Login / Sign up)", "Registro con email, Google o Facebook", "Unirse o crear un grupo familiar", "Creación básica de perfil de usuario"] },
+    { n: "02", title: "Home",                 icon: "🏠", items: ["Vista general semanal y dashboard", "Tareas y eventos destacados de la semana", "Botón flotante + para agregar ítems", "Empty state inteligente ('Empezá a organizar tu semana')"] },
+    { n: "03", title: "Planner",              icon: "📅", items: ["Vista de calendario semanal", "Agregar tareas o eventos manualmente", "Filtrar por integrante de la familia o categoría", "Bottom sheet: Task, Meal, Chore, Pickup, etc.", "CTA 'Show me inspiration' → abre flujo de IA"] },
+    { n: "04", title: "AI Assistant",         icon: "✦",  items: ["Sugerir una tarea", "Sugerir una comida", "Sugerir un chore", "Una sugerencia por tipo para validar la feature"] },
+    { n: "05", title: "Chat",                 icon: "💬", items: ["Lista de conversaciones existentes", "Iniciar nueva conversación", "Enviar mensajes de texto", "Acciones rápidas: agregar evento, tarea o encuesta"] },
+    { n: "06", title: "Profile",              icon: "🙂", items: ["Ver perfil personal", "Mostrar grupo familiar actual", "Acceso a opciones: FAQ, Contacto, Notificaciones"] },
+    { n: "07", title: "Navigation",           icon: "◈",  items: ["Barra de navegación inferior: Home / Planner / Profile", "Menú hamburguesa para páginas extra: FAQ, Privacidad, Términos"] },
+  ];
+  return (
+    <section style={{ background: "#F8F9FB" }}>
+      <div className="container">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
+          <div className="mono" style={{ color: "#2D5B8A", marginBottom: 16, letterSpacing: "0.15em", fontSize: 12 }}>— ALCANCE</div>
+          <h2 style={{ color: "#1C2B3A" }}>MVP · Primera versión</h2>
+          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 520, margin: "16px auto 0" }}>
+            Definimos el alcance mínimo viable para validar el producto con usuarios reales antes de iterar.
+          </p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16, marginBottom: 32 }}>
+          {sections.map((s, i) => (
+            <div key={s.n} className="reveal" style={{
+              background: "#fff", borderRadius: 16, padding: "24px",
+              border: "1px solid rgba(45,91,138,0.08)",
+              boxShadow: "0 2px 16px rgba(45,91,138,0.06)",
+              transitionDelay: `${i * 60}ms`,
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                <span style={{ fontSize: 20 }}>{s.icon}</span>
+                <div>
+                  <div className="mono" style={{ fontSize: 9, color: "rgba(45,91,138,0.5)", letterSpacing: "0.1em" }}>{s.n}</div>
+                  <div style={{ fontFamily: "var(--font-serif)", fontSize: 20, color: "#1C2B3A", lineHeight: 1.1 }}>{s.title}</div>
+                </div>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 16, display: "flex", flexDirection: "column", gap: 6 }}>
+                {s.items.map((item, j) => (
+                  <li key={j} style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.5 }}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        {/* Not included */}
+        <div className="reveal" style={{ background: "rgba(45,91,138,0.05)", border: "1px dashed rgba(45,91,138,0.2)", borderRadius: 16, padding: "20px 28px", display: "flex", alignItems: "flex-start", gap: 16 }}>
+          <span style={{ fontSize: 22, flexShrink: 0 }}>🚫</span>
+          <div>
+            <div className="mono" style={{ fontSize: 11, color: "#2D5B8A", marginBottom: 8, letterSpacing: "0.08em" }}>NO INCLUIDO EN MVP · PLANIFICADO PARA VERSIONES FUTURAS</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {["Encuestas / votaciones", "Integración con calendario externo", "Personalización avanzada con IA", "Favoritos e ítems guardados", "Push notifications", "Configuración y gestión del grupo familiar"].map(item => (
+                <span key={item} style={{ fontSize: 13, color: "var(--ink-soft)", background: "#fff", padding: "4px 12px", borderRadius: 100, border: "1px solid rgba(45,91,138,0.12)" }}>{item}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -290,27 +353,30 @@ const FlokScreens = () => (
 
 /* ─── UI Kit ─────────────────────────────────────────────────── */
 const FlokUIKit = () => (
-  <section style={{ background: "#1C2B3A" }}>
+  <section style={{
+    backgroundImage: "url('assets/photos/flok/Frame 2.png')",
+    backgroundSize: "cover", backgroundPosition: "center",
+  }}>
     <div className="container">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
-        <div className="mono" style={{ color: "rgba(45,161,220,0.7)", marginBottom: 16, letterSpacing: "0.15em", fontSize: 12 }}>— UI KIT</div>
-        <h2 style={{ color: "#fff" }}>Componentes diseñados</h2>
-        <p style={{ fontSize: 17, color: "rgba(255,255,255,0.5)", maxWidth: 480, margin: "16px auto 0" }}>
+        <div className="mono" style={{ color: "#2D5B8A", marginBottom: 16, letterSpacing: "0.15em", fontSize: 12 }}>— UI KIT</div>
+        <h2 style={{ color: "#1C2B3A" }}>Componentes diseñados</h2>
+        <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 480, margin: "16px auto 0" }}>
           Cada componente construido con sus variantes, estados e interacciones para un handoff limpio al equipo de desarrollo.
         </p>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
         {[
-          { src: "assets/photos/flok/Nav Bar.png",           label: "Navigation Bar",     bg: "#253545" },
-          { src: "assets/photos/flok/CarrouselWeek.png",     label: "Week Selector",       bg: "#253545" },
-          { src: "assets/photos/flok/Frame 2609753.png",     label: "Add Item Sheet",      bg: "#253545" },
-          { src: "assets/photos/flok/Hamburguer menu.png",   label: "Side Menu",           bg: "#253545" },
-          { src: "assets/photos/flok/Frame 2609728.png",     label: "Event Card",          bg: "#253545" },
-          { src: "assets/photos/flok/Frame 2609765.png",     label: "Deadline Component",  bg: "#253545" },
-          { src: "assets/photos/flok/Frame 2011.png",        label: "CTA Buttons",         bg: "#253545" },
-        ].map(({ src, label, bg }) => (
-          <div key={label} className="reveal component-card" style={{ background: bg }}>
+          { src: "assets/photos/flok/Nav Bar.png",           label: "Navigation Bar"     },
+          { src: "assets/photos/flok/CarrouselWeek.png",     label: "Week Selector"      },
+          { src: "assets/photos/flok/Frame 2609753.png",     label: "Add Item Sheet"     },
+          { src: "assets/photos/flok/Hamburguer menu.png",   label: "Side Menu"          },
+          { src: "assets/photos/flok/Frame 2609728.png",     label: "Event Card"         },
+          { src: "assets/photos/flok/Frame 2609765.png",     label: "Deadline Component" },
+          { src: "assets/photos/flok/Frame 2011.png",        label: "CTA Buttons"        },
+        ].map(({ src, label }) => (
+          <div key={label} className="reveal component-card">
             <img src={src} alt={label} style={{ maxWidth: "100%", maxHeight: 180, objectFit: "contain", borderRadius: 8 }} />
             <span className="component-label">{label}</span>
           </div>
@@ -433,6 +499,7 @@ const App = () => {
       <FlokChallenge />
       <FlokMoodboard />
       <FlokProcess />
+      <FlokMVP />
       <FlokScreens />
       <FlokUIKit />
       <FlokDeliverables />
