@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Flok · Family Planner App · Melina Chinni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+
+const CONTENT = {
+  es: {
+    back: "← volver a trabajos",
+    kicker: "UX / UI DESIGN · APP MÓVIL · 2025",
+    title: "Flok",
+    subtitle: "Una app que reunió a la familia: diseño completo de UX e interfaz para un planner familiar que simplifica la coordinación entre padres e hijos, también en familias separadas.",
+    tags: ["UX Research", "UI Design", "Mobile", "UI Kit", "Moodboard"],
+    overview: {
+      label: "EL PROYECTO",
+      title: "Una app para que la familia esté en sintonía",
+      body: "Flok es un planner familiar mobile que resuelve uno de los desafíos cotidianos más comunes: que todos los integrantes de la familia estén al tanto de las actividades de los hijos. Ya sea para familias convivientes o para padres separados, Flok centraliza la comunicación, los eventos y las tareas en un único lugar.",
+    },
+    challenge: {
+      label: "EL DESAFÍO",
+      title: "Coordinar sin conflicto, incluso entre familias separadas",
+      body: "El punto más delicado del proyecto fue diseñar una experiencia donde padres separados puedan coordinarse sin necesidad de contactarse directamente entre sí, evitando tensiones. La app debía ser neutral, clara e inclusiva para todo tipo de estructura familiar, sin imponer un modelo de familia \"ideal\".",
+      insight: "\"Que coordinar a los hijos no sea otro motivo de conflicto.\"",
+    },
+    process: {
+      label: "MI PROCESO",
+      steps: [
+        { n: "01", title: "UX Research", desc: "Entrevistas con padres en distintas situaciones familiares. Mapeé flujos de comunicación existentes y detecté fricciones: la cadena de mensajes, el olvido de actividades y la falta de un canal neutral para padres separados." },
+        { n: "02", title: "Arquitectura y flujos", desc: "Definí la arquitectura de información, los user flows principales y los wireframes de baja fidelidad. Prioricé las pantallas críticas: agenda compartida, notificaciones y gestión de roles por hijo." },
+        { n: "03", title: "Moodboard y UI Kit", desc: "Desarrollé el moodboard visual de la app: paleta amigable y moderna, iconografía propia, tipografía legible. Construí el UI Kit completo con todos los componentes, variantes y estados." },
+        { n: "04", title: "UI Design", desc: "Diseñé todas las pantallas en Figma: onboarding, home, agenda, perfil de hijo, notificaciones y configuración. Cada pantalla contempla los distintos tipos de usuarios (papá, mamá, cuidador)." },
+      ],
+    },
+    deliverables: {
+      label: "LO QUE ENTREGUÉ",
+      items: [
+        "UX Research y entrevistas",
+        "Mapa de empatía",
+        "User flows completos",
+        "Wireframes de baja fidelidad",
+        "Moodboard visual",
+        "UI Kit con componentes",
+        "Diseño UI de todas las pantallas",
+        "Prototipo navegable en Figma",
+      ],
+    },
+    gallery: "GALERÍA",
+    testimonial: {
+      label: "LO QUE DIJO EL CLIENTE",
+      quote: "Melina understood the complexity of the problem right away. The design she created is warm, functional and exactly what we needed: a product that works for every type of family without judgment. The UI kit she delivered made the handoff to development seamless.",
+      author: "Morten Kremmer",
+      role: "Founder · Flok App · Denmark",
+    },
+    next: "Ver siguiente caso",
+  },
+  en: {
+    back: "← back to work",
+    kicker: "UX / UI DESIGN · MOBILE APP · 2025",
+    title: "Flok",
+    subtitle: "An app that brought the family together: full UX and UI design for a family planner that simplifies coordination between parents and children — even across separated families.",
+    tags: ["UX Research", "UI Design", "Mobile", "UI Kit", "Moodboard"],
+    overview: {
+      label: "THE PROJECT",
+      title: "An app to keep the family in sync",
+      body: "Flok is a family mobile planner that solves one of the most common everyday challenges: keeping all family members up to date on the kids' activities. Whether for families living together or separated parents, Flok centralizes communication, events and tasks in one place.",
+    },
+    challenge: {
+      label: "THE CHALLENGE",
+      title: "Coordinate without conflict, even across separated families",
+      body: "The most delicate aspect of the project was designing an experience where separated parents can coordinate without having to contact each other directly, avoiding tension. The app needed to be neutral, clear and inclusive for all types of family structures — without imposing an \"ideal\" family model.",
+      insight: "\"Don't let coordinating the kids become another source of conflict.\"",
+    },
+    process: {
+      label: "MY PROCESS",
+      steps: [
+        { n: "01", title: "UX Research", desc: "Interviews with parents in different family situations. I mapped existing communication flows and identified frictions: the message chains, forgotten activities and the lack of a neutral channel for separated parents." },
+        { n: "02", title: "Architecture & flows", desc: "I defined the information architecture, main user flows and low-fidelity wireframes. I prioritized critical screens: shared calendar, notifications and role management per child." },
+        { n: "03", title: "Moodboard & UI Kit", desc: "I developed the app's visual moodboard: friendly and modern palette, custom iconography, readable typography. Built the complete UI Kit with all components, variants and states." },
+        { n: "04", title: "UI Design", desc: "I designed all screens in Figma: onboarding, home, calendar, child profile, notifications and settings. Each screen accounts for different user types (dad, mom, caregiver)." },
+      ],
+    },
+    deliverables: {
+      label: "DELIVERABLES",
+      items: [
+        "UX Research & interviews",
+        "Empathy map",
+        "Complete user flows",
+        "Low-fidelity wireframes",
+        "Visual moodboard",
+        "UI Kit with components",
+        "Full UI screen design",
+        "Navigable Figma prototype",
+      ],
+    },
+    gallery: "GALLERY",
+    testimonial: {
+      label: "CLIENT FEEDBACK",
+      quote: "Melina understood the complexity of the problem right away. The design she created is warm, functional and exactly what we needed: a product that works for every type of family without judgment. The UI kit she delivered made the handoff to development seamless.",
+      author: "Morten Kremmer",
+      role: "Founder · Flok App · Denmark",
+    },
+    next: "See next case",
+  },
+};
+
+const COVER_SLIDE = "assets/photos/Image 1.jpg";
+
+const SLIDES = [
+  "assets/photos/Image 1.jpg",
+  "assets/photos/Image 2.jpg",
+  "assets/photos/Image 3.jpg",
+  "assets/photos/Image 4.jpg",
+  "assets/photos/Image 5.jpg",
+  "assets/photos/Image 6.jpg",
+  "assets/photos/Image 7.jpg",
+  "assets/photos/Image 8.jpg",
+  "assets/photos/Image 9.jpg",
+];
+
+const CaseHero = ({ c }) => (
+  <section style={{ paddingTop: 60, paddingBottom: 0, position: "relative", overflow: "hidden" }}>
+    <ParallaxSticker speed={-0.15} top="12%" left="4%">
+      <div className="sticker floating" style={{ "--r": "-8deg" }}>
+        <LeafSticker size={100} color="var(--olive)" rotate={-8} />
+      </div>
+    </ParallaxSticker>
+    <ParallaxSticker speed={-0.2} top="20%" right="5%">
+      <div className="sticker floating" style={{ "--r": "12deg", animationDelay: "1.4s" }}>
+        <CircleSticker size={56} color="var(--mustard)" />
+      </div>
+    </ParallaxSticker>
+
+    <div className="container-narrow" style={{ textAlign: "center" }}>
+      <div className="mono" style={{ marginBottom: 20 }}>
+        <a href="work.html" className="link-animated" style={{ color: "var(--rust)" }}>{c.back}</a>
+      </div>
+      <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.12em" }}>{c.kicker}</div>
+      <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(52px, 7vw, 88px)", marginBottom: 24, lineHeight: 1.02 }}>{c.title}</h1>
+      <p style={{ fontSize: 20, color: "var(--ink-soft)", lineHeight: 1.5, maxWidth: 640, margin: "0 auto 32px", fontFamily: "var(--font-serif)", fontStyle: "italic" }}>{c.subtitle}</p>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center", marginBottom: 56 }}>
+        {c.tags.map(t => (
+          <span key={t} className="mono" style={{ background: "var(--cream)", border: "1px solid rgba(28,43,58,0.12)", padding: "6px 16px", borderRadius: 100, fontSize: 12, color: "var(--ink-soft)" }}>{t}</span>
+        ))}
+      </div>
+    </div>
+
+    <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 40px" }}>
+      <div className="polaroid" style={{ padding: "12px 12px 40px", transform: "rotate(-1deg)" }}>
+        <img
+          src={COVER_SLIDE}
+          alt="Flok App cover"
+          style={{ width: "100%", display: "block", borderRadius: 2, aspectRatio: "16/9", objectFit: "cover" }}
+        />
+        <div className="caption">Flok Family Planner App · Dinamarca · 2025</div>
+      </div>
+    </div>
+  </section>
+);
+
+const Overview = ({ c }) => (
+  <section>
+    <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+      <div className="reveal">
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 16, letterSpacing: "0.12em" }}>{c.overview.label}</div>
+        <h2 style={{ marginBottom: 24, fontSize: "clamp(28px, 3.5vw, 44px)" }}>{c.overview.title}</h2>
+        <p style={{ fontSize: 17, color: "var(--ink-soft)", lineHeight: 1.7 }}>{c.overview.body}</p>
+      </div>
+      <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        {[
+          { label: "Cliente", value: "Morten Kremmer" },
+          { label: "País", value: "Dinamarca" },
+          { label: "Año", value: "2025" },
+          { label: "Rol", value: "UX + UI Designer" },
+        ].map(item => (
+          <div key={item.label} style={{ background: "var(--cream)", padding: "20px", borderRadius: 12 }}>
+            <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginBottom: 6, letterSpacing: "0.1em" }}>{item.label.toUpperCase()}</div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: 22, color: "var(--ink)" }}>{item.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Challenge = ({ c }) => (
+  <section style={{ background: "var(--cream)" }}>
+    <div className="container">
+      <div className="reveal container-narrow" style={{ margin: "0 auto", textAlign: "center" }}>
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 16, letterSpacing: "0.12em" }}>{c.challenge.label}</div>
+        <h2 style={{ marginBottom: 24 }}>{c.challenge.title}</h2>
+        <p style={{ fontSize: 18, color: "var(--ink-soft)", lineHeight: 1.7, marginBottom: 40 }}>{c.challenge.body}</p>
+        <blockquote style={{
+          fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: "clamp(22px, 3vw, 32px)",
+          color: "var(--olive-deep)", borderLeft: "3px solid var(--rust)",
+          paddingLeft: 28, textAlign: "left", margin: "0 auto", maxWidth: 520,
+        }}>{c.challenge.insight}</blockquote>
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section>
+    <div className="container">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
+        <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{c.process.label}</div>
+        <h2>Cómo lo hice</h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 24 }}>
+        {c.process.steps.map((s, i) => {
+          const colors = ["var(--sage-soft)", "var(--mustard-soft)", "var(--rust-soft)", "var(--clay)"];
+          return (
+            <div key={s.n} className="reveal" style={{
+              background: colors[i], padding: 28, borderRadius: 18,
+              transform: `rotate(${(i % 2 === 0 ? -1 : 1) * 1.2}deg)`,
+              transitionDelay: `${i * 80}ms`,
+              boxShadow: "0 10px 24px -12px rgba(28,43,58,0.15)",
+              position: "relative",
+            }}>
+              <WashiTape width={60} rotate={-8} style={{ position: "absolute", top: -10, left: 20 }} />
+              <div className="mono" style={{ color: "var(--ink-soft)", marginBottom: 16, fontSize: 11 }}>{s.n}</div>
+              <h3 style={{ fontSize: 26, marginBottom: 10 }}>{s.title}</h3>
+              <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.6 }}>{s.desc}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
+
+const Gallery = ({ c }) => {
+  const [current, setCurrent] = React.useState(0);
+  const [fading, setFading] = React.useState(false);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setCurrent(i => (i + 1) % SLIDES.length);
+        setFading(false);
+      }, 400);
+    }, 2800);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goTo = (i) => {
+    setFading(true);
+    setTimeout(() => { setCurrent(i); setFading(false); }, 300);
+  };
+
+  return (
+    <section style={{ background: "var(--cream)", overflow: "hidden" }}>
+      <div className="container">
+        <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
+          <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{c.gallery}</div>
+          <h2>El diseño en detalle</h2>
+        </div>
+
+        <div style={{ maxWidth: 860, margin: "0 auto" }}>
+          <div className="polaroid" style={{ padding: "12px 12px 20px", transform: "rotate(-0.5deg)" }}>
+            <div style={{ position: "relative", overflow: "hidden", borderRadius: 2 }}>
+              <img
+                src={SLIDES[current]}
+                alt={`Flok slide ${current + 1}`}
+                style={{
+                  width: "100%", display: "block",
+                  transition: "opacity 0.4s ease",
+                  opacity: fading ? 0 : 1,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Counter + arrows */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, marginTop: 20 }}>
+            <button
+              onClick={() => goTo((current - 1 + SLIDES.length) % SLIDES.length)}
+              style={{
+                background: "none", border: "none", cursor: "pointer",
+                fontFamily: "var(--font-mono)", fontSize: 18,
+                color: "var(--ink-soft)", padding: 0, lineHeight: 1,
+                opacity: 0.7, transition: "opacity 0.2s",
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = 1}
+              onMouseLeave={e => e.currentTarget.style.opacity = 0.7}
+            >←</button>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-mute)", letterSpacing: "0.1em" }}>
+              {current + 1} / {SLIDES.length}
+            </span>
+            <button
+              onClick={() => goTo((current + 1) % SLIDES.length)}
+              style={{
+                background: "none", border: "none", cursor: "pointer",
+                fontFamily: "var(--font-mono)", fontSize: 18,
+                color: "var(--ink-soft)", padding: 0, lineHeight: 1,
+                opacity: 0.7, transition: "opacity 0.2s",
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = 1}
+              onMouseLeave={e => e.currentTarget.style.opacity = 0.7}
+            >→</button>
+          </div>
+
+          {/* Dots */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 16, flexWrap: "wrap" }}>
+            {SLIDES.map((_, i) => (
+              <button key={i} onClick={() => goTo(i)} style={{
+                width: i === current ? 20 : 8, height: 8, borderRadius: 100,
+                background: i === current ? "var(--rust)" : "var(--sage)",
+                border: "none", cursor: "pointer", padding: 0,
+                transition: "all 0.3s ease",
+              }} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Deliverables = ({ c }) => (
+  <section>
+    <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+      <div className="reveal">
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 16, letterSpacing: "0.12em" }}>{c.deliverables.label}</div>
+        <h2 style={{ marginBottom: 32, fontSize: "clamp(28px, 3.5vw, 44px)" }}>Qué incluye el proyecto</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {c.deliverables.items.map((item, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 0", borderBottom: "1px dashed rgba(28,43,58,0.12)" }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--rust)", minWidth: 32 }}>0{i+1}</span>
+              <span style={{ fontSize: 16, color: "var(--ink)" }}>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="reveal" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{
+          background: "linear-gradient(135deg, #a8c5d8 0%, #7aa8c0 40%, #5a8fa8 100%)",
+          borderRadius: 18, padding: 48, color: "#fff", textAlign: "center",
+        }}>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: 72, lineHeight: 1, marginBottom: 8, fontWeight: 300, letterSpacing: "-2px" }}>Flok</div>
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.2em", opacity: 0.85 }}>FAMILY PLANNER · 2025</div>
+        </div>
+        <div style={{ display: "flex", gap: 8 }}>
+          {["#A8C5D8", "#7AA8C0", "#5A8FA8", "#F5F0E8", "#3D5A6A"].map(color => (
+            <div key={color} style={{ flex: 1, height: 48, borderRadius: 8, background: color, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }} />
+          ))}
+        </div>
+        <div style={{ background: "var(--cream)", borderRadius: 16, padding: "20px 24px" }}>
+          <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginBottom: 10, letterSpacing: "0.1em" }}>ROL EN EL PROYECTO</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {["UX Research", "Information Architecture", "Wireframing", "UI Design", "UI Kit", "Moodboard", "Figma Prototype"].map(r => (
+              <div key={r} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--olive)", flexShrink: 0 }} />
+                <span style={{ fontSize: 14, color: "var(--ink-soft)" }}>{r}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const Testimonial = ({ c }) => (
+  <section style={{ background: "var(--cream)", paddingTop: 80, paddingBottom: 80 }}>
+    <div className="container-narrow">
+      <div className="reveal" style={{ textAlign: "center" }}>
+        <div className="mono" style={{ color: "var(--rust)", marginBottom: 32, letterSpacing: "0.12em" }}>{c.testimonial.label}</div>
+        <div style={{ position: "relative", padding: "48px 40px", background: "var(--paper)", borderRadius: 20, boxShadow: "0 20px 48px -16px rgba(28,43,58,0.1)" }}>
+          <div style={{
+            fontFamily: "var(--font-serif)", fontStyle: "italic",
+            fontSize: "clamp(20px, 2.5vw, 28px)", lineHeight: 1.55,
+            color: "var(--olive-deep)", marginBottom: 32,
+          }}>
+            "{c.testimonial.quote}"
+          </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
+            <div style={{ width: 40, height: 1, background: "var(--rust)", opacity: 0.5 }} />
+            <div>
+              <div style={{ fontFamily: "var(--font-serif)", fontSize: 16, color: "var(--ink)", fontWeight: 500 }}>{c.testimonial.author}</div>
+              <div className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", marginTop: 2 }}>{c.testimonial.role}</div>
+            </div>
+            <div style={{ width: 40, height: 1, background: "var(--rust)", opacity: 0.5 }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+const CaseNav = ({ c }) => (
+  <section style={{ paddingTop: 60, paddingBottom: 60, textAlign: "center" }}>
+    <div className="container-narrow">
+      <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+        <a href="work.html" style={{
+          display: "inline-flex", alignItems: "center", gap: 10,
+          padding: "16px 32px", background: "var(--ink)", color: "var(--cream)",
+          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
+        }}>{c.back}</a>
+        <a href="contact.html" style={{
+          display: "inline-flex", alignItems: "center", gap: 10,
+          padding: "16px 32px", background: "transparent", border: "1px solid var(--ink)", color: "var(--ink)",
+          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
+        }}>¿Trabajamos juntos? →</a>
+      </div>
+    </div>
+  </section>
+);
+
+const CaseContent = () => {
+  const { lang } = React.useContext(LangContext);
+  const c = CONTENT[lang] || CONTENT.es;
+  return (
+    <>
+      <CaseHero c={c} />
+      <Overview c={c} />
+      <Challenge c={c} />
+      <Process c={c} />
+      <Gallery c={c} />
+      <Deliverables c={c} />
+      <Testimonial c={c} />
+      <CaseNav c={c} />
+    </>
+  );
+};
+
+const App = () => {
+  useReveal();
+  return (
+    <LangProvider>
+      <CursorSticker />
+      <Nav active="work" />
+      <CaseContent />
+      <Footer />
+      <TweaksPanel />
+    </LangProvider>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
