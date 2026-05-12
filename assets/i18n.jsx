@@ -29,8 +29,8 @@ const TRANSLATIONS = {
       caseLink: "Ver caso →",
       projects: [
         { title: "ALEO Brandbook", subtitle: "Indumentaria deportiva · Branding", desc: "Identidad visual completa para una marca de ropa deportiva argentina: logo, paleta, brandbook digital e impreso.", metricLabel: "seguidores nuevos" },
+        { title: "Flok · Family Planner", subtitle: "App familiar · UX/UI", desc: "Diseño completo de UX e interfaz para una app de planner familiar que conecta a toda la familia, incluso en casos de padres separados.", metricLabel: "de inicio a fin" },
         { title: "Rediseño E-commerce", subtitle: "Moda online · Mobile-first", desc: "Le dimos una vuelta completa al checkout para que comprar desde el celu sea más fácil que pensar en comprar.", metricLabel: "conversión" },
-        { title: "App de Bienestar", subtitle: "Meditación · B2C", desc: "Una app de mindfulness con onboarding que se adapta a vos en vez de que vos te adaptes a ella.", metricLabel: "retención d7" },
       ],
     },
     process: {
@@ -82,8 +82,8 @@ const TRANSLATIONS = {
       caseLink: "View case →",
       projects: [
         { title: "ALEO Brandbook", subtitle: "Sportswear · Branding", desc: "Full visual identity for an Argentine sportswear brand: logo, palette, digital and print brandbook.", metricLabel: "new followers" },
+        { title: "Flok · Family Planner", subtitle: "Family app · UX/UI", desc: "Full UX and UI design for a family planner app that connects the whole family — even separated parents.", metricLabel: "start to finish" },
         { title: "E-commerce Redesign", subtitle: "Online fashion · Mobile-first", desc: "Rebuilt the checkout so buying from your phone feels easier than thinking about buying.", metricLabel: "conversion" },
-        { title: "Wellness App", subtitle: "Meditation · B2C", desc: "A mindfulness app with onboarding that adapts to you instead of the other way around.", metricLabel: "d7 retention" },
       ],
     },
     process: {

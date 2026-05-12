@@ -137,9 +137,9 @@ const Philosophy = () => {
 const Work = () => {
   const { t } = useT();
   const meta = [
-    { id: "aleo",      img: "assets/photos/aleo-cover.jpg", metric: "+2k", color: "var(--rust)",        href: "case-aleo.html",      rotate: 2,  tags: ["Branding", "Identity", "Print"], isPhoto: true },
-    { id: "ecommerce", img: "assets/work/ecommerce.svg",    metric: "+47%", color: "var(--terracotta)", href: "case-ecommerce.html", rotate: -3, tags: ["UX", "UI", "Research"] },
-    { id: "wellness",  img: "assets/work/wellness.svg",     metric: "87%",  color: "var(--olive)",      href: "case-wellness.html",  rotate: 2,  tags: ["Mobile", "AI", "UX"] },
+    { id: "aleo",      img: "assets/photos/aleo-cover.jpg", metric: "+2k",   color: "var(--rust)",        href: "case-aleo.html",      rotate: 2,  tags: ["Branding", "Identity", "Print"], isPhoto: true },
+    { id: "flok",      img: "assets/photos/Image 1.jpg",   metric: "UX+UI", color: "var(--olive)",       href: "case-flok.html",      rotate: -2, tags: ["UX Research", "UI Design", "Mobile"], isPhoto: true },
+    { id: "ecommerce", img: "assets/work/ecommerce.svg",   metric: "+47%",  color: "var(--terracotta)", href: "case-ecommerce.html", rotate: -3, tags: ["UX", "UI", "Research"] },
   ];
   const projects = meta.map((m, i) => ({ ...m, ...t.work.projects[i] }));
 
