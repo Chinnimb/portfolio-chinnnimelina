@@ -107,7 +107,7 @@ const FlokHero = () => (
       <div style={{ position: "relative", height: 560, display: "flex", alignItems: "center", justifyContent: "center" }}>
         {/* Main phone */}
         <img
-          src="assets/photos/flok/Device 14PM 1.png"
+          src="assets/photos/flok/Device 14PM 1 (1).png"
           alt="Flok welcome screen"
           className="screen-float"
           style={{ width: 220, position: "absolute", right: 60, top: 20, transform: "rotate(3deg)", zIndex: 3 }}
@@ -194,33 +194,19 @@ const FlokMoodboard = () => (
       {/* Moodboard image */}
       <div className="reveal" style={{ borderRadius: 20, overflow: "hidden", marginBottom: 40, boxShadow: "0 32px 64px rgba(0,0,0,0.3)" }}>
         <img
-          src="assets/photos/flok/Captura de pantalla 2025-11-24 130724 1.png"
+          src="assets/photos/flok/Moodboard 3 (2).jpg"
           alt="Flok moodboard"
           style={{ width: "100%", display: "block" }}
         />
       </div>
 
       {/* Color palette */}
-      <div className="reveal" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 16 }}>
-        {[
-          { hex: "#2D3E50", name: "Navy Deep" },
-          { hex: "#4A5B6E", name: "Slate" },
-          { hex: "#1A1A2E", name: "Midnight" },
-          { hex: "#2D8B8B", name: "Teal" },
-          { hex: "#6B4FA0", name: "Violet" },
-          { hex: "#9B8EC4", name: "Lavender" },
-          { hex: "#8EC4A0", name: "Mint" },
-          { hex: "#B8D4E8", name: "Sky" },
-          { hex: "#F5E6C8", name: "Wheat" },
-          { hex: "#E8E0F0", name: "Lilac" },
-          { hex: "#D4EDE0", name: "Sage" },
-          { hex: "#F5F0E8", name: "Cream" },
-        ].map(c => (
-          <div key={c.hex} style={{ textAlign: "center" }}>
-            <div style={{ width: 52, height: 52, borderRadius: 10, background: c.hex, boxShadow: "0 2px 8px rgba(0,0,0,0.2)", marginBottom: 6 }} />
-            <div className="mono" style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", letterSpacing: "0.05em" }}>{c.name}</div>
-          </div>
-        ))}
+      <div className="reveal" style={{ maxWidth: 700, margin: "0 auto" }}>
+        <img
+          src="assets/photos/flok/Frame 1 (3).png"
+          alt="Flok color palette"
+          style={{ width: "100%", display: "block", borderRadius: 16, boxShadow: "0 8px 32px rgba(0,0,0,0.25)" }}
+        />
       </div>
     </div>
   </section>
@@ -277,7 +263,7 @@ const FlokScreens = () => (
       {/* Screen showcase — staggered */}
       <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-end", gap: 24, flexWrap: "wrap", paddingBottom: 40 }}>
         {[
-          { src: "assets/photos/flok/Device 14PM 1.png", label: "Onboarding", rotate: -5, mt: 40 },
+          { src: "assets/photos/flok/Device 14PM 1 (1).png", label: "Onboarding", rotate: -5, mt: 40 },
           { src: "assets/photos/flok/Device 14PM.png",   label: "Home",       rotate: -2, mt: 0  },
           { src: "assets/photos/flok/Device 14PM (1).png", label: "Semana",   rotate:  2, mt: 20 },
           { src: "assets/photos/flok/Device 14PM (2).png", label: "Nuevo ítem", rotate: 5, mt: 50 },
