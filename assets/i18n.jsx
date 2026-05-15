@@ -17,7 +17,7 @@ const TRANSLATIONS = {
     },
     about: {
       kicker: "— SOBRE MÍ",
-      title: "Ojo editorial,\ncabeza de producto",
+      title: "Let your visuals\ntell a story",
       body: "Trabajo desde Buenos Aires para equipos en distintos países. Me especializo en el espacio donde UX y diseño visual se cruzan: que algo funcione bien y se vea increíble no deberían ser cosas separadas.",
       body2: "Uso IA de verdad en mi proceso — no como tendencia, sino porque libera tiempo para lo que importa: entender el problema y resolverlo bien.",
       facts: ["UX + Visual Design", "Buenos Aires · remoto", "Figma · Claude · Framer", "Disponible para proyectos"],

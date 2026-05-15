@@ -259,21 +259,14 @@ const About = () => {
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: 72, alignItems: "center" }}>
 
-          {/* Polaroid — foto */}
+          {/* Polaroid — foto con Bandido */}
           <div className="reveal" style={{ position: "relative" }}>
             <WashiTape width={100} rotate={-8} style={{ position: "absolute", top: -10, left: 20, zIndex: 5 }} />
             <div className="polaroid" style={{ transform: "rotate(-4deg)", padding: "12px 12px 44px", position: "relative", zIndex: 2 }}>
               <div style={{ aspectRatio: "3/4", overflow: "hidden", borderRadius: 2 }}>
-                <img src="assets/photos/retrato.jpg" alt="Melina Chinni" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                <img src="assets/photos/bandido.jpg" alt="Melina y Bandido" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
               </div>
-              <div className="caption">Melina · Buenos Aires</div>
-            </div>
-            {/* Mini Bandido */}
-            <div className="polaroid" style={{ transform: "rotate(6deg)", padding: "8px 8px 28px", position: "absolute", bottom: -20, right: -24, width: 110, zIndex: 3 }}>
-              <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 2 }}>
-                <img src="assets/photos/bandido.jpg" alt="Bandido" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-              </div>
-              <div className="caption" style={{ fontSize: 8, lineHeight: 1.3 }}>Bandido 🐾</div>
+              <div className="caption">Melina & Bandido 🐾</div>
             </div>
           </div>
 
