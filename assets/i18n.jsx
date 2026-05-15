@@ -25,7 +25,7 @@ const TRANSLATIONS = {
     work: {
       kicker: "— PROYECTOS SELECCIONADOS",
       title: "Trabajos recientes",
-      lede: "Producto, branding y todo lo que pasa en el medio. Estos son algunos de los que más me gustaron.",
+      lede: "Producto, branding y todo lo que pasa en el medio. Mis últimos trabajos.",
       seeAll: "Ver todos los trabajos",
       caseLink: "Ver caso →",
       projects: [
