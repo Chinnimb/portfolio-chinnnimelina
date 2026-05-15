@@ -31,6 +31,61 @@
   .color-swatch {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
+  .browser-frame {
+    border-radius: 14px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.28), 0 0 0 1px rgba(0,0,0,0.08);
+    overflow: hidden;
+    background: #fff;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .browser-chrome {
+    background: #F0F0F2;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #DDDDE0;
+  }
+  .browser-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .browser-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .browser-urlbar {
+    flex: 1;
+    background: #fff;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #666;
+    border: 1px solid #E0E0E0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .browser-viewport {
+    height: 520px;
+    overflow: hidden;
+    position: relative;
+  }
+  .browser-scroll-inner {
+    animation: pageScroll 28s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+  .browser-scroll-inner:hover {
+    animation-play-state: paused;
+  }
+  @keyframes pageScroll {
+    0%   { transform: translateY(0); }
+    8%   { transform: translateY(0); }
+    88%  { transform: translateY(calc(-100% + 520px)); }
+    100% { transform: translateY(calc(-100% + 520px)); }
+  }
 </style>
 </head>
 <body data-palette="niebla" data-fonts="default">
@@ -104,6 +159,133 @@ const PetHero = () => (
         <span>⭐ 4.9 from 12,000+ reviews</span>
         <span style={{ width: 1, height: 16, background: "rgba(0,0,0,0.15)" }} />
         <span>Free Shipping · 60-Day Returns · 2-Year Warranty</span>
+      </div>
+    </div>
+  </section>
+);
+
+/* ─── Desktop Mockup ────────────────────────────────────────── */
+const PetMockup = () => (
+  <section style={{ background: "#1C1412", paddingTop: 80, paddingBottom: 80 }}>
+    <div className="container">
+      <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
+        <div className="mono" style={{ color: "rgba(255,180,140,0.6)", marginBottom: 16, letterSpacing: "0.15em", fontSize: 12 }}>— DISEÑO WEB</div>
+        <h2 style={{ color: "#fff" }}>La landing en acción</h2>
+        <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 16, marginTop: 12 }}>Hover para pausar · Se repite en loop</p>
+      </div>
+
+      <div className="reveal browser-frame">
+        {/* Chrome bar */}
+        <div className="browser-chrome">
+          <div className="browser-dots">
+            <div className="browser-dot" style={{ background: "#FF5F57" }} />
+            <div className="browser-dot" style={{ background: "#FEBC2E" }} />
+            <div className="browser-dot" style={{ background: "#28C840" }} />
+          </div>
+          <div className="browser-urlbar">cargo-roof-95274475.figma.site</div>
+        </div>
+
+        {/* Viewport */}
+        <div className="browser-viewport">
+          <div className="browser-scroll-inner">
+
+            {/* 1 — Hero */}
+            <div style={{ background: "linear-gradient(135deg, #FFF8F3 0%, #FFF0F5 50%, #F0F4FF 100%)", padding: "60px 80px 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", padding: "8px 16px", borderRadius: 100, boxShadow: "0 4px 12px rgba(0,0,0,0.08)", marginBottom: 24, fontSize: 12, color: "#555" }}>
+                  ⭐⭐⭐⭐⭐ <span>4.9 from 12,000+ reviews</span>
+                </div>
+                <div style={{ fontSize: 48, fontFamily: "var(--font-serif)", fontWeight: 300, lineHeight: 1.1, color: "#111827", marginBottom: 20 }}>Comfort they'll<br/>never want to leave</div>
+                <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.6, marginBottom: 28, maxWidth: 380 }}>The CloudNest™ combines orthopedic comfort with minimalist design—giving your pet the rest they deserve.</p>
+                <div style={{ display: "flex", gap: 12 }}>
+                  <div style={{ background: "#111827", color: "#fff", padding: "14px 28px", borderRadius: 100, fontSize: 13 }}>Shop Now</div>
+                  <div style={{ background: "#fff", border: "1px solid #E0E0E0", padding: "14px 28px", borderRadius: 100, fontSize: 13, color: "#111827" }}>See Colors</div>
+                </div>
+              </div>
+              <div style={{ position: "relative" }}>
+                <img src="https://images.unsplash.com/photo-1774440865547-6329be652bb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Hero" style={{ width: "100%", borderRadius: "28px 28px 0 0", display: "block", objectFit: "cover", height: 360 }} />
+                <div style={{ position: "absolute", bottom: 16, left: -20, background: "#FFE5E5", padding: "10px 20px", borderRadius: 20, fontSize: 12, boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}>
+                  <div style={{ fontSize: 11, color: "#888" }}>Trusted by</div>
+                  <div style={{ fontSize: 18, color: "#111827" }}>12,000+ pet owners</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2 — Benefits */}
+            <div style={{ background: "#fff", padding: "60px 80px" }}>
+              <div style={{ textAlign: "center", marginBottom: 40 }}>
+                <div style={{ fontSize: 32, fontFamily: "var(--font-serif)", color: "#111827", marginBottom: 10 }}>Designed for comfort. Made for life.</div>
+                <p style={{ color: "#6B7280", fontSize: 15 }}>Every detail crafted with your pet's wellbeing and your home's aesthetic in mind.</p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                {[
+                  { icon: "❤️", title: "Orthopedic Comfort", color: "#FFE5E5" },
+                  { icon: "✨", title: "Machine Washable", color: "#E5F0FF" },
+                  { icon: "🛡️", title: "Anti-Slip Base", color: "#E8F5E8" },
+                  { icon: "🏠", title: "Aesthetic Design", color: "#F5E8FF" },
+                ].map(b => (
+                  <div key={b.title} style={{ background: "#fff", border: "1px solid #F0F0F0", borderRadius: 20, padding: 24, boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
+                    <div style={{ width: 48, height: 48, background: b.color, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, marginBottom: 14 }}>{b.icon}</div>
+                    <div style={{ fontSize: 15, fontWeight: 500, color: "#111827" }}>{b.title}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 3 — Product Showcase */}
+            <div style={{ background: "linear-gradient(180deg, #fff 0%, #FFF8F3 100%)", padding: "60px 80px" }}>
+              <div style={{ textAlign: "center", marginBottom: 40 }}>
+                <div style={{ fontSize: 32, fontFamily: "var(--font-serif)", color: "#111827", marginBottom: 10 }}>Choose your aesthetic</div>
+                <p style={{ color: "#6B7280", fontSize: 15 }}>Four beautiful colorways to match your home's vibe</p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, alignItems: "center" }}>
+                <img src="https://images.unsplash.com/photo-1629740067905-bd3f515aa739?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" alt="Sage Green" style={{ width: "100%", borderRadius: 28, display: "block", height: 280, objectFit: "cover" }} />
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {[["#FFF8F3", "Cloud Cream"], ["#FFE5E5", "Soft Pink"], ["#E8F5E8", "Sage Green"], ["#E5F0FF", "Sky Blue"]].map(([hex, name], i) => (
+                    <div key={name} style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 18px", borderRadius: 20, background: i === 2 ? "#fff" : "#fff", border: i === 2 ? "2px solid #111827" : "2px solid transparent", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 12, background: hex, border: "2px solid rgba(0,0,0,0.08)" }} />
+                      <span style={{ fontSize: 15, color: "#111827" }}>{name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 4 — Why Pets Love It */}
+            <div style={{ background: "#fff", padding: "60px 80px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+                <img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=600" alt="Cat" style={{ width: "100%", borderRadius: 28, display: "block", height: 320, objectFit: "cover" }} />
+                <div>
+                  <div style={{ fontSize: 32, fontFamily: "var(--font-serif)", color: "#111827", marginBottom: 16 }}>Why pets love it</div>
+                  <p style={{ fontSize: 15, color: "#6B7280", lineHeight: 1.7, marginBottom: 24 }}>The CloudNest™ isn't just a bed — it's a sanctuary. Our orthopedic memory foam cradles every curve, relieving pressure points and supporting aging joints.</p>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                    <div style={{ background: "#FFF8F3", padding: "20px", borderRadius: 16 }}>
+                      <div style={{ fontSize: 32, color: "#111827", marginBottom: 4 }}>92%</div>
+                      <div style={{ fontSize: 13, color: "#6B7280" }}>Pets sleep longer</div>
+                    </div>
+                    <div style={{ background: "#E5F0FF", padding: "20px", borderRadius: 16 }}>
+                      <div style={{ fontSize: 32, color: "#111827", marginBottom: 4 }}>89%</div>
+                      <div style={{ fontSize: 13, color: "#6B7280" }}>Reduced joint pain</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 5 — Final CTA */}
+            <div style={{ background: "linear-gradient(135deg, #FFE5E5, #FFF0F5, #E5F0FF)", padding: "80px", textAlign: "center" }}>
+              <div style={{ fontSize: 44, fontFamily: "var(--font-serif)", color: "#111827", marginBottom: 16, lineHeight: 1.2 }}>Give them the comfort they deserve</div>
+              <p style={{ fontSize: 18, color: "#6B7280", marginBottom: 32 }}>Your pet spends half their life sleeping. Make every moment count with the CloudNest™.</p>
+              <div style={{ display: "inline-block", background: "#111827", color: "#fff", padding: "18px 40px", borderRadius: 100, fontSize: 16 }}>Order Yours Today</div>
+              <div style={{ display: "flex", justifyContent: "center", gap: 32, marginTop: 24 }}>
+                {["✓ Free Shipping", "✓ 60-Day Returns", "✓ 2-Year Warranty"].map(b => (
+                  <span key={b} style={{ fontSize: 13, color: "#6B7280" }}>{b}</span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -368,6 +550,7 @@ const App = () => {
       <CursorSticker />
       <Nav active="work" />
       <PetHero />
+      <PetMockup />
       <PetSections />
       <PetColors />
       <PetStats />
