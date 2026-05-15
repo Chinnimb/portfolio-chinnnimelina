@@ -20,7 +20,7 @@ const TRANSLATIONS = {
       title: "Let your visuals\ntell a story",
       body: "Trabajo desde Buenos Aires para equipos en distintos países. Me especializo en el espacio donde UX y diseño visual se cruzan: que algo funcione bien y se vea increíble no deberían ser cosas separadas.",
       body2: "Uso IA de verdad en mi proceso — no como tendencia, sino porque libera tiempo para lo que importa: entender el problema y resolverlo bien.",
-      facts: ["UX + Visual Design", "Buenos Aires · remoto", "Figma · Claude · Framer", "Disponible para proyectos"],
+      facts: ["UX + Visual Design", "Buenos Aires · remoto", "Figma · Claude", "Disponible para proyectos"],
     },
     work: {
       kicker: "— PROYECTOS SELECCIONADOS",
@@ -74,7 +74,7 @@ const TRANSLATIONS = {
       title: "Editorial eye,\nproduct brain",
       body: "Based in Buenos Aires, working with teams across countries. I specialize in the space where UX and visual design meet: something working well and looking great shouldn't be separate goals.",
       body2: "I use AI as a real part of my process — not as a trend, but because it frees time for what actually matters: understanding the problem and solving it right.",
-      facts: ["UX + Visual Design", "Buenos Aires · remote", "Figma · Claude · Framer", "Available for projects"],
+      facts: ["UX + Visual Design", "Buenos Aires · remote", "Figma · Claude", "Available for projects"],
     },
     work: {
       kicker: "— SELECTED PROJECTS",

@@ -338,7 +338,8 @@ const Tools = () => {
               transitionDelay: `${i * 100}ms`,
             }}>
               <WashiTape width={group.tape.width} rotate={group.tape.rotate} style={{ position: "absolute", top: -10, right: group.tape.right }} />
-              <div className="mono" style={{ color: group.color, marginBottom: 16, fontSize: 11, letterSpacing: "0.12em" }}>— {group.cat.toUpperCase()}</div>
+              <div className="mono" style={{ color: group.color, marginBottom: 10, fontSize: 11, letterSpacing: "0.14em" }}>— {group.cat.toUpperCase()}</div>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(28px, 3vw, 38px)", fontWeight: 400, lineHeight: 1.1, marginBottom: 20, color: "var(--ink)" }}>{group.cat}</h3>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
                 {group.items.map(item => (
                   <span key={item} style={{
