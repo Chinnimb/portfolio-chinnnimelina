@@ -50,7 +50,7 @@ const Hero = () => {
         <h1 className="studio-title rise d1">Chinni<br/><em>Design Studio</em></h1>
         <p className="studio-lede rise d2">{s.lede}</p>
         <div className="studio-ctas rise d3">
-          <a href="#trabajos" className="btn btn-primary">{s.cta1} <Arrow /></a>
+          <a href="#trabajos" className="btn btn-light">{s.cta1} <Arrow /></a>
           <a href="#contacto" className="btn btn-ghost-light">{s.cta2}</a>
         </div>
       </div>
@@ -59,29 +59,61 @@ const Hero = () => {
   );
 };
 
+// === Objetos de oficina en línea fina (decoración de fondo, muy tenue) ===
+const DOODLES = {
+  lamp: <svg width="64" height="80" viewBox="0 0 64 80" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 30a20 20 0 0 1 40 0z"/><path d="M32 30v38"/><path d="M18 74h28"/><path d="M26 38c2 3 10 3 12 0" opacity=".6"/></svg>,
+  mate: <svg width="56" height="72" viewBox="0 0 56 72" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 30c0 22 8 34 16 34s16-12 16-34z"/><path d="M10 30h36"/><path d="M34 30 44 6"/><path d="M42 4l5 3"/><path d="M18 46c3 3 17 3 20 0" opacity=".6"/></svg>,
+  plant: <svg width="70" height="84" viewBox="0 0 70 84" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 58h30l-4 22H24z"/><path d="M35 58V30"/><path d="M35 40c-10 0-18-8-18-18 10 0 18 8 18 18z"/><path d="M35 34c0-12 8-22 20-24 0 12-8 22-20 24z"/><path d="M35 48c8 0 14-6 14-14-8 0-14 6-14 14z" opacity=".7"/></svg>,
+  monitor: <svg width="88" height="70" viewBox="0 0 88 70" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="80" height="48" rx="5"/><path d="M36 52l-3 12h22l-3-12"/><path d="M28 66h32"/><rect x="40" y="13" width="12" height="30" rx="3" opacity=".7"/><rect x="56" y="13" width="12" height="30" rx="3" opacity=".7"/><path d="M14 16h16M14 22h12M14 28h14" opacity=".6"/></svg>,
+  pencil: <svg width="70" height="70" viewBox="0 0 70 70" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M50 8l12 12L24 58l-16 4 4-16z"/><path d="M44 14l12 12"/><path d="M12 46l12 12" opacity=".6"/></svg>,
+  stars: <svg width="60" height="60" viewBox="0 0 60 60" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 8c2 10 4 12 14 14-10 2-12 4-14 14-2-10-4-12-14-14 10-2 12-4 14-14z"/><path d="M46 34c1 5 2 6 7 7-5 1-6 2-7 7-1-5-2-6-7-7 5-1 6-2 7-7z" opacity=".7"/></svg>,
+};
+const Doodle = ({ name, style, rotate = 0 }) => (
+  <div className="doodle" style={{ ...style, transform: `rotate(${rotate}deg)` }} aria-hidden="true">{DOODLES[name]}</div>
+);
+
+// Íconos de servicios: uno distinto por servicio
+const SERVICE_ICONS = [
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M3 9h18"/><path d="M8 21h8"/></svg>,
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>,
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></svg>,
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6z"/><path d="M18.5 15c.3 2 .9 2.6 2.9 2.9-2 .3-2.6.9-2.9 2.9-.3-2-.9-2.6-2.9-2.9 2-.3 2.6-.9 2.9-2.9z"/></svg>,
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/><path d="M8.5 11h5M11 8.5v5" opacity=".7"/></svg>,
+];
+const SERVICE_TINTS = ["periwinkle", "pink", "lilac", "sky", "sage"];
+
 const Services = () => {
   const { t } = useT();
   const s = t.studio;
+  const Card = ({ sv, i, hidden }) => (
+    <article className="service-card" data-tint={SERVICE_TINTS[i % SERVICE_TINTS.length]} aria-hidden={hidden || undefined}>
+      <div className="service-icon" aria-hidden="true">{SERVICE_ICONS[i]}</div>
+      <div className="service-num">0{i + 1}</div>
+      <h3>{sv.title}</h3>
+      <p>{sv.desc}</p>
+      <ul className="service-list">
+        {sv.items.map(item => <li key={item}>{item}</li>)}
+      </ul>
+      <div className="service-tools">{sv.tools}</div>
+    </article>
+  );
   return (
     <section className="services" id="servicios">
+      <Doodle name="lamp" style={{ top: 70, left: "6%" }} rotate={-6} />
+      <Doodle name="stars" style={{ top: 110, right: "9%" }} />
+      <Doodle name="mate" style={{ bottom: 60, right: "5%" }} rotate={8} />
       <div className="container">
         <div className="section-head reveal">
           <div className="eyebrow">{s.servicesKicker}</div>
           <Rich as="h2" html={s.servicesTitle} />
           <p>{s.servicesLede}</p>
         </div>
-        <div className="services-grid">
-          {s.services.map((sv, i) => (
-            <article key={sv.title} className="service-card reveal" style={{ transitionDelay: `${i * 90}ms` }}>
-              <div className="service-num">0{i + 1}</div>
-              <h3>{sv.title}</h3>
-              <p>{sv.desc}</p>
-              <ul className="service-list">
-                {sv.items.map(item => <li key={item}>{item}</li>)}
-              </ul>
-              <div className="service-tools">{sv.tools}</div>
-            </article>
-          ))}
+      </div>
+      {/* Carrusel continuo (hacia la izquierda); la lista va duplicada para el loop. Se pausa con hover. */}
+      <div className="carousel reveal" style={{ "--marquee-dur": `${s.services.length * 12}s` }}>
+        <div className="carousel-track">
+          {s.services.map((sv, i) => <Card key={sv.title} sv={sv} i={i} />)}
+          {s.services.map((sv, i) => <Card key={`${sv.title}-dup`} sv={sv} i={i} hidden />)}
         </div>
       </div>
     </section>
@@ -106,7 +138,7 @@ const Works = () => {
     { id: "flok", href: "case-flok.html", img: "assets/photos/Image 1.jpg", title: flok.title, cat: flok.subtitle, desc: flok.desc },
     { id: "ecommerce", href: "case-ecommerce.html", img: "assets/work/ecommerce.svg", title: ecommerce.title, cat: ecommerce.subtitle, desc: ecommerce.desc },
     {
-      id: "petshop", href: "case-petshop.html", cover: { label: "CloudNest", bg: "linear-gradient(135deg, #e8b4a0 0%, #d99a8a 50%, #b9a3c9 100%)" },
+      id: "petshop", href: "case-petshop.html", cover: { label: "CloudNest", bg: "linear-gradient(135deg, #e5afe9 0%, #c9b3ef 50%, #aac5fb 100%)" },
       title: "CloudNest™ Landing Page",
       cat: lang === "es" ? "Pet shop premium · Web" : "Premium pet shop · Web",
       desc: lang === "es"
@@ -151,6 +183,9 @@ const Works = () => {
 
   return (
     <section className="works" id="trabajos">
+      <Doodle name="plant" style={{ top: 60, right: "7%" }} rotate={4} />
+      <Doodle name="monitor" style={{ top: 120, left: "5%" }} rotate={-4} />
+      <Doodle name="pencil" style={{ bottom: 70, left: "8%" }} rotate={10} />
       <div className="container">
         <div className="section-head reveal">
           <div className="eyebrow">{s.workKicker}</div>
@@ -159,7 +194,7 @@ const Works = () => {
         </div>
       </div>
       {/* Carrusel continuo: la lista va duplicada para que el loop no tenga corte. Se pausa con hover. */}
-      <div className="carousel reveal" style={{ "--marquee-dur": `${projects.length * 11}s` }}>
+      <div className="carousel reverse reveal" style={{ "--marquee-dur": `${projects.length * 11}s` }}>
         <div className="carousel-track">
           {projects.map(p => <Card key={p.id} p={p} />)}
           {projects.map(p => <Card key={`${p.id}-dup`} p={p} hidden />)}
@@ -184,7 +219,7 @@ const Contact = () => {
         <div className="eyebrow">{s.contactKicker}</div>
         <Rich as="h2" html={s.contactTitle} />
         <p className="lede">{s.contactLede}</p>
-        <a href={`mailto:${email}`} className="btn btn-primary">{s.contactCta} <Arrow /></a>
+        <a href={`mailto:${email}`} className="btn btn-light">{s.contactCta} <Arrow /></a>
         <div className="contact-links">
           <a href={`mailto:${email}`} className="chip-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
