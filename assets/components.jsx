@@ -14,67 +14,10 @@ const DotDashSticker = Nothing;
 const WashiTape = Nothing;
 const CursorSticker = Nothing;
 
-// === Logo: "C" como lámpara de lava ===
-// Tubo de vidrio índigo en forma de C; adentro, burbujas de "lava" que suben, bajan y se fusionan
-// (filtro "goo": desenfoque + umbral de alfa). Se detiene si el sistema pide reducir movimiento.
-const C_PATH = "M73 30.7 A30 30 0 1 0 73 69.3"; // arco de la C, abierto a la derecha
-const LAVA_BLOBS = [
-  { cx: 24, r: 10,  color: "#fdaf5a", dur: 8,   delay: -1 },
-  { cx: 34, r: 8,   color: "#e5afe9", dur: 10,  delay: -5 },
-  { cx: 48, r: 9,   color: "#ffb866", dur: 12,  delay: -8 },
-  { cx: 60, r: 7.5, color: "#c4acf0", dur: 9,   delay: -3 },
-  { cx: 40, r: 7,   color: "#ffd59a", dur: 11,  delay: -6.5 },
-  { cx: 28, r: 6.5, color: "#e5afe9", dur: 13,  delay: -10 },
-  { cx: 66, r: 6,   color: "#fdaf5a", dur: 10.5,delay: -2 },
-];
-const LavaLogo = ({ size = 36, className = "" }) => {
-  const id = "lava" + React.useId().replace(/[^a-zA-Z0-9]/g, "");
-  return (
-    <svg className={`lava-logo ${className}`} width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
-      <defs>
-        <linearGradient id={`${id}-glass`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#5a4fc4" />
-          <stop offset="1" stopColor="#24204f" />
-        </linearGradient>
-        <linearGradient id={`${id}-shine`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#ffffff" stopOpacity="0.75" />
-          <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
-        </linearGradient>
-        <mask id={`${id}-mask`} maskUnits="userSpaceOnUse">
-          <path d={C_PATH} fill="none" stroke="#fff" strokeWidth="24" strokeLinecap="round" />
-        </mask>
-        <filter id={`${id}-goo`} x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3.2" />
-          <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8" />
-        </filter>
-        <filter id={`${id}-glow`} x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="2.5" result="b" />
-          <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
-      </defs>
-      {/* Borde del vidrio (ayuda a leer la C en tamaño chico) */}
-      <path d={C_PATH} fill="none" stroke="#d9cdfa" strokeWidth="29" strokeLinecap="round" />
-      {/* Tubo de vidrio */}
-      <path d={C_PATH} fill="none" stroke={`url(#${id}-glass)`} strokeWidth="24" strokeLinecap="round" />
-      {/* Lava adentro del tubo */}
-      <g mask={`url(#${id}-mask)`}>
-        <g filter={`url(#${id}-glow)`}>
-          <g filter={`url(#${id}-goo)`}>
-            {LAVA_BLOBS.map((b, i) => (
-              <circle key={i} className="lava-blob" cx={b.cx} cy="50" r={b.r} fill={b.color}
-                style={{ animationDuration: `${b.dur}s`, animationDelay: `${b.delay}s` }} />
-            ))}
-            {/* Charco de lava en la base y arriba, como en la lámpara */}
-            <ellipse cx="45" cy="88" rx="16" ry="5" fill="#fdaf5a" />
-            <ellipse cx="45" cy="12" rx="12" ry="3.5" fill="#e5afe9" opacity="0.9" />
-          </g>
-        </g>
-      </g>
-      {/* Brillo del vidrio */}
-      <path d="M35 27 A27 27 0 0 0 24 45" fill="none" stroke={`url(#${id}-shine)`} strokeWidth="4" strokeLinecap="round" opacity="0.8" />
-    </svg>
-  );
-};
+// === Logo: "C" almohadón peludo en lila (generado en Higgsfield) ===
+const Logo = ({ size = 40 }) => (
+  <img className="brand-logo" src="assets/logo/chinni-c.webp" alt="" width={size} height={size} />
+);
 
 // === Nav ===
 const Nav = ({ active = "home", overlay = false }) => {
@@ -90,7 +33,7 @@ const Nav = ({ active = "home", overlay = false }) => {
     <nav className={`nav ${overlay ? "overlay" : ""} ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-inner">
         <a href="index.html" className="nav-logo">
-          <LavaLogo size={40} />
+          <Logo size={44} />
           chinni studio
         </a>
         <div className="nav-links">
@@ -111,7 +54,7 @@ const Footer = () => {
   return (
     <footer className="footer" id="contact">
       <div className="footer-inner">
-        <a href="index.html" className="footer-logo"><LavaLogo size={30} /> chinni studio</a>
+        <a href="index.html" className="footer-logo"><Logo size={34} /> chinni studio</a>
         <span>{t.footer}</span>
         <div className="footer-links">
           <a href="work.html">{t.nav.work}</a>
@@ -265,5 +208,5 @@ const TweaksPanel = () => {
 Object.assign(window, {
   LeafSticker, BranchSticker, SquiggleSticker, CircleSticker,
   FlowerSticker, StarburstSticker, DotDashSticker, WashiTape,
-  CursorSticker, LavaLogo, Nav, Footer, ContactCTA, useReveal, ParallaxSticker, TweaksPanel,
+  CursorSticker, Logo, Nav, Footer, ContactCTA, useReveal, ParallaxSticker, TweaksPanel,
 });

@@ -1786,17 +1786,9 @@ body:not(.home) h2 em {
 }
 
 /* ============================================
-   LOGO — "C" lámpara de lava
+   LOGO — "C" almohadón peludo
    ============================================ */
-.lava-logo { display: block; flex-shrink: 0; overflow: visible; filter: drop-shadow(0 4px 10px rgba(57, 53, 130, 0.35)); }
-.lava-blob { animation: lava-float 9s ease-in-out infinite; }
-@keyframes lava-float {
-  0%   { transform: translate(0, 40px); }
-  25%  { transform: translate(3px, 8px); }
-  50%  { transform: translate(-2px, -40px); }
-  75%  { transform: translate(2px, -6px); }
-  100% { transform: translate(0, 40px); }
-}
+.brand-logo { display: block; flex-shrink: 0; object-fit: contain; filter: drop-shadow(0 4px 10px rgba(57, 53, 130, 0.25)); transition: transform 0.4s var(--ease); }
+.nav-logo:hover .brand-logo { transform: rotate(-8deg) scale(1.06); }
 .nav-logo { gap: 10px; }
 .footer-logo { display: inline-flex; align-items: center; gap: 10px; }
-@media (prefers-reduced-motion: reduce) { .lava-blob { animation: none; } }
