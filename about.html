@@ -78,11 +78,18 @@ const CONTENT = {
     toolsKicker: "Herramientas",
     toolsTitle: "Con qué <em>trabajo</em>",
     tools: [
-      { group: "Diseño y prototipado", items: ["Figma", "Figma Make", "FigJam"] },
-      { group: "Construcción con IA", items: ["Claude", "Codex", "Lovable"] },
-      { group: "Publicación", items: ["GitHub", "Vercel"] },
-      { group: "Imágenes y video con IA", items: ["Higgsfield", "Midjourney"] },
-      { group: "Web y no-code", items: ["Framer", "Shopify", "Webflow", "Wix"] },
+      { name: "Figma", logo: "figma", cat: "Diseño · Figma Make · FigJam" },
+      { name: "Claude", logo: "claude", cat: "Desarrollo con IA" },
+      { name: "Codex", glyph: "codex", cat: "Desarrollo con IA" },
+      { name: "Lovable", glyph: "lovable", cat: "Desarrollo con IA" },
+      { name: "GitHub", logo: "github", cat: "Código y versiones" },
+      { name: "Vercel", logo: "vercel", cat: "Publicación" },
+      { name: "Higgsfield", glyph: "higgsfield", cat: "Imágenes y video con IA" },
+      { name: "Midjourney", glyph: "midjourney", cat: "Imágenes con IA" },
+      { name: "Framer", logo: "framer", cat: "Web no-code" },
+      { name: "Webflow", logo: "webflow", cat: "Web no-code" },
+      { name: "Shopify", logo: "shopify", cat: "E-commerce" },
+      { name: "Wix", logo: "wix", cat: "Web no-code" },
     ],
     langs: "Español nativo · Inglés B2",
 
@@ -142,11 +149,18 @@ const CONTENT = {
     toolsKicker: "Tools",
     toolsTitle: "What I <em>work with</em>",
     tools: [
-      { group: "Design & prototyping", items: ["Figma", "Figma Make", "FigJam"] },
-      { group: "AI-assisted build", items: ["Claude", "Codex", "Lovable"] },
-      { group: "Publishing", items: ["GitHub", "Vercel"] },
-      { group: "AI images & video", items: ["Higgsfield", "Midjourney"] },
-      { group: "Web & no-code", items: ["Framer", "Shopify", "Webflow", "Wix"] },
+      { name: "Figma", logo: "figma", cat: "Design · Figma Make · FigJam" },
+      { name: "Claude", logo: "claude", cat: "AI-assisted build" },
+      { name: "Codex", glyph: "codex", cat: "AI-assisted build" },
+      { name: "Lovable", glyph: "lovable", cat: "AI-assisted build" },
+      { name: "GitHub", logo: "github", cat: "Code & versions" },
+      { name: "Vercel", logo: "vercel", cat: "Publishing" },
+      { name: "Higgsfield", glyph: "higgsfield", cat: "AI images & video" },
+      { name: "Midjourney", glyph: "midjourney", cat: "AI images" },
+      { name: "Framer", logo: "framer", cat: "No-code web" },
+      { name: "Webflow", logo: "webflow", cat: "No-code web" },
+      { name: "Shopify", logo: "shopify", cat: "E-commerce" },
+      { name: "Wix", logo: "wix", cat: "No-code web" },
     ],
     langs: "Spanish native · English B2",
 
@@ -200,11 +214,15 @@ const STEP_ICONS = {
 
 const Approach = ({ c }) => (
   <section className="cs-section cs-tint">
-    <div className="container about-approach">
-      <div className="reveal">
+    <div className="container">
+      <div className="section-head reveal">
         <div className="eyebrow">{c.approachKicker}</div>
         <Rich as="h2" html={c.approachTitle} />
-        {c.approachBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}
+      </div>
+    </div>
+    <div className="container about-approach">
+      <div className="reveal">
+        {c.approachBody.map((p, i) => <p key={i} className="cs-body about-approach-text">{p}</p>)}
       </div>
       <ol className="about-steps">
         {c.steps.map((s, i) => (
@@ -212,10 +230,8 @@ const Approach = ({ c }) => (
             <span className="about-step-icon" aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{STEP_ICONS[s.icon]}</svg>
             </span>
-            <div>
-              <h3><span className="about-step-num">{String(i + 1).padStart(2, "0")}</span>{s.title}</h3>
-              <p>{s.desc}</p>
-            </div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
           </li>
         ))}
       </ol>
@@ -406,6 +422,14 @@ const Timeline = ({ c }) => (
   </section>
 );
 
+// Íconos simples para las herramientas sin logo en Simple Icons (no son sus logos oficiales)
+const TOOL_GLYPHS = {
+  codex: <path d="M5 8l4 4-4 4M12 17h7" />,
+  lovable: <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" />,
+  higgsfield: <><path d="M7 5v14M17 5v14M7 12h10" /><circle cx="12" cy="12" r="10" opacity=".35" /></>,
+  midjourney: <><path d="M12 3v14M12 4l6 12h-6M12 7l-5 10h5" /><path d="M4 19c2.5 1.5 13.5 1.5 16 0" /></>,
+};
+
 const Tools = ({ c }) => (
   <section className="cs-section">
     <div className="container">
@@ -413,14 +437,19 @@ const Tools = ({ c }) => (
         <div className="eyebrow">{c.toolsKicker}</div>
         <Rich as="h2" html={c.toolsTitle} />
       </div>
-      <div className="about-tools">
-        {c.tools.map((g, i) => (
-          <div key={g.group} className="cs-card reveal" style={{ transitionDelay: `${i * 70}ms` }}>
-            <h3>{g.group}</h3>
-            <div className="about-chips">{g.items.map(it => <span key={it} className="cs-tag">{it}</span>)}</div>
-          </div>
+      <ul className="tool-grid">
+        {c.tools.map((tl, i) => (
+          <li key={tl.name} className="tool-tile reveal" style={{ transitionDelay: `${(i % 6) * 50}ms` }}>
+            <span className="tool-logo" aria-hidden="true">
+              {tl.logo
+                ? <img src={`assets/logos/${tl.logo}.svg`} alt="" width="30" height="30" />
+                : <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{TOOL_GLYPHS[tl.glyph]}</svg>}
+            </span>
+            <strong>{tl.name}</strong>
+            <span className="tool-cat">{tl.cat}</span>
+          </li>
         ))}
-      </div>
+      </ul>
       <p className="about-langs reveal">{c.langs}</p>
     </div>
   </section>
