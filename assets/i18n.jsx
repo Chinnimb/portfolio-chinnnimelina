@@ -1,7 +1,7 @@
 // === i18n: ES / EN ===
 const TRANSLATIONS = {
   es: {
-    nav: { home: "inicio", about: "sobre mí", work: "trabajos", contact: "contacto" },
+    nav: { home: "inicio", work: "trabajos", contact: "contacto" },
     hero: {
       kicker: "PORTFOLIO · 2026",
       role: "UX/UI · Visual Design · Branding",
@@ -114,10 +114,10 @@ const TRANSLATIONS = {
       lede: "¿Tenés un proyecto, una idea o ganas de tomar un café virtual? Respondo en menos de 24hs, prometido.",
       email: "melinabelenchinni@gmail.com",
     },
-    footer: "© 2026 Melina Chinni · diseñado con",
+    footer: "© 2026 Chinni Design Studio · Melina Chinni",
   },
   en: {
-    nav: { home: "home", about: "about", work: "work", contact: "contact" },
+    nav: { home: "home", work: "work", contact: "contact" },
     hero: {
       kicker: "PORTFOLIO · 2026",
       role: "UX/UI · Visual Design · Branding",
@@ -230,7 +230,7 @@ const TRANSLATIONS = {
       lede: "Got a project, an idea, or just feel like a virtual coffee? I reply within 24hs, promise.",
       email: "melinabelenchinni@gmail.com",
     },
-    footer: "© 2026 Melina Chinni · designed with",
+    footer: "© 2026 Chinni Design Studio · Melina Chinni",
   },
 };
 

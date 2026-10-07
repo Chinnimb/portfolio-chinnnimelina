@@ -356,6 +356,14 @@ const Works = () => {
   const [aleo, flok, ecommerce] = t.work.projects;
   const projects = [
     {
+      id: "alicia", tags: ["uxui"], href: "case-alicia.html", img: "assets/photos/alicia/recorrido-poster.jpg",
+      title: "Alicia Erickson · VIP Community",
+      cat: lang === "es" ? "Coaching · Landing page" : "Coaching · Landing page",
+      desc: lang === "es"
+        ? "Diseño y desarrollo de la landing de una comunidad de coaching para mujeres, de Figma a un sitio publicado."
+        : "Design and development of a women's coaching community landing page, from Figma to a live site.",
+    },
+    {
       // Sin foto todavía: las imágenes de assets/photos/hisoil/ no están en el repo
       id: "hisoil", tags: ["uxui", "redesign"], href: "case-hisoil.html", cover: { label: "Hisoil", bg: "linear-gradient(135deg, #0e2a14 0%, #1a4a22 50%, #2d6b35 100%)" },
       title: lang === "es" ? "Hisoil · Rediseño Web" : "Hisoil · Web Redesign",

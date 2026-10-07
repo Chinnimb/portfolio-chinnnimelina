@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Alicia Erickson VIP Community · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: diseño y desarrollo de la landing de la VIP Community de Alicia Erickson, de Figma a un sitio publicado con dominio propio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const SITE_URL = "https://www.aliciagroupcoaching.com";
+const IMG = "assets/photos/alicia/";
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · Landing page · 2026",
+    title: "Alicia Erickson <em>VIP Community</em>",
+    lede: "Diseño y desarrollo de la landing de una comunidad de coaching para mujeres: de Figma a un sitio publicado con dominio propio, listo para sumar miembros.",
+    tags: ["UX/UI", "Landing page", "AI Native", "Desktop + Mobile"],
+    meta: [
+      { k: "Cliente", v: "Alicia Erickson" },
+      { k: "Rubro", v: "Coaching · Mindset y nutrición" },
+      { k: "Mi rol", v: "Diseño UX/UI y desarrollo" },
+      { k: "Año", v: "2026" },
+    ],
+    live: "Ver sitio en vivo",
+    videoCaption: "Recorrido por el sitio publicado, versión desktop.",
+
+    contextKicker: "El proyecto",
+    contextTitle: "Una comunidad que se vive <em>por dentro</em>",
+    contextBody: [
+      "Alicia Erickson es coach y acompaña a mujeres a recuperar fuerza, confianza y constancia. Su VIP Community reúne coaching grupal semanal en vivo, speakers invitados, un curso de mindset y nutrición y una comunidad exclusiva.",
+      "Necesitaba una landing que transmitiera cómo es formar parte de la comunidad y que llevara a las visitantes directo a sumarse.",
+    ],
+    goalsTitle: "El objetivo",
+    goals: [
+      "Que se entienda en segundos qué es la VIP Community y para quién es.",
+      "Generar confianza con transformaciones y testimonios reales.",
+      "Mostrar todo lo que incluye la membresía sin abrumar.",
+      "Llevar cada sección a un único llamado: sumarse a la comunidad.",
+    ],
+
+    approachKicker: "Decisiones de diseño",
+    approachTitle: "Cómo lo <em>resolví</em>",
+    approach: [
+      { title: "La comunidad como protagonista", desc: "El hero recrea una llamada grupal: Alicia y las participantes en pantalla. Antes de leer nada, ya se ve cómo es estar adentro." },
+      { title: "Prueba real, no promesas", desc: "Transformaciones, testimonios escritos y en video, y la historia de Alicia. Cada bloque responde a la duda de “¿esto funciona para mí?”." },
+      { title: "Todo lo que incluye, ordenado", desc: "Siete beneficios en un acordeón: se recorren de un vistazo y se abren solo los que interesan." },
+      { title: "Un solo camino a la compra", desc: "Un mismo llamado a la acción en cada sección, preguntas frecuentes para resolver objeciones y conexión directa con el checkout." },
+    ],
+
+    sectionsKicker: "Secciones",
+    sectionsTitle: "La landing, <em>bloque por bloque</em>",
+    sections: [
+      { img: "sec-transformaciones.jpg", title: "Transformaciones", desc: "Un carrusel de antes y después para mostrar resultados reales desde el primer scroll." },
+      { img: "sec-membresia.jpg", title: "Qué incluye la membresía", desc: "Acordeón con los siete beneficios; el primero abierto con video para mostrar el coaching en acción." },
+      { img: "sec-curriculum.jpg", title: "El método en tres fases", desc: "Una línea de tiempo que explica el recorrido y lo acompaña con imagen de Alicia en escenario." },
+      { img: "sec-testimonios.jpg", title: "Testimonios", desc: "Carrusel de reseñas con nombre y resultado de cada miembro." },
+      { img: "sec-video-testimonios.jpg", title: "Testimonios en video", desc: "Historias en primera persona, en formato vertical como se graban en el celular." },
+      { img: "sec-coach.jpg", title: "Conocé a tu coach", desc: "La historia de Alicia en primera persona, para que la decisión se apoye en una persona real." },
+      { img: "sec-faq.jpg", title: "Preguntas frecuentes", desc: "Las dudas que frenan la compra, resueltas en un acordeón antes del cierre." },
+      { img: "sec-cta.jpg", title: "Cierre", desc: "Un último llamado con la imagen de Alicia para terminar con energía." },
+    ],
+
+    devicesKicker: "Desktop y mobile",
+    devicesTitle: "Pensada para <em>cada pantalla</em>",
+    devicesLede: "Deslizá dentro de cada pantalla para recorrer la página completa.",
+    desktop: "Desktop",
+    mobile: "Mobile",
+
+    processKicker: "Proceso y herramientas",
+    processTitle: "Del diseño al <em>sitio publicado</em>",
+    processLede: "Diseñé la landing desde cero y la dejé funcionando: este es el recorrido completo.",
+    steps: [
+      { tool: "Figma", title: "Diseño", desc: "Wireframes, diseño visual y componentes para desktop y mobile." },
+      { tool: "Claude", title: "Desarrollo con IA", desc: "Construcción del sitio en React a partir del diseño, sección por sección." },
+      { tool: "GitHub", title: "Código y versiones", desc: "Repositorio del proyecto para ordenar cambios y revisiones." },
+      { tool: "Vercel", title: "Publicación", desc: "Deploy automático: cada cambio aprobado queda online en minutos." },
+      { tool: "GoDaddy", title: "Dominio propio", desc: "Conexión del dominio aliciagroupcoaching.com con el sitio." },
+    ],
+
+    resultKicker: "Resultado",
+    resultTitle: "Online y lista para <em>sumar miembros</em>",
+    resultBody: "La landing está publicada en aliciagroupcoaching.com, en desktop y mobile, con todos los llamados a la acción conectados al checkout de la comunidad.",
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "ALEO Brandbook",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Landing page · 2026",
+    title: "Alicia Erickson <em>VIP Community</em>",
+    lede: "Design and development of the landing page for a women's coaching community: from Figma to a live site on its own domain, ready to bring in members.",
+    tags: ["UX/UI", "Landing page", "AI Native", "Desktop + Mobile"],
+    meta: [
+      { k: "Client", v: "Alicia Erickson" },
+      { k: "Industry", v: "Coaching · Mindset & nutrition" },
+      { k: "My role", v: "UX/UI design and development" },
+      { k: "Year", v: "2026" },
+    ],
+    live: "Visit the live site",
+    videoCaption: "Walkthrough of the live site, desktop version.",
+
+    contextKicker: "The project",
+    contextTitle: "A community you feel <em>from the inside</em>",
+    contextBody: [
+      "Alicia Erickson is a coach who helps women regain strength, confidence and consistency. Her VIP Community brings together weekly live group coaching, guest speakers, a mindset and nutrition course and an exclusive community.",
+      "She needed a landing page that conveyed what being part of the community feels like and took visitors straight to joining.",
+    ],
+    goalsTitle: "The goal",
+    goals: [
+      "Make it clear within seconds what the VIP Community is and who it's for.",
+      "Build trust with real transformations and testimonials.",
+      "Show everything the membership includes without overwhelming.",
+      "Lead every section to one single action: joining the community.",
+    ],
+
+    approachKicker: "Design decisions",
+    approachTitle: "How I <em>solved it</em>",
+    approach: [
+      { title: "The community takes center stage", desc: "The hero recreates a group call: Alicia and the members on screen. Before reading anything, you already see what being inside looks like." },
+      { title: "Real proof, not promises", desc: "Transformations, written and video testimonials, and Alicia's own story. Each block answers “will this work for me?”." },
+      { title: "Everything included, organized", desc: "Seven benefits in an accordion: easy to scan, and you only open what interests you." },
+      { title: "One path to purchase", desc: "The same call to action in every section, an FAQ that handles objections and a direct link to checkout." },
+    ],
+
+    sectionsKicker: "Sections",
+    sectionsTitle: "The landing, <em>block by block</em>",
+    sections: [
+      { img: "sec-transformaciones.jpg", title: "Transformations", desc: "A before-and-after carousel that shows real results from the first scroll." },
+      { img: "sec-membresia.jpg", title: "What the membership includes", desc: "An accordion with the seven benefits; the first one open with video to show coaching in action." },
+      { img: "sec-curriculum.jpg", title: "The three-phase method", desc: "A timeline that explains the journey, paired with Alicia on stage." },
+      { img: "sec-testimonios.jpg", title: "Testimonials", desc: "A review carousel with each member's name and result." },
+      { img: "sec-video-testimonios.jpg", title: "Video testimonials", desc: "First-person stories in vertical format, the way they're filmed on a phone." },
+      { img: "sec-coach.jpg", title: "Meet your coach", desc: "Alicia's story in her own words, so the decision rests on a real person." },
+      { img: "sec-faq.jpg", title: "FAQ", desc: "The doubts that stop a purchase, answered in an accordion before the close." },
+      { img: "sec-cta.jpg", title: "Closing", desc: "A final call to action with Alicia's image to end on a high note." },
+    ],
+
+    devicesKicker: "Desktop & mobile",
+    devicesTitle: "Designed for <em>every screen</em>",
+    devicesLede: "Scroll inside each screen to see the full page.",
+    desktop: "Desktop",
+    mobile: "Mobile",
+
+    processKicker: "Process & tools",
+    processTitle: "From design to a <em>live site</em>",
+    processLede: "I designed the landing from scratch and shipped it working: here's the full journey.",
+    steps: [
+      { tool: "Figma", title: "Design", desc: "Wireframes, visual design and components for desktop and mobile." },
+      { tool: "Claude", title: "AI-assisted development", desc: "Building the site in React from the design, section by section." },
+      { tool: "GitHub", title: "Code & versions", desc: "Project repository to keep changes and revisions organized." },
+      { tool: "Vercel", title: "Publishing", desc: "Automatic deploys: every approved change goes live in minutes." },
+      { tool: "GoDaddy", title: "Custom domain", desc: "Connecting the aliciagroupcoaching.com domain to the site." },
+    ],
+
+    resultKicker: "Result",
+    resultTitle: "Live and ready to <em>bring in members</em>",
+    resultBody: "The landing page is live at aliciagroupcoaching.com, on desktop and mobile, with every call to action connected to the community checkout.",
+
+    nextLabel: "Next case",
+    nextTitle: "ALEO Brandbook",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+const External = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+);
+
+// Marco de navegador para el video
+const BrowserFrame = ({ children, url }) => (
+  <div className="cs-browser">
+    <div className="cs-browser-bar" aria-hidden="true">
+      <span></span><span></span><span></span>
+      <div className="cs-browser-url">{url}</div>
+    </div>
+    {children}
+  </div>
+);
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">
+        {c.meta.map(m => (
+          <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>
+        ))}
+      </dl>
+      <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+    </div>
+    <div className="container cs-video-wrap reveal">
+      <BrowserFrame url="aliciagroupcoaching.com">
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption}>
+          <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
+        </video>
+      </BrowserFrame>
+      <p className="cs-caption">{c.videoCaption}</p>
+    </div>
+  </section>
+);
+
+const Context = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-two-col">
+      <div className="reveal">
+        <div className="eyebrow">{c.contextKicker}</div>
+        <Rich as="h2" html={c.contextTitle} />
+        {c.contextBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}
+      </div>
+      <div className="cs-goals reveal">
+        <h3>{c.goalsTitle}</h3>
+        <ul>{c.goals.map(g => <li key={g}>{g}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+);
+
+const Approach = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.approachKicker}</div>
+        <Rich as="h2" html={c.approachTitle} />
+      </div>
+      <div className="cs-cards">
+        {c.approach.map((a, i) => (
+          <article key={a.title} className="cs-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="cs-card-num">0{i + 1}</div>
+            <h3>{a.title}</h3>
+            <p>{a.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Sections = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.sectionsKicker}</div>
+        <Rich as="h2" html={c.sectionsTitle} />
+      </div>
+      <div className="cs-gallery">
+        {c.sections.map(s => (
+          <figure key={s.img} className="cs-shot reveal">
+            <div className="cs-shot-img"><img src={IMG + s.img} alt={s.title} loading="lazy" /></div>
+            <figcaption>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Devices = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.devicesKicker}</div>
+        <Rich as="h2" html={c.devicesTitle} />
+        <p>{c.devicesLede}</p>
+      </div>
+      <div className="cs-devices reveal">
+        <figure className="cs-device-desktop">
+          <BrowserFrame url="aliciagroupcoaching.com">
+            <div className="cs-scroll" tabIndex={0} aria-label={`${c.desktop}: ${c.title.replace(/<[^>]+>/g, "")}`}>
+              <img src={`${IMG}full-desktop.jpg`} alt="" loading="lazy" />
+            </div>
+          </BrowserFrame>
+          <figcaption>{c.desktop}</figcaption>
+        </figure>
+        <figure className="cs-device-mobile">
+          <div className="cs-phone">
+            <div className="cs-scroll" tabIndex={0} aria-label={`${c.mobile}: ${c.title.replace(/<[^>]+>/g, "")}`}>
+              <img src={`${IMG}full-mobile.jpg`} alt="" loading="lazy" />
+            </div>
+          </div>
+          <figcaption>{c.mobile}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+        <p>{c.processLede}</p>
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={s.tool} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
+const Result = ({ c }) => (
+  <section className="cs-result">
+    <div className="container-narrow reveal">
+      <div className="eyebrow">{c.resultKicker}</div>
+      <Rich as="h2" html={c.resultTitle} />
+      <p>{c.resultBody}</p>
+      <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-light">{c.live} <External /></a>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-aleo.html" className="cs-next-link">
+        <span>{c.nextLabel}</span>
+        <strong>{c.nextTitle} <Arrow size={20} /></strong>
+      </a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Context c={c} />
+      <Approach c={c} />
+      <Sections c={c} />
+      <Devices c={c} />
+      <Process c={c} />
+      <Result c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

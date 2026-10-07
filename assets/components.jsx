@@ -1,120 +1,18 @@
-/* Shared components: stickers SVG, nav, footer, cursor, tweaks panel */
+/* Shared components: nav, footer, reveal, tweaks panel */
 
-// === Botanical SVG stickers ===
-const LeafSticker = ({ size = 40, color = "var(--olive)", rotate = 0, style = {} }) => (
-  <svg width={size} height={size} viewBox="0 0 40 40" style={{ transform: `rotate(${rotate}deg)`, ...style }}>
-    <path d="M20 4 C 8 10, 6 28, 20 36 C 34 28, 32 10, 20 4 Z" fill={color} opacity="0.9" />
-    <path d="M20 6 L 20 34" stroke="#faf5ea" strokeWidth="1" fill="none" opacity="0.6" />
-    <path d="M20 14 Q 26 16, 28 20" stroke="#faf5ea" strokeWidth="0.8" fill="none" opacity="0.5" />
-    <path d="M20 22 Q 14 24, 12 28" stroke="#faf5ea" strokeWidth="0.8" fill="none" opacity="0.5" />
-  </svg>
-);
-
-const BranchSticker = ({ size = 80, color = "var(--olive)", rotate = 0, style = {} }) => (
-  <svg width={size} height={size * 0.6} viewBox="0 0 80 48" style={{ transform: `rotate(${rotate}deg)`, ...style }}>
-    <path d="M4 40 Q 30 20, 76 8" stroke={color} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-    <ellipse cx="20" cy="28" rx="5" ry="3" fill={color} transform="rotate(-20 20 28)" opacity="0.85" />
-    <ellipse cx="35" cy="20" rx="6" ry="3.5" fill={color} transform="rotate(-15 35 20)" opacity="0.85" />
-    <ellipse cx="52" cy="14" rx="5" ry="3" fill={color} transform="rotate(-10 52 14)" opacity="0.85" />
-    <ellipse cx="68" cy="10" rx="4" ry="2.5" fill={color} transform="rotate(-5 68 10)" opacity="0.85" />
-    <ellipse cx="28" cy="34" rx="4" ry="2.5" fill={color} transform="rotate(10 28 34)" opacity="0.7" />
-    <ellipse cx="45" cy="26" rx="4" ry="2.5" fill={color} transform="rotate(15 45 26)" opacity="0.7" />
-  </svg>
-);
-
-const SquiggleSticker = ({ size = 60, color = "var(--rust)", rotate = 0, style = {} }) => (
-  <svg width={size} height={size * 0.4} viewBox="0 0 60 24" style={{ transform: `rotate(${rotate}deg)`, ...style }}>
-    <path d="M4 12 Q 12 4, 20 12 T 36 12 T 56 12" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round" />
-  </svg>
-);
-
-const CircleSticker = ({ size = 40, color = "var(--mustard)", style = {} }) => (
-  <svg width={size} height={size} viewBox="0 0 40 40" style={style}>
-    <circle cx="20" cy="20" r="14" fill="none" stroke={color} strokeWidth="2" strokeDasharray="3 3" />
-  </svg>
-);
-
-const FlowerSticker = ({ size = 36, color = "var(--terracotta)", rotate = 0, style = {} }) => (
-  <svg width={size} height={size} viewBox="0 0 36 36" style={{ transform: `rotate(${rotate}deg)`, ...style }}>
-    {[0, 72, 144, 216, 288].map(a => (
-      <ellipse key={a} cx="18" cy="8" rx="4" ry="7" fill={color} opacity="0.9" transform={`rotate(${a} 18 18)`} />
-    ))}
-    <circle cx="18" cy="18" r="3" fill="var(--mustard)" />
-  </svg>
-);
-
-const StarburstSticker = ({ size = 40, color = "var(--mustard)", style = {} }) => (
-  <svg width={size} height={size} viewBox="0 0 40 40" style={style}>
-    <g stroke={color} strokeWidth="2" strokeLinecap="round" fill="none">
-      <line x1="20" y1="4" x2="20" y2="12" />
-      <line x1="20" y1="28" x2="20" y2="36" />
-      <line x1="4" y1="20" x2="12" y2="20" />
-      <line x1="28" y1="20" x2="36" y2="20" />
-      <line x1="9" y1="9" x2="14" y2="14" />
-      <line x1="26" y1="26" x2="31" y2="31" />
-      <line x1="9" y1="31" x2="14" y2="26" />
-      <line x1="26" y1="14" x2="31" y2="9" />
-    </g>
-    <circle cx="20" cy="20" r="3" fill={color} />
-  </svg>
-);
-
-const DotDashSticker = ({ size = 80, color = "var(--olive)", rotate = 0, style = {} }) => (
-  <svg width={size} height="8" viewBox="0 0 80 8" style={{ transform: `rotate(${rotate}deg)`, ...style }}>
-    <line x1="0" y1="4" x2="80" y2="4" stroke={color} strokeWidth="1.5" strokeDasharray="2 4" strokeLinecap="round" />
-  </svg>
-);
-
-const WashiTape = ({ width = 120, rotate = 0, style = {}, color1 = "var(--mustard-soft)", color2 = "var(--sage-soft)" }) => (
-  <div style={{
-    width, height: 28,
-    background: `repeating-linear-gradient(45deg, ${color1} 0 10px, ${color2} 10px 20px)`,
-    transform: `rotate(${rotate}deg)`,
-    opacity: 0.75,
-    boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-    ...style,
-  }} />
-);
-
-// === Custom cursor sticker ===
-const CursorSticker = () => {
-  const ref = React.useRef(null);
-  const [visible, setVisible] = React.useState(false);
-  const [rotating, setRotating] = React.useState(0);
-
-  React.useEffect(() => {
-    let raf;
-    let x = 0, y = 0, tx = 0, ty = 0, rot = 0;
-    const onMove = (e) => {
-      x = e.clientX; y = e.clientY;
-      if (!visible) setVisible(true);
-    };
-    const loop = () => {
-      tx += (x - tx) * 0.18;
-      ty += (y - ty) * 0.18;
-      rot += 0.6;
-      if (ref.current) {
-        ref.current.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%) rotate(${rot}deg)`;
-      }
-      raf = requestAnimationFrame(loop);
-    };
-    const onLeave = () => setVisible(false);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseleave", onLeave);
-    loop();
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseleave", onLeave);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  return (
-    <div ref={ref} className={`cursor-sticker ${visible ? "visible" : ""}`}>
-      <LeafSticker size={28} color="var(--olive)" />
-    </div>
-  );
-};
+// === Adornos del estilo anterior (stickers botánicos, washi tape, cursor de hojita) ===
+// El estilo "Chinni Design Studio" no los usa. Quedan como componentes vacíos para que
+// las páginas que todavía los nombran sigan funcionando sin mostrarlos.
+const Nothing = () => null;
+const LeafSticker = Nothing;
+const BranchSticker = Nothing;
+const SquiggleSticker = Nothing;
+const CircleSticker = Nothing;
+const FlowerSticker = Nothing;
+const StarburstSticker = Nothing;
+const DotDashSticker = Nothing;
+const WashiTape = Nothing;
+const CursorSticker = Nothing;
 
 // === Nav ===
 const Nav = ({ active = "home", overlay = false }) => {
@@ -139,7 +37,6 @@ const Nav = ({ active = "home", overlay = false }) => {
         </a>
         <div className="nav-links">
           <a href="index.html" className={`link-animated ${active === "home" ? "active" : ""}`}>{t.nav.home}</a>
-          <a href="about.html" className={`link-animated ${active === "about" ? "active" : ""}`}>{t.nav.about}</a>
           <a href="work.html" className={`link-animated ${active === "work" ? "active" : ""}`}>{t.nav.work}</a>
           <a href="contact.html" className={`link-animated ${active === "contact" ? "active" : ""}`}>{t.nav.contact}</a>
           <LangSwitch />
@@ -154,10 +51,15 @@ const Footer = () => {
   const { t } = useT();
   return (
     <footer className="footer" id="contact">
-      <div style={{ marginBottom: 8 }}>
-        <SquiggleSticker size={50} color="var(--mustard)" style={{ display: "inline-block" }} />
+      <div className="footer-inner">
+        <a href="index.html" className="footer-logo">chinni studio</a>
+        <span>{t.footer}</span>
+        <div className="footer-links">
+          <a href="work.html">{t.nav.work}</a>
+          <a href="contact.html">{t.nav.contact}</a>
+          <a href="https://www.linkedin.com/in/melinachinni/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
-      {t.footer} <span style={{ color: "var(--rust)" }}>♥</span>
     </footer>
   );
 };
