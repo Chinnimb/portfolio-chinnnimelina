@@ -227,10 +227,12 @@ const Hero = ({ c }) => (
 
 const Context = ({ c }) => (
   <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.contextKicker}</div>
+      <Rich as="h2" html={c.contextTitle} />
+    </div>
     <div className="container cs-two-col">
       <div className="reveal">
-        <div className="eyebrow">{c.contextKicker}</div>
-        <Rich as="h2" html={c.contextTitle} />
         {c.contextBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}
       </div>
       <div className="cs-goals reveal">

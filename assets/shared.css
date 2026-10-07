@@ -748,7 +748,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 /* ============================================
    HOME — encabezados de sección
    ============================================ */
-.section-head { text-align: center; max-width: 640px; margin: 0 auto 52px; position: relative; z-index: 1; }
+.section-head { text-align: center; max-width: 980px; margin: 0 auto 52px; position: relative; z-index: 1; }
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 12.5px;
@@ -770,7 +770,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   color: transparent;
   padding-right: 0.04em;
 }
-.section-head p { font-size: 17px; color: var(--ink-soft); margin: 18px auto 0; max-width: 520px; }
+.section-head p { font-size: 17px; color: var(--ink-soft); margin: 18px auto 0; max-width: 560px; }
 
 /* ============================================
    HOME — fondos claros con gradientes suaves
@@ -1181,7 +1181,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 }
 .cs-back { font-size: 14px; color: var(--ink-soft); margin-bottom: 28px; transition: color 0.3s; }
 .cs-back:hover { color: var(--indigo); }
-.cs-title { font-size: clamp(44px, 6vw, 82px); line-height: 1; margin: 0 auto 22px; max-width: 900px; }
+.cs-title { font-size: clamp(38px, 4.8vw, 68px); line-height: 1.05; margin: 0 auto 22px; }
 .cs-lede { font-size: clamp(17px, 1.5vw, 20px); color: var(--ink-soft); max-width: 640px; margin: 0 auto 26px; line-height: 1.55; }
 .cs-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 34px; }
 .cs-tag { font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 100px; background: #fff; border: 1px solid rgba(28, 26, 58, 0.1); color: var(--ink-soft); }
@@ -1222,7 +1222,8 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
     var(--cream);
 }
 .cs-two-col { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: start; }
-.cs-two-col h2 { font-size: clamp(34px, 3.6vw, 50px); margin-bottom: 22px; }
+.cs-context-head { margin-bottom: 34px; }
+.cs-context-head h2 { font-size: clamp(32px, 3.4vw, 48px); }
 .cs-body { font-size: 17px; line-height: 1.7; color: var(--ink-soft); max-width: 560px; }
 .cs-goals { background: #fff; border: 1px solid rgba(28, 26, 58, 0.07); border-radius: 24px; padding: 32px; }
 .cs-goals h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.02em; margin-bottom: 16px; }
@@ -1316,7 +1317,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   padding: 110px 0;
 }
 .cs-result .eyebrow { color: var(--periwinkle); }
-.cs-result h2 { color: #f8f7fd; font-size: clamp(36px, 4.6vw, 64px); margin-bottom: 18px; }
+.cs-result h2 { color: #f8f7fd; font-size: clamp(32px, 3.8vw, 54px); margin-bottom: 18px; }
 .cs-result h2 em {
   font-style: normal; font-weight: 300;
   background: linear-gradient(90deg, var(--periwinkle), var(--lilac) 55%, var(--pink));
@@ -1425,6 +1426,12 @@ body:not(.home) a[style*="rotate("] { transform: none !important; }
 /* Títulos de las subpáginas: misma familia y peso que el home */
 body:not(.home) h1,
 body:not(.home) h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.04em; }
+/* Títulos en una sola línea en escritorio */
+@media (min-width: 900px) {
+  body:not(.home) h1 { font-size: clamp(44px, 4.8vw, 70px) !important; max-width: none !important; }
+  body:not(.home) h2 { font-size: clamp(28px, 2.9vw, 42px) !important; max-width: none !important; }
+  body:not(.home) [style*="grid-template-columns"] h2 { font-size: clamp(24px, 2.2vw, 32px) !important; }
+}
 body:not(.home) h1 em,
 body:not(.home) h2 em {
   font-style: normal;
