@@ -101,7 +101,6 @@ const Services = () => {
     <section className="services" id="servicios">
       <Doodle name="lamp" style={{ top: 70, left: "6%" }} rotate={-6} />
       <Doodle name="stars" style={{ top: 110, right: "9%" }} />
-      <Doodle name="mate" style={{ bottom: 60, right: "5%" }} rotate={8} />
       <div className="container">
         <div className="section-head reveal">
           <div className="eyebrow">{s.servicesKicker}</div>
@@ -127,18 +126,18 @@ const Works = () => {
   const projects = [
     {
       // Sin foto todavía: las imágenes de assets/photos/hisoil/ no están en el repo
-      id: "hisoil", href: "case-hisoil.html", cover: { label: "Hisoil", bg: "linear-gradient(135deg, #0e2a14 0%, #1a4a22 50%, #2d6b35 100%)" },
+      id: "hisoil", tags: ["uxui", "redesign"], href: "case-hisoil.html", cover: { label: "Hisoil", bg: "linear-gradient(135deg, #0e2a14 0%, #1a4a22 50%, #2d6b35 100%)" },
       title: lang === "es" ? "Hisoil · Rediseño Web" : "Hisoil · Web Redesign",
       cat: "Web design · Agro",
       desc: lang === "es"
         ? "Rediseño completo del sitio de una empresa de sustratos con 22 años de trayectoria, junto a Shifra Studio."
         : "Full website redesign for a substrate company with 22 years in the field, together with Shifra Studio.",
     },
-    { id: "aleo", href: "case-aleo.html", img: "assets/photos/aleo-cover.jpg", title: aleo.title, cat: aleo.subtitle, desc: aleo.desc },
-    { id: "flok", href: "case-flok.html", img: "assets/photos/Image 1.jpg", title: flok.title, cat: flok.subtitle, desc: flok.desc },
-    { id: "ecommerce", href: "case-ecommerce.html", img: "assets/work/ecommerce.svg", title: ecommerce.title, cat: ecommerce.subtitle, desc: ecommerce.desc },
+    { id: "aleo", tags: ["branding"], href: "case-aleo.html", img: "assets/photos/aleo-cover.jpg", title: aleo.title, cat: aleo.subtitle, desc: aleo.desc },
+    { id: "flok", tags: ["uxui"], href: "case-flok.html", img: "assets/photos/Image 1.jpg", title: flok.title, cat: flok.subtitle, desc: flok.desc },
+    { id: "ecommerce", tags: ["ecommerce", "redesign", "uxui"], href: "case-ecommerce.html", img: "assets/work/ecommerce.svg", title: ecommerce.title, cat: ecommerce.subtitle, desc: ecommerce.desc },
     {
-      id: "petshop", href: "case-petshop.html", cover: { label: "CloudNest", bg: "linear-gradient(135deg, #e5afe9 0%, #c9b3ef 50%, #aac5fb 100%)" },
+      id: "petshop", tags: ["ecommerce", "uxui"], href: "case-petshop.html", cover: { label: "CloudNest", bg: "linear-gradient(135deg, #e5afe9 0%, #c9b3ef 50%, #aac5fb 100%)" },
       title: "CloudNest™ Landing Page",
       cat: lang === "es" ? "Pet shop premium · Web" : "Premium pet shop · Web",
       desc: lang === "es"
@@ -146,7 +145,7 @@ const Works = () => {
         : "Full landing page for a premium pet bed brand, with React animations.",
     },
     {
-      id: "wellness", href: "case-wellness.html", img: "assets/work/wellness.svg",
+      id: "wellness", tags: ["uxui"], href: "case-wellness.html", img: "assets/work/wellness.svg",
       title: lang === "es" ? "App de Bienestar" : "Wellness App",
       cat: lang === "es" ? "Meditación · B2C" : "Meditation · B2C",
       desc: lang === "es"
@@ -154,7 +153,7 @@ const Works = () => {
         : "AI-powered mindfulness app: conversational onboarding and 3-minute sessions.",
     },
     {
-      id: "saas", href: "case-saas.html", img: "assets/work/saas.svg",
+      id: "saas", tags: ["uxui"], href: "case-saas.html", img: "assets/work/saas.svg",
       title: "Dashboard SaaS",
       cat: "B2B · Analytics",
       desc: lang === "es"
@@ -181,6 +180,10 @@ const Works = () => {
     </a>
   );
 
+  // "Todos" muestra el carrusel en movimiento; un filtro muestra solo esos proyectos, quietos y centrados
+  const [filter, setFilter] = React.useState("all");
+  const shown = filter === "all" ? projects : projects.filter(p => p.tags.includes(filter));
+
   return (
     <section className="works" id="trabajos">
       <Doodle name="plant" style={{ top: 60, right: "7%" }} rotate={4} />
@@ -192,14 +195,31 @@ const Works = () => {
           <Rich as="h2" html={s.workTitle} />
           <p>{s.workLede}</p>
         </div>
-      </div>
-      {/* Carrusel continuo: la lista va duplicada para que el loop no tenga corte. Se pausa con hover. */}
-      <div className="carousel reverse reveal" style={{ "--marquee-dur": `${projects.length * 11}s` }}>
-        <div className="carousel-track">
-          {projects.map(p => <Card key={p.id} p={p} />)}
-          {projects.map(p => <Card key={`${p.id}-dup`} p={p} hidden />)}
+        <div className="work-filters reveal" role="group" aria-label={s.filtersLabel}>
+          {s.filters.map(f => (
+            <button key={f.id} type="button" className={`pill ${filter === f.id ? "active" : ""}`} aria-pressed={filter === f.id} onClick={() => setFilter(f.id)}>
+              {f.label}
+            </button>
+          ))}
         </div>
       </div>
+      {filter === "all" ? (
+        // Carrusel continuo hacia la izquierda: la lista va duplicada para que el loop no tenga corte. Se pausa con hover.
+        <div className="carousel" style={{ "--marquee-dur": `${projects.length * 11}s` }}>
+          <div className="carousel-track">
+            {projects.map(p => <Card key={p.id} p={p} />)}
+            {projects.map(p => <Card key={`${p.id}-dup`} p={p} hidden />)}
+          </div>
+        </div>
+      ) : shown.length > 0 ? (
+        <div className="work-static">
+          {shown.map(p => <Card key={p.id} p={p} />)}
+        </div>
+      ) : (
+        <div className="container">
+          <p className="work-empty">{s.emptyFilter}</p>
+        </div>
+      )}
       <div className="container">
         <div className="works-more reveal">
           <a href="work.html" className="btn btn-primary">{s.seeAll} <Arrow /></a>

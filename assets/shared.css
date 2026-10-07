@@ -827,7 +827,6 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   width: max-content;
   animation: marquee var(--marquee-dur, 60s) linear infinite;
 }
-.carousel.reverse .carousel-track { animation-direction: reverse; }
 .carousel:hover .carousel-track,
 .carousel:focus-within .carousel-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(calc(-50% - 12px)); } }
@@ -849,24 +848,11 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   box-shadow: 0 1px 2px rgba(28, 26, 58, 0.03);
   transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
 }
-/* Tinte de color en la esquina, como el brillo de cada pantalla */
-.service-card::before {
-  content: "";
-  position: absolute;
-  top: -80px; right: -80px;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--tint) 0%, transparent 68%);
-  opacity: 0.55;
-  pointer-events: none;
-  transition: opacity 0.5s var(--ease), transform 0.6s var(--ease);
-}
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--glow);
   border-color: rgba(253, 175, 90, 0.45);
 }
-.service-card:hover::before { opacity: 0.85; transform: scale(1.1); }
 .service-card[data-tint="periwinkle"] { --tint: var(--periwinkle); }
 .service-card[data-tint="sky"] { --tint: var(--sky); }
 .service-card[data-tint="lilac"] { --tint: var(--lilac); }
@@ -952,6 +938,51 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 }
 .work-card:hover .work-arrow { background: var(--lamp-soft); border-color: var(--lamp-soft); transform: rotate(-45deg); }
 .works-more { text-align: center; margin-top: 24px; position: relative; z-index: 1; }
+
+/* Pills de categorías */
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: -16px auto 8px;
+  position: relative;
+  z-index: 1;
+}
+.pill {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 9px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(28, 26, 58, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.pill:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(253, 175, 90, 0.5); color: var(--ink); }
+.pill.active { background: var(--ink); border-color: var(--ink); color: #f8f7fd; }
+.pill:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+
+/* Con un filtro activo: proyectos quietos y centrados */
+.work-static {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px 24px 44px;
+  position: relative;
+  z-index: 1;
+}
+.work-empty {
+  text-align: center;
+  color: var(--ink-mute);
+  font-size: 16px;
+  padding: 60px 0 40px;
+  position: relative;
+  z-index: 1;
+}
 
 /* ============================================
    HOME — Contacto (la noche del video)
