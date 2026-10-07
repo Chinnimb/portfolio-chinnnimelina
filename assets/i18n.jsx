@@ -56,10 +56,10 @@ const TRANSLATIONS = {
       servicesLede: "Acompaño cada proyecto de punta a punta: estrategia, diseño y piezas listas para lanzar.",
       services: [
         { title: "UX / UI Design", desc: "Apps, webs y dashboards pensados desde el usuario, con interfaces claras y consistentes.", items: ["Apps y sitios web", "Dashboards", "Rediseños", "Design systems"], tools: "Figma · Framer · Maze" },
+        { title: "AI Native Designer", desc: "Diseño desde cero y lo dejo funcionando: del prototipo al sitio publicado, con IA en cada paso.", items: ["Diseño desde cero", "Prototipos funcionales", "Desarrollo con IA", "Publicación online"], tools: "Figma Make · Claude · GitHub · Vercel" },
         { title: "Diseño de e‑commerce", desc: "Tiendas online que guían la compra, desde la home hasta el checkout.", items: ["Tiendas online", "Fichas de producto", "Optimización del checkout", "Experiencia mobile"], tools: "Figma · Shopify · Tiendanube" },
         { title: "Branding", desc: "Identidades visuales con personalidad, coherentes en pantalla, impresas y en redes.", items: ["Identidad visual", "Brandbook", "Diseño de anuncios", "Guías de marca"], tools: "Figma · Illustrator · Spline" },
         { title: "Imágenes y video con IA", desc: "Contenido visual generado con IA, dirigido con criterio de marca.", items: ["Fotos de producto", "Campañas y anuncios", "Videos para redes", "Escenas y ambientaciones"], tools: "Midjourney · Higgsfield · Runway" },
-        { title: "Research y estrategia", desc: "Investigación y auditorías para tomar decisiones de diseño con datos.", items: ["UX research", "Auditorías UX", "Entrevistas", "Prototipos rápidos"], tools: "Claude · Notion · Miro" },
       ],
       requestCta: "Solicitar servicio",
       prevLabel: "Servicio anterior",
@@ -170,10 +170,10 @@ const TRANSLATIONS = {
       servicesLede: "I take each project end to end: strategy, design and assets ready to launch.",
       services: [
         { title: "UX / UI Design", desc: "Apps, websites and dashboards built around the user, with clear and consistent interfaces.", items: ["Apps & websites", "Dashboards", "Redesigns", "Design systems"], tools: "Figma · Framer · Maze" },
+        { title: "AI Native Designer", desc: "I design from scratch and ship it working: from prototype to live site, with AI at every step.", items: ["Design from scratch", "Working prototypes", "AI-assisted development", "Going live"], tools: "Figma Make · Claude · GitHub · Vercel" },
         { title: "E‑commerce design", desc: "Online stores that guide the purchase, from the homepage to checkout.", items: ["Online stores", "Product pages", "Checkout optimization", "Mobile experience"], tools: "Figma · Shopify · Tiendanube" },
         { title: "Branding", desc: "Visual identities with personality, consistent on screen, in print and on social.", items: ["Visual identity", "Brandbook", "Ad design", "Brand guidelines"], tools: "Figma · Illustrator · Spline" },
         { title: "AI images & video", desc: "AI-generated visual content, art-directed with a brand eye.", items: ["Product photography", "Campaigns & ads", "Social video", "Scenes & settings"], tools: "Midjourney · Higgsfield · Runway" },
-        { title: "Research & strategy", desc: "Research and audits to make design decisions backed by data.", items: ["UX research", "UX audits", "Interviews", "Rapid prototypes"], tools: "Claude · Notion · Miro" },
       ],
       requestCta: "Request service",
       prevLabel: "Previous service",
