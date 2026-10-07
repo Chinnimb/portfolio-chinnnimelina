@@ -1065,7 +1065,8 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   border-color: var(--glow-border);
 }
 .work-media { aspect-ratio: 4 / 3; overflow: hidden; position: relative; background: var(--cream-2); }
-.work-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.work-media img, .work-media video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.work-card:hover .work-media video { transform: scale(1.04); }
 .work-card:hover .work-media img { transform: scale(1.04); }
 .work-cover {
   width: 100%; height: 100%;
@@ -1848,3 +1849,10 @@ body:not(.home) h2 em {
   .nor-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nor-swatch { min-height: 120px; }
 }
+
+/* Caso Hisoil: moodboards reales */
+.hs-mood-img { display: block; position: relative; aspect-ratio: 1440 / 1024; border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
+.hs-mood-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s var(--ease); }
+.hs-mood-img:hover img { transform: scale(1.05); }
+.hs-mood-swatches { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 4px; padding: 5px; border-radius: 8px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); }
+.hs-mood-swatches span { width: 16px; height: 16px; border-radius: 4px; }

@@ -473,7 +473,7 @@ const Works = () => {
         : "Design and development of a women's coaching community landing page, from Figma to a live site.",
     },
     {
-      id: "nor", tags: ["branding", "ai"], href: "case-nor.html", img: "assets/photos/nor/video-poster.jpg",
+      id: "nor", tags: ["branding", "ai"], href: "case-nor.html", img: "assets/photos/nor/video-poster.jpg", video: "assets/photos/nor/video.mp4",
       title: lang === "es" ? "NØR · Kayaks de la Patagonia" : "NØR · Kayaks from Patagonia",
       cat: lang === "es" ? "Branding · Imágenes con IA" : "Branding · AI imagery",
       desc: lang === "es"
@@ -481,7 +481,7 @@ const Works = () => {
         : "Visual identity for a Patagonian kayak brand, with AI-generated photography and video.",
     },
     {
-      id: "hisoil", tags: ["uxui", "redesign"], href: "case-hisoil.html", img: "assets/photos/hisoil/despues-home.jpg",
+      id: "hisoil", tags: ["uxui", "redesign", "ai"], href: "case-hisoil.html", img: "assets/photos/hisoil/video-poster.jpg", video: "assets/photos/hisoil/video.mp4",
       title: lang === "es" ? "Hisoil · Rediseño Web" : "Hisoil · Web Redesign",
       cat: "Web design · Agro",
       desc: lang === "es"
@@ -520,7 +520,9 @@ const Works = () => {
   const Card = ({ p, hidden }) => (
     <a href={p.href} className="work-card" aria-hidden={hidden || undefined} tabIndex={hidden ? -1 : undefined}>
       <div className="work-media">
-        {p.cover
+        {p.video
+          ? <video src={p.video} poster={p.img} autoPlay muted loop playsInline preload="metadata" aria-hidden="true" />
+          : p.cover
           ? <div className="work-cover" style={{ background: p.cover.bg }}>{p.cover.label}</div>
           : <img src={p.img} alt={hidden ? "" : p.title} loading="lazy" />}
       </div>

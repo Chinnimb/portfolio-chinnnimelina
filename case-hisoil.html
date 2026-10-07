@@ -25,6 +25,8 @@
 /* ─── IMÁGENES ──────────────────────────────────────────────────────────────
    Guardá tus capturas en  assets/photos/hisoil/  con estos nombres exactos.
    ─────────────────────────────────────────────────────────────────────────── */
+const IMG = "assets/photos/hisoil/";
+
 const COVER_SLIDES = [
   "assets/photos/hisoil/despues-home.jpg",
   "assets/photos/hisoil/despues-servicios.jpg",
@@ -154,20 +156,6 @@ const CONTENT = {
 
 /* ─── HERO ──────────────────────────────────────────────────────────────────*/
 const CaseHero = ({ c }) => {
-  const [idx, setIdx] = React.useState(0);
-  const [fading, setFading] = React.useState(false);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setFading(true);
-      setTimeout(() => {
-        setIdx(i => (i + 1) % COVER_SLIDES.length);
-        setFading(false);
-      }, 400);
-    }, 3200);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section style={{ paddingTop: 60, paddingBottom: 0, position: "relative", overflow: "hidden" }}>
       <div className="container-narrow" style={{ textAlign: "center" }}>
@@ -184,37 +172,14 @@ const CaseHero = ({ c }) => {
         </div>
       </div>
 
-      <div style={{ maxWidth: 1000, margin: "0 auto", padding: "0 40px" }}>
-        <div className="polaroid" style={{ padding: "12px 12px 40px", transform: "rotate(-1deg)" }}>
-          <div style={{
-            width: "100%", aspectRatio: "16/9",
-            background: "linear-gradient(135deg, #0e2a14 0%, #1a4a22 50%, #2d6b35 100%)",
-            borderRadius: 2, overflow: "hidden", position: "relative",
-          }}>
-            <img
-              src={COVER_SLIDES[idx]}
-              alt="Hisoil nuevo sitio"
-              style={{
-                position: "absolute", inset: 0, width: "100%", height: "100%",
-                objectFit: "cover",
-                transition: "opacity 0.4s ease",
-                opacity: fading ? 0 : 1,
-              }}
-              onError={e => { e.target.style.opacity = 0; }}
-            />
-            {/* Placeholder mientras no hay imagen */}
-            <div style={{
-              position: "absolute", inset: 0, display: "flex", alignItems: "center",
-              justifyContent: "center", flexDirection: "column", gap: 12, color: "rgba(180,230,69,0.4)",
-              fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.1em",
-              pointerEvents: "none",
-            }}>
-              <div style={{ fontSize: 36, opacity: 0.3 }}>🌱</div>
-              <div style={{ opacity: 0.4 }}>assets/photos/hisoil/cover-{idx + 1}.png</div>
-            </div>
-          </div>
-          <div className="caption">Hisoil · Sustratos de alta calidad · Pilar, Buenos Aires · 2025</div>
+      {/* Video de marca generado con IA (techo verde con sustrato Hisoil) */}
+      <div className="container cs-video-wrap" style={{ marginTop: 0 }}>
+        <div className="nor-media">
+          <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}video-poster.jpg`} aria-label="Video de marca de Hisoil generado con IA">
+            <source src={`${IMG}video.mp4`} type="video/mp4" />
+          </video>
         </div>
+        <p className="cs-caption">Hisoil · Sustratos de alta calidad · Pilar, Buenos Aires · Video generado con IA</p>
       </div>
     </section>
   );
@@ -429,23 +394,13 @@ const MoodboardsSection = () => (
             transitionDelay: `${i * 100}ms`,
           }}>
             <WashiTape width={70} rotate={-6} style={{ position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)" }} />
-            <div style={{
-              aspectRatio: "4/3",
-              background: `linear-gradient(135deg, ${mb.colors[0]} 0%, ${mb.colors[1]} 50%, ${mb.colors[2]} 100%)`,
-              borderRadius: 2, marginBottom: 14,
-              display: "flex", alignItems: "flex-end", padding: 16, position: "relative", overflow: "hidden",
-            }}>
-              <div style={{ position: "absolute", top: 14, left: 14 }}>
-                <div style={{ display: "flex", gap: 4 }}>
-                  {mb.colors.map(c => (
-                    <div key={c} style={{ width: 14, height: 14, borderRadius: 2, background: c, border: "1px solid rgba(255,255,255,0.2)" }} />
-                  ))}
-                </div>
+            {/* Moodboard real; click para verlo en grande */}
+            <a href={`${IMG}moodboard-${i + 1}.jpg`} target="_blank" rel="noopener" className="hs-mood-img" aria-label={`Ver moodboard ${mb.name} en grande`}>
+              <img src={`${IMG}moodboard-${i + 1}.jpg`} alt={`Moodboard ${mb.name}`} loading="lazy" />
+              <div className="hs-mood-swatches">
+                {mb.colors.map(c => <span key={c} style={{ background: c }} />)}
               </div>
-              <div style={{ fontFamily: "'Caveat', cursive", fontSize: 42, color: "rgba(255,255,255,0.9)", lineHeight: 1 }}>
-                {mb.n}
-              </div>
-            </div>
+            </a>
             <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginBottom: 6, letterSpacing: "0.1em" }}>MOODBOARD {mb.n}</div>
             <h3 style={{ fontSize: 22, marginBottom: 8, lineHeight: 1.1 }}>{mb.name}</h3>
             <p style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 12 }}>{mb.desc}</p>
@@ -460,6 +415,63 @@ const MoodboardsSection = () => (
     </div>
   </section>
 );
+
+/* ─── RECORRIDO DEL HOME (grabación del sitio publicado) ─────────────────────*/
+const Walkthrough = () => {
+  const { lang } = React.useContext(LangContext);
+  const es = lang !== "en";
+  return (
+    <section className="cs-section cs-tint">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{es ? "El sitio en vivo" : "The live site"}</div>
+          <h2>{es ? <>Un recorrido por <em>el home</em></> : <>A walk through <em>the homepage</em></>}</h2>
+          <p>{es ? "Así se ve el home del nuevo Hisoil, de punta a punta: del hero a los proyectos, el catálogo y el contacto." : "This is the new Hisoil homepage from top to bottom: from the hero to projects, catalog and contact."}</p>
+        </div>
+        <div className="cs-browser reveal">
+          <div className="cs-browser-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <div className="cs-browser-url">hisoil.vercel.app</div>
+          </div>
+          <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={es ? "Recorrido del home de Hisoil" : "Hisoil homepage walkthrough"}>
+            <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
+          </video>
+        </div>
+        <div style={{ textAlign: "center", marginTop: 28 }}>
+          <a href="https://hisoil.vercel.app/" target="_blank" rel="noopener" className="btn btn-outline">{es ? "Ver sitio en vivo" : "Visit the live site"} ↗</a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ─── IMÁGENES GENERADAS CON IA ──────────────────────────────────────────────*/
+const AI_IMAGES = [
+  "ia-arandanos-campo.jpg", "ia-mulch-borde.jpg", "ia-almacigos.jpg", "ia-compost-huerta.jpg",
+  "ia-panes-cesped.jpg", "ia-planta-sustrato.jpg", "ia-vivero-citrus.jpg", "ia-carbon-plantacion.jpg",
+  "ia-bandejas-plantines.jpg", "ia-mulch-planta.jpg", "ia-jardin-tierra.jpg", "ia-arandanos-maceta.jpg",
+  "ia-brote.jpg", "ia-cannabis.jpg",
+];
+const AIImages = () => {
+  const { lang } = React.useContext(LangContext);
+  const es = lang !== "en";
+  return (
+    <section className="cs-section">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{es ? "Fotografía con IA" : "AI photography"}</div>
+          <h2>{es ? <>Cada producto, <em>en su contexto</em></> : <>Every product, <em>in context</em></>}</h2>
+          <p>{es ? "Generé con IA las imágenes de producto y de aplicación del catálogo: el sustrato en el vivero, el mulch en el jardín, el compost en la huerta. Fotos que muestran para qué sirve cada producto, con la misma luz y paleta en todo el sitio." : "I generated the catalog's product and application images with AI: substrate in the nursery, mulch in the garden, compost in the vegetable patch. Photos that show what each product is for, with the same light and palette across the site."}</p>
+        </div>
+        <div className="nor-masonry">
+          {AI_IMAGES.map(f => (
+            <figure key={f} className="nor-photo reveal"><img src={IMG + f} alt="" loading="lazy" /></figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* ─── DELIVERABLES ───────────────────────────────────────────────────────────*/
 const Deliverables = ({ c }) => (
@@ -574,8 +586,10 @@ const CaseHeroWrapper = () => {
       <Overview c={c} />
       <Challenge c={c} />
       <BeforeAfter c={c} />
+      <Walkthrough />
       <Process c={c} />
       <MoodboardsSection />
+      <AIImages />
       <Deliverables c={c} />
       <Results c={c} />
       <CaseNav c={c} />
