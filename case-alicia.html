@@ -95,6 +95,7 @@ const CONTENT = {
     resultKicker: "Resultado",
     resultTitle: "Online y lista para <em>sumar miembros</em>",
     resultBody: "La landing está publicada en aliciagroupcoaching.com, en desktop y mobile, con todos los llamados a la acción conectados al checkout de la comunidad.",
+    wantOne: "Quiero mi landing",
 
     nextLabel: "Siguiente caso",
     nextTitle: "ALEO Brandbook",
@@ -171,6 +172,7 @@ const CONTENT = {
     resultKicker: "Result",
     resultTitle: "Live and ready to <em>bring in members</em>",
     resultBody: "The landing page is live at aliciagroupcoaching.com, on desktop and mobile, with every call to action connected to the community checkout.",
+    wantOne: "I want my landing page",
 
     nextLabel: "Next case",
     nextTitle: "ALEO Brandbook",
@@ -338,7 +340,10 @@ const Result = ({ c }) => (
       <div className="eyebrow">{c.resultKicker}</div>
       <Rich as="h2" html={c.resultTitle} />
       <p>{c.resultBody}</p>
-      <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-light">{c.live} <External /></a>
+      <div className="cs-result-ctas">
+        <a href="contact.html" className="btn btn-light">{c.wantOne} <Arrow /></a>
+        <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-ghost-light">{c.live} <External /></a>
+      </div>
     </div>
   </section>
 );
