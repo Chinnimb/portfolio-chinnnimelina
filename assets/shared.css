@@ -1419,32 +1419,36 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 }
 .about-photo figcaption { font-size: 13.5px; color: var(--ink-mute); margin-top: 16px; text-align: center; }
 
-/* Cómo trabajo: texto a la izquierda (centrado en altura), pasos en grilla 2×3 a la derecha */
-.about-approach { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
-.about-approach-text { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.7; }
-.about-approach-text:first-child { font-family: var(--font-display); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.45; color: var(--ink); letter-spacing: -0.01em; }
-.about-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.about-step {
+/* Cómo trabajo: solo texto, sobre la escena de noche con Bandido durmiendo a la derecha */
+.about-approach-band {
+  position: relative;
+  min-height: 620px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: #fff;
-  border: 1px solid rgba(28, 26, 58, 0.07);
-  border-radius: 22px;
-  padding: 22px 22px 24px;
-  transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
+  align-items: center;
+  padding: 110px 0;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, var(--paper) 30%, rgba(251, 250, 248, 0.82) 44%, rgba(251, 250, 248, 0.15) 62%, rgba(251, 250, 248, 0) 72%),
+    linear-gradient(180deg, var(--paper) 0%, rgba(251, 250, 248, 0) 18%, rgba(251, 250, 248, 0) 82%, var(--paper) 100%),
+    radial-gradient(ellipse 40% 60% at 20% 50%, rgba(227, 204, 242, 0.45) 0%, transparent 70%),
+    url("photos/bandido-durmiendo.jpg") right 30% center / cover no-repeat,
+    var(--paper);
 }
-.about-step:nth-child(3n+1) { --glow-c: 196, 172, 240; --step-bg: var(--lavender-soft); }
-.about-step:nth-child(3n+2) { --glow-c: 150, 210, 162; --step-bg: #e3f1e6; }
-.about-step:nth-child(3n)   { --glow-c: 244, 212, 96;  --step-bg: #fbf1cf; }
-.about-step {
-  --glow: 0 0 0 1px rgba(var(--glow-c), 0.55), 0 18px 40px -12px rgba(var(--glow-c), 0.9), 0 0 64px -10px rgba(var(--glow-c), 0.75);
-  --glow-border: rgba(var(--glow-c), 0.75);
+.about-approach-band .container { width: 100%; }
+.about-approach-copy { max-width: 540px; }
+.about-approach-copy h2 { font-size: clamp(34px, 3.6vw, 52px); margin-bottom: 26px; }
+.about-approach-text { font-size: clamp(16px, 1.3vw, 18px); line-height: 1.7; color: var(--ink-soft); }
+.about-approach-text:first-of-type { font-family: var(--font-display); font-size: clamp(20px, 1.8vw, 24px); line-height: 1.45; color: var(--ink); letter-spacing: -0.01em; }
+
+@media (max-width: 760px) {
+  .about-approach-band {
+    min-height: 0;
+    padding: 70px 0 300px;
+    background:
+      linear-gradient(180deg, var(--paper) 0%, var(--paper) 50%, rgba(251, 250, 248, 0.6) 64%, rgba(251, 250, 248, 0) 78%),
+      url("photos/bandido-durmiendo.jpg") 62% bottom / 210% auto no-repeat,
+      var(--paper);
+  }
 }
-.about-step:hover { transform: translateY(-5px); box-shadow: var(--glow); border-color: var(--glow-border); }
-.about-step-icon { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; background: var(--step-bg); color: var(--indigo); margin-bottom: 14px; }
-.about-step h3 { font-family: var(--font-display); font-weight: 500; font-size: 19px; letter-spacing: -0.02em; line-height: 1.25; margin: 0; }
-.about-step p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
 
 /* Herramientas: mosaico con logos */
 .tool-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
@@ -1581,7 +1585,6 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 @media (max-width: 640px) {
   .about-stats { gap: 26px; }
   .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .about-steps { grid-template-columns: 1fr; }
   .timeline::before { left: 7px; }
   .timeline-item { grid-template-columns: 16px 1fr; column-gap: 16px; }
   .timeline-when { grid-column: 2; grid-row: 1; text-align: left; padding-top: 0; font-size: 14px; color: var(--indigo-soft); margin-bottom: 6px; }

@@ -47,14 +47,6 @@ const CONTENT = {
       "UX/UI es la base de mi trabajo: entender a quién le hablamos y diseñar experiencias claras. Sobre esa base sumo diseño visual e inteligencia artificial para crear imágenes, videos y sitios que se ven y funcionan bien.",
       "Me gusta hacerme cargo del proceso completo, para que el proyecto no se quede en un archivo de Figma.",
     ],
-    steps: [
-      { icon: "search", title: "Research y concepto", desc: "Entiendo el negocio, el público y el objetivo antes de diseñar." },
-      { icon: "palette", title: "Dirección visual", desc: "Defino el estilo, la paleta y las referencias del proyecto." },
-      { icon: "layout", title: "UX y UI", desc: "Estructura, flujos e interfaz en Figma, pensados para el usuario." },
-      { icon: "sparkles", title: "Imágenes y video con IA", desc: "Creo el contenido visual que el proyecto necesita." },
-      { icon: "code", title: "Prototipo y desarrollo con IA", desc: "Llevo el diseño a un sitio real con Claude y GitHub." },
-      { icon: "rocket", title: "Publicación", desc: "Lo dejo online con Vercel y dominio propio." },
-    ],
 
     clientsKicker: "Clientes",
     clientsTitle: "Trabajo con marcas de <em>distintos países</em>",
@@ -117,14 +109,6 @@ const CONTENT = {
     approachBody: [
       "UX/UI is the foundation of my work: understanding who we're talking to and designing clear experiences. On top of that I bring visual design and AI to create images, videos and websites that look and work great.",
       "I like to own the whole process, so the project doesn't stay stuck in a Figma file.",
-    ],
-    steps: [
-      { icon: "search", title: "Research & concept", desc: "I understand the business, the audience and the goal before designing." },
-      { icon: "palette", title: "Visual direction", desc: "I define the style, palette and references for the project." },
-      { icon: "layout", title: "UX & UI", desc: "Structure, flows and interface in Figma, built around the user." },
-      { icon: "sparkles", title: "AI images & video", desc: "I create the visual content the project needs." },
-      { icon: "code", title: "Prototype & AI-assisted build", desc: "I turn the design into a real site with Claude and GitHub." },
-      { icon: "rocket", title: "Launch", desc: "I ship it live with Vercel and a custom domain." },
     ],
 
     clientsKicker: "Clients",
@@ -202,39 +186,15 @@ const Hero = ({ c }) => (
   </section>
 );
 
-// Íconos de los pasos de trabajo (uno distinto por paso)
-const STEP_ICONS = {
-  search: <path d="M11 4.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM20 20l-4.2-4.2" />,
-  palette: <><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z" /><circle cx="7.5" cy="11" r="1" /><circle cx="10" cy="7" r="1" /><circle cx="14.5" cy="7" r="1" /></>,
-  layout: <><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M3 9h18M9 9v11" /></>,
-  sparkles: <><path d="M12 3c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6z" /><path d="M18.5 15c.3 2 .9 2.6 2.9 2.9-2 .3-2.6.9-2.9 2.9-.3-2-.9-2.6-2.9-2.9 2-.3 2.6-.9 2.9-2.9z" /></>,
-  code: <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" />,
-  rocket: <><path d="M5 19c1-3 2.5-4.5 4-5M14.5 4.5c3-1.5 5-1 5-1s.5 2-1 5L13 14l-3-3 4.5-6.5z" /><path d="M10 11l-3 .5-2 2.5 3 .5M13 14l-.5 3-2.5 2-.5-3" /><circle cx="15.5" cy="8.5" r="1.2" /></>,
-};
-
+// Solo texto a la izquierda; de fondo, la escena de noche con Bandido durmiendo a la derecha
 const Approach = ({ c }) => (
-  <section className="cs-section cs-tint">
+  <section className="about-approach-band">
     <div className="container">
-      <div className="section-head reveal">
+      <div className="about-approach-copy reveal">
         <div className="eyebrow">{c.approachKicker}</div>
         <Rich as="h2" html={c.approachTitle} />
+        {c.approachBody.map((p, i) => <p key={i} className="about-approach-text">{p}</p>)}
       </div>
-    </div>
-    <div className="container about-approach">
-      <div className="reveal">
-        {c.approachBody.map((p, i) => <p key={i} className="cs-body about-approach-text">{p}</p>)}
-      </div>
-      <ol className="about-steps">
-        {c.steps.map((s, i) => (
-          <li key={s.title} className="about-step reveal" style={{ transitionDelay: `${i * 60}ms` }}>
-            <span className="about-step-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{STEP_ICONS[s.icon]}</svg>
-            </span>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
-          </li>
-        ))}
-      </ol>
     </div>
   </section>
 );
