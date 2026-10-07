@@ -117,10 +117,17 @@ const CursorSticker = () => {
 };
 
 // === Nav ===
-const Nav = ({ active = "home" }) => {
+const Nav = ({ active = "home", overlay = false }) => {
   const { t } = useT();
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <nav className="nav">
+    <nav className={`nav ${overlay ? "overlay" : ""} ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-inner">
         <a href="index.html" className="nav-logo">
           <span className="leaf-mark">
@@ -128,7 +135,7 @@ const Nav = ({ active = "home" }) => {
               <path d="M 0 70 L 0 71 L 6 72 L 12 78 L 21 94 L 31 105 L 55 121 L 84 136 L 86 136 L 105 145 L 129 153 L 132 155 L 152 161 L 155 163 L 161 164 L 184 172 L 177 170 L 164 164 L 162 164 L 148 157 L 146 157 L 116 142 L 114 140 L 106 136 L 86 122 L 72 108 L 67 101 L 63 93 L 62 83 L 61 82 L 62 72 L 63 71 L 63 68 L 70 54 L 90 24 L 94 20 L 104 6 L 110 0 L 68 36 L 47 58 L 35 75 L 31 76 L 20 64 L 17 63 L 11 64 L 6 68 Z"/>
             </svg>
           </span>
-          melina.
+          chinni studio
         </a>
         <div className="nav-links">
           <a href="index.html" className={`link-animated ${active === "home" ? "active" : ""}`}>{t.nav.home}</a>

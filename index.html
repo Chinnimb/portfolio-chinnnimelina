@@ -2,14 +2,16 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Melina Chinni · Diseñadora UX/UI</title>
+<title>Chinni Design Studio · Melina Chinni</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Chinni Design Studio — UX/UI, branding y diseño de producto por Melina Chinni, desde Buenos Aires.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/video/hero-poster.jpg">
 <link rel="stylesheet" href="assets/shared.css">
 </head>
-<body data-palette="niebla" data-fonts="default">
+<body class="home" data-palette="niebla" data-fonts="default">
 <div id="root"></div>
 
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -19,356 +21,120 @@
 <script type="text/babel" src="assets/components.jsx"></script>
 
 <script type="text/babel">
+// Permite <em> en los títulos que vienen de i18n
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M5 12h14M13 6l6 6-6 6" />
+  </svg>
+);
+
 const Hero = () => {
   const { t } = useT();
+  const s = t.studio;
+  const videoRef = React.useRef(null);
+  React.useEffect(() => {
+    // Respeta "reducir movimiento": deja el póster quieto
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches && videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, []);
   return (
-  <section style={{ paddingTop: 60, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
-    {/* Floating stickers */}
-    <ParallaxSticker speed={-0.15} top="8%" left="4%">
-      <div className="sticker floating" style={{ "--r": "-10deg" }}>
-        <BranchSticker size={140} color="var(--olive)" rotate={-10} />
-      </div>
-    </ParallaxSticker>
-    <ParallaxSticker speed={-0.25} top="24%" right="6%">
-      <div className="sticker floating" style={{ "--r": "15deg", animationDelay: "1.2s" }}>
-        <LeafSticker size={50} color="var(--moss)" rotate={15} />
-      </div>
-    </ParallaxSticker>
-    <ParallaxSticker speed={-0.1} bottom="12%" left="10%">
-      <div className="sticker floating" style={{ "--r": "-5deg", animationDelay: "2s" }}>
-        <CircleSticker size={60} color="var(--mustard)" />
-      </div>
-    </ParallaxSticker>
-    <div className="sticker" style={{ top: "55%", right: "12%", zIndex: 0 }}>
-      <SquiggleSticker size={90} color="var(--rust-soft)" rotate={-10} />
-    </div>
-
-    <div className="container hero-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 60, alignItems: "center", paddingTop: 40, paddingBottom: 40 }}>
-      <div style={{ position: "relative", zIndex: 2 }}>
-        <div className="mono" style={{ marginBottom: 24, color: "var(--rust)", letterSpacing: "0.12em" }}>
-          <span style={{ display: "inline-block", width: 30, height: 1, background: "var(--rust)", marginRight: 12, verticalAlign: "middle" }}></span>
-          {t.hero.kicker}
-        </div>
-        <h1 style={{ marginBottom: 16, fontFamily: "var(--font-serif)", fontWeight: 600, letterSpacing: "-0.025em", fontSize: "clamp(44px, 5.5vw, 76px)", lineHeight: 1.02 }}>
-          Melina<br/>
-          <span style={{ color: "var(--olive-deep)" }}>Chinni</span>
-          <SquiggleSticker size={110} color="var(--rust)" style={{ display: "block", marginTop: -8 }} />
-        </h1>
-        <p style={{ fontSize: 17, color: "var(--ink-mute)", lineHeight: 1.4, marginBottom: 28, fontFamily: "var(--font-mono)", letterSpacing: "0.06em" }}>
-          {t.hero.role}
-        </p>
-        <p style={{ fontSize: 17, maxWidth: 460, color: "var(--ink-soft)", marginBottom: 36, lineHeight: 1.5 }}>
-          {t.hero.lede}
-        </p>
-        <div style={{ display: "flex", gap: 16 }}>
-          <a href="index.html#work" style={{
-            padding: "14px 28px", background: "var(--ink)", color: "var(--cream)",
-            borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13,
-            letterSpacing: "0.05em",
-          }}>{t.hero.cta1} →</a>
-          <a href="index.html#contact" style={{
-            padding: "14px 28px", background: "transparent", border: "1px solid var(--ink)",
-            color: "var(--ink)", borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13,
-            letterSpacing: "0.05em",
-          }}>{t.hero.cta2}</a>
-        </div>
-
-        <div style={{ display: "flex", gap: 32, marginTop: 48, flexWrap: "wrap" }}>
-          <div>
-            <div style={{ fontFamily: "var(--font-serif)", fontSize: 48, fontWeight: 500, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.03em" }}>+3</div>
-            <div className="mono" style={{ color: "var(--ink-mute)" }}>{t.hero.stat1}</div>
-          </div>
-          <div>
-            <div style={{ fontFamily: "var(--font-serif)", fontSize: 48, fontWeight: 500, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.03em" }}>+15</div>
-            <div className="mono" style={{ color: "var(--ink-mute)" }}>{t.hero.stat2}</div>
-          </div>
-          <div>
-            <div style={{ fontFamily: "var(--font-serif)", fontSize: 48, fontWeight: 500, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.03em" }}>6</div>
-            <div className="mono" style={{ color: "var(--ink-mute)" }}>{t.hero.stat3}</div>
-          </div>
+    <section className="studio-hero">
+      <video ref={videoRef} autoPlay muted loop playsInline preload="auto" poster="assets/video/hero-poster.jpg" aria-hidden="true">
+        <source src="assets/video/hero.mp4" type="video/mp4" />
+      </video>
+      <div className="studio-hero-inner">
+        <div className="studio-kicker rise">{s.kicker}</div>
+        <h1 className="studio-title rise d1">Chinni<br/><em>Design Studio</em></h1>
+        <p className="studio-lede rise d2">{s.lede}</p>
+        <div className="studio-ctas rise d3">
+          <a href="#trabajos" className="btn btn-primary">{s.cta1} <Arrow /></a>
+          <a href="#contacto" className="btn btn-ghost-light">{s.cta2}</a>
         </div>
       </div>
-
-      {/* Right: Polaroid + botanical */}
-      <div className="hero-polaroid-col" style={{ position: "relative", height: 520 }}>
-        <WashiTape width={140} rotate={-12} style={{ position: "absolute", top: 10, right: 80, zIndex: 5 }} />
-        <div className="polaroid tilt-r" style={{ position: "absolute", top: 40, right: 20, width: 340, transform: "rotate(4deg)" }}>
-          <div style={{ aspectRatio: "3/4", overflow: "hidden", borderRadius: 2 }}>
-            <img src="assets/photos/retrato.jpg" alt="Melina Chinni" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
-          </div>
-          <div className="caption">UX/UI Designer</div>
-        </div>
-        {/* Botanical — muy sutil */}
-        <div style={{ position: "absolute", top: 150, left: 0, opacity: 0.28, zIndex: 1 }}>
-          <BranchSticker size={100} color="var(--moss)" rotate={-20} />
-        </div>
-        <div style={{ position: "absolute", top: 300, left: 30, opacity: 0.2, zIndex: 1 }}>
-          <LeafSticker size={52} color="var(--olive)" rotate={18} />
-        </div>
-        <div style={{ position: "absolute", bottom: 40, left: 10, opacity: 0.18, zIndex: 1 }}>
-          <LeafSticker size={36} color="var(--moss)" rotate={-30} />
-        </div>
-      </div>
-    </div>
-  </section>
+      <div className="scroll-cue" aria-hidden="true"></div>
+    </section>
   );
 };
 
-const Philosophy = () => {
+const Services = () => {
   const { t } = useT();
+  const s = t.studio;
   return (
-  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
-    <div className="sticker" style={{ top: 30, left: "8%" }}>
-      <DotDashSticker size={120} color="var(--olive)" rotate={-20} />
-    </div>
-    <div className="sticker" style={{ bottom: 40, right: "8%" }}>
-      <BranchSticker size={120} color="var(--moss)" rotate={180} />
-    </div>
-    <div className="container-narrow reveal" style={{ textAlign: "center" }}>
-      <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 20, letterSpacing: "0.15em" }}>{t.philosophy.kicker}</div>
-      <h2 style={{ marginBottom: 24, fontStyle: "italic" }}>
-        {t.philosophy.title1}<br/>
-        <span className="hl-rust">{t.philosophy.title2}</span>
-      </h2>
-      <p style={{ fontSize: 18, color: "var(--ink-soft)", maxWidth: 580, margin: "0 auto" }}>
-        {t.philosophy.body}
-      </p>
-    </div>
-  </section>
-  );
-};
-
-const Work = () => {
-  const { t } = useT();
-  const meta = [
-    { id: "aleo",      img: "assets/photos/aleo-cover.jpg", metric: "+2k",   color: "var(--rust)",        href: "case-aleo.html",      rotate: -3, tags: ["Branding", "Identity", "Print"], isPhoto: true },
-    { id: "flok",      img: "assets/photos/Image 1.jpg",   metric: "UX+UI", color: "var(--olive)",       href: "case-flok.html",      rotate: 2,  tags: ["UX Research", "UI Design", "Mobile"], isPhoto: true },
-    { id: "ecommerce", img: "assets/work/ecommerce.svg",   metric: "+47%",  color: "var(--terracotta)", href: "case-ecommerce.html", rotate: -2, tags: ["UX", "UI", "Research"] },
-  ];
-  const projects = meta.map((m, i) => ({ ...m, ...t.work.projects[i] }));
-  const [featured, ...rest] = projects;
-
-  return (
-    <section id="work" style={{ position: "relative", overflow: "hidden" }}>
+    <section className="services" id="servicios">
       <div className="container">
-        <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
-          <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.work.kicker}</div>
-          <h2><span className="underline-wavy">{t.work.title}</span></h2>
-          <p style={{ fontSize: 17, color: "var(--ink-soft)", maxWidth: 520, margin: "20px auto 0" }}>
-            {t.work.lede}
-          </p>
+        <div className="section-head reveal">
+          <div className="eyebrow">{s.servicesKicker}</div>
+          <Rich as="h2" html={s.servicesTitle} />
+          <p>{s.servicesLede}</p>
         </div>
+        <div className="services-grid">
+          {s.services.map((sv, i) => (
+            <article key={sv.title} className="service-card reveal" style={{ transitionDelay: `${i * 90}ms` }}>
+              <div className="service-num">0{i + 1}</div>
+              <h3>{sv.title}</h3>
+              <p>{sv.desc}</p>
+              <ul className="service-list">
+                {sv.items.map(item => <li key={item}>{item}</li>)}
+              </ul>
+              <div className="service-tools">{sv.tools}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-        {/* ── Featured project — polaroid grande ── */}
-        <a href={featured.href} className="reveal polaroid" style={{
-          padding: "16px 16px 40px", transform: "rotate(-0.6deg)",
-          textDecoration: "none", display: "block", marginBottom: 36, position: "relative",
-        }}>
-          <WashiTape width={120} rotate={-5} style={{ position: "absolute", top: -12, left: 60, zIndex: 5 }} />
-          {/* Imagen landscape */}
-          <div style={{ aspectRatio: "16/9", position: "relative", overflow: "hidden", borderRadius: 2, marginBottom: 20 }}>
-            {featured.isPhoto
-              ? <img src={featured.img} alt={featured.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
-              : <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${featured.img})`, backgroundSize: "cover", backgroundPosition: "center" }} />
-            }
-            {/* Overlays: tags + metric */}
-            <div style={{ position: "absolute", inset: 0, zIndex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 20 }}>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {featured.tags.map(tag => (
-                  <span key={tag} className="mono" style={{
-                    background: "rgba(252,247,232,0.9)", padding: "3px 10px", borderRadius: 100,
-                    fontSize: 10, color: "var(--ink)", backdropFilter: "blur(4px)",
-                  }}>{tag}</span>
-                ))}
+const Works = () => {
+  const { t, lang } = useT();
+  const s = t.studio;
+  const [aleo, flok, ecommerce] = t.work.projects;
+  const projects = [
+    {
+      // Sin foto todavía: las imágenes de assets/photos/hisoil/ no están en el repo
+      id: "hisoil", href: "case-hisoil.html", cover: { label: "Hisoil", bg: "linear-gradient(135deg, #0e2a14 0%, #1a4a22 50%, #2d6b35 100%)" },
+      title: lang === "es" ? "Hisoil · Rediseño Web" : "Hisoil · Web Redesign",
+      cat: "Web design · Agro",
+      desc: lang === "es"
+        ? "Rediseño completo del sitio de una empresa de sustratos con 22 años de trayectoria, junto a Shifra Studio."
+        : "Full website redesign for a substrate company with 22 years in the field, together with Shifra Studio.",
+    },
+    { id: "aleo", href: "case-aleo.html", img: "assets/photos/aleo-cover.jpg", title: aleo.title, cat: aleo.subtitle, desc: aleo.desc },
+    { id: "flok", href: "case-flok.html", img: "assets/photos/Image 1.jpg", title: flok.title, cat: flok.subtitle, desc: flok.desc },
+    { id: "ecommerce", href: "case-ecommerce.html", img: "assets/work/ecommerce.svg", title: ecommerce.title, cat: ecommerce.subtitle, desc: ecommerce.desc },
+  ];
+  return (
+    <section className="works" id="trabajos">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{s.workKicker}</div>
+          <Rich as="h2" html={s.workTitle} />
+          <p>{s.workLede}</p>
+        </div>
+        <div className="works-grid">
+          {projects.map((p, i) => (
+            <a key={p.id} href={p.href} className="work-card reveal" style={{ transitionDelay: `${(i % 2) * 90}ms` }}>
+              <div className="work-media">
+                {p.cover
+                  ? <div className="work-cover" style={{ background: p.cover.bg }}>{p.cover.label}</div>
+                  : <img src={p.img} alt={p.title} loading="lazy" />}
               </div>
-              <div style={{ alignSelf: "flex-end", background: "rgba(26,20,16,0.86)", color: "#fcf7e8", padding: "10px 18px", borderRadius: 8, textAlign: "right", backdropFilter: "blur(4px)" }}>
-                <div style={{ fontFamily: "var(--font-serif)", fontSize: 44, lineHeight: 1, fontWeight: 500, letterSpacing: "-0.03em" }}>{featured.metric}</div>
-                <div className="mono" style={{ fontSize: 10, opacity: 0.85, marginTop: 2 }}>{featured.metricLabel}</div>
-              </div>
-            </div>
-          </div>
-          {/* Texto abajo — mismo ritmo que los otros cards */}
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 40, padding: "0 6px" }}>
-            <div>
-              <h2 style={{ fontSize: "clamp(28px, 3vw, 44px)", marginBottom: 8, lineHeight: 1.08, fontWeight: 400 }}>{featured.title}</h2>
-              <div className="mono" style={{ color: featured.color, marginBottom: 10, fontSize: 13 }}>{featured.subtitle}</div>
-              <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.55, maxWidth: 580 }}>{featured.desc}</p>
-            </div>
-            <span className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink)", whiteSpace: "nowrap", paddingTop: 8 }}>{t.work.caseLink}</span>
-          </div>
-        </a>
-
-        {/* ── Grid: remaining projects ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32 }}>
-          {rest.map((p, i) => (
-            <a href={p.href} key={p.id} className="reveal polaroid" style={{
-              padding: "14px 14px 28px", transform: `rotate(${p.rotate}deg)`,
-              textDecoration: "none", display: "block", transitionDelay: `${i * 100}ms`,
-            }}>
-              <div style={{
-                aspectRatio: "4/3",
-                backgroundImage: p.isPhoto ? "none" : `url(${p.img})`,
-                backgroundSize: "cover", backgroundPosition: "center",
-                borderRadius: 2, position: "relative", overflow: "hidden",
-                marginBottom: 14, display: "flex", flexDirection: "column",
-                justifyContent: "space-between", padding: 18,
-              }}>
-                {p.isPhoto && <img src={p.img} alt={p.id} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", zIndex: 0 }} />}
-                <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {p.tags.map(tag => (
-                      <span key={tag} className="mono" style={{
-                        background: "rgba(252,247,232,0.9)", padding: "3px 10px", borderRadius: 100,
-                        fontSize: 10, color: "var(--ink)", backdropFilter: "blur(4px)",
-                      }}>{tag}</span>
-                    ))}
-                  </div>
-                  <div style={{
-                    alignSelf: "flex-end", background: "rgba(26,20,16,0.86)", color: "#fcf7e8",
-                    padding: "8px 14px", borderRadius: 8, textAlign: "right", backdropFilter: "blur(4px)",
-                  }}>
-                    <div style={{ fontFamily: "var(--font-serif)", fontSize: 34, lineHeight: 1, fontWeight: 500, letterSpacing: "-0.03em" }}>{p.metric}</div>
-                    <div className="mono" style={{ fontSize: 10, opacity: 0.85, marginTop: 2 }}>{p.metricLabel}</div>
-                  </div>
+              <div className="work-body">
+                <div>
+                  <div className="work-cat">{p.cat}</div>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
                 </div>
+                <span className="work-arrow" aria-hidden="true"><Arrow size={18} /></span>
               </div>
-              <h3 style={{ fontSize: 24, marginBottom: 4 }}>{p.title}</h3>
-              <div className="mono" style={{ color: p.color, marginBottom: 8, fontSize: 12 }}>{p.subtitle}</div>
-              <p style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.5, marginBottom: 12 }}>{p.desc}</p>
-              <span className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink)" }}>{t.work.caseLink}</span>
             </a>
           ))}
         </div>
-
-        <div className="reveal" style={{ textAlign: "center", marginTop: 56 }}>
-          <a href="work.html" style={{
-            display: "inline-flex", alignItems: "center", gap: 12,
-            padding: "18px 36px", background: "var(--ink)", color: "var(--cream)",
-            borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 14, letterSpacing: "0.05em",
-          }}>
-            {t.work.seeAll} <span style={{ fontSize: 16, lineHeight: 1 }}>→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const About = () => {
-  const { t } = useT();
-  return (
-    <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
-      <div className="sticker" style={{ top: 24, right: "5%", zIndex: 0 }}>
-        <BranchSticker size={110} color="var(--moss)" rotate={20} />
-      </div>
-      <ParallaxSticker speed={-0.12} bottom="10%" left="4%">
-        <CircleSticker size={50} color="var(--mustard)" />
-      </ParallaxSticker>
-
-      <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", gap: 72, alignItems: "center" }}>
-
-          {/* Polaroid — foto con Bandido */}
-          <div className="reveal" style={{ position: "relative" }}>
-            <WashiTape width={100} rotate={-8} style={{ position: "absolute", top: -10, left: 20, zIndex: 5 }} />
-            <div className="polaroid" style={{ transform: "rotate(-4deg)", padding: "12px 12px 44px", position: "relative", zIndex: 2 }}>
-              <div style={{ aspectRatio: "3/4", overflow: "hidden", borderRadius: 2 }}>
-                <img src="assets/photos/bandido.jpg" alt="Melina y Bandido" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
-              </div>
-              <div className="caption">Bandido, mi gran compañero 🐾</div>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="reveal">
-            <div className="mono" style={{ color: "var(--rust)", marginBottom: 20, letterSpacing: "0.15em" }}>{t.about.kicker}</div>
-            <h2 style={{ fontSize: "clamp(36px, 4vw, 54px)", lineHeight: 1.08, marginBottom: 24, fontWeight: 400, whiteSpace: "pre-line" }}>{t.about.title}</h2>
-            <p style={{ fontSize: 18, color: "var(--ink-soft)", lineHeight: 1.7, maxWidth: 500, marginBottom: 20 }}>{t.about.body}</p>
-            <p style={{ fontSize: 16, color: "var(--ink-mute)", lineHeight: 1.65, maxWidth: 480, marginBottom: 36 }}>{t.about.body2}</p>
-
-            {/* Fact chips */}
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {t.about.facts.map(f => (
-                <div key={f} style={{
-                  background: "rgba(28,43,58,0.05)", padding: "10px 18px", borderRadius: 100,
-                  fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-soft)",
-                  border: "1px solid rgba(28,43,58,0.1)",
-                }}>{f}</div>
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const Tools = () => {
-  const { t } = useT();
-  const groups = [
-    {
-      cat: "UX / UI Design",
-      color: "var(--rust)",
-      rotate: -1.5,
-      tape: { width: 80, rotate: -6, right: 24 },
-      items: ["Apps", "Webs", "Dashboards", "Landings", "Rediseños", "Design Systems"],
-      tools: ["Figma", "Framer", "Maze", "Zeroheight", "Lottie"],
-    },
-    {
-      cat: "Branding & Ads",
-      color: "var(--terracotta)",
-      rotate: 1.5,
-      tape: { width: 90, rotate: 5, right: 16 },
-      items: ["Identidad visual", "Brandbook", "Diseño de ads", "Visual Design", "Guidelines"],
-      tools: ["Figma", "Midjourney", "Canva", "Adobe Express", "Spline"],
-    },
-    {
-      cat: "Producto & IA",
-      color: "var(--olive)",
-      rotate: -1,
-      tape: { width: 70, rotate: -4, right: 30 },
-      items: ["UX Research", "Auditorías UX", "Entrevistas", "Claude Design", "Claude Code"],
-      tools: ["Notion", "Claude", "Miro", "Dovetail", "ChatGPT"],
-    },
-  ];
-  return (
-    <section style={{ position: "relative", overflow: "hidden" }}>
-      <div className="container">
-        <div className="reveal" style={{ textAlign: "center", marginBottom: 60 }}>
-          <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.tools.kicker}</div>
-          <h2>{t.tools.title}</h2>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 32 }}>
-          {groups.map((group, i) => (
-            <div key={group.cat} className="reveal polaroid" style={{
-              padding: "28px 28px 32px",
-              transform: `rotate(${group.rotate}deg)`,
-              transitionDelay: `${i * 100}ms`,
-            }}>
-              <WashiTape width={group.tape.width} rotate={group.tape.rotate} style={{ position: "absolute", top: -10, right: group.tape.right }} />
-              <div className="mono" style={{ color: group.color, marginBottom: 10, fontSize: 11, letterSpacing: "0.14em" }}>— {group.cat.toUpperCase()}</div>
-              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(28px, 3vw, 38px)", fontWeight: 400, lineHeight: 1.1, marginBottom: 20, color: "var(--ink)" }}>{group.cat}</h3>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
-                {group.items.map(item => (
-                  <span key={item} style={{
-                    background: "var(--cream)", padding: "6px 14px", borderRadius: 100,
-                    fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink-soft)",
-                    border: "1px solid rgba(28,43,58,0.1)",
-                  }}>{item}</span>
-                ))}
-              </div>
-              <div style={{ borderTop: "1px solid rgba(28,43,58,0.08)", paddingTop: 14, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                <span className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", letterSpacing: "0.1em", marginRight: 4 }}>tools:</span>
-                {group.tools.map(tool => (
-                  <span key={tool} style={{
-                    background: group.color, opacity: 0.85, padding: "4px 12px", borderRadius: 100,
-                    fontFamily: "var(--font-mono)", fontSize: 11, color: "#fff",
-                  }}>{tool}</span>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="works-more reveal">
+          <a href="work.html" className="btn btn-primary">{s.seeAll} <Arrow /></a>
         </div>
       </div>
     </section>
@@ -377,46 +143,31 @@ const Tools = () => {
 
 const Contact = () => {
   const { t } = useT();
+  const s = t.studio;
+  const email = t.contact.email;
   return (
-  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }} id="contact-section">
-    <div className="sticker floating" style={{ top: 40, left: "10%", "--r": "-15deg" }}>
-      <LeafSticker size={40} color="var(--olive)" rotate={-15} />
-    </div>
-<div className="container-narrow reveal" style={{ textAlign: "center" }}>
-      <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{t.contact.kicker}</div>
-      <h2 style={{ marginBottom: 20 }}>{t.contact.title1}</h2>
-      <p style={{ fontSize: 18, color: "var(--ink-soft)", marginBottom: 36 }}>
-        {t.contact.lede}
-      </p>
-      <a href={`mailto:${t.contact.email}`} style={{
-        display: "inline-block",
-        background: "#fff",
-        padding: "20px 40px",
-        borderRadius: 100,
-        fontFamily: "var(--font-mono)",
-        fontSize: 16,
-        color: "var(--ink)",
-        boxShadow: "var(--shadow-card)",
-        marginBottom: 40,
-      }} className="link-animated">
-        {t.contact.email}
-      </a>
-      <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap" }}>
-        <a href={`mailto:${t.contact.email}`} className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-          {t.contact.email}
-        </a>
-        <a href="https://www.linkedin.com/in/melinachinni/" target="_blank" rel="noopener" className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn ↗
-        </a>
-        <a href="https://wa.me/5491122896457" target="_blank" rel="noopener" className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          WhatsApp ↗
-        </a>
+    <section className="contact-band" id="contacto">
+      <div className="container-narrow reveal">
+        <div className="eyebrow">{s.contactKicker}</div>
+        <Rich as="h2" html={s.contactTitle} />
+        <p className="lede">{s.contactLede}</p>
+        <a href={`mailto:${email}`} className="btn btn-dark">{s.contactCta} <Arrow /></a>
+        <div className="contact-links">
+          <a href={`mailto:${email}`} className="chip-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            {email}
+          </a>
+          <a href="https://www.linkedin.com/in/melinachinni/" target="_blank" rel="noopener" className="chip-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://wa.me/5491122896457" target="_blank" rel="noopener" className="chip-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 };
 
@@ -424,12 +175,10 @@ const App = () => {
   useReveal();
   return (
     <LangProvider>
-      <CursorSticker />
-      <Nav active="home" />
+      <Nav active="home" overlay />
       <Hero />
-      <Work />
-      <About />
-      <Tools />
+      <Services />
+      <Works />
       <Contact />
       <Footer />
       <TweaksPanel />
