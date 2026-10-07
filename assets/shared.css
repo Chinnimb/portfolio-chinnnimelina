@@ -1792,3 +1792,59 @@ body:not(.home) h2 em {
 .nav-logo:hover .brand-logo { transform: rotate(-8deg) scale(1.06); }
 .nav-logo { gap: 10px; }
 .footer-logo { display: inline-flex; align-items: center; gap: 10px; }
+
+/* ============================================
+   CASO NØR — case-nor.html
+   ============================================ */
+.nor-media { border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px -40px rgba(15, 25, 24, 0.6); background: #0f1918; }
+.nor-media video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.nor-personality { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.nor-personality li { display: grid; gap: 2px; padding-left: 18px; position: relative; }
+.nor-personality li::before { content: ""; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: #2f6f78; }
+.nor-personality strong { font-family: var(--font-display); font-weight: 500; font-size: 17px; }
+.nor-personality span { font-size: 14.5px; color: var(--ink-soft); }
+
+.nor-logos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.nor-logo-tile { border-radius: 20px; overflow: hidden; aspect-ratio: 1440 / 1024; border: 1px solid rgba(28, 26, 58, 0.06); transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease); }
+.nor-logo-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nor-logo-tile:nth-child(3n+1) { --glow-c: 196, 172, 240; }
+.nor-logo-tile:nth-child(3n+2) { --glow-c: 150, 210, 162; }
+.nor-logo-tile:nth-child(3n)   { --glow-c: 244, 212, 96; }
+.nor-logo-tile:hover { transform: translateY(-5px); box-shadow: 0 0 0 1px rgba(var(--glow-c), 0.6), 0 18px 40px -12px rgba(var(--glow-c), 0.9); }
+
+.nor-swatches { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-bottom: 28px; }
+.nor-swatch { border-radius: 18px; min-height: 170px; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; border: 1px solid rgba(15, 25, 24, 0.08); }
+.nor-swatch strong { font-family: var(--font-display); font-weight: 500; font-size: 18px; }
+.nor-swatch span { font-size: 13px; opacity: 0.8; letter-spacing: 0.04em; }
+.nor-board { margin: 0; border-radius: 22px; overflow: hidden; }
+.nor-board img { width: 100%; display: block; }
+
+/* Fotografía: sección oscura con mosaico */
+.nor-dark { background: #0f1918; color: #e9efe9; }
+.nor-dark .section-head h2 { color: #f4f1ea; }
+.nor-dark .section-head h2 em { background: linear-gradient(90deg, #8fd0d8, #c9e3c4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.nor-dark .section-head p { color: rgba(233, 239, 233, 0.75); }
+.nor-dark .eyebrow { color: #8fd0d8; }
+.nor-masonry { columns: 3 280px; column-gap: 14px; }
+.nor-photo { margin: 0 0 14px; break-inside: avoid; border-radius: 16px; overflow: hidden; }
+.nor-photo img { width: 100%; height: auto; display: block; transition: transform 0.9s var(--ease); }
+.nor-photo:hover img { transform: scale(1.04); }
+
+.nor-app { aspect-ratio: 1440 / 1060; }
+.nor-app img { object-position: center; }
+.nor-voice { margin-top: 56px; text-align: center; }
+.nor-voice ul { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.nor-voice li { font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, 1.8vw, 24px); letter-spacing: -0.01em; text-transform: uppercase; padding: 14px 24px; border-radius: 100px; background: #0f1918; color: #efe9dd; }
+.nor-voice li:nth-child(2) { background: #2f6f78; }
+.nor-voice li:nth-child(3) { background: #d0a549; color: #0f1918; }
+.nor-voice li:nth-child(4) { background: #253a33; }
+
+@media (max-width: 1000px) {
+  .nor-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nor-swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .nor-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nor-swatch { min-height: 120px; }
+}
