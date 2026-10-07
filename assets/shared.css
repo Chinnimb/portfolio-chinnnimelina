@@ -769,11 +769,11 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 }
 .section-head h2,
 .contact-band h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.04em; }
-/* Palabra destacada: degradé ventana → cortina */
+/* Palabra destacada: el mismo degradé de "Design Studio" del hero (periwinkle → lila → rosa), en tonos un punto más profundos para que se lea sobre fondo claro */
 .section-head h2 em {
   font-style: normal;
-  font-weight: 300;
-  background: linear-gradient(90deg, var(--indigo) 0%, #3f7fa3 100%); /* ventana → celeste de la pantalla, en tono profundo */
+  font-weight: 400;
+  background: linear-gradient(90deg, #8aa6f0 0%, #b996e6 55%, #d78bd6 100%);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -890,6 +890,150 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .service-list li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--tint); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tint) 30%, transparent); flex-shrink: 0; }
 .service-tools { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(28, 26, 58, 0.07); font-size: 12.5px; color: var(--ink-mute); }
 
+/* Slider de servicios: quieto, con flechas (y deslizable con el dedo o el trackpad) */
+.slider { position: relative; z-index: 1; }
+.slider-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: max(24px, calc((100vw - 1200px) / 2 + 40px));
+  padding: 24px max(24px, calc((100vw - 1200px) / 2 + 40px)) 36px;
+  scrollbar-width: none;
+}
+.slider-track::-webkit-scrollbar { display: none; }
+.slider-track .service-card { scroll-snap-align: start; }
+.slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+.slider-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: #fff;
+  border: 1px solid rgba(28, 26, 58, 0.12);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), opacity 0.3s;
+}
+.slider-arrow:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(253, 175, 90, 0.5); }
+.slider-arrow:disabled { opacity: 0.35; cursor: default; }
+.slider-arrow:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+
+/* Botón "Solicitar servicio" dentro de la card */
+.btn-outline { background: transparent; color: var(--ink); border-color: rgba(28, 26, 58, 0.18); }
+.btn-outline:hover { background: var(--ink); color: #f8f7fd; border-color: var(--ink); }
+.service-cta { margin-top: 20px; justify-content: center; width: 100%; padding: 13px 22px; font-size: 14.5px; }
+
+/* ============================================
+   Formulario de solicitud (modal)
+   ============================================ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(23, 22, 58, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+  animation: fade-in 0.3s var(--ease);
+}
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background: #fff;
+  border-radius: 26px;
+  padding: 40px 40px 36px;
+  box-shadow: 0 30px 80px -20px rgba(23, 22, 58, 0.45);
+  animation: pop-in 0.4s var(--ease);
+  text-align: left;
+}
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes pop-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
+.modal-close {
+  position: absolute;
+  top: 18px; right: 18px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--cream);
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+.modal-close:hover { background: var(--cream-2); }
+.modal h3 { font-family: var(--font-display); font-weight: 500; font-size: 30px; letter-spacing: -0.03em; margin-bottom: 8px; }
+.modal-intro { color: var(--ink-soft); font-size: 15px; margin-bottom: 26px; }
+.request-form { display: grid; gap: 18px; }
+.request-form .eyebrow { margin-bottom: 6px; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 7px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.field > span,
+.field > legend { font-size: 13.5px; font-weight: 500; color: var(--ink); padding: 0; margin-bottom: 7px; }
+.field > span { margin-bottom: 0; }
+.field em { font-style: normal; font-weight: 400; color: var(--ink-mute); margin-left: 4px; }
+.field input,
+.field select,
+.field textarea {
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgba(28, 26, 58, 0.14);
+  border-radius: 12px;
+  padding: 12px 14px;
+  width: 100%;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+.field textarea { resize: vertical; min-height: 104px; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus { outline: none; background: #fff; border-color: var(--periwinkle); box-shadow: 0 0 0 4px rgba(170, 197, 251, 0.35); }
+.choice-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice { position: relative; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice span {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(28, 26, 58, 0.14);
+  font-size: 14px;
+  color: var(--ink-soft);
+  background: var(--paper);
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.choice:hover span { border-color: var(--periwinkle); }
+.choice input:checked + span { background: var(--ink); border-color: var(--ink); color: #f8f7fd; }
+.choice input:focus-visible + span { outline: 2px solid var(--lamp); outline-offset: 2px; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-error { color: #b2445e; font-size: 14px; margin: 0; }
+.form-error a { color: inherit; text-decoration: underline; }
+.form-submit { justify-content: center; margin-top: 6px; }
+.form-submit:disabled { opacity: 0.7; cursor: progress; transform: none; box-shadow: none; }
+.modal-done { text-align: center; padding: 20px 0 6px; }
+.modal-done-icon {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  display: grid; place-items: center;
+  background: var(--sage-soft);
+  color: var(--moss);
+}
+.modal-done p { color: var(--ink-soft); margin-bottom: 24px; }
+
+@media (max-width: 640px) {
+  .modal { padding: 32px 22px 26px; border-radius: 22px; }
+  .modal h3 { font-size: 25px; }
+  .field-grid { grid-template-columns: 1fr; }
+}
+
 /* ============================================
    HOME — Trabajos
    ============================================ */
@@ -989,10 +1133,8 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
    ============================================ */
 .contact-band {
   background:
-    radial-gradient(ellipse 50% 60% at 15% 10%, rgba(57, 53, 130, 0.75) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 50% at 90% 15%, rgba(155, 74, 160, 0.30) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 45% at 80% 95%, rgba(253, 175, 90, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 50% at 10% 95%, rgba(143, 204, 226, 0.12) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(23, 22, 58, 0.78) 0%, rgba(23, 22, 58, 0.62) 45%, rgba(23, 22, 58, 0.85) 100%),
+    url("photos/contacto-noche.jpg") center 40% / cover no-repeat,
     var(--night);
   color: #ecebf8;
   text-align: center;
