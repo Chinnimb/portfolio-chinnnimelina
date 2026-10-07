@@ -1144,8 +1144,9 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
    ============================================ */
 .contact-band {
   background:
-    linear-gradient(180deg, rgba(23, 22, 58, 0.78) 0%, rgba(23, 22, 58, 0.62) 45%, rgba(23, 22, 58, 0.85) 100%),
-    url("photos/contacto-noche.jpg") center 40% / cover no-repeat,
+    radial-gradient(ellipse 42% 55% at 50% 50%, rgba(23, 22, 58, 0.62) 0%, rgba(23, 22, 58, 0.25) 100%),
+    linear-gradient(180deg, rgba(23, 22, 58, 0.55) 0%, rgba(23, 22, 58, 0.3) 45%, rgba(23, 22, 58, 0.6) 100%),
+    url("photos/cta-escritorio.jpg") center 55% / cover no-repeat, /* escritorio desde arriba con la agenda (generada en Higgsfield) */
     var(--night);
   color: #ecebf8;
   text-align: center;
