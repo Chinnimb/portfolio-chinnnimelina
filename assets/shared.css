@@ -1,42 +1,51 @@
 /* ============================================
-   Chinni Design Studio — paleta del estudio
-   (sacada del video del hero: terracota de día,
-   índigo de noche, luz ámbar de lámpara)
+   Chinni Design Studio — paleta pastel
+   (sacada del video del hero: violeta de la
+   lámpara de lava, azul de la ventana, verde de
+   las plantas y los tonos de las pantallas)
    ============================================ */
 
 :root {
   /* Paleta estudio */
-  --paper: #fefcfa;        /* fondo general, blanco cálido */
-  --cream: #f8f6f4;        /* secciones alternas, gris cálido muy claro */
-  --cream-2: #f2e9e0;
-  --ink: #241b2b;          /* texto, ciruela casi negro */
-  --ink-soft: #4a3d4f;
-  --ink-mute: #8a7a86;
-  --night: #1d1828;        /* fondo oscuro, la noche del video */
-  --dusk: #2f2a52;         /* índigo de la ventana */
-  --lavender: #b8a8e3;     /* violeta de la lámpara de lava */
-  --terracotta: #c4704a;   /* pared de día */
-  --peach: #eab08c;
-  --amber: #f2a654;        /* luz de lámpara */
-  --amber-soft: #ffd3a0;
-  --moss: #5f7148;         /* plantas */
+  --paper: #fcfbff;        /* fondo general, blanco apenas lavanda */
+  --cream: #f4f2fc;        /* secciones alternas, lavanda muy claro */
+  --cream-2: #e9e5f8;
+  --ink: #1f1d33;          /* texto, índigo casi negro */
+  --ink-soft: #4a4766;
+  --ink-mute: #8a87a6;
+  --night: #1a1930;        /* fondo oscuro (contacto) */
+  --dusk: #2b2950;
+  --violet: #6f5fd0;       /* acento para texto, con buen contraste */
+  --lavender: #c3b6f2;     /* lámpara de lava */
+  --lavender-soft: #e3dcfd;
+  --periwinkle: #a9c2f4;   /* ventana de noche */
+  --sky: #d5e3fc;
+  --mint: #9fd3b6;         /* plantas, en pastel */
+  --mint-soft: #d4efe0;
+
+  /* Nombres que usa el CSS del home, apuntando a la paleta nueva */
+  --terracotta: var(--violet);
+  --amber: var(--mint);
+  --amber-soft: var(--lavender-soft);
+  --peach: var(--lavender);
+  --moss: #5f9a7a;
 
   /* Alias de la paleta vieja, para que las páginas internas sigan funcionando */
   --olive: var(--moss);
-  --olive-deep: #3b4630;
-  --mustard: #c88a3a;
-  --mustard-soft: var(--amber-soft);
-  --rust: var(--terracotta);
-  --rust-soft: var(--peach);
-  --sage: #a9b391;
-  --sage-soft: #d6d9c0;
-  --clay: var(--peach);
+  --olive-deep: #3d6b53;
+  --mustard: #6f8fd6;
+  --mustard-soft: var(--sky);
+  --rust: var(--violet);
+  --rust-soft: var(--lavender);
+  --sage: #a8cdb8;
+  --sage-soft: var(--mint-soft);
+  --clay: var(--lavender-soft);
   --ink-line: var(--ink);
-  --shadow-card: 0 1px 2px rgba(36, 27, 43, 0.06), 0 18px 34px -18px rgba(36, 27, 43, 0.28);
+  --shadow-card: 0 1px 2px rgba(31, 29, 51, 0.05), 0 18px 34px -18px rgba(31, 29, 51, 0.22);
 
-  /* Sombra cálida, como luz de lámpara — hover de botones y cards */
-  --glow: 0 0 0 1px rgba(242, 166, 84, 0.28), 0 14px 34px -10px rgba(232, 140, 70, 0.55), 0 0 70px -12px rgba(255, 190, 110, 0.55);
-  --glow-soft: 0 0 0 1px rgba(242, 166, 84, 0.22), 0 10px 26px -10px rgba(232, 140, 70, 0.45), 0 0 46px -14px rgba(255, 190, 110, 0.45);
+  /* Sombra de luz en hover de botones y cards: halo lavanda y celeste */
+  --glow: 0 0 0 1px rgba(195, 182, 242, 0.55), 0 14px 34px -10px rgba(111, 95, 208, 0.38), 0 0 70px -10px rgba(169, 194, 244, 0.7);
+  --glow-soft: 0 0 0 1px rgba(195, 182, 242, 0.45), 0 10px 26px -10px rgba(111, 95, 208, 0.3), 0 0 46px -12px rgba(169, 194, 244, 0.6);
   --ease: cubic-bezier(.2, .8, .25, 1);
 
   /* Tipografías */
@@ -75,8 +84,8 @@ body::after {
   inset: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(ellipse at 12% 18%, rgba(242, 166, 84, 0.035) 0%, transparent 40%),
-    radial-gradient(ellipse at 88% 80%, rgba(234, 176, 140, 0.04) 0%, transparent 40%);
+    radial-gradient(ellipse at 12% 18%, rgba(195, 182, 242, 0.08) 0%, transparent 42%),
+    radial-gradient(ellipse at 88% 80%, rgba(159, 211, 182, 0.07) 0%, transparent 42%);
   z-index: 0;
 }
 
@@ -94,7 +103,7 @@ a.link-animated::after {
   right: 0;
   bottom: -2px;
   height: 6px;
-  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'><path d='M0 3 Q 25 0, 50 3 T 100 3' fill='none' stroke='%23f2a654' stroke-width='1.5' stroke-linecap='round'/></svg>") repeat-x;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 6' preserveAspectRatio='none'><path d='M0 3 Q 25 0, 50 3 T 100 3' fill='none' stroke='%23a99cf0' stroke-width='1.5' stroke-linecap='round'/></svg>") repeat-x;
   background-size: 100px 6px;
   transform: scaleX(0);
   transform-origin: left center;
@@ -572,20 +581,20 @@ section.tight { padding: 60px 0; }
    ============================================ */
 .nav { transition: background 0.4s var(--ease), padding 0.4s var(--ease), box-shadow 0.4s var(--ease); }
 .nav.scrolled {
-  background: rgba(254, 252, 250, 0.88);
+  background: rgba(252, 251, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   padding: 14px 0;
-  box-shadow: 0 1px 0 rgba(36, 27, 43, 0.06);
+  box-shadow: 0 1px 0 rgba(31, 29, 51, 0.06);
 }
 .nav.overlay { position: fixed; left: 0; right: 0; }
 .nav.overlay:not(.scrolled) .nav-logo,
 .nav.overlay:not(.scrolled) .nav-links a,
-.nav.overlay:not(.scrolled) .lang-switch button { color: #fdf6ee; }
+.nav.overlay:not(.scrolled) .lang-switch button { color: #f6f4ff; }
 .nav.overlay:not(.scrolled) .nav-links a.active,
 .nav.overlay:not(.scrolled) .lang-switch button.active { color: var(--amber-soft); }
-.nav.overlay:not(.scrolled) .nav-logo .leaf-mark { background: rgba(253, 246, 238, 0.14); color: #fdf6ee; box-shadow: inset 0 0 0 1px rgba(253, 246, 238, 0.35); }
-.nav.overlay:not(.scrolled) .lang-switch { border-left-color: rgba(253, 246, 238, 0.3); }
+.nav.overlay:not(.scrolled) .nav-logo .leaf-mark { background: rgba(246, 244, 255, 0.14); color: #f6f4ff; box-shadow: inset 0 0 0 1px rgba(246, 244, 255, 0.35); }
+.nav.overlay:not(.scrolled) .lang-switch { border-left-color: rgba(246, 244, 255, 0.3); }
 .nav-logo { font-family: var(--font-display); font-size: 21px; font-weight: 500; letter-spacing: -0.02em; }
 .nav-links { font-family: var(--font-sans); font-size: 14px; }
 .lang-switch { font-family: var(--font-sans); }
@@ -613,11 +622,11 @@ section.tight { padding: 60px 0; }
 .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 
 .btn-primary { background: var(--amber-soft); color: var(--ink); }
-.btn-primary:hover { background: #ffdcb1; }
-.btn-ghost-light { background: rgba(253, 246, 238, 0.08); color: #fdf6ee; border-color: rgba(253, 246, 238, 0.45); backdrop-filter: blur(6px); }
-.btn-ghost-light:hover { background: rgba(253, 246, 238, 0.16); border-color: var(--amber-soft); }
+.btn-primary:hover { background: #d6cdfb; }
+.btn-ghost-light { background: rgba(246, 244, 255, 0.08); color: #f6f4ff; border-color: rgba(246, 244, 255, 0.45); backdrop-filter: blur(6px); }
+.btn-ghost-light:hover { background: rgba(246, 244, 255, 0.16); border-color: var(--amber-soft); }
 .btn-dark { background: var(--ink); color: var(--paper); }
-.btn-dark:hover { background: #352a3c; }
+.btn-dark:hover { background: #2e2b4a; }
 
 /* ============================================
    HOME — Hero con video
@@ -632,7 +641,7 @@ section.tight { padding: 60px 0; }
   justify-content: center;
   overflow: hidden;
   background: var(--night);
-  color: #fdf6ee;
+  color: #f6f4ff;
   isolation: isolate;
 }
 .studio-hero video {
@@ -649,8 +658,9 @@ section.tight { padding: 60px 0; }
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(ellipse 60% 45% at 50% 50%, rgba(29, 24, 40, 0.5) 0%, rgba(29, 24, 40, 0.12) 70%),
-    linear-gradient(180deg, rgba(29, 24, 40, 0.5) 0%, rgba(29, 24, 40, 0.05) 30%, rgba(29, 24, 40, 0.1) 65%, rgba(29, 24, 40, 0.75) 100%);
+    radial-gradient(ellipse 60% 45% at 50% 50%, rgba(26, 25, 48, 0.5) 0%, rgba(26, 25, 48, 0.12) 70%),
+    linear-gradient(180deg, rgba(26, 25, 48, 0.5) 0%, rgba(26, 25, 48, 0.05) 30%, rgba(26, 25, 48, 0.1) 65%, rgba(26, 25, 48, 0.75) 100%),
+    linear-gradient(rgba(84, 72, 170, 0.22), rgba(84, 72, 170, 0.22)); /* velo índigo: enfría el tono cálido del video */
 }
 .studio-hero-inner {
   text-align: center;
@@ -677,15 +687,15 @@ section.tight { padding: 60px 0; }
   font-size: clamp(52px, 8.6vw, 128px);
   line-height: 0.98;
   letter-spacing: -0.045em;
-  color: #fdf6ee;
-  text-shadow: 0 2px 40px rgba(29, 24, 40, 0.4);
+  color: #f6f4ff;
+  text-shadow: 0 2px 40px rgba(26, 25, 48, 0.4);
   margin: 0 0 28px;
 }
 .studio-title em { font-style: normal; font-weight: 200; color: var(--amber-soft); }
 .studio-lede {
   font-size: clamp(16px, 1.4vw, 19px);
   line-height: 1.55;
-  color: rgba(253, 246, 238, 0.88);
+  color: rgba(246, 244, 255, 0.88);
   max-width: 540px;
   margin: 0 auto 40px;
 }
@@ -697,7 +707,7 @@ section.tight { padding: 60px 0; }
   transform: translateX(-50%);
   width: 1px;
   height: 46px;
-  background: linear-gradient(180deg, transparent, rgba(255, 211, 160, 0.9));
+  background: linear-gradient(180deg, transparent, rgba(213, 227, 252, 0.9));
   overflow: hidden;
 }
 .scroll-cue::after {
@@ -705,7 +715,7 @@ section.tight { padding: 60px 0; }
   position: absolute;
   left: 0; right: 0; top: -40%;
   height: 40%;
-  background: #fff3e2;
+  background: #eef3ff;
   animation: cue 2.4s var(--ease) infinite;
 }
 @keyframes cue { to { top: 110%; } }
@@ -750,18 +760,18 @@ section.tight { padding: 60px 0; }
   flex: 0 1 calc((100% - 48px) / 3);
   position: relative;
   background: #fff;
-  border: 1px solid rgba(36, 27, 43, 0.07);
+  border: 1px solid rgba(31, 29, 51, 0.07);
   border-radius: 22px;
   padding: 34px 30px 30px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 2px rgba(36, 27, 43, 0.03);
+  box-shadow: 0 1px 2px rgba(31, 29, 51, 0.03);
   transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
 }
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--glow);
-  border-color: rgba(242, 166, 84, 0.45);
+  border-color: rgba(195, 182, 242, 0.45);
 }
 .service-num {
   font-family: var(--font-display);
@@ -774,7 +784,7 @@ section.tight { padding: 60px 0; }
   align-items: center;
   gap: 12px;
 }
-.service-num::after { content: ""; flex: 1; height: 1px; background: rgba(196, 112, 74, 0.2); }
+.service-num::after { content: ""; flex: 1; height: 1px; background: rgba(111, 95, 208, 0.2); }
 .service-card h3 {
   font-family: var(--font-display);
   font-weight: 500;
@@ -786,8 +796,12 @@ section.tight { padding: 60px 0; }
 .service-card > p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 22px; }
 .service-list { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 9px; }
 .service-list li { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
-.service-list li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px rgba(242, 166, 84, 0.7); flex-shrink: 0; }
-.service-tools { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(36, 27, 43, 0.07); font-size: 12.5px; letter-spacing: 0.01em; color: var(--ink-mute); }
+.service-list li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot, var(--lavender)); box-shadow: 0 0 10px var(--dot, var(--lavender)); flex-shrink: 0; }
+/* Cada card con su pastel: lavanda, celeste, verde */
+.service-card:nth-child(3n+1) { --dot: var(--lavender); }
+.service-card:nth-child(3n+2) { --dot: var(--periwinkle); }
+.service-card:nth-child(3n) { --dot: var(--mint); }
+.service-tools { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(31, 29, 51, 0.07); font-size: 12.5px; letter-spacing: 0.01em; color: var(--ink-mute); }
 
 /* ============================================
    HOME — Trabajos (carrusel)
@@ -817,14 +831,14 @@ section.tight { padding: 60px 0; }
   border-radius: 22px;
   overflow: hidden;
   background: #fff;
-  border: 1px solid rgba(36, 27, 43, 0.07);
+  border: 1px solid rgba(31, 29, 51, 0.07);
   color: var(--ink);
   transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
 }
 .work-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--glow);
-  border-color: rgba(242, 166, 84, 0.45);
+  border-color: rgba(195, 182, 242, 0.45);
 }
 .work-media { aspect-ratio: 4 / 3; overflow: hidden; position: relative; background: var(--cream-2); }
 .work-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
@@ -836,7 +850,7 @@ section.tight { padding: 60px 0; }
   font-weight: 500;
   font-size: clamp(42px, 4.6vw, 64px);
   letter-spacing: -0.04em;
-  color: rgba(253, 246, 238, 0.95);
+  color: rgba(246, 244, 255, 0.95);
   transition: transform 0.9s var(--ease);
 }
 .work-card:hover .work-cover { transform: scale(1.04); }
@@ -849,7 +863,7 @@ section.tight { padding: 60px 0; }
   width: 42px; height: 42px;
   border-radius: 50%;
   display: grid; place-items: center;
-  border: 1px solid rgba(36, 27, 43, 0.14);
+  border: 1px solid rgba(31, 29, 51, 0.14);
   color: var(--ink);
   transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease), border-color 0.4s var(--ease);
 }
@@ -859,32 +873,36 @@ section.tight { padding: 60px 0; }
 /* ============================================
    HOME — Contacto
    ============================================ */
-.contact-band { background: var(--paper); text-align: center; overflow: hidden; }
-.contact-band::before {
-  content: "";
-  position: absolute;
-  width: 620px; height: 620px;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(242, 166, 84, 0.14) 0%, transparent 65%);
-  pointer-events: none;
+/* Fondo oscuro índigo con halos pastel, como la ventana de noche del video */
+.contact-band {
+  background:
+    radial-gradient(ellipse 55% 60% at 20% 15%, rgba(195, 182, 242, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 55% at 85% 90%, rgba(159, 211, 182, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 50% at 80% 10%, rgba(169, 194, 244, 0.14) 0%, transparent 60%),
+    var(--night);
+  color: #ecebf8;
+  text-align: center;
+  overflow: hidden;
+  padding: 120px 0;
 }
-.contact-band h2 { font-size: clamp(42px, 5.4vw, 76px); line-height: 1; margin-bottom: 20px; }
-.contact-band .lede { font-size: 18px; color: var(--ink-soft); max-width: 500px; margin: 0 auto 36px; }
+.contact-band .eyebrow { color: var(--lavender); }
+.contact-band h2 { font-size: clamp(42px, 5.4vw, 76px); line-height: 1; margin-bottom: 20px; color: #f6f4ff; }
+.contact-band h2 em { color: var(--lavender); }
+.contact-band .lede { font-size: 18px; color: rgba(236, 235, 248, 0.75); max-width: 500px; margin: 0 auto 36px; }
 .contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
 .chip-link {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 11px 20px;
   border-radius: 100px;
-  background: #fff;
-  border: 1px solid rgba(36, 27, 43, 0.09);
+  background: rgba(246, 244, 255, 0.06);
+  border: 1px solid rgba(246, 244, 255, 0.16);
   font-size: 14px;
-  color: var(--ink);
-  transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease);
+  color: #ecebf8;
+  transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
 }
-.chip-link:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(242, 166, 84, 0.5); }
+.chip-link:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(195, 182, 242, 0.6); background: rgba(246, 244, 255, 0.1); }
 
-.home .footer { margin-top: 0; border-top: 1px solid rgba(36, 27, 43, 0.06); background: var(--paper); padding-top: 28px; font-family: var(--font-sans); }
+.home .footer { margin-top: 0; border-top: 1px solid rgba(246, 244, 255, 0.08); background: var(--night); color: rgba(236, 235, 248, 0.55); padding-top: 28px; font-family: var(--font-sans); }
 
 @media (prefers-reduced-motion: reduce) {
   .rise { animation: none; opacity: 1; transform: none; }
