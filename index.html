@@ -180,14 +180,18 @@ const RequestModal = ({ service, onClose }) => {
                 <input ref={firstFieldRef} name="nombre" required autoComplete="name" />
               </label>
               <label className="field">
-                <span>{f.email} *</span>
-                <input name="email" type="email" required autoComplete="email" />
-              </label>
-              <label className="field">
                 <span>{f.company} <em>{f.companyHint}</em></span>
                 <input name="marca" autoComplete="organization" />
               </label>
               <label className="field">
+                <span>{f.email} *</span>
+                <input name="email" type="email" required autoComplete="email" placeholder="nombre@email.com" />
+              </label>
+              <label className="field">
+                <span>{f.phone} <em>{f.phoneHint}</em></span>
+                <input name="telefono" type="tel" autoComplete="tel" inputMode="tel" placeholder="+54 9 11 1234 5678" />
+              </label>
+              <label className="field field-full">
                 <span>{f.service} *</span>
                 <select name="servicio" defaultValue={service} required>
                   {s.services.map(sv => <option key={sv.title} value={sv.title}>{sv.title}</option>)}
