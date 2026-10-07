@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sobre mí · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Melina Chinni, diseñadora UX/UI y visual en Buenos Aires: recorrido, formación, herramientas y clientes de distintos países.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+// Testimonios: solo reales, con permiso del cliente. Mientras la lista esté vacía, la sección no se muestra.
+// Formato: { quote: "…", name: "Nombre", role: "Cargo · Empresa", country: "País" }
+const TESTIMONIALS = [];
+
+const CONTENT = {
+  es: {
+    kicker: "Sobre mí",
+    title: "Hola, soy <em>Melina</em>",
+    lede: "Soy diseñadora UX/UI y visual en Buenos Aires. Diseño productos digitales, marcas e imágenes con IA, y acompaño cada proyecto hasta que queda publicado y funcionando.",
+    stats: [
+      { value: "+4", label: "años diseñando" },
+      { value: "6", label: "países" },
+      { value: "40+", label: "proyectos" },
+    ],
+    ctaWork: "Ver trabajos",
+    ctaContact: "Trabajemos juntos",
+    photoCaption: "Con Bandido, mi compañero de oficina. Sí, es el mismo del video del inicio.",
+
+    approachKicker: "Cómo trabajo",
+    approachTitle: "De la idea al <em>sitio publicado</em>",
+    approachBody: [
+      "UX/UI es la base de mi trabajo: entender a quién le hablamos y diseñar experiencias claras. Sobre esa base sumo diseño visual e inteligencia artificial para crear imágenes, videos y sitios que se ven y funcionan bien.",
+      "Me gusta hacerme cargo del proceso completo, para que el proyecto no se quede en un archivo de Figma.",
+    ],
+    flow: ["Research", "Concepto", "Dirección visual", "UX", "UI", "Imágenes y video con IA", "Prototipo", "Desarrollo con IA", "Publicación"],
+
+    clientsKicker: "Clientes",
+    clientsTitle: "Trabajo con marcas de <em>distintos países</em>",
+    clientsLede: "De forma remota, en español y en inglés.",
+    countries: ["Estados Unidos", "Dinamarca", "España", "Chile", "Argentina"],
+    andMore: "y más",
+
+    timelineKicker: "Recorrido",
+    timelineTitle: "Experiencia y <em>formación</em>",
+    types: { work: "Experiencia", study: "Formación", studio: "Estudio" },
+    timeline: [
+      { when: "2026 – hoy", type: "studio", title: "Chinni Design Studio", place: "Buenos Aires · remoto", desc: "Diseño de producto, marcas e imágenes y video con IA, con implementación asistida por IA para dejar los sitios publicados." },
+      { when: "2026", type: "study", title: "Creación de contenido con IA", place: "Modo Máquina", desc: "Formación específica en imágenes y video generativos con Higgsfield." },
+      { when: "2026", type: "work", title: "Diseñadora UX/UI", place: "Drimo · agencia", desc: "Trabajo en equipo dentro de agencia, donde sumé Figma Make a mi flujo de trabajo." },
+      { when: "2024", type: "study", title: "Google UX Design Professional Certificate", place: "Google · Coursera", desc: "Siete cursos sobre el proceso de UX de punta a punta: research, diseño centrado en el usuario y prototipado." },
+      { when: "2023", type: "study", title: "UX/UI Design Bootcamp", place: "Human Experience Hub", desc: "Bootcamp intensivo de diseño de producto." },
+      { when: "2022 – hoy", type: "work", title: "Diseñadora UX/UI freelance", place: "Upwork · clientes internacionales", desc: "Apps, sitios, landings y dashboards: research, arquitectura de información, prototipos en Figma, auditorías UX y design systems." },
+      { when: "2021 – 2022", type: "study", title: "Diploma en Diseño UX/UI", place: "Coderhouse", desc: "Donde empezó todo. Mis primeros proyectos: una app de viajes tipo Uber pensada para mujeres, un rediseño de la plataforma de Disney con nuevas funciones y un proyecto de UX Writing." },
+    ],
+    selfTaught: { title: "En paralelo, autodidacta", desc: "Aprendí por mi cuenta herramientas web y no-code como Shopify, Framer, Webflow y Wix. Seguir aprendiendo es parte de mi forma de trabajar." },
+
+    toolsKicker: "Herramientas",
+    toolsTitle: "Con qué <em>trabajo</em>",
+    tools: [
+      { group: "Diseño y prototipado", items: ["Figma", "Figma Make", "FigJam"] },
+      { group: "Construcción con IA", items: ["Claude", "Codex", "Lovable"] },
+      { group: "Publicación", items: ["GitHub", "Vercel"] },
+      { group: "Imágenes y video con IA", items: ["Higgsfield", "Midjourney"] },
+      { group: "Web y no-code", items: ["Framer", "Shopify", "Webflow", "Wix"] },
+    ],
+    langs: "Español nativo · Inglés B2",
+
+    testimonialsKicker: "Testimonios",
+    testimonialsTitle: "Lo que dicen <em>mis clientes</em>",
+
+    endTitle: "¿Hablamos de <em>tu proyecto</em>?",
+    endLede: "Contame qué necesitás y te respondo dentro de las 24 horas.",
+  },
+  en: {
+    kicker: "About me",
+    title: "Hi, I'm <em>Melina</em>",
+    lede: "I'm a UX/UI and visual designer based in Buenos Aires. I design digital products, brands and AI imagery, and I see every project through until it's live and working.",
+    stats: [
+      { value: "+4", label: "years designing" },
+      { value: "6", label: "countries" },
+      { value: "40+", label: "projects" },
+    ],
+    ctaWork: "See my work",
+    ctaContact: "Let's work together",
+    photoCaption: "With Bandido, my office buddy. Yes, he's the one in the video on the homepage.",
+
+    approachKicker: "How I work",
+    approachTitle: "From idea to <em>live site</em>",
+    approachBody: [
+      "UX/UI is the foundation of my work: understanding who we're talking to and designing clear experiences. On top of that I bring visual design and AI to create images, videos and websites that look and work great.",
+      "I like to own the whole process, so the project doesn't stay stuck in a Figma file.",
+    ],
+    flow: ["Research", "Concept", "Visual direction", "UX", "UI", "AI images & video", "Prototype", "AI-assisted build", "Launch"],
+
+    clientsKicker: "Clients",
+    clientsTitle: "I work with brands from <em>different countries</em>",
+    clientsLede: "Remotely, in Spanish and in English.",
+    countries: ["United States", "Denmark", "Spain", "Chile", "Argentina"],
+    andMore: "and more",
+
+    timelineKicker: "Journey",
+    timelineTitle: "Experience & <em>education</em>",
+    types: { work: "Experience", study: "Education", studio: "Studio" },
+    timeline: [
+      { when: "2026 – now", type: "studio", title: "Chinni Design Studio", place: "Buenos Aires · remote", desc: "Product, brand, and AI image and video design, with AI-assisted implementation to ship live websites." },
+      { when: "2026", type: "study", title: "AI content creation", place: "Modo Máquina", desc: "Focused training in generative images and video with Higgsfield." },
+      { when: "2026", type: "work", title: "UX/UI Designer", place: "Drimo · agency", desc: "Team work inside an agency, where I added Figma Make to my workflow." },
+      { when: "2024", type: "study", title: "Google UX Design Professional Certificate", place: "Google · Coursera", desc: "Seven courses on the end-to-end UX process: research, user-centered design and prototyping." },
+      { when: "2023", type: "study", title: "UX/UI Design Bootcamp", place: "Human Experience Hub", desc: "Intensive product design bootcamp." },
+      { when: "2022 – now", type: "work", title: "Freelance UX/UI Designer", place: "Upwork · international clients", desc: "Apps, websites, landing pages and dashboards: research, information architecture, Figma prototypes, UX audits and design systems." },
+      { when: "2021 – 2022", type: "study", title: "UX/UI Design Diploma", place: "Coderhouse", desc: "Where it all started. My first projects: an Uber-style ride app designed for women, a redesign of the Disney platform with new features and a UX Writing project." },
+    ],
+    selfTaught: { title: "Alongside, self-taught", desc: "I taught myself web and no-code tools like Shopify, Framer, Webflow and Wix. Continuous learning is part of how I work." },
+
+    toolsKicker: "Tools",
+    toolsTitle: "What I <em>work with</em>",
+    tools: [
+      { group: "Design & prototyping", items: ["Figma", "Figma Make", "FigJam"] },
+      { group: "AI-assisted build", items: ["Claude", "Codex", "Lovable"] },
+      { group: "Publishing", items: ["GitHub", "Vercel"] },
+      { group: "AI images & video", items: ["Higgsfield", "Midjourney"] },
+      { group: "Web & no-code", items: ["Framer", "Shopify", "Webflow", "Wix"] },
+    ],
+    langs: "Spanish native · English B2",
+
+    testimonialsKicker: "Testimonials",
+    testimonialsTitle: "What <em>clients say</em>",
+
+    endTitle: "Shall we talk about <em>your project</em>?",
+    endLede: "Tell me what you need and I'll get back to you within 24 hours.",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+
+const Hero = ({ c }) => (
+  <section className="about-hero">
+    <div className="container about-hero-grid">
+      <div className="reveal">
+        <div className="eyebrow">{c.kicker}</div>
+        <Rich as="h1" html={c.title} className="about-title" />
+        <p className="about-lede">{c.lede}</p>
+        <div className="about-stats">
+          {c.stats.map(s => (
+            <div key={s.label}><strong>{s.value}</strong><span>{s.label}</span></div>
+          ))}
+        </div>
+        <div className="about-ctas">
+          <a href="contact.html" className="btn btn-primary">{c.ctaContact} <Arrow /></a>
+          <a href="work.html" className="btn btn-outline">{c.ctaWork}</a>
+        </div>
+      </div>
+      <figure className="about-photo reveal">
+        <img src="assets/photos/bandido.jpg" alt="Melina Chinni con Bandido" />
+        <figcaption>{c.photoCaption}</figcaption>
+      </figure>
+    </div>
+  </section>
+);
+
+const Approach = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.approachKicker}</div>
+        <Rich as="h2" html={c.approachTitle} />
+        {c.approachBody.map((p, i) => <p key={i}>{p}</p>)}
+      </div>
+      <ol className="about-flow reveal">
+        {c.flow.map((f, i) => <li key={f}><span>{String(i + 1).padStart(2, "0")}</span>{f}</li>)}
+      </ol>
+    </div>
+  </section>
+);
+
+const Clients = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.clientsKicker}</div>
+        <Rich as="h2" html={c.clientsTitle} />
+        <p>{c.clientsLede}</p>
+      </div>
+      <ul className="about-countries reveal">
+        {c.countries.map(country => <li key={country}>{country}</li>)}
+        <li className="more">{c.andMore}</li>
+      </ul>
+    </div>
+  </section>
+);
+
+const Timeline = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.timelineKicker}</div>
+        <Rich as="h2" html={c.timelineTitle} />
+      </div>
+      <ol className="timeline">
+        {c.timeline.map((t, i) => (
+          <li key={i} className={`timeline-item reveal type-${t.type}`}>
+            <div className="timeline-when">{t.when}</div>
+            <div className="timeline-dot" aria-hidden="true"></div>
+            <article className="timeline-card">
+              <span className="timeline-type">{c.types[t.type]}</span>
+              <h3>{t.title}</h3>
+              <div className="timeline-place">{t.place}</div>
+              <p>{t.desc}</p>
+            </article>
+          </li>
+        ))}
+      </ol>
+      <div className="timeline-note reveal">
+        <h3>{c.selfTaught.title}</h3>
+        <p>{c.selfTaught.desc}</p>
+      </div>
+    </div>
+  </section>
+);
+
+const Tools = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.toolsKicker}</div>
+        <Rich as="h2" html={c.toolsTitle} />
+      </div>
+      <div className="about-tools">
+        {c.tools.map((g, i) => (
+          <div key={g.group} className="cs-card reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <h3>{g.group}</h3>
+            <div className="about-chips">{g.items.map(it => <span key={it} className="cs-tag">{it}</span>)}</div>
+          </div>
+        ))}
+      </div>
+      <p className="about-langs reveal">{c.langs}</p>
+    </div>
+  </section>
+);
+
+const Testimonials = ({ c }) => {
+  if (!TESTIMONIALS.length) return null;
+  return (
+    <section className="cs-section cs-tint">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{c.testimonialsKicker}</div>
+          <Rich as="h2" html={c.testimonialsTitle} />
+        </div>
+        <div className="about-testimonials">
+          {TESTIMONIALS.map(t => (
+            <figure key={t.name} className="cs-card reveal">
+              <blockquote>“{t.quote}”</blockquote>
+              <figcaption><strong>{t.name}</strong><span>{t.role} · {t.country}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const End = ({ c }) => (
+  <section className="cs-result">
+    <div className="container-narrow reveal">
+      <Rich as="h2" html={c.endTitle} />
+      <p>{c.endLede}</p>
+      <div className="cs-result-ctas">
+        <a href="contact.html" className="btn btn-light">{c.ctaContact} <Arrow /></a>
+        <a href="work.html" className="btn btn-ghost-light">{c.ctaWork}</a>
+      </div>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Approach c={c} />
+      <Clients c={c} />
+      <Timeline c={c} />
+      <Tools c={c} />
+      <Testimonials c={c} />
+      <End c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="about" />
+    <Page />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
