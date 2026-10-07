@@ -88,6 +88,8 @@ const SERVICE_TINTS = ["periwinkle", "sage", "pink", "lilac", "sky"];
 // La clave se pide gratis en web3forms.com con el mail de contacto; es pública por diseño (va en el front).
 // Mientras esté vacía, el formulario abre el programa de mail con las respuestas ya escritas.
 const WEB3FORMS_KEY = "";
+// Apagado hasta publicar el sitio y crear la clave de Web3Forms: en true vuelve el botón "Solicitar servicio"
+const SHOW_REQUEST_FORM = false;
 
 // Etiquetas legibles para el mail
 const FIELD_LABELS = {
@@ -326,9 +328,11 @@ const Services = () => {
                 {sv.items.map(item => <li key={item}>{item}</li>)}
               </ul>
               <div className="service-tools">{sv.tools}</div>
-              <button type="button" className="btn btn-outline service-cta" onClick={() => setRequested(sv.title)}>
-                {s.requestCta} <Arrow />
-              </button>
+              {SHOW_REQUEST_FORM && (
+                <button type="button" className="btn btn-outline service-cta" onClick={() => setRequested(sv.title)}>
+                  {s.requestCta} <Arrow />
+                </button>
+              )}
             </article>
           ))}
         </div>
