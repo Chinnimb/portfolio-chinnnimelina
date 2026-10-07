@@ -7,7 +7,7 @@
 <meta name="description" content="Chinni Design Studio — UX/UI, branding y diseño de producto por Melina Chinni, desde Buenos Aires.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&family=Syne:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/video/hero-poster.jpg">
 <link rel="stylesheet" href="assets/shared.css">
 </head>
@@ -105,7 +105,50 @@ const Works = () => {
     { id: "aleo", href: "case-aleo.html", img: "assets/photos/aleo-cover.jpg", title: aleo.title, cat: aleo.subtitle, desc: aleo.desc },
     { id: "flok", href: "case-flok.html", img: "assets/photos/Image 1.jpg", title: flok.title, cat: flok.subtitle, desc: flok.desc },
     { id: "ecommerce", href: "case-ecommerce.html", img: "assets/work/ecommerce.svg", title: ecommerce.title, cat: ecommerce.subtitle, desc: ecommerce.desc },
+    {
+      id: "petshop", href: "case-petshop.html", cover: { label: "CloudNest", bg: "linear-gradient(135deg, #e8b4a0 0%, #d99a8a 50%, #b9a3c9 100%)" },
+      title: "CloudNest™ Landing Page",
+      cat: lang === "es" ? "Pet shop premium · Web" : "Premium pet shop · Web",
+      desc: lang === "es"
+        ? "Landing completa para una marca premium de camas para mascotas, con animaciones en React."
+        : "Full landing page for a premium pet bed brand, with React animations.",
+    },
+    {
+      id: "wellness", href: "case-wellness.html", img: "assets/work/wellness.svg",
+      title: lang === "es" ? "App de Bienestar" : "Wellness App",
+      cat: lang === "es" ? "Meditación · B2C" : "Meditation · B2C",
+      desc: lang === "es"
+        ? "App de mindfulness con IA: onboarding conversacional y sesiones de 3 minutos."
+        : "AI-powered mindfulness app: conversational onboarding and 3-minute sessions.",
+    },
+    {
+      id: "saas", href: "case-saas.html", img: "assets/work/saas.svg",
+      title: "Dashboard SaaS",
+      cat: "B2B · Analytics",
+      desc: lang === "es"
+        ? "Dashboard de analytics claro e intuitivo, con su propio design system."
+        : "A clear, intuitive analytics dashboard with its own design system.",
+    },
   ];
+
+  const Card = ({ p, hidden }) => (
+    <a href={p.href} className="work-card" aria-hidden={hidden || undefined} tabIndex={hidden ? -1 : undefined}>
+      <div className="work-media">
+        {p.cover
+          ? <div className="work-cover" style={{ background: p.cover.bg }}>{p.cover.label}</div>
+          : <img src={p.img} alt={hidden ? "" : p.title} loading="lazy" />}
+      </div>
+      <div className="work-body">
+        <div>
+          <div className="work-cat">{p.cat}</div>
+          <h3>{p.title}</h3>
+          <p>{p.desc}</p>
+        </div>
+        <span className="work-arrow" aria-hidden="true"><Arrow size={18} /></span>
+      </div>
+    </a>
+  );
+
   return (
     <section className="works" id="trabajos">
       <div className="container">
@@ -114,25 +157,15 @@ const Works = () => {
           <Rich as="h2" html={s.workTitle} />
           <p>{s.workLede}</p>
         </div>
-        <div className="works-grid">
-          {projects.map((p, i) => (
-            <a key={p.id} href={p.href} className="work-card reveal" style={{ transitionDelay: `${(i % 2) * 90}ms` }}>
-              <div className="work-media">
-                {p.cover
-                  ? <div className="work-cover" style={{ background: p.cover.bg }}>{p.cover.label}</div>
-                  : <img src={p.img} alt={p.title} loading="lazy" />}
-              </div>
-              <div className="work-body">
-                <div>
-                  <div className="work-cat">{p.cat}</div>
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
-                </div>
-                <span className="work-arrow" aria-hidden="true"><Arrow size={18} /></span>
-              </div>
-            </a>
-          ))}
+      </div>
+      {/* Carrusel continuo: la lista va duplicada para que el loop no tenga corte. Se pausa con hover. */}
+      <div className="carousel reveal" style={{ "--marquee-dur": `${projects.length * 11}s` }}>
+        <div className="carousel-track">
+          {projects.map(p => <Card key={p.id} p={p} />)}
+          {projects.map(p => <Card key={`${p.id}-dup`} p={p} hidden />)}
         </div>
+      </div>
+      <div className="container">
         <div className="works-more reveal">
           <a href="work.html" className="btn btn-primary">{s.seeAll} <Arrow /></a>
         </div>
