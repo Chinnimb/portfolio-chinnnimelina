@@ -59,8 +59,11 @@
   --shadow-card: 0 1px 2px rgba(28, 26, 58, 0.05), 0 18px 34px -18px rgba(28, 26, 58, 0.2);
 
   /* Sombra cálida, como luz de lámpara — hover de botones y cards */
-  --glow: 0 0 0 1px rgba(253, 175, 90, 0.35), 0 14px 32px -12px rgba(253, 160, 70, 0.45), 0 0 64px -10px rgba(255, 196, 120, 0.55);
-  --glow-soft: 0 0 0 1px rgba(253, 175, 90, 0.3), 0 10px 24px -10px rgba(253, 160, 70, 0.38), 0 0 44px -12px rgba(255, 196, 120, 0.48);
+  /* Brillo pastel en hover: lila a un lado, verde al otro y amarillo abajo, como luz tornasolada */
+  --glow: 0 0 0 1px rgba(196, 172, 240, 0.6), -22px 8px 44px -10px rgba(196, 172, 240, 0.85), 22px 8px 44px -10px rgba(158, 212, 168, 0.8), 0 28px 48px -14px rgba(246, 218, 110, 0.75);
+  --glow-soft: 0 0 0 1px rgba(196, 172, 240, 0.55), -14px 6px 30px -10px rgba(196, 172, 240, 0.75), 14px 6px 30px -10px rgba(158, 212, 168, 0.7), 0 18px 34px -12px rgba(246, 218, 110, 0.65);
+  --glow-border: rgba(196, 172, 240, 0.6);
+  --focus: var(--indigo-soft);
   --ease: cubic-bezier(.2, .8, .25, 1);
 
   /* Tipografías */
@@ -601,7 +604,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .nav.overlay:not(.scrolled) .nav-links a,
 .nav.overlay:not(.scrolled) .lang-switch button { color: #f4f3fb; }
 .nav.overlay:not(.scrolled) .nav-links a.active,
-.nav.overlay:not(.scrolled) .lang-switch button.active { color: var(--lamp-soft); }
+.nav.overlay:not(.scrolled) .lang-switch button.active { color: var(--lilac); }
 .nav.overlay:not(.scrolled) .nav-logo .leaf-mark { background: rgba(244, 243, 251, 0.14); color: #f4f3fb; box-shadow: inset 0 0 0 1px rgba(244, 243, 251, 0.35); }
 .nav.overlay:not(.scrolled) .lang-switch { border-left-color: rgba(244, 243, 251, 0.3); }
 .nav-logo { font-family: var(--font-display); font-size: 21px; font-weight: 500; letter-spacing: -0.02em; }
@@ -630,14 +633,14 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .btn .arrow { transition: transform 0.35s var(--ease); }
 .btn:hover { transform: translateY(-2px); box-shadow: var(--glow); }
 .btn:hover .arrow { transform: translateX(4px); }
-.btn:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+.btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
 .btn-primary { background: var(--ink); color: #f8f7fd; }
 .btn-primary:hover { background: #262352; }
 .btn-light { background: #f4f3fb; color: var(--ink); }
 .btn-light:hover { background: #fff; }
 .btn-ghost-light { background: rgba(244, 243, 251, 0.08); color: #f4f3fb; border-color: rgba(244, 243, 251, 0.45); backdrop-filter: blur(6px); }
-.btn-ghost-light:hover { background: rgba(244, 243, 251, 0.16); border-color: var(--lamp-soft); }
+.btn-ghost-light:hover { background: rgba(244, 243, 251, 0.16); border-color: var(--lilac); }
 
 /* ============================================
    HOME — Hero con video
@@ -818,6 +821,11 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   width: max-content;
   animation: marquee var(--marquee-dur, 60s) linear infinite;
 }
+.drag-marquee { cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.drag-marquee.is-dragging { cursor: grabbing; }
+.drag-marquee .carousel-track { animation: none; will-change: transform; }
+.drag-marquee img { -webkit-user-drag: none; pointer-events: none; }
+.drag-marquee.is-dragging .work-card { pointer-events: none; }
 .carousel:hover .carousel-track,
 .carousel:focus-within .carousel-track { animation-play-state: paused; }
 @keyframes marquee { to { transform: translateX(calc(-50% - 12px)); } }
@@ -842,7 +850,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--glow);
-  border-color: rgba(253, 175, 90, 0.45);
+  border-color: var(--glow-border);
 }
 .service-card[data-tint="periwinkle"] { --tint: var(--periwinkle); }
 .service-card[data-tint="sky"] { --tint: var(--sky); }
@@ -910,9 +918,9 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   cursor: pointer;
   transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), opacity 0.3s;
 }
-.slider-arrow:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(253, 175, 90, 0.5); }
+.slider-arrow:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: var(--glow-border); }
 .slider-arrow:disabled { opacity: 0.35; cursor: default; }
-.slider-arrow:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+.slider-arrow:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
 /* Botón "Solicitar servicio" dentro de la card */
 .btn-outline { background: transparent; color: var(--ink); border-color: rgba(28, 26, 58, 0.18); }
@@ -1003,7 +1011,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 }
 .choice:hover span { border-color: var(--periwinkle); }
 .choice input:checked + span { background: var(--ink); border-color: var(--ink); color: #f8f7fd; }
-.choice input:focus-visible + span { outline: 2px solid var(--lamp); outline-offset: 2px; }
+.choice input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form-error { color: #b2445e; font-size: 14px; margin: 0; }
 .form-error a { color: inherit; text-decoration: underline; }
@@ -1043,7 +1051,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .work-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--glow);
-  border-color: rgba(253, 175, 90, 0.45);
+  border-color: var(--glow-border);
 }
 .work-media { aspect-ratio: 4 / 3; overflow: hidden; position: relative; background: var(--cream-2); }
 .work-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
@@ -1072,7 +1080,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   color: var(--ink);
   transition: background 0.4s var(--ease), color 0.4s var(--ease), transform 0.4s var(--ease), border-color 0.4s var(--ease);
 }
-.work-card:hover .work-arrow { background: var(--lamp-soft); border-color: var(--lamp-soft); transform: rotate(-45deg); }
+.work-card:hover .work-arrow { background: var(--lavender-soft); border-color: var(--lilac); transform: rotate(-45deg); }
 .works-more { text-align: center; margin-top: 24px; position: relative; z-index: 1; }
 
 /* Pills de categorías */
@@ -1097,9 +1105,9 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   cursor: pointer;
   transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
-.pill:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(253, 175, 90, 0.5); color: var(--ink); }
+.pill:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: var(--glow-border); color: var(--ink); }
 .pill.active { background: var(--ink); border-color: var(--ink); color: #f8f7fd; }
-.pill:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+.pill:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
 
 /* Con un filtro activo: proyectos quietos y centrados */
 .work-static {
@@ -1155,7 +1163,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   color: #ecebf8;
   transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
 }
-.chip-link:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: rgba(253, 175, 90, 0.55); background: rgba(244, 243, 251, 0.1); }
+.chip-link:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: var(--glow-border); background: rgba(244, 243, 251, 0.1); }
 
 
 @media (prefers-reduced-motion: reduce) {
@@ -1163,7 +1171,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   .scroll-cue::after { animation: none; }
   .btn, .service-card, .work-card, .chip-link { transition: none; }
   /* Sin movimiento automático: los carruseles se deslizan a mano */
-  .carousel { overflow-x: auto; }
+  .carousel:not(.drag-marquee) { overflow-x: auto; }
   .carousel-track { animation: none; }
 }
 
@@ -1239,7 +1247,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   padding: 28px 26px;
   transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
 }
-.cs-card:hover { transform: translateY(-6px); box-shadow: var(--glow); border-color: rgba(253, 175, 90, 0.45); }
+.cs-card:hover { transform: translateY(-6px); box-shadow: var(--glow); border-color: var(--glow-border); }
 .cs-card-num { font-family: var(--font-display); font-weight: 300; font-size: 15px; color: var(--ink-mute); margin-bottom: 18px; }
 .cs-card h3 { font-family: var(--font-display); font-weight: 500; font-size: 21px; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 10px; }
 .cs-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
@@ -1255,7 +1263,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
 }
 .cs-shot-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.cs-shot:hover .cs-shot-img { transform: translateY(-4px); box-shadow: var(--glow); border-color: rgba(253, 175, 90, 0.45); }
+.cs-shot:hover .cs-shot-img { transform: translateY(-4px); box-shadow: var(--glow); border-color: var(--glow-border); }
 .cs-shot figcaption { padding: 16px 4px 0; }
 .cs-shot h3 { font-family: var(--font-display); font-weight: 500; font-size: 20px; letter-spacing: -0.02em; margin-bottom: 4px; }
 .cs-shot p { font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
@@ -1266,7 +1274,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .cs-devices figcaption { text-align: center; font-size: 13.5px; color: var(--ink-mute); margin-top: 14px; }
 .cs-scroll { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .cs-scroll img { display: block; width: 100%; height: auto; }
-.cs-scroll:focus-visible { outline: 2px solid var(--lamp); outline-offset: -2px; }
+.cs-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .cs-device-desktop .cs-scroll { height: 560px; }
 .cs-phone {
   width: 300px;
@@ -1288,7 +1296,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   padding: 24px 22px;
   transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease), border-color 0.45s var(--ease);
 }
-.cs-step:hover { transform: translateY(-6px); box-shadow: var(--glow); border-color: rgba(253, 175, 90, 0.45); }
+.cs-step:hover { transform: translateY(-6px); box-shadow: var(--glow); border-color: var(--glow-border); }
 .cs-step-tool {
   display: inline-block;
   font-size: 12.5px;
@@ -1377,7 +1385,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .footer-logo { font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -0.02em; color: #f4f3fb; }
 .footer-links { display: flex; gap: 22px; }
 .footer-links a { color: rgba(236, 235, 248, 0.75); transition: color 0.3s; }
-.footer-links a:hover { color: var(--lamp-soft); }
+.footer-links a:hover { color: var(--lilac); }
 
 /* ============================================
    SUBPÁGINAS — piezas del estilo anterior llevadas al estilo del home
@@ -1397,7 +1405,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 a.paper-card:hover {
   transform: translateY(-6px) !important;
   box-shadow: var(--glow);
-  border-color: rgba(253, 175, 90, 0.45);
+  border-color: var(--glow-border);
 }
 .polaroid img { border-radius: 14px; }
 .polaroid .caption { font-family: var(--font-sans); text-transform: none; letter-spacing: 0; font-size: 13.5px; color: var(--ink-mute); }

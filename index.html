@@ -350,6 +350,113 @@ const Services = () => {
   );
 };
 
+// === Carrusel que avanza solo y también se arrastra (mouse o dedo) ===
+// Los hijos tienen que venir duplicados (lista + copia) para que el loop sea continuo.
+const DragMarquee = ({ children, speed = 40 /* px por segundo */ }) => {
+  const viewportRef = React.useRef(null);
+  const trackRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const vp = viewportRef.current, tr = trackRef.current;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const gap = parseFloat(getComputedStyle(tr).columnGap) || 0;
+    const loopWidth = () => (tr.scrollWidth + gap) / 2; // ancho de una vuelta (una lista + su gap)
+
+    // Arranca con la primera card entera a la vista, después del difuminado del borde
+    const startOffset = Math.max(24, (vp.clientWidth - 1200) / 2 + 40);
+    let x = startOffset - loopWidth();
+    let hovering = false, pressed = false, dragging = false;
+    let downX = 0, downPos = 0, velocity = 0, lastX = 0, lastT = 0, last = performance.now(), raf;
+
+    const wrap = () => {
+      const L = loopWidth();
+      let shift = 0;
+      while (x <= -L) { x += L; shift += L; }
+      while (x > 0) { x -= L; shift -= L; }
+      return shift;
+    };
+    const render = () => { tr.style.transform = `translate3d(${x}px, 0, 0)`; };
+
+    const tick = (t) => {
+      const dt = Math.min(64, t - last) / 1000;
+      last = t;
+      if (!dragging) {
+        if (Math.abs(velocity) > 8) {            // inercia después de soltar
+          x += velocity * dt;
+          velocity *= Math.pow(0.03, dt);
+        } else if (!hovering && !reduceMotion) { // avance automático
+          velocity = 0;
+          x -= speed * dt;
+        }
+        wrap();
+        render();
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    const onDown = (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
+      pressed = true; dragging = false;
+      downX = lastX = e.clientX; downPos = x; lastT = performance.now(); velocity = 0;
+    };
+    const onMove = (e) => {
+      if (!pressed) return;
+      const dx = e.clientX - downX;
+      if (!dragging && Math.abs(dx) > 6) {
+        dragging = true;
+        vp.classList.add("is-dragging");
+        vp.setPointerCapture?.(e.pointerId); // recién acá, para que un click simple siga abriendo el proyecto
+      }
+      if (!dragging) return;
+      x = downPos + dx;
+      downPos += wrap();
+      render();
+      const now = performance.now();
+      const dtm = Math.max(1, now - lastT);
+      velocity = 0.8 * ((e.clientX - lastX) / dtm) * 1000 + 0.2 * velocity;
+      lastX = e.clientX; lastT = now;
+    };
+    const onUp = () => {
+      if (performance.now() - lastT > 120) velocity = 0; // si se quedó quieto antes de soltar, sin inercia
+      pressed = false;
+      // dejamos "dragging" activo hasta después del click para poder cancelarlo
+      setTimeout(() => { dragging = false; vp.classList.remove("is-dragging"); }, 0);
+    };
+    const onClick = (e) => { if (dragging) { e.preventDefault(); e.stopPropagation(); } };
+    const onEnter = (e) => { if (e.pointerType === "mouse") hovering = true; };
+    const onLeave = () => { hovering = false; };
+    const noNativeDrag = (e) => e.preventDefault();
+
+    vp.addEventListener("pointerdown", onDown);
+    vp.addEventListener("pointermove", onMove);
+    vp.addEventListener("pointerup", onUp);
+    vp.addEventListener("pointercancel", onUp);
+    vp.addEventListener("pointerenter", onEnter);
+    vp.addEventListener("pointerleave", onLeave);
+    vp.addEventListener("click", onClick, true);
+    vp.addEventListener("dragstart", noNativeDrag);
+    render();
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      vp.removeEventListener("pointerdown", onDown);
+      vp.removeEventListener("pointermove", onMove);
+      vp.removeEventListener("pointerup", onUp);
+      vp.removeEventListener("pointercancel", onUp);
+      vp.removeEventListener("pointerenter", onEnter);
+      vp.removeEventListener("pointerleave", onLeave);
+      vp.removeEventListener("click", onClick, true);
+      vp.removeEventListener("dragstart", noNativeDrag);
+    };
+  }, []);
+
+  return (
+    <div className="carousel drag-marquee" ref={viewportRef}>
+      <div className="carousel-track" ref={trackRef}>{children}</div>
+    </div>
+  );
+};
+
 const Works = () => {
   const { t, lang } = useT();
   const s = t.studio;
@@ -443,13 +550,11 @@ const Works = () => {
         </div>
       </div>
       {filter === "all" ? (
-        // Carrusel continuo hacia la izquierda: la lista va duplicada para que el loop no tenga corte. Se pausa con hover.
-        <div className="carousel" style={{ "--marquee-dur": `${projects.length * 11}s` }}>
-          <div className="carousel-track">
-            {projects.map(p => <Card key={p.id} p={p} />)}
-            {projects.map(p => <Card key={`${p.id}-dup`} p={p} hidden />)}
-          </div>
-        </div>
+        // Carrusel continuo hacia la izquierda, arrastrable; la lista va duplicada para que el loop no tenga corte
+        <DragMarquee>
+          {projects.map(p => <Card key={p.id} p={p} />)}
+          {projects.map(p => <Card key={`${p.id}-dup`} p={p} hidden />)}
+        </DragMarquee>
       ) : shown.length > 0 ? (
         <div className="work-static">
           {shown.map(p => <Card key={p.id} p={p} />)}
