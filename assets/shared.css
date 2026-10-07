@@ -57,12 +57,9 @@
   --clay: var(--lilac);
   --ink-line: var(--ink);
   --shadow-card: 0 1px 2px rgba(28, 26, 58, 0.05), 0 18px 34px -18px rgba(28, 26, 58, 0.2);
-
   /* Sombra cálida, como luz de lámpara — hover de botones y cards */
-  /* Brillo pastel en hover: lila a un lado, verde al otro y amarillo abajo, como luz tornasolada */
-  --glow: 0 0 0 1px rgba(196, 172, 240, 0.6), -22px 8px 44px -10px rgba(196, 172, 240, 0.85), 22px 8px 44px -10px rgba(158, 212, 168, 0.8), 0 28px 48px -14px rgba(246, 218, 110, 0.75);
-  --glow-soft: 0 0 0 1px rgba(196, 172, 240, 0.55), -14px 6px 30px -10px rgba(196, 172, 240, 0.75), 14px 6px 30px -10px rgba(158, 212, 168, 0.7), 0 18px 34px -12px rgba(246, 218, 110, 0.65);
-  --glow-border: rgba(196, 172, 240, 0.6);
+  /* Brillo pastel en hover: un solo color por elemento (ver "Color del brillo por card" más abajo) */
+  --glow-c: 196, 172, 240; /* lila por defecto */
   --focus: var(--indigo-soft);
   --ease: cubic-bezier(.2, .8, .25, 1);
 
@@ -80,6 +77,20 @@
 }
 
 * { box-sizing: border-box; }
+
+/* === Color del brillo por card ===
+   El brillo se arma en cada elemento con su propio --glow-c, así cada card puede tener un color.
+   Cards: alternan lila → verde → amarillo. Botones y pills: lila. */
+:root,
+.btn, .pill, .chip-link, .slider-arrow, .work-arrow,
+.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid, .paper-card {
+  --glow: 0 0 0 1px rgba(var(--glow-c), 0.55), 0 18px 40px -12px rgba(var(--glow-c), 0.9), 0 0 64px -10px rgba(var(--glow-c), 0.75);
+  --glow-soft: 0 0 0 1px rgba(var(--glow-c), 0.5), 0 12px 28px -10px rgba(var(--glow-c), 0.8), 0 0 44px -10px rgba(var(--glow-c), 0.65);
+  --glow-border: rgba(var(--glow-c), 0.75);
+}
+:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid):nth-child(3n+1) { --glow-c: 196, 172, 240; } /* lila */
+:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid):nth-child(3n+2) { --glow-c: 150, 210, 162; } /* verde */
+:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid):nth-child(3n)   { --glow-c: 244, 212, 96; }  /* amarillo */
 
 html, body {
   margin: 0;
