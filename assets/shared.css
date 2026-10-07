@@ -1162,19 +1162,35 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
           background-clip: text;
   color: transparent;
 }
-.contact-band .lede { font-size: 18px; color: rgba(236, 235, 248, 0.75); max-width: 500px; margin: 0 auto 36px; }
-.contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+.contact-band .lede { font-size: 18px; color: rgba(236, 235, 248, 0.78); max-width: 720px; margin: 0 auto 36px; }
+@media (min-width: 760px) { .contact-band .lede { white-space: nowrap; } }
+.contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 40px; }
+/* Botones de contacto: pastillas de color, cada una con su brillo */
 .chip-link {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 11px 20px;
+  --chip-bg: var(--lavender-soft);
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 9px 22px 9px 9px;
   border-radius: 100px;
-  background: rgba(244, 243, 251, 0.06);
-  border: 1px solid rgba(244, 243, 251, 0.16);
-  font-size: 14px;
-  color: #ecebf8;
+  background: var(--chip-bg);
+  border: 1px solid transparent;
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: 0 10px 30px -14px rgba(var(--glow-c), 0.9);
   transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
 }
-.chip-link:hover { transform: translateY(-2px); box-shadow: var(--glow-soft); border-color: var(--glow-border); background: rgba(244, 243, 251, 0.1); }
+.chip-link svg {
+  width: 38px; height: 38px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.chip-link:nth-child(1) { --chip-bg: #e6defc; --glow-c: 196, 172, 240; }  /* mail: lila */
+.chip-link:nth-child(2) { --chip-bg: #dbe7fd; --glow-c: 170, 197, 251; }  /* LinkedIn: celeste */
+.chip-link:nth-child(3) { --chip-bg: #dcf1e2; --glow-c: 150, 210, 162; }  /* WhatsApp: verde */
+.chip-link:hover { transform: translateY(-3px); background: #fff; box-shadow: var(--glow); border-color: var(--glow-border); }
 
 
 @media (prefers-reduced-motion: reduce) {
