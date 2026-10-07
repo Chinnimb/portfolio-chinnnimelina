@@ -557,12 +557,6 @@ const CaseNav = ({ c }) => (
           borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
           textDecoration: "none",
         }}>{c.back}</a>
-        <a href="index.html#contact" style={{
-          display: "inline-flex", alignItems: "center", gap: 10,
-          padding: "16px 32px", background: "transparent", border: "1px solid var(--ink)", color: "var(--ink)",
-          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
-          textDecoration: "none",
-        }}>¿Trabajamos juntos? →</a>
       </div>
     </div>
   </section>
@@ -594,6 +588,7 @@ const App = () => {
       <CursorSticker />
       <Nav active="work" />
       <CaseHeroWrapper />
+      <ContactCTA />
       <Footer />
       <TweaksPanel />
     </LangProvider>

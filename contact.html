@@ -317,42 +317,6 @@ const Services = () => (
   </section>
 );
 
-// ── CTA final ─────────────────────────────────────────────────────────────────
-const CtaBar = () => (
-  <section style={{
-    background: "var(--ink)", color: "var(--cream)",
-    padding: "64px 24px", textAlign: "center",
-  }}>
-    <div className="container-narrow">
-      <div style={{ marginBottom: 12 }}>
-        <SquiggleSticker size={48} color="var(--mustard)" style={{ display: "inline-block" }} />
-      </div>
-      <h2 style={{ color: "var(--cream)", fontSize: "clamp(28px, 4vw, 48px)", marginBottom: 16, lineHeight: 1.15 }}>
-        ¿Empezamos?
-      </h2>
-      <p style={{ color: "rgba(250,245,234,0.7)", fontSize: 17, marginBottom: 36, maxWidth: 440, margin: "0 auto 36px" }}>
-        Contame de tu proyecto y te respondo con ideas antes de que te arrepientas de no escribir antes.
-      </p>
-      <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-        <a href="mailto:melinabelenchinni@gmail.com" style={{
-          padding: "15px 32px", background: "var(--cream)", color: "var(--ink)",
-          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
-          textDecoration: "none", transition: "opacity 0.2s",
-        }}>
-          Escribime →
-        </a>
-        <a href="https://wa.me/5491122896457" target="_blank" rel="noopener" style={{
-          padding: "15px 32px", background: "transparent", color: "var(--cream)",
-          borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 13, letterSpacing: "0.05em",
-          border: "1px solid rgba(250,245,234,0.3)", textDecoration: "none", transition: "border-color 0.2s",
-        }}>
-          WhatsApp →
-        </a>
-      </div>
-    </div>
-  </section>
-);
-
 // ── App ───────────────────────────────────────────────────────────────────────
 const App = () => {
   useReveal();
@@ -363,7 +327,7 @@ const App = () => {
       <ContactHero />
       <ContactCards />
       <Services />
-      <CtaBar />
+      <ContactCTA />
       <Footer />
       <TweaksPanel />
     </LangProvider>

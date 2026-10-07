@@ -114,6 +114,12 @@ const TRANSLATIONS = {
       lede: "¿Tenés un proyecto, una idea o ganas de tomar un café virtual? Respondo en menos de 24hs, prometido.",
       email: "melinabelenchinni@gmail.com",
     },
+    cta: {
+      kicker: "Contacto",
+      title: "¿Tenés un <em>proyecto en mente</em>?",
+      lede: "Contame qué necesitás y te respondo dentro de las 24 horas.",
+      button: "Hablemos",
+    },
     footer: "© 2026 Chinni Design Studio · Melina Chinni",
   },
   en: {
@@ -229,6 +235,12 @@ const TRANSLATIONS = {
       title1: "Get in touch",
       lede: "Got a project, an idea, or just feel like a virtual coffee? I reply within 24hs, promise.",
       email: "melinabelenchinni@gmail.com",
+    },
+    cta: {
+      kicker: "Contact",
+      title: "Got a <em>project in mind</em>?",
+      lede: "Tell me what you need and I'll get back to you within 24 hours.",
+      button: "Let's talk",
     },
     footer: "© 2026 Chinni Design Studio · Melina Chinni",
   },

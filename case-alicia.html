@@ -337,14 +337,14 @@ const Process = ({ c }) => (
 );
 
 const Result = ({ c }) => (
-  <section className="cs-result">
+  <section className="cs-result cs-result-light">
     <div className="container-narrow reveal">
       <div className="eyebrow">{c.resultKicker}</div>
       <Rich as="h2" html={c.resultTitle} />
       <p>{c.resultBody}</p>
       <div className="cs-result-ctas">
-        <a href="contact.html" className="btn btn-light">{c.wantOne} <Arrow /></a>
-        <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-ghost-light">{c.live} <External /></a>
+        <a href="#contacto" className="btn btn-primary">{c.wantOne} <Arrow /></a>
+        <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-outline">{c.live} <External /></a>
       </div>
     </div>
   </section>
@@ -384,6 +384,7 @@ const App = () => (
   <LangProvider>
     <Nav active="work" />
     <Page />
+    <ContactCTA />
     <Footer />
   </LangProvider>
 );

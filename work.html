@@ -237,22 +237,6 @@ const WorkGrid = () => {
   );
 };
 
-const Contact = () => (
-  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden", textAlign: "center" }}>
-    <div className="sticker floating" style={{ top: 40, left: "12%", "--r": "-10deg" }}>
-      <LeafSticker size={40} color="var(--olive)" rotate={-10} />
-    </div>
-<div className="container-narrow reveal">
-      <div className="mono" style={{ color: "var(--rust)", marginBottom: 16 }}>— ¿TE GUSTÓ LO QUE VISTE?</div>
-      <h2 style={{ marginBottom: 20 }}>Hablemos de tu <span className="hl-rust">proyecto</span></h2>
-      <a href="mailto:hello@melinachinni.com" style={{
-        display: "inline-block", marginTop: 20,
-        background: "var(--ink)", color: "var(--cream)", padding: "16px 36px",
-        borderRadius: 100, fontFamily: "var(--font-mono)", fontSize: 14,
-      }}>escribime →</a>
-    </div>
-  </section>
-);
 
 const App = () => {
   useReveal();
@@ -262,7 +246,7 @@ const App = () => {
       <Nav active="work" />
       <WorkHero />
       <WorkGrid />
-      <Contact />
+      <ContactCTA />
       <Footer />
       <TweaksPanel />
     </LangProvider>

@@ -437,18 +437,6 @@ const Testimonials = ({ c }) => {
   );
 };
 
-const End = ({ c }) => (
-  <section className="cs-result">
-    <div className="container-narrow reveal">
-      <Rich as="h2" html={c.endTitle} />
-      <p>{c.endLede}</p>
-      <div className="cs-result-ctas">
-        <a href="contact.html" className="btn btn-light">{c.ctaContact} <Arrow /></a>
-        <a href="work.html" className="btn btn-ghost-light">{c.ctaWork}</a>
-      </div>
-    </div>
-  </section>
-);
 
 const Page = () => {
   const { lang } = useT();
@@ -462,7 +450,6 @@ const Page = () => {
       <Timeline c={c} />
       <Tools c={c} />
       <Testimonials c={c} />
-      <End c={c} />
     </>
   );
 };
@@ -471,6 +458,7 @@ const App = () => (
   <LangProvider>
     <Nav active="about" />
     <Page />
+    <ContactCTA />
     <Footer />
   </LangProvider>
 );
