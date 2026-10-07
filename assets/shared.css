@@ -1153,7 +1153,8 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   padding: 120px 0;
 }
 .contact-band .eyebrow { color: var(--periwinkle); }
-.contact-band h2 { font-size: clamp(42px, 5.4vw, 76px); line-height: 1; margin-bottom: 20px; color: #f8f7fd; }
+.contact-band h2 { font-size: clamp(34px, 4.4vw, 62px); line-height: 1.05; margin-bottom: 20px; color: #f8f7fd; }
+@media (min-width: 760px) { .contact-band h2 { white-space: nowrap; } .contact-band .container-narrow { max-width: 1100px; } }
 .contact-band h2 em {
   font-style: normal;
   font-weight: 300;
@@ -1162,35 +1163,33 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
           background-clip: text;
   color: transparent;
 }
-.contact-band .lede { font-size: 18px; color: rgba(236, 235, 248, 0.78); max-width: 720px; margin: 0 auto 36px; }
+.contact-band .lede { font-size: 18px; color: rgba(236, 235, 248, 0.8); max-width: 720px; margin: 0 auto 38px; }
 @media (min-width: 760px) { .contact-band .lede { white-space: nowrap; } }
-.contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 40px; }
-/* Botones de contacto: pastillas de color, cada una con su brillo */
+
+/* Botón principal del CTA: protagonista */
+.contact-band .btn-light {
+  padding: 19px 44px;
+  font-size: 17px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff 0%, #ece6fb 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 18px 44px -14px rgba(196, 172, 240, 0.9), 0 0 70px -10px rgba(196, 172, 240, 0.7);
+}
+.contact-band .btn-light:hover { background: #fff; box-shadow: 0 0 0 1px #fff, 0 22px 52px -12px rgba(196, 172, 240, 1), 0 0 90px -8px rgba(196, 172, 240, 0.85); }
+
+/* Contactos secundarios: discretos */
+.contact-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 34px; }
 .chip-link {
-  --chip-bg: var(--lavender-soft);
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 9px 22px 9px 9px;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px;
   border-radius: 100px;
-  background: var(--chip-bg);
-  border: 1px solid transparent;
-  font-size: 15.5px;
-  font-weight: 500;
-  color: var(--ink);
-  box-shadow: 0 10px 30px -14px rgba(var(--glow-c), 0.9);
-  transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease);
+  background: rgba(244, 243, 251, 0.06);
+  border: 1px solid rgba(244, 243, 251, 0.18);
+  font-size: 14px;
+  color: rgba(236, 235, 248, 0.85);
+  transition: transform 0.35s var(--ease), box-shadow 0.45s var(--ease), border-color 0.35s var(--ease), background 0.35s var(--ease), color 0.35s var(--ease);
 }
-.chip-link svg {
-  width: 38px; height: 38px;
-  padding: 10px;
-  border-radius: 50%;
-  background: #fff;
-  color: var(--ink);
-  flex-shrink: 0;
-}
-.chip-link:nth-child(1) { --chip-bg: #e6defc; --glow-c: 196, 172, 240; }  /* mail: lila */
-.chip-link:nth-child(2) { --chip-bg: #dbe7fd; --glow-c: 170, 197, 251; }  /* LinkedIn: celeste */
-.chip-link:nth-child(3) { --chip-bg: #dcf1e2; --glow-c: 150, 210, 162; }  /* WhatsApp: verde */
-.chip-link:hover { transform: translateY(-3px); background: #fff; box-shadow: var(--glow); border-color: var(--glow-border); }
+.chip-link svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+.chip-link:hover { transform: translateY(-2px); background: rgba(244, 243, 251, 0.14); color: #fff; box-shadow: var(--glow-soft); border-color: var(--glow-border); }
 
 
 @media (prefers-reduced-motion: reduce) {
@@ -1692,6 +1691,7 @@ body:not(.home) h2 { font-family: var(--font-display); font-weight: 500; letter-
   body:not(.home) h1 { font-size: clamp(44px, 4.8vw, 70px) !important; max-width: none !important; }
   body:not(.home) h2 { font-size: clamp(28px, 2.9vw, 42px) !important; max-width: none !important; }
   body:not(.home) [style*="grid-template-columns"] h2 { font-size: clamp(24px, 2.2vw, 32px) !important; }
+  body:not(.home) .contact-band h2 { font-size: clamp(34px, 4.4vw, 62px) !important; }
 }
 body:not(.home) h1 em,
 body:not(.home) h2 em {
