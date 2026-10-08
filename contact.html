@@ -143,28 +143,18 @@ const CONTACT_LINKS = [
 ];
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
+// Fondo: escritorio desde arriba con la agenda (generado con IA en Higgsfield)
 const ContactHero = () => (
-  <section style={{ paddingTop: 64, paddingBottom: 20, position: "relative", overflow: "hidden" }}>
-    <ParallaxSticker speed={-0.15} top="12%" left="4%">
-      <div className="sticker floating" style={{ "--r": "-10deg" }}>
-        <BranchSticker size={130} color="var(--olive)" rotate={-10} />
-      </div>
-    </ParallaxSticker>
-    <ParallaxSticker speed={-0.18} top="8%" right="5%">
-      <div className="sticker floating" style={{ "--r": "12deg", animationDelay: "0.8s" }}>
-        <FlowerSticker size={44} color="var(--terracotta)" rotate={12} />
-      </div>
-    </ParallaxSticker>
-
+  <section className="contact-hero">
     <div className="container-narrow" style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
-      <div className="mono" style={{ marginBottom: 20 }}>
-        <a href="index.html" className="link-animated" style={{ color: "var(--rust)" }}>← volver al inicio</a>
+      <div style={{ marginBottom: 20 }}>
+        <a href="index.html" className="contact-hero-back">← volver al inicio</a>
       </div>
-      <div className="mono" style={{ color: "var(--rust)", marginBottom: 18, letterSpacing: "0.12em" }}>— CONTACTO</div>
-      <h1 style={{ fontSize: "clamp(52px, 7vw, 96px)", marginBottom: 20, lineHeight: 1 }}>
-        Hablemos de tu <span className="hl-rust">proyecto</span>
+      <div className="eyebrow">Contacto</div>
+      <h1>
+        Hablemos de tu <em>proyecto</em>
       </h1>
-      <p style={{ fontSize: 19, color: "var(--ink-soft)", maxWidth: 540, margin: "0 auto" }}>
+      <p>
         Respondo en menos de 24hs. Si tenés un proyecto o una idea, escribime.
       </p>
     </div>
@@ -325,7 +315,7 @@ const App = () => {
   return (
     <LangProvider>
       <CursorSticker />
-      <Nav active="contact" />
+      <Nav active="contact" overlay />
       <ContactHero />
       <ContactCards />
       <Services />

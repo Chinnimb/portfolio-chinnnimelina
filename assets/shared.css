@@ -1856,3 +1856,23 @@ body:not(.home) h2 em {
 .hs-mood-img:hover img { transform: scale(1.05); }
 .hs-mood-swatches { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 4px; padding: 5px; border-radius: 8px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); }
 .hs-mood-swatches span { width: 16px; height: 16px; border-radius: 4px; }
+
+/* Contacto: hero con imagen generada con IA (escritorio con agenda) */
+.contact-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 170px 0 120px;
+  text-align: center;
+  color: #f4f3fb;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(23, 22, 58, 0.6) 0%, rgba(23, 22, 58, 0.3) 100%),
+    linear-gradient(180deg, rgba(23, 22, 58, 0.55) 0%, rgba(23, 22, 58, 0.35) 50%, rgba(23, 22, 58, 0.7) 100%),
+    url("photos/contacto-hero.jpg") center / cover no-repeat,
+    var(--night);
+}
+.contact-hero .eyebrow { color: var(--periwinkle); }
+.contact-hero h1 { color: #f8f7fd; font-size: clamp(44px, 5.4vw, 76px) !important; line-height: 1.02; margin-bottom: 20px; }
+.contact-hero h1 em { font-style: normal; font-weight: 300; background: linear-gradient(90deg, var(--periwinkle), var(--lilac) 55%, var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.contact-hero p { font-size: 19px; color: rgba(236, 235, 248, 0.85); max-width: 540px; margin: 0 auto; }
+.contact-hero-back { font-size: 14px; color: rgba(236, 235, 248, 0.8); }
+.contact-hero-back:hover { color: #fff; }
