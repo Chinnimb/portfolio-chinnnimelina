@@ -1882,3 +1882,15 @@ a.cs-shot-img { display: block; }
 .ctp-gallery-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1000px) { .ctp-gallery-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .ctp-gallery-4 { grid-template-columns: 1fr; } }
+
+/* Contacto: cards de contacto con degradé lila del hero */
+.contact-link-card {
+  background: linear-gradient(135deg, #dfe7fd 0%, #ece0fb 55%, #f6dff5 100%) !important;
+  border-color: rgba(185, 150, 230, 0.35) !important;
+}
+.contact-link-card span:first-child { color: var(--indigo) !important; }
+/* Contacto: servicios en carrusel */
+.svc-track { align-items: flex-start; }
+.svc-slide { flex: 0 0 auto; width: 360px; scroll-snap-align: start; }
+@media (max-width: 640px) { .svc-slide { width: 82vw; } }
+.svc-slide button { align-items: stretch !important; }
