@@ -1964,3 +1964,16 @@ a.cs-shot-img { display: block; }
 .cs-two-col .nor-personality li { padding-left: 36px; }
 /* margen rosado de cuaderno en la hoja izquierda */
 .cs-two-col > :first-child { box-shadow: inset 34px 0 0 -33px rgba(229, 175, 233, 0.7); }
+
+/* Sobre mí: testimonios */
+.about-testimonials { display: block; columns: 2; column-gap: 20px; max-width: 980px; margin: 0 auto; }
+.about-testimonials .tm-card { break-inside: avoid; margin-bottom: 20px; }
+.tm-card { display: flex; flex-direction: column; gap: 14px; }
+.tm-featured { background: linear-gradient(135deg, #dfe7fd 0%, #ece0fb 55%, #f6dff5 100%); border-color: rgba(185, 150, 230, 0.35); }
+.tm-featured blockquote { font-family: var(--font-display); font-size: 20px; line-height: 1.5; letter-spacing: -0.01em; }
+.tm-stars { color: #f0a640; letter-spacing: 2px; font-size: 15px; }
+.tm-stars span { color: var(--ink-mute); font-size: 13px; letter-spacing: 0; margin-left: 8px; }
+.about-testimonials blockquote { margin: 0; }
+.tm-source { text-align: center; margin-top: 28px; font-size: 14.5px; }
+.tm-source a { color: var(--indigo); }
+@media (max-width: 760px) { .about-testimonials { columns: 1; } }

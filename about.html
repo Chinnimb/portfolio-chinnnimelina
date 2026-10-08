@@ -27,7 +27,15 @@
 <script type="text/babel">
 // Testimonios: solo reales, con permiso del cliente. Mientras la lista esté vacía, la sección no se muestra.
 // Formato: { quote: "…", name: "Nombre", role: "Cargo · Empresa", country: "País" }
-const TESTIMONIALS = [];
+// Testimonios reales (reseñas de Upwork y de clientes). Solo nombres confirmados; el resto va como cliente de Upwork.
+// Formato: { quote, name, role: { es, en }, rating, date, featured }
+const TESTIMONIALS = [
+  { featured: true, quote: "Melina is an outstanding graphic designer and an absolute pleasure to work with. She has a strong eye for design, communicates clearly, and consistently delivers high-quality work with professionalism and care. Beyond her talent, she is thoughtful, reliable, and genuinely easy to collaborate with throughout the entire process. I would highly recommend her to anyone looking for a skilled designer, and I would gladly work with her again in the future.", name: "Heidi Bauer", role: { es: "Clienta en Upwork", en: "Upwork client" }, rating: 5, date: "2025 – 2026" },
+  { quote: "This is our second project with her. She really is the UI/UX designer that every company would like to have. Attentive, pays attention to details, works on her tasks, very well educated and a very good professional. We hope we can count on her again soon.", name: { es: "Cliente en Upwork", en: "Upwork client" }, role: { es: "Landing page · 2 proyectos", en: "Landing page · 2 projects" }, rating: 5, date: "2024" },
+  { quote: "Realmente Meli es una persona super comprometida e implicada en cada proyecto que se ha realizado, la super recomiendo ;)", name: { es: "Cliente", en: "Client" }, role: { es: "Proyectos de diseño", en: "Design projects" }, rating: 5 },
+  { quote: "She is a great designer. Good results!", name: { es: "Cliente en Upwork", en: "Upwork client" }, role: { es: "Landing para captar clientes", en: "Lead-generation landing page" }, rating: 4.8, date: "2025" },
+  { quote: "Melina gets the job done!", name: { es: "Cliente en Upwork", en: "Upwork client" }, role: { es: "Diseño web", en: "Web design" }, rating: 5, date: "2026" },
+];
 
 const CONTENT = {
   es: {
@@ -418,6 +426,7 @@ const Tools = ({ c }) => (
 );
 
 const Testimonials = ({ c }) => {
+  const { lang } = useT();
   if (!TESTIMONIALS.length) return null;
   return (
     <section className="cs-section cs-tint">
@@ -427,13 +436,18 @@ const Testimonials = ({ c }) => {
           <Rich as="h2" html={c.testimonialsTitle} />
         </div>
         <div className="about-testimonials">
-          {TESTIMONIALS.map(t => (
-            <figure key={t.name} className="cs-card reveal">
-              <blockquote>“{t.quote}”</blockquote>
-              <figcaption><strong>{t.name}</strong><span>{t.role} · {t.country}</span></figcaption>
-            </figure>
-          ))}
+          {TESTIMONIALS.map((t, i) => {
+            const L = v => (typeof v === "object" ? v[lang] || v.es : v);
+            return (
+              <figure key={i} className={`cs-card reveal tm-card ${t.featured ? "tm-featured" : ""}`}>
+                <div className="tm-stars" aria-label={`${t.rating} / 5`}>{"★★★★★"}<span>{t.rating.toFixed(1)}</span></div>
+                <blockquote>“{t.quote}”</blockquote>
+                <figcaption><strong>{L(t.name)}</strong><span>{L(t.role)}{t.date ? ` · ${t.date}` : ""}</span></figcaption>
+              </figure>
+            );
+          })}
         </div>
+        <p className="tm-source reveal"><a href="https://www.upwork.com/freelancers/~0130a1107f75341044" target="_blank" rel="noopener">{lang === "es" ? "Ver todas las reseñas en Upwork ↗" : "See all reviews on Upwork ↗"}</a></p>
       </div>
     </section>
   );
