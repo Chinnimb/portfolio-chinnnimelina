@@ -1894,3 +1894,13 @@ a.cs-shot-img { display: block; }
 .svc-slide { flex: 0 0 auto; width: 360px; scroll-snap-align: start; }
 @media (max-width: 640px) { .svc-slide { width: 82vw; } }
 .svc-slide button { align-items: stretch !important; }
+
+/* Caso Protocol */
+.pr-dark { background: #1f1410; color: #f3e6d8; }
+.pr-dark .section-head h2 { color: #fbf1e6; }
+.pr-dark .section-head h2 em { background: linear-gradient(90deg, #ffb27a, #ff7a3d); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pr-dark .section-head p { color: rgba(243, 230, 216, 0.75); }
+.pr-dark .eyebrow { color: #ffb27a; }
+.pr-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+.pr-videos video { aspect-ratio: auto; height: 100%; object-fit: cover; }
+@media (max-width: 640px) { .pr-videos { grid-template-columns: 1fr; } }

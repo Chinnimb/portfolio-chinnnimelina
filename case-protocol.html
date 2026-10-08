@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Protocol Health Club · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: web de Protocol Health Club con fotografía y video de producto generados con IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const SITE_URL = "https://protocolhealthclub.com/";
+const IMG = "assets/photos/protocol/";
+
+// Fotografía y video de producto y de estilo de vida generados con IA
+const PRODUCTS = ["prod-semaglutide.jpg", "prod-nad.jpg", "prod-metformin.jpg", "prod-quadmix.jpg", "prod-sermorelin.jpg", "prod-testosterone.jpg", "prod-pinnacle.jpg", "prod-b12.jpg"];
+const LIFESTYLE = ["vida-alegria.jpg", "vida-brazos.jpg", "vida-carrera.jpg", "vida-lectura.jpg", "vida-retrato.jpg", "vida-banda.jpg", "vida-pelo.jpg", "vida-estiramiento.jpg", "vida-embarazo.jpg", "vida-piel.jpg"];
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · Web + IA · 2026",
+    title: "Protocol · <em>Health Club</em>",
+    lede: "Diseño de la web de un club de salud que combina análisis de sangre, médicos y protocolos personalizados, con toda la fotografía y video de producto generados con IA.",
+    tags: ["UX/UI", "Web design", "AI Native", "Fotografía con IA", "Wellness"],
+    meta: [
+      { k: "Cliente", v: "Protocol Health Club" },
+      { k: "Rubro", v: "Salud · Longevidad" },
+      { k: "Mi rol", v: "UX/UI, imágenes con IA y desarrollo con IA" },
+      { k: "Estado", v: "Publicado" },
+    ],
+    live: "Ver sitio en vivo",
+    videoCaption: "Recorrido por el home del sitio publicado.",
+
+    contextKicker: "El proyecto",
+    contextTitle: "Salud guiada, <em>no genérica</em>",
+    contextBody: [
+      "Protocol es un club de salud en Estados Unidos: cada miembro se hace un análisis de sangre completo, un equipo médico lo interpreta y arma un protocolo personalizado de péptidos, suplementos o terapias hormonales, con seguimiento continuo.",
+      "La web tenía que explicar un servicio médico complejo de forma simple, transmitir confianza y llevar a la persona a elegir su panel de análisis. Fue uno de los proyectos donde mejor combiné UX/UI, imágenes generadas con IA e implementación asistida por IA.",
+    ],
+    goalsTitle: "Los desafíos",
+    goals: [
+      "Explicar un servicio médico en pocos pasos claros.",
+      "Generar confianza: médicos, laboratorios reales y resultados medibles.",
+      "Mostrar un catálogo grande de protocolos sin abrumar.",
+      "Crear un universo visual propio sin una sesión de fotos.",
+    ],
+
+    scaleKicker: "Cómo lo resolví",
+    scaleTitle: "Del dato <em>al protocolo</em>",
+    roles: [
+      { t: "Lo “normal” no alcanza", d: "Una barra visual que muestra la diferencia entre estar “en rango” y estar en el rango óptimo." },
+      { t: "Cuatro pasos", d: "El proceso explicado en cards: análisis, interpretación, protocolo y ajuste." },
+      { t: "Protocolos por objetivo", d: "Catálogo filtrable por meta: pérdida de grasa, músculo, energía, longevidad y más." },
+      { t: "Preguntas resueltas", d: "Un FAQ que responde costos, tiempos, seguridad y cobertura antes de empezar." },
+    ],
+
+    publicKicker: "El sitio",
+    publicTitle: "Pantallas <em>clave</em>",
+    publicLede: "Capturas del sitio publicado: del hero al alta, pasando por cada sección que guía la decisión.",
+    publicShots: [
+      { img: "home.jpg", t: "Hero", d: "Mensaje principal, llamado a la acción y beneficios destacados." },
+      { img: "normal.jpg", t: "Lo normal no es óptimo", d: "La idea central del servicio, explicada con una barra de rangos." },
+      { img: "steps.jpg", t: "Cómo funciona", d: "Cuatro pasos para convertir los datos en un protocolo guiado." },
+      { img: "coach.jpg", t: "Acompañamiento", d: "Consultas y seguimiento a partir de los análisis de cada persona." },
+      { img: "members.jpg", t: "Protocolos por objetivo", d: "Carrusel de metas: grasa, músculo, energía y longevidad." },
+      { img: "protocols.jpg", t: "Catálogo", d: "Productos filtrables por objetivo, con su fotografía de marca." },
+      { img: "faq.jpg", t: "Preguntas frecuentes", d: "Las dudas que frenan la decisión, respondidas antes del alta." },
+      { img: "get-started.jpg", t: "Empezá con un análisis", d: "Página de alta para elegir el panel de laboratorio." },
+    ],
+
+    productKicker: "Fotografía de producto con IA",
+    productTitle: "Un catálogo <em>sin estudio de fotos</em>",
+    productLede: "Generé con IA la fotografía de cada producto: frascos, cápsulas, cremas y kits con la etiqueta de la marca, la misma luz cálida y el naranja de Protocol en todas las piezas.",
+
+    lifeKicker: "Estilo de vida con IA",
+    lifeTitle: "Personas reales, <em>luz cálida</em>",
+    lifeLede: "Para acompañar cada objetivo, creé una serie de imágenes de estilo de vida con estética de película analógica: movimiento, cuerpo y bienestar, con acentos naranjas que conectan con la marca.",
+
+    videoKicker: "Video con IA",
+    videoTitle: "Producto <em>en movimiento</em>",
+
+    processKicker: "Proceso y herramientas",
+    processTitle: "De la idea al <em>sitio publicado</em>",
+    steps: [
+      { tool: "Research", title: "Entender el servicio", desc: "Cómo funciona el club, qué dudas tiene la gente y cómo hablan otros servicios de salud." },
+      { tool: "Figma", title: "UX y UI", desc: "Estructura del home, flujo de alta y sistema visual en naranja y crema." },
+      { tool: "Higgsfield", title: "Imágenes y video con IA", desc: "Fotografía de producto, estilo de vida y videos para todo el sitio." },
+      { tool: "Claude", title: "Desarrollo con IA", desc: "Construcción del sitio a partir del diseño, sección por sección." },
+      { tool: "Vercel", title: "Publicación", desc: "Deploy y ajustes continuos con el equipo del cliente." },
+    ],
+
+    resultKicker: "Resultado",
+    resultTitle: "Online en <em>protocolhealthclub.com</em>",
+    resultBody: "El sitio está publicado y en uso: explica el servicio, muestra el catálogo completo con fotografía propia y lleva a cada persona a elegir su análisis para empezar.",
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "CompraTuParcela",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Web + AI · 2026",
+    title: "Protocol · <em>Health Club</em>",
+    lede: "Website design for a health club that combines bloodwork, physicians and personalized protocols, with all product photography and video generated with AI.",
+    tags: ["UX/UI", "Web design", "AI Native", "AI photography", "Wellness"],
+    meta: [
+      { k: "Client", v: "Protocol Health Club" },
+      { k: "Industry", v: "Health · Longevity" },
+      { k: "My role", v: "UX/UI, AI imagery and AI-assisted build" },
+      { k: "Status", v: "Live" },
+    ],
+    live: "Visit the live site",
+    videoCaption: "Walkthrough of the live homepage.",
+
+    contextKicker: "The project",
+    contextTitle: "Guided health, <em>not generic</em>",
+    contextBody: [
+      "Protocol is a US health club: each member gets comprehensive bloodwork, a medical team interprets it and builds a personalized protocol of peptides, supplements or hormone therapies, with ongoing follow-up.",
+      "The site had to explain a complex medical service simply, build trust and lead people to choose their lab panel. It's one of the projects where I best combined UX/UI, AI-generated imagery and AI-assisted implementation.",
+    ],
+    goalsTitle: "The challenges",
+    goals: [
+      "Explain a medical service in a few clear steps.",
+      "Build trust: physicians, real labs and measurable results.",
+      "Show a large protocol catalog without overwhelming.",
+      "Create a distinct visual world without a photo shoot.",
+    ],
+
+    scaleKicker: "How I solved it",
+    scaleTitle: "From data <em>to protocol</em>",
+    roles: [
+      { t: "“Normal” isn't enough", d: "A visual bar showing the gap between being “in range” and being in the optimal range." },
+      { t: "Four steps", d: "The process in cards: test, interpret, protocol and recalibrate." },
+      { t: "Protocols by goal", d: "Catalog filterable by goal: fat loss, muscle, energy, longevity and more." },
+      { t: "Questions answered", d: "An FAQ covering cost, timing, safety and coverage before starting." },
+    ],
+
+    publicKicker: "The site",
+    publicTitle: "Key <em>screens</em>",
+    publicLede: "Captures of the live site: from the hero to sign-up, through each section that guides the decision.",
+    publicShots: [
+      { img: "home.jpg", t: "Hero", d: "Main message, call to action and key benefits." },
+      { img: "normal.jpg", t: "Normal isn't optimal", d: "The core idea of the service, explained with a range bar." },
+      { img: "steps.jpg", t: "How it works", d: "Four steps that turn data into a guided protocol." },
+      { img: "coach.jpg", t: "Coaching", d: "Consultations and follow-up based on each person's labs." },
+      { img: "members.jpg", t: "Protocols by goal", d: "Carousel of goals: fat, muscle, energy and longevity." },
+      { img: "protocols.jpg", t: "Catalog", d: "Products filterable by goal, with brand photography." },
+      { img: "faq.jpg", t: "FAQ", d: "The doubts that stall a decision, answered before sign-up." },
+      { img: "get-started.jpg", t: "Start with bloodwork", d: "Sign-up page to choose a lab panel." },
+    ],
+
+    productKicker: "AI product photography",
+    productTitle: "A catalog <em>without a photo studio</em>",
+    productLede: "I generated every product photo with AI: vials, capsules, creams and kits with the brand label, the same warm light and Protocol orange across all pieces.",
+
+    lifeKicker: "AI lifestyle imagery",
+    lifeTitle: "Real people, <em>warm light</em>",
+    lifeLede: "To support each goal, I created a lifestyle series with an analog-film look: movement, body and wellbeing, with orange accents tying back to the brand.",
+
+    videoKicker: "AI video",
+    videoTitle: "Product <em>in motion</em>",
+
+    processKicker: "Process & tools",
+    processTitle: "From idea to a <em>live site</em>",
+    steps: [
+      { tool: "Research", title: "Understand the service", desc: "How the club works, what people worry about and how other health services communicate." },
+      { tool: "Figma", title: "UX & UI", desc: "Homepage structure, sign-up flow and the orange-and-cream visual system." },
+      { tool: "Higgsfield", title: "AI images & video", desc: "Product photography, lifestyle and videos for the whole site." },
+      { tool: "Claude", title: "AI-assisted build", desc: "Building the site from the design, section by section." },
+      { tool: "Vercel", title: "Publishing", desc: "Deploys and ongoing updates with the client's team." },
+    ],
+
+    resultKicker: "Result",
+    resultTitle: "Live at <em>protocolhealthclub.com</em>",
+    resultBody: "The site is live and in use: it explains the service, shows the full catalog with original photography and leads each person to choose their lab panel to get started.",
+
+    nextLabel: "Next case",
+    nextTitle: "CompraTuParcela",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+const External = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+);
+const BrowserFrame = ({ children, url }) => (
+  <div className="cs-browser">
+    <div className="cs-browser-bar" aria-hidden="true"><span></span><span></span><span></span><div className="cs-browser-url">{url}</div></div>
+    {children}
+  </div>
+);
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">{c.meta.map(m => <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>)}</dl>
+      <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+    </div>
+    <div className="container cs-video-wrap reveal">
+      <BrowserFrame url="protocolhealthclub.com">
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption}>
+          <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
+        </video>
+      </BrowserFrame>
+      <p className="cs-caption">{c.videoCaption}</p>
+    </div>
+  </section>
+);
+
+const Context = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.contextKicker}</div>
+      <Rich as="h2" html={c.contextTitle} />
+    </div>
+    <div className="container cs-two-col">
+      <div className="reveal">{c.contextBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}</div>
+      <div className="cs-goals reveal"><h3>{c.goalsTitle}</h3><ul>{c.goals.map(g => <li key={g}>{g}</li>)}</ul></div>
+    </div>
+  </section>
+);
+
+const Roles = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.scaleKicker}</div>
+        <Rich as="h2" html={c.scaleTitle} />
+      </div>
+      <div className="cs-cards">
+        {c.roles.map((r, i) => (
+          <article key={r.t} className="cs-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="cs-card-num">0{i + 1}</div>
+            <h3>{r.t}</h3>
+            <p>{r.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Gallery = ({ kicker, title, lede, shots, tint, cols }) => (
+  <section className={`cs-section ${tint ? "cs-tint" : ""}`}>
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{kicker}</div>
+        <Rich as="h2" html={title} />
+        <p>{lede}</p>
+      </div>
+      <div className={`cs-gallery ${cols === 4 ? "ctp-gallery-4" : ""}`}>
+        {shots.map(s => (
+          <figure key={s.img} className="cs-shot reveal">
+            <a href={IMG + s.img} target="_blank" rel="noopener" className="cs-shot-img"><img src={IMG + s.img} alt={s.t} loading="lazy" /></a>
+            <figcaption><h3>{s.t}</h3><p>{s.d}</p></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Masonry = ({ kicker, title, lede, files, dark }) => (
+  <section className={`cs-section ${dark ? "pr-dark" : ""}`}>
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{kicker}</div>
+        <Rich as="h2" html={title} />
+        <p>{lede}</p>
+      </div>
+      <div className="nor-masonry">
+        {files.map(f => <figure key={f} className="nor-photo reveal"><img src={IMG + f} alt="" loading="lazy" /></figure>)}
+      </div>
+    </div>
+  </section>
+);
+
+const Videos = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.videoKicker}</div>
+        <Rich as="h2" html={c.videoTitle} />
+      </div>
+      <div className="pr-videos reveal">
+        {["video-sermorelin", "video-2"].map(v => (
+          <div key={v} className="nor-media"><video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}${v}-poster.jpg`}><source src={`${IMG}${v}.mp4`} type="video/mp4" /></video></div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={i} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span><h3>{s.title}</h3><p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
+const Result = ({ c }) => (
+  <section className="cs-result cs-result-light">
+    <div className="container-narrow reveal">
+      <div className="eyebrow">{c.resultKicker}</div>
+      <Rich as="h2" html={c.resultTitle} />
+      <p>{c.resultBody}</p>
+      <div className="cs-result-ctas">
+        <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+      </div>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-ctp.html" className="cs-next-link"><span>{c.nextLabel}</span><strong>{c.nextTitle} <Arrow size={20} /></strong></a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Context c={c} />
+      <Roles c={c} />
+      <Gallery kicker={c.publicKicker} title={c.publicTitle} lede={c.publicLede} shots={c.publicShots} />
+      <Masonry kicker={c.productKicker} title={c.productTitle} lede={c.productLede} files={PRODUCTS} dark />
+      <Videos c={c} />
+      <Masonry kicker={c.lifeKicker} title={c.lifeTitle} lede={c.lifeLede} files={LIFESTYLE} />
+      <Process c={c} />
+      <Result c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
