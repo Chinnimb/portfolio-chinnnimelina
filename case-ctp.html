@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>CompraTuParcela · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: diseño UX/UI de CompraTuParcela, un marketplace de parcelas con sitio público y paneles para personas, inmobiliarias, brokers y administración.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const SITE_URL = "https://ctp-gamma.vercel.app/";
+const IMG = "assets/photos/ctp/";
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · Producto digital · 2026",
+    title: "CompraTuParcela · <em>Marketplace</em>",
+    lede: "Diseño UX/UI de una plataforma para comprar y vender parcelas: un sitio público para buscar y comparar, y paneles de gestión para personas, inmobiliarias, brokers y administración.",
+    tags: ["UX/UI", "Producto digital", "Marketplace", "Dashboards", "Trabajo en equipo"],
+    meta: [
+      { k: "Proyecto", v: "CompraTuParcela" },
+      { k: "Rubro", v: "Inmobiliario · Parcelas" },
+      { k: "Mi rol", v: "Diseño UX/UI" },
+      { k: "Alcance", v: "+20 pantallas · 4 perfiles" },
+    ],
+    live: "Ver prototipo en vivo",
+    videoCaption: "Recorrido por el home del sitio público.",
+
+    contextKicker: "El proyecto",
+    contextTitle: "Comprar una parcela, <em>sin vueltas</em>",
+    contextBody: [
+      "Buscar una parcela suele ser un proceso desordenado: avisos dispersos, información incompleta y poca confianza en quién está del otro lado.",
+      "CompraTuParcela reúne todo en un solo lugar: parcelas verificadas, inmobiliarias y brokers especializados, y herramientas para comparar y decidir con datos claros. Fue un proyecto grande, con muchas funcionalidades, que diseñé trabajando en equipo.",
+    ],
+    goalsTitle: "Los desafíos",
+    goals: [
+      "Que buscar y filtrar parcelas sea simple, aunque haya muchas variables.",
+      "Generar confianza con información verificada y perfiles claros.",
+      "Diseñar herramientas de gestión para cuatro tipos de usuario distintos.",
+      "Mantener un mismo sistema visual en más de 20 pantallas.",
+    ],
+
+    scaleKicker: "Escala",
+    scaleTitle: "Un producto, <em>cuatro experiencias</em>",
+    roles: [
+      { t: "Personas", d: "Buscan, guardan y comparan parcelas, y gestionan sus publicaciones." },
+      { t: "Inmobiliarias", d: "Publican su catálogo, reciben consultas y siguen reservas." },
+      { t: "Brokers", d: "Gestionan leads, citas y propiedades asignadas." },
+      { t: "Administración", d: "Controla la plataforma, verifica publicaciones y mide resultados." },
+    ],
+
+    publicKicker: "Sitio público",
+    publicTitle: "Buscar, comparar <em>y decidir</em>",
+    publicLede: "Las pantallas que ve cualquier visitante: búsqueda con filtros, catálogo, directorios de inmobiliarias y brokers, contenido educativo y el comparador.",
+    publicShots: [
+      { img: "home.jpg", t: "Home", d: "Búsqueda por ubicación, superficie, condición y precio, con búsqueda inteligente." },
+      { img: "parcelas.jpg", t: "Parcelas en venta", d: "Listado con filtros, vista de lista o mapa y calculadora de presupuesto." },
+      { img: "inmobiliarias.jpg", t: "Inmobiliarias", d: "Directorio para encontrar inmobiliarias especializadas por nombre y región." },
+      { img: "brokers.jpg", t: "Brokers", d: "Expertos en parcelas filtrables por zona y especialidad." },
+      { img: "como-funciona.jpg", t: "Cómo funciona", d: "El proceso explicado paso a paso, de publicar a cerrar la venta." },
+      { img: "recursos.jpg", t: "Recursos", d: "Guías y noticias para comprar, vender e invertir en parcelas." },
+    ],
+
+    dashKicker: "Paneles de gestión",
+    dashTitle: "Un panel para <em>cada perfil</em>",
+    dashLede: "Cada tipo de usuario tiene su propio panel, con la información y las acciones que necesita en su día a día.",
+    dashShots: [
+      { img: "person-dashboard.jpg", t: "Panel personal", d: "Mis parcelas, publicaciones, guardados y consultas." },
+      { img: "real-estate-dashboard.jpg", t: "Panel de inmobiliaria", d: "Publicaciones activas, consultas, reservas y accesos rápidos." },
+      { img: "broker-dashboard.jpg", t: "Panel de broker", d: "Leads asignados, citas, consultas y propiedades en seguimiento." },
+      { img: "admin-dashboard.jpg", t: "Analítica", d: "Visitas, contactos, reservas y ventas con embudo de conversión." },
+      { img: "ctp-admin-dashboard.jpg", t: "Administración de la plataforma", d: "Actividad global, participantes, verificaciones y accesos rápidos." },
+    ],
+
+    flowsKicker: "Flujos y estados",
+    flowsTitle: "Pensado para <em>todos los casos</em>",
+    flowsLede: "Además de las pantallas principales, diseñé el registro, el comparador y los estados que muchas veces se olvidan: sin resultados, errores de carga, cargando y página no encontrada.",
+    flowShots: [
+      { img: "entry.jpg", t: "Ingreso", d: "Login con email o Google." },
+      { img: "completar-perfil.jpg", t: "Completar perfil", d: "Datos mínimos después de verificar la cuenta." },
+      { img: "comparador.jpg", t: "Comparador", d: "Estado vacío que invita a explorar parcelas." },
+      { img: "not-found.jpg", t: "404", d: "Una salida clara cuando la página no existe." },
+    ],
+
+    processKicker: "Proceso",
+    processTitle: "Cómo lo <em>diseñé</em>",
+    steps: [
+      { tool: "Research", title: "Entender el mercado", desc: "Cómo se busca y se vende una parcela hoy, y qué necesita cada actor." },
+      { tool: "Arquitectura", title: "Perfiles y flujos", desc: "Mapa del sitio público y de los cuatro paneles, con sus permisos." },
+      { tool: "Figma", title: "Wireframes", desc: "Estructura de cada pantalla, estados vacíos, errores y carga." },
+      { tool: "Figma", title: "UI y sistema", desc: "Interfaz final con componentes reutilizables para todo el producto." },
+      { tool: "Equipo", title: "Handoff", desc: "Trabajo con desarrollo y prototipo navegable para validar." },
+    ],
+
+    resultKicker: "Resultado",
+    resultTitle: "Un producto <em>listo para crecer</em>",
+    resultBody: "El diseño cubre el recorrido completo, de la primera búsqueda a la gestión diaria de cada perfil. El equipo de desarrollo lo está implementando por etapas.",
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "Alicia Erickson · VIP Community",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Digital product · 2026",
+    title: "CompraTuParcela · <em>Marketplace</em>",
+    lede: "UX/UI design for a platform to buy and sell land plots: a public site to search and compare, and management dashboards for individuals, real estate agencies, brokers and admins.",
+    tags: ["UX/UI", "Digital product", "Marketplace", "Dashboards", "Teamwork"],
+    meta: [
+      { k: "Project", v: "CompraTuParcela" },
+      { k: "Industry", v: "Real estate · Land" },
+      { k: "My role", v: "UX/UI design" },
+      { k: "Scope", v: "20+ screens · 4 profiles" },
+    ],
+    live: "View live prototype",
+    videoCaption: "Walkthrough of the public site homepage.",
+
+    contextKicker: "The project",
+    contextTitle: "Buying land, <em>made simple</em>",
+    contextBody: [
+      "Looking for a land plot is usually messy: scattered listings, incomplete information and little trust in who's on the other side.",
+      "CompraTuParcela brings it all together: verified plots, specialized agencies and brokers, and tools to compare and decide with clear data. It was a large project with many features, which I designed as part of a team.",
+    ],
+    goalsTitle: "The challenges",
+    goals: [
+      "Make searching and filtering simple, even with many variables.",
+      "Build trust with verified information and clear profiles.",
+      "Design management tools for four different user types.",
+      "Keep one visual system across 20+ screens.",
+    ],
+
+    scaleKicker: "Scale",
+    scaleTitle: "One product, <em>four experiences</em>",
+    roles: [
+      { t: "Individuals", d: "Search, save and compare plots, and manage their listings." },
+      { t: "Agencies", d: "Publish their catalog, get inquiries and track reservations." },
+      { t: "Brokers", d: "Manage leads, appointments and assigned properties." },
+      { t: "Admin", d: "Runs the platform, verifies listings and tracks results." },
+    ],
+
+    publicKicker: "Public site",
+    publicTitle: "Search, compare <em>and decide</em>",
+    publicLede: "The screens any visitor sees: filtered search, catalog, agency and broker directories, educational content and the comparison tool.",
+    publicShots: [
+      { img: "home.jpg", t: "Home", d: "Search by location, size, condition and price, plus smart search." },
+      { img: "parcelas.jpg", t: "Plots for sale", d: "Filtered listing with list or map view and a budget calculator." },
+      { img: "inmobiliarias.jpg", t: "Agencies", d: "Directory to find specialized agencies by name and region." },
+      { img: "brokers.jpg", t: "Brokers", d: "Land experts filterable by area and specialty." },
+      { img: "como-funciona.jpg", t: "How it works", d: "The process step by step, from listing to closing." },
+      { img: "recursos.jpg", t: "Resources", d: "Guides and news for buying, selling and investing in land." },
+    ],
+
+    dashKicker: "Dashboards",
+    dashTitle: "A dashboard for <em>each profile</em>",
+    dashLede: "Each user type has its own dashboard, with the information and actions they need day to day.",
+    dashShots: [
+      { img: "person-dashboard.jpg", t: "Personal dashboard", d: "My plots, listings, saved items and inquiries." },
+      { img: "real-estate-dashboard.jpg", t: "Agency dashboard", d: "Active listings, inquiries, reservations and shortcuts." },
+      { img: "broker-dashboard.jpg", t: "Broker dashboard", d: "Assigned leads, appointments, inquiries and tracked properties." },
+      { img: "admin-dashboard.jpg", t: "Analytics", d: "Visits, contacts, reservations and sales with a conversion funnel." },
+      { img: "ctp-admin-dashboard.jpg", t: "Platform admin", d: "Global activity, participants, verifications and shortcuts." },
+    ],
+
+    flowsKicker: "Flows & states",
+    flowsTitle: "Designed for <em>every case</em>",
+    flowsLede: "Beyond the main screens, I designed sign-up, the comparison tool and the often-forgotten states: no results, load errors, loading and page not found.",
+    flowShots: [
+      { img: "entry.jpg", t: "Sign in", d: "Login with email or Google." },
+      { img: "completar-perfil.jpg", t: "Complete profile", d: "Minimal details after verifying the account." },
+      { img: "comparador.jpg", t: "Comparison", d: "Empty state that invites exploring plots." },
+      { img: "not-found.jpg", t: "404", d: "A clear way out when a page doesn't exist." },
+    ],
+
+    processKicker: "Process",
+    processTitle: "How I <em>designed it</em>",
+    steps: [
+      { tool: "Research", title: "Understand the market", desc: "How land is searched and sold today, and what each actor needs." },
+      { tool: "Architecture", title: "Profiles & flows", desc: "Map of the public site and the four dashboards, with permissions." },
+      { tool: "Figma", title: "Wireframes", desc: "Structure of each screen, empty states, errors and loading." },
+      { tool: "Figma", title: "UI & system", desc: "Final interface with reusable components across the product." },
+      { tool: "Team", title: "Handoff", desc: "Work with development and a clickable prototype to validate." },
+    ],
+
+    resultKicker: "Result",
+    resultTitle: "A product <em>ready to grow</em>",
+    resultBody: "The design covers the full journey, from the first search to each profile's daily management. The development team is building it in stages.",
+
+    nextLabel: "Next case",
+    nextTitle: "Alicia Erickson · VIP Community",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+const External = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+);
+const BrowserFrame = ({ children, url }) => (
+  <div className="cs-browser">
+    <div className="cs-browser-bar" aria-hidden="true"><span></span><span></span><span></span><div className="cs-browser-url">{url}</div></div>
+    {children}
+  </div>
+);
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">{c.meta.map(m => <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>)}</dl>
+      <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+    </div>
+    <div className="container cs-video-wrap reveal">
+      <BrowserFrame url="ctp-gamma.vercel.app">
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption}>
+          <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
+        </video>
+      </BrowserFrame>
+      <p className="cs-caption">{c.videoCaption}</p>
+    </div>
+  </section>
+);
+
+const Context = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.contextKicker}</div>
+      <Rich as="h2" html={c.contextTitle} />
+    </div>
+    <div className="container cs-two-col">
+      <div className="reveal">{c.contextBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}</div>
+      <div className="cs-goals reveal"><h3>{c.goalsTitle}</h3><ul>{c.goals.map(g => <li key={g}>{g}</li>)}</ul></div>
+    </div>
+  </section>
+);
+
+const Roles = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.scaleKicker}</div>
+        <Rich as="h2" html={c.scaleTitle} />
+      </div>
+      <div className="cs-cards">
+        {c.roles.map((r, i) => (
+          <article key={r.t} className="cs-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="cs-card-num">0{i + 1}</div>
+            <h3>{r.t}</h3>
+            <p>{r.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Gallery = ({ kicker, title, lede, shots, tint, cols }) => (
+  <section className={`cs-section ${tint ? "cs-tint" : ""}`}>
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{kicker}</div>
+        <Rich as="h2" html={title} />
+        <p>{lede}</p>
+      </div>
+      <div className={`cs-gallery ${cols === 4 ? "ctp-gallery-4" : ""}`}>
+        {shots.map(s => (
+          <figure key={s.img} className="cs-shot reveal">
+            <a href={IMG + s.img} target="_blank" rel="noopener" className="cs-shot-img"><img src={IMG + s.img} alt={s.t} loading="lazy" /></a>
+            <figcaption><h3>{s.t}</h3><p>{s.d}</p></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={i} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span><h3>{s.title}</h3><p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
+const Result = ({ c }) => (
+  <section className="cs-result cs-result-light">
+    <div className="container-narrow reveal">
+      <div className="eyebrow">{c.resultKicker}</div>
+      <Rich as="h2" html={c.resultTitle} />
+      <p>{c.resultBody}</p>
+      <div className="cs-result-ctas">
+        <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+      </div>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-alicia.html" className="cs-next-link"><span>{c.nextLabel}</span><strong>{c.nextTitle} <Arrow size={20} /></strong></a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Context c={c} />
+      <Roles c={c} />
+      <Gallery kicker={c.publicKicker} title={c.publicTitle} lede={c.publicLede} shots={c.publicShots} />
+      <Gallery kicker={c.dashKicker} title={c.dashTitle} lede={c.dashLede} shots={c.dashShots} tint />
+      <Gallery kicker={c.flowsKicker} title={c.flowsTitle} lede={c.flowsLede} shots={c.flowShots} cols={4} />
+      <Process c={c} />
+      <Result c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
