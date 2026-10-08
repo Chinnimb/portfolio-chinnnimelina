@@ -74,86 +74,6 @@ const allProjects = [
     bg: "linear-gradient(135deg, #a8c5d8 0%, #7aa8c0 40%, #5a8fa8 100%)",
     href: "case-flok.html", rotate: -2, category: "Mobile", isPhoto: true, photoSrc: "assets/photos/Image 1.jpg",
   },
-  {
-    id: "petshop", year: "2025", title: "CloudNest™ Landing Page", subtitle: "Pet shop premium · Web",
-    desc: "Landing page completa para una marca premium de camas para mascotas. Diseñada y construida en Figma Make con React y Framer Motion.",
-    tags: ["Landing Page", "UI Design", "React"], metric: "9", metricLabel: "secciones",
-    color: "var(--terracotta)",
-    bg: "linear-gradient(135deg, #FFF0F5 0%, #FFE5E5 50%, #E5F0FF 100%)",
-    href: "case-petshop.html", rotate: 2, category: "Web Design",
-  },
-  {
-    id: "ecommerce", year: "2025", title: "Rediseño E-commerce", subtitle: "Moda online · Mobile-first",
-    desc: "Rediseño completo del checkout mobile. Investigación + UI + A/B testing.",
-    tags: ["UX", "UI", "Research"], metric: "+47%", metricLabel: "conversión",
-    color: "var(--terracotta)",
-    bg: "linear-gradient(135deg, #e8a87c 0%, #d88a5a 50%, #c67856 100%)",
-    href: "case-ecommerce.html", rotate: -3, category: "E-commerce",
-  },
-  {
-    id: "wellness", year: "2025", title: "App de Bienestar", subtitle: "Meditación · B2C",
-    desc: "App de mindfulness impulsada por IA. Onboarding conversacional y sesiones de 3 min.",
-    tags: ["Mobile", "AI", "UX"], metric: "87%", metricLabel: "retención d7",
-    color: "var(--olive)",
-    bg: "linear-gradient(135deg, #cdd4b4 0%, #a8b088 50%, #8a9960 100%)",
-    href: "case-wellness.html", rotate: 2, category: "Mobile",
-  },
-  {
-    id: "saas", year: "2024", title: "Dashboard SaaS", subtitle: "B2B · Analytics",
-    desc: "Dashboard de analytics limpio e intuitivo + design system Sprout.",
-    tags: ["B2B", "Data Viz", "DS"], metric: "-62%", metricLabel: "time-to-insight",
-    color: "var(--mustard)",
-    bg: "linear-gradient(135deg, #e4c67a 0%, #c79a3a 50%, #a87d2a 100%)",
-    href: "case-saas.html", rotate: -2, category: "SaaS",
-  },
-  {
-    id: "fintech", year: "2024", title: "App de Pagos", subtitle: "Fintech · Mobile",
-    desc: "Rediseño de app de pagos con 1.2M de usuarios. De 3.2★ a 4.7★ en stores.",
-    tags: ["Fintech", "Mobile", "UX"], metric: "4.7★", metricLabel: "app rating",
-    color: "var(--rust)",
-    bg: "linear-gradient(135deg, #8a9a4a 0%, #6b7848 50%, #4a5530 100%)",
-    href: "#", rotate: 3, category: "Fintech",
-  },
-  {
-    id: "marketplace", year: "2024", title: "Marketplace Local", subtitle: "C2C · Comunidad",
-    desc: "Marketplace hyper-local para productoras artesanales. Onboarding en 90 seg.",
-    tags: ["Marketplace", "C2C", "UX"], metric: "+3.1k", metricLabel: "vendedoras",
-    color: "var(--terracotta)",
-    bg: "linear-gradient(135deg, #d9b896 0%, #c67856 50%, #a85838 100%)",
-    href: "#", rotate: -1, category: "Marketplace",
-  },
-  {
-    id: "edtech", year: "2023", title: "Plataforma EdTech", subtitle: "B2C · Aprendizaje",
-    desc: "Experiencia de aprendizaje gamificada para adolescentes. Activation +31%.",
-    tags: ["EdTech", "Web", "Gamification"], metric: "+31%", metricLabel: "activation",
-    color: "var(--olive)",
-    bg: "linear-gradient(135deg, #e4c67a 0%, #b89a3a 50%, #8a7020 100%)",
-    href: "#", rotate: 2, category: "EdTech",
-  },
-  {
-    id: "brand", year: "2023", title: "Rebranding SaaS", subtitle: "Identidad · Guidelines",
-    desc: "Sistema visual completo: logo, tipografías, paleta, guidelines, templates.",
-    tags: ["Branding", "DS", "Identity"], metric: "68", metricLabel: "componentes",
-    color: "var(--mustard)",
-    bg: "linear-gradient(135deg, #c89890 0%, #a86c5a 50%, #804838 100%)",
-    href: "#", rotate: -2, category: "Branding",
-  },
-  {
-    id: "crypto", year: "2023", title: "Wallet Cripto", subtitle: "DeFi · Onboarding",
-    desc: "Simplificar el primer uso de una wallet. Bajamos el tiempo de setup de 12 a 3 min.",
-    tags: ["Web3", "Onboarding", "UX"], metric: "-75%", metricLabel: "setup time",
-    color: "var(--rust)",
-    bg: "linear-gradient(135deg, #b4a898 0%, #8a7e6e 50%, #5a5044 100%)",
-    href: "#", rotate: 1, category: "Web3",
-  },
-  {
-    id: "health", year: "2022", title: "Portal de Salud", subtitle: "Healthtech · Pacientes",
-    desc: "Portal para gestionar turnos y estudios. Accesibilidad WCAG AA certificada.",
-    tags: ["Health", "A11y", "Web"], metric: "AA", metricLabel: "WCAG nivel",
-    color: "var(--olive)",
-    bg: "linear-gradient(135deg, #b4c6b4 0%, #8aa890 50%, #5a7868 100%)",
-    href: "#", rotate: -3, category: "Health",
-  },
 ];
 
 const categories = ["Todos", ...new Set(allProjects.map(p => p.category))];
@@ -254,6 +174,10 @@ const WorkGrid = () => {
       <div className="container">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 40 }}>
           {filtered.map((p, i) => <ProjectCard key={p.id} p={p} i={i} />)}
+        </div>
+        <div className="older-work reveal">
+          <p>Estos son mis proyectos más recientes. Los anteriores están en Behance.</p>
+          <a href="https://www.behance.net/melinachinni" target="_blank" rel="noopener" className="btn btn-outline">Ver trabajos anteriores en Behance ↗</a>
         </div>
       </div>
     </section>

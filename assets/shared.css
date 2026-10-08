@@ -1977,3 +1977,7 @@ a.cs-shot-img { display: block; }
 .tm-source { text-align: center; margin-top: 28px; font-size: 14.5px; }
 .tm-source a { color: var(--indigo); }
 @media (max-width: 760px) { .about-testimonials { columns: 1; } }
+
+/* Trabajos: link a trabajos anteriores en Behance */
+.older-work { text-align: center; margin-top: 56px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.older-work p { color: var(--ink-soft); font-size: 16px; margin: 0; }
