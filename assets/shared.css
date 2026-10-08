@@ -1904,3 +1904,63 @@ a.cs-shot-img { display: block; }
 .pr-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
 .pr-videos video { aspect-ratio: auto; height: 100%; object-fit: cover; }
 @media (max-width: 640px) { .pr-videos { grid-template-columns: 1fr; } }
+
+/* ============================================
+   Casos: "El proyecto" como cuaderno abierto
+   hojas cuadriculadas sutiles, texto a la izquierda, lista con checks a la derecha
+   ============================================ */
+.cs-two-col {
+  position: relative;
+  gap: 0;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, transparent calc(50% - 22px), rgba(28, 26, 58, 0.10) calc(50% - 1px), rgba(28, 26, 58, 0.16) 50%, rgba(28, 26, 58, 0.10) calc(50% + 1px), transparent calc(50% + 22px)),
+    linear-gradient(rgba(111, 95, 208, 0.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(111, 95, 208, 0.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    #fffefb;
+  box-shadow:
+    0 1px 0 #fff inset,
+    0 2px 0 -1px #f1eee8, 0 4px 0 -2px #e9e5dd, 0 6px 0 -3px #e2ddd4,
+    0 40px 70px -40px rgba(28, 26, 58, 0.35);
+  border: 1px solid rgba(28, 26, 58, 0.07);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.cs-two-col > * { padding: 52px 56px 48px; }
+.cs-two-col > :first-child { padding-right: 64px; }
+.cs-two-col > :last-child { padding-left: 64px; }
+.cs-two-col .cs-body { font-size: 16.5px; max-width: none; }
+.cs-two-col .cs-goals { background: none; border: 0; border-radius: 0; }
+.cs-two-col .cs-goals h3 { font-size: 24px; margin-bottom: 22px; }
+.cs-two-col .cs-goals ul,
+.cs-two-col .nor-personality { gap: 18px; }
+.cs-two-col .cs-goals li { position: relative; padding-left: 36px; display: block; }
+.cs-two-col .cs-goals li::before {
+  content: "";
+  position: absolute; left: 0; top: 1px;
+  width: 22px; height: 22px; margin: 0;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #aac5fb, #c9a8ef);
+  box-shadow: none;
+}
+.cs-two-col .cs-goals li::after {
+  content: "";
+  position: absolute; left: 7px; top: 5px;
+  width: 6px; height: 11px;
+  border: solid #fff; border-width: 0 2.2px 2.2px 0;
+  transform: rotate(45deg);
+}
+@media (max-width: 1000px) {
+  .cs-two-col { grid-template-columns: 1fr; background:
+    linear-gradient(rgba(111, 95, 208, 0.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(111, 95, 208, 0.07) 1px, transparent 1px) 0 0 / 24px 24px, #fffefb; }
+  .cs-two-col > *, .cs-two-col > :first-child, .cs-two-col > :last-child { padding: 32px 26px; }
+  .cs-two-col > :last-child { border-top: 1px dashed rgba(28, 26, 58, 0.15); }
+}
+.cs-two-col .nor-personality strong,
+.cs-two-col .nor-personality span { display: block; }
+.cs-two-col .nor-personality li { padding-left: 36px; }
+/* margen rosado de cuaderno en la hoja izquierda */
+.cs-two-col > :first-child { box-shadow: inset 34px 0 0 -33px rgba(229, 175, 233, 0.7); }
