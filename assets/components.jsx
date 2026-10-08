@@ -102,7 +102,7 @@ const ContactCTA = () => {
             Behance
           </a>
           <a href="https://contra.com/melina_chinni_3rdmrgsg/work?r=melina_chinni_3rdmrgsg" target="_blank" rel="noopener" className="chip-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.5 0L9.93168 2.85907C9.22181 6.4302 6.4302 9.22181 2.85907 9.93168L0 10.5V13.5L2.85907 14.0683C6.43019 14.7782 9.22181 17.5698 9.93168 21.1409L10.5 24H13.5L14.0683 21.1409C14.7782 17.5698 17.5698 14.7782 21.1409 14.0683L24 13.5V10.5L21.1409 9.93168C17.5698 9.22181 14.7782 6.4302 14.0683 2.85907L13.5 0H10.5Z"/></svg>
             Contra
           </a>
         </div>
