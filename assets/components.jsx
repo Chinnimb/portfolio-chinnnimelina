@@ -115,7 +115,8 @@ const ContactModal = ({ onClose, onForm }) => {
     };
   }, []);
 
-  return (
+  // Se monta en <body> para quedar por encima de la nav y de cualquier sección
+  return ReactDOM.createPortal(
     <div className="modal-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" ref={dialogRef}>
         <button type="button" className="modal-close" onClick={onClose} aria-label={c.close}>
@@ -140,7 +141,8 @@ const ContactModal = ({ onClose, onForm }) => {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
@@ -373,7 +375,8 @@ const RequestModal = ({ service, onClose }) => {
     </div>
   );
 
-  return (
+  // Se monta en <body> para quedar por encima de la nav y de cualquier sección
+  return ReactDOM.createPortal(
     <div className="modal-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div className="modal" role="dialog" aria-modal="true" aria-labelledby="request-title" ref={dialogRef}>
         <button type="button" className="modal-close" onClick={onClose} aria-label={f.close}>
@@ -477,12 +480,13 @@ const RequestModal = ({ service, onClose }) => {
           </form>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 // Export globally
 Object.assign(window, {
   LeafSticker, BranchSticker, SquiggleSticker, CircleSticker,
   FlowerSticker, StarburstSticker, DotDashSticker, WashiTape,
-  CursorSticker, Logo, Nav, Footer, ContactCTA, useReveal, ParallaxSticker, TweaksPanel, RequestModal,
+  CursorSticker, Logo, Nav, Footer, ContactCTA, useReveal, ParallaxSticker, TweaksPanel, RequestModal, ContactModal,
 });
