@@ -226,9 +226,211 @@ const TweaksPanel = () => {
   );
 };
 
+// === Formulario de solicitud de servicio ===
+// Se envía con Web3Forms (web3forms.com), que reenvía las respuestas al mail asociado a la clave.
+// La clave se pide gratis en web3forms.com con el mail de contacto; es pública por diseño (va en el front).
+// Mientras esté vacía, el formulario abre el programa de mail con las respuestas ya escritas.
+const WEB3FORMS_KEY = "";
+
+// Etiquetas legibles para el mail
+const FIELD_LABELS = {
+  nombre: "Nombre", marca: "Marca o empresa", email: "Email", telefono: "Teléfono / WhatsApp",
+  servicio: "Servicio", detalle_servicio: "Detalle del servicio", tipo_de_proyecto: "Tipo de proyecto", necesidad: "Qué necesita",
+  plazo: "Plazo", presupuesto: "Presupuesto", marca_o_contenido: "Marca o contenido", links: "Web o redes",
+};
+
+const RequestModal = ({ service, onClose }) => {
+  const { t } = useT();
+  const s = t.studio;
+  const f = s.form;
+  const email = t.contact.email;
+  const [status, setStatus] = React.useState("idle"); // idle | sending | sent | mailto | error
+  const [current, setCurrent] = React.useState(service); // servicio elegido; cambia la pregunta específica
+  const ask = (s.services.find(sv => sv.title === current) || {}).ask;
+  const dialogRef = React.useRef(null);
+  const firstFieldRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const prevFocus = document.activeElement;
+    document.body.style.overflow = "hidden";
+    firstFieldRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "Tab" && dialogRef.current) {
+        // Mantiene el foco dentro del modal
+        const els = dialogRef.current.querySelectorAll("button, input, select, textarea, a[href]");
+        const first = els[0], last = els[els.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+      prevFocus?.focus?.();
+    };
+  }, []);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { _honey, ...data } = Object.fromEntries(new FormData(e.currentTarget).entries());
+    if (_honey) return; // bot
+    const subject = `Nueva solicitud: ${data.servicio} — ${data.nombre}`;
+    // Respuestas con etiquetas, en orden y sin campos vacíos
+    const fields = Object.fromEntries(
+      Object.entries(data).filter(([, v]) => String(v).trim()).map(([k, v]) => [FIELD_LABELS[k] || k, v])
+    );
+
+    if (!WEB3FORMS_KEY) {
+      // Sin clave todavía: abre el mail con todo escrito
+      const body = Object.entries(fields).map(([k, v]) => `${k}: ${v}`).join("\n\n");
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setStatus("mailto");
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject,
+          from_name: "Chinni Design Studio",
+          replyto: data.email,
+          botcheck: "",
+          ...fields,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      setStatus(res.ok && json.success ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const Choice = ({ name, options }) => (
+    <div className="choice-row">
+      {options.map((o, i) => (
+        <label key={o} className="choice">
+          <input type="radio" name={name} value={o} required={i === 0} />
+          <span>{o}</span>
+        </label>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="modal-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="modal" role="dialog" aria-modal="true" aria-labelledby="request-title" ref={dialogRef}>
+        <button type="button" className="modal-close" onClick={onClose} aria-label={f.close}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+
+        {status === "sent" || status === "mailto" ? (
+          <div className="modal-done">
+            <div className="modal-done-icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </div>
+            <h3 id="request-title">{status === "sent" ? f.sentTitle : f.mailtoTitle}</h3>
+            <p>{status === "sent" ? f.sentBody : f.mailtoBody}</p>
+            <button type="button" className="btn btn-primary" onClick={onClose}>{f.close}</button>
+          </div>
+        ) : (
+          <form onSubmit={onSubmit} className="request-form">
+            <div className="eyebrow">{s.requestCta}</div>
+            <h3 id="request-title">{f.title}</h3>
+            <p className="modal-intro">{f.intro}</p>
+
+            <input type="text" name="_honey" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+            <div className="field-grid">
+              <label className="field">
+                <span>{f.name} *</span>
+                <input ref={firstFieldRef} name="nombre" required autoComplete="name" />
+              </label>
+              <label className="field">
+                <span>{f.company} <em>{f.companyHint}</em></span>
+                <input name="marca" autoComplete="organization" />
+              </label>
+              <label className="field">
+                <span>{f.email} *</span>
+                <input name="email" type="email" required autoComplete="email" placeholder="nombre@email.com" />
+              </label>
+              <label className="field">
+                <span>{f.phone} <em>{f.phoneHint}</em></span>
+                <input name="telefono" type="tel" autoComplete="tel" inputMode="tel" placeholder="+54 9 11 1234 5678" />
+              </label>
+              <label className="field field-full">
+                <span>{f.service} *</span>
+                <select name="servicio" value={current} onChange={e => setCurrent(e.target.value)} required>
+                  {s.services.map(sv => <option key={sv.title} value={sv.title}>{sv.title}</option>)}
+                </select>
+              </label>
+            </div>
+
+            {ask && (
+              <fieldset className="field" key={current}>
+                <legend>{ask.label} *</legend>
+                <Choice name="detalle_servicio" options={ask.options} />
+              </fieldset>
+            )}
+
+            <fieldset className="field">
+              <legend>{f.projectType} *</legend>
+              <Choice name="tipo_de_proyecto" options={f.projectTypes} />
+            </fieldset>
+
+            <label className="field">
+              <span>{f.goal} *</span>
+              <textarea name="necesidad" rows={4} required placeholder={f.goalHint} />
+            </label>
+
+            <div className="field-grid">
+              <label className="field">
+                <span>{f.timeline} *</span>
+                <select name="plazo" required defaultValue="">
+                  <option value="" disabled>—</option>
+                  {f.timelines.map(o => <option key={o}>{o}</option>)}
+                </select>
+              </label>
+              <label className="field">
+                <span>{f.budget} *</span>
+                <select name="presupuesto" required defaultValue="">
+                  <option value="" disabled>—</option>
+                  {f.budgets.map(o => <option key={o}>{o}</option>)}
+                </select>
+              </label>
+            </div>
+
+            <fieldset className="field">
+              <legend>{f.assets} *</legend>
+              <Choice name="marca_o_contenido" options={f.assetsOptions} />
+            </fieldset>
+
+            <label className="field">
+              <span>{f.links} <em>{f.linksHint}</em></span>
+              <input name="links" placeholder="instagram.com/… · tumarca.com" />
+            </label>
+
+            {status === "error" && (
+              <p className="form-error" role="alert">{f.error} <a href={`mailto:${email}`}>{email}</a></p>
+            )}
+
+            <button type="submit" className="btn btn-primary form-submit" disabled={status === "sending"}>
+              {status === "sending" ? f.sending : <>{f.submit} <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></>}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+};
 // Export globally
 Object.assign(window, {
   LeafSticker, BranchSticker, SquiggleSticker, CircleSticker,
   FlowerSticker, StarburstSticker, DotDashSticker, WashiTape,
-  CursorSticker, Logo, Nav, Footer, ContactCTA, useReveal, ParallaxSticker, TweaksPanel,
+  CursorSticker, Logo, Nav, Footer, ContactCTA, useReveal, ParallaxSticker, TweaksPanel, RequestModal,
 });

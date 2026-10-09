@@ -898,7 +898,31 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 .service-list { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 8px; }
 .service-list li { font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
 .service-list li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--tint); box-shadow: 0 0 0 3px color-mix(in srgb, var(--tint) 30%, transparent); flex-shrink: 0; }
-.service-tools { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(28, 26, 58, 0.07); font-size: 12.5px; color: var(--ink-mute); }
+/* "Cómo trabajo": se despliega con los chevrones */
+.service-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s var(--ease); }
+.service-more.open { grid-template-rows: 1fr; }
+.service-process { overflow: hidden; min-height: 0; list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.service-more.open .service-process { padding-bottom: 20px; }
+.service-process li { display: flex; gap: 14px; align-items: flex-start; }
+.service-process li > span { font-family: var(--font-display); font-size: 13px; color: var(--ink-mute); padding-top: 2px; flex-shrink: 0; }
+.service-process strong { display: block; font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.service-process p { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+.service-toggle {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%;
+  padding: 14px 0 0;
+  border: 0; border-top: 1px solid rgba(28, 26, 58, 0.07);
+  background: none; cursor: pointer;
+  font: inherit; font-size: 13.5px; color: var(--ink-mute);
+  transition: color 0.3s;
+}
+.service-toggle:hover { color: var(--ink); }
+.service-toggle svg { transition: transform 0.4s var(--ease); animation: chevron-nudge 2.2s var(--ease) infinite; }
+.service-toggle[aria-expanded="true"] svg { transform: rotate(180deg); animation: none; }
+.service-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+@keyframes chevron-nudge { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .service-toggle svg { animation: none; } .service-more { transition: none; } }
 
 /* Slider de servicios: quieto, con flechas (y deslizable con el dedo o el trackpad) */
 .slider { position: relative; z-index: 1; }
@@ -936,7 +960,7 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
 /* Botón "Solicitar servicio" dentro de la card */
 .btn-outline { background: transparent; color: var(--ink); border-color: rgba(28, 26, 58, 0.18); }
 .btn-outline:hover { background: var(--ink); color: #f8f7fd; border-color: var(--ink); }
-.service-cta { margin-top: 20px; justify-content: center; width: 100%; padding: 13px 22px; font-size: 14.5px; }
+.service-cta { margin-top: 16px; justify-content: center; width: 100%; padding: 13px 22px; font-size: 14.5px; }
 
 /* ============================================
    Formulario de solicitud (modal)
@@ -1889,6 +1913,8 @@ a.cs-shot-img { display: block; }
 .svc-slide { flex: 0 0 auto; width: 360px; scroll-snap-align: start; }
 @media (max-width: 640px) { .svc-slide { width: 82vw; } }
 .svc-slide button { align-items: stretch !important; }
+/* Descripción con alto parejo: así el botón "Solicitar servicio" queda alineado en todas las cards */
+.svc-slide h3 + p { min-height: 4.8em; }
 
 /* Caso Protocol */
 .pr-dark { background: #1f1410; color: #f3e6d8; }
