@@ -53,23 +53,7 @@ const CONTENT = {
       label: "LO QUE ENTREGUÉ",
       items: ["Logo + variantes", "Paleta de colores", "Tipografías", "Moodboard", "Brandbook digital", "Brandbook imprimible", "Identidad visual completa"],
     },
-    results: {
-      label: "RESULTADOS",
-      title: "La marca habló sola",
-      body: "La nueva identidad de ALEO generó un impacto inmediato: miles de nuevos seguidores en Instagram desde el lanzamiento, y una respuesta entusiasta de los clientes mayoristas que ya conocían la marca. La propuesta visual conectó tan bien con el público que la cartera de pedidos se llenó antes de lo esperado.",
-      stats: [
-        { value: "+2k", label: "nuevos seguidores en IG" },
-        { value: "2", label: "meses de proyecto" },
-        { value: "100%", label: "clientes satisfechos" },
-      ],
-    },
     gallery: "GALERÍA",
-    testimonial: {
-      label: "LO QUE DIJO EL CLIENTE",
-      quote: "Melina entendió desde el primer momento lo que necesitábamos. La identidad que creó para ALEO nos representa completamente: es nuestra esencia hecha imagen. El proceso fue claro, organizado, y el resultado superó todo lo que imaginábamos.",
-      author: "Equipo ALEO",
-      role: "Indumentaria deportiva · Córdoba, Argentina",
-    },
     next: "Ver siguiente caso",
   },
   en: {
@@ -102,23 +86,7 @@ const CONTENT = {
       label: "DELIVERABLES",
       items: ["Logo + variants", "Color palette", "Typography", "Moodboard", "Digital brandbook", "Printable brandbook", "Full visual identity"],
     },
-    results: {
-      label: "RESULTS",
-      title: "The brand spoke for itself",
-      body: "ALEO's new identity had an immediate impact: thousands of new Instagram followers since launch, and enthusiastic responses from wholesale clients who already knew the brand. The visual proposal connected so well with the audience that the order book filled up ahead of schedule.",
-      stats: [
-        { value: "+2k", label: "new IG followers" },
-        { value: "2", label: "months of project" },
-        { value: "100%", label: "happy clients" },
-      ],
-    },
     gallery: "GALLERY",
-    testimonial: {
-      label: "CLIENT FEEDBACK",
-      quote: "Melina understood from the very first moment what we needed. The identity she created for ALEO fully represents us: it's our essence turned into image. The process was clear, organized, and the result exceeded everything we had imagined.",
-      author: "ALEO Team",
-      role: "Sportswear · Córdoba, Argentina",
-    },
     next: "See next case",
   },
 };
@@ -402,57 +370,6 @@ const Deliverables = ({ c }) => (
   </section>
 );
 
-const Results = ({ c }) => (
-  <section style={{ background: "var(--cream)", position: "relative", overflow: "hidden" }}>
-    <ParallaxSticker speed={-0.1} top="10%" right="5%">
-      <CircleSticker size={60} color="var(--rust-soft)" />
-    </ParallaxSticker>
-    <div className="container">
-      <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
-        <div className="mono" style={{ color: "var(--rust)", marginBottom: 16, letterSpacing: "0.12em" }}>{c.results.label}</div>
-        <h2 style={{ marginBottom: 24 }}>{c.results.title}</h2>
-        <p style={{ fontSize: 18, color: "var(--ink-soft)", maxWidth: 600, margin: "0 auto" }}>{c.results.body}</p>
-      </div>
-      <div style={{ display: "flex", gap: 32, justifyContent: "center", flexWrap: "wrap", marginTop: 48 }}>
-        {c.results.stats.map((s, i) => (
-          <div key={i} className="reveal polaroid" style={{ padding: "28px 36px 36px", textAlign: "center", transform: `rotate(${(i-1)*3}deg)`, transitionDelay: `${i*80}ms` }}>
-            <WashiTape width={70} rotate={-6} style={{ position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)" }} />
-            <div style={{ fontFamily: "var(--font-serif)", fontSize: 52, lineHeight: 1, color: "var(--olive-deep)", letterSpacing: "-0.02em" }}>{s.value}</div>
-            <div className="mono" style={{ color: "var(--ink-mute)", fontSize: 12, marginTop: 8 }}>{s.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const Testimonial = ({ c }) => (
-  <section style={{ background: "var(--paper)", paddingTop: 80, paddingBottom: 80 }}>
-    <div className="container-narrow">
-      <div className="reveal" style={{ textAlign: "center" }}>
-        <div className="mono" style={{ color: "var(--rust)", marginBottom: 32, letterSpacing: "0.12em" }}>{c.testimonial.label}</div>
-        <div style={{ position: "relative", padding: "48px 40px", background: "var(--cream)", borderRadius: 20, boxShadow: "0 20px 48px -16px rgba(28,43,58,0.1)" }}>
-          <div style={{
-            fontFamily: "var(--font-serif)", fontStyle: "italic",
-            fontSize: "clamp(20px, 2.5vw, 28px)", lineHeight: 1.55,
-            color: "var(--olive-deep)", marginBottom: 32,
-          }}>
-            "{c.testimonial.quote}"
-          </div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-            <div style={{ width: 40, height: 1, background: "var(--rust)", opacity: 0.5 }} />
-            <div>
-              <div style={{ fontFamily: "var(--font-serif)", fontSize: 16, color: "var(--ink)", fontWeight: 500 }}>{c.testimonial.author}</div>
-              <div className="mono" style={{ fontSize: 11, color: "var(--ink-mute)", marginTop: 2 }}>{c.testimonial.role}</div>
-            </div>
-            <div style={{ width: 40, height: 1, background: "var(--rust)", opacity: 0.5 }} />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 const CaseNav = ({ c }) => (
   <section style={{ paddingTop: 60, paddingBottom: 60, textAlign: "center" }}>
     <div className="container-narrow">
@@ -494,8 +411,6 @@ const CaseHeroWrapper = () => {
       <Process c={c} />
       <Gallery c={c} />
       <Deliverables c={c} />
-      <Results c={c} />
-      <Testimonial c={c} />
       <CaseNav c={c} />
     </>
   );
