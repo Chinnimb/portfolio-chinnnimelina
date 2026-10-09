@@ -528,34 +528,6 @@ const FlokDeliverables = () => (
   </section>
 );
 
-/* ─── Testimonial ────────────────────────────────────────────── */
-const FlokTestimonial = () => (
-  <section style={{ background: "#EEF4FB", paddingTop: 80, paddingBottom: 80 }}>
-    <div className="container-narrow">
-      <div className="reveal" style={{ textAlign: "center" }}>
-        <div className="mono" style={{ color: "#2D5B8A", marginBottom: 32, letterSpacing: "0.12em", fontSize: 12 }}><T s="— LO QUE DIJO EL CLIENTE" /></div>
-        <div style={{ position: "relative", padding: "48px 40px", background: "#fff", borderRadius: 20, boxShadow: "0 20px 48px -16px rgba(45,91,138,0.15)" }}>
-          <div style={{
-            fontFamily: "var(--font-serif)", fontStyle: "italic",
-            fontSize: "clamp(20px, 2.5vw, 26px)", lineHeight: 1.6,
-            color: "#1C2B3A", marginBottom: 32,
-          }}>
-            "Melina understood the complexity of the problem right away. The design she created is warm, functional and exactly what we needed: a product that works for every type of family without judgment. The UI kit she delivered made the handoff to development seamless."
-          </div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16 }}>
-            <div style={{ width: 40, height: 1, background: "#2D5B8A", opacity: 0.4 }} />
-            <div>
-              <div style={{ fontFamily: "var(--font-serif)", fontSize: 16, color: "#1C2B3A", fontWeight: 500 }}>Morten Kremmer</div>
-              <div className="mono" style={{ fontSize: 11, color: "rgba(45,91,138,0.5)", marginTop: 2 }}>Founder · Flok App · Denmark</div>
-            </div>
-            <div style={{ width: 40, height: 1, background: "#2D5B8A", opacity: 0.4 }} />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
 /* ─── Bottom nav ─────────────────────────────────────────────── */
 const FlokNav = () => (
   <section style={{ paddingTop: 60, paddingBottom: 60, textAlign: "center", background: "#fff" }}>
@@ -586,7 +558,6 @@ const App = () => {
       <FlokScreens />
       <FlokUIKit />
       <FlokDeliverables />
-      <FlokTestimonial />
       <FlokNav />
       <ContactCTA />
       <Footer />
