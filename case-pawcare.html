@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PawCare · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: PawCare, app mobile para una clínica veterinaria con experiencia para tutores y veterinarios, diseñada y construida con IA en Lovable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const SITE_URL = "https://care-critter-link.lovable.app/";
+const IMG = "assets/photos/pawcare/";
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · App mobile · 2026",
+    title: "PawCare · <em>App veterinaria</em>",
+    lede: "Una app para una clínica veterinaria que reúne turnos, vacunas, recetas, análisis y chat en un solo lugar, con una experiencia para tutores de mascotas y otra para el equipo veterinario.",
+    tags: ["App Design", "UX/UI", "AI Native", "Lovable", "Design system"],
+    meta: [
+      { k: "Proyecto", v: "PawCare" },
+      { k: "Rubro", v: "Salud animal · Clínica veterinaria" },
+      { k: "Mi rol", v: "Diseño UX/UI y construcción con IA" },
+      { k: "Alcance", v: "2 perfiles · app + design system" },
+    ],
+    live: "Ver la app en vivo",
+    videoCaption: "Recorrido por la portada de la app, en mobile.",
+    coverCaption: "Portada en escritorio.",
+
+    contextKicker: "El proyecto",
+    contextTitle: "La salud de tu mascota, <em>en tu bolsillo</em>",
+    contextBody: [
+      "Seguir la salud de una mascota suele quedar repartido entre papeles, mensajes sueltos y llamadas a la clínica: cuándo toca la próxima vacuna, qué receta falta, cuándo es el turno.",
+      "PawCare ordena todo eso en una app. El tutor ve a sus mascotas, sus turnos, el carnet sanitario y puede escribirle a la clínica. El veterinario tiene un panel para atender pacientes, responder chats, gestionar recetas y no perder ningún seguimiento.",
+    ],
+    goalsTitle: "Los desafíos",
+    goals: [
+      "Diseñar dos experiencias distintas, tutor y veterinario, dentro de la misma app.",
+      "Que lo urgente se encuentre rápido: un botón SOS siempre visible.",
+      "Mostrar información clínica de forma clara y cálida, sin que se sienta fría.",
+      "Construir la app funcionando, con un design system que la mantenga coherente.",
+    ],
+
+    featKicker: "Funcionalidades",
+    featTitle: "Pensada para <em>el día a día</em>",
+    features: [
+      { t: "Tutores", d: "Sus mascotas, próximos turnos, carnet de vacunas y chat con la clínica." },
+      { t: "Veterinarios", d: "Panel del día, pacientes, calendario, chats y gestión de recetas." },
+      { t: "SOS", d: "Emergencias a un toque: llamada a guardia, WhatsApp y qué hacer mientras esperás." },
+      { t: "Recordatorios", d: "Vacunas vencidas, seguimientos sugeridos y resultados a revisar." },
+    ],
+
+    tutorKicker: "Experiencia del tutor",
+    tutorTitle: "Todo sobre <em>tu mascota</em>",
+    tutorLede: "El inicio resume lo importante: mascotas, turnos y recetas activas, con el SOS siempre a mano.",
+    tutorShots: [
+      { img: "tutor-home.jpg", t: "Inicio", d: "Resumen de mascotas, turnos y recetas." },
+      { img: "tutor-turnos.jpg", t: "Mis mascotas y turnos", d: "Estado de cada mascota y próximos turnos." },
+      { img: "tutor-chat.jpg", t: "Chat con la clínica", d: "Consultas y seguimiento con el equipo." },
+      { img: "sos.jpg", t: "Emergencia", d: "Llamada, WhatsApp e indicaciones claras." },
+    ],
+
+    vetKicker: "Experiencia del veterinario",
+    vetTitle: "Un panel para <em>atender mejor</em>",
+    vetLede: "Herramientas para ordenar el trabajo de la clínica: pacientes, conversaciones, recetas y recordatorios.",
+    vetShots: [
+      { img: "vet-chats.jpg", t: "Bandeja de chats", d: "Conversaciones con tutores, con filtro de urgentes." },
+      { img: "vet-pacientes.jpg", t: "Pacientes", d: "Buscador y filtros del padrón de mascotas." },
+      { img: "vet-recordatorios.jpg", t: "Recordatorios", d: "Vacunas vencidas y seguimientos pendientes." },
+      { img: "vet-recetas.jpg", t: "Recetas", d: "Aprobar, entregar o rechazar pedidos." },
+    ],
+
+    flowKicker: "Ingreso y ajustes",
+    flowTitle: "De la portada <em>a la configuración</em>",
+    flowLede: "La portada presenta la app, el ingreso separa los dos perfiles y los ajustes incluyen tema claro u oscuro, idioma y notificaciones.",
+    flowShots: [
+      { img: "landing.jpg", t: "Portada", d: "Qué es PawCare y para quién es." },
+      { img: "login.jpg", t: "Ingreso", d: "Elegir perfil: tutor o veterinario." },
+      { img: "ajustes.jpg", t: "Configuración", d: "Cuenta, seguridad y biometría." },
+      { img: "ajustes-preferencias.jpg", t: "Preferencias", d: "Tema, idioma y notificaciones." },
+    ],
+
+    dsKicker: "Design system",
+    dsTitle: "Una base <em>para crecer</em>",
+    dsLede: "Armé un design system publicado dentro de la misma app: principios, colores como tokens, tipografía, botones con todos sus estados y cards. Así cada pantalla nueva mantiene el mismo lenguaje visual.",
+    dsMain: { img: "ds-top.jpg", t: "Fundamentos", d: "Cálido y humano, legible primero y consistente." },
+    dsShots: [
+      { img: "ds-colores.jpg", t: "Colores", d: "Tokens semánticos que se adaptan al modo claro y oscuro." },
+      { img: "ds-botones.jpg", t: "Botones", d: "Tamaños, variantes y estados de cada una." },
+      { img: "ds-tipografia.jpg", t: "Tipografía", d: "Poppins en pesos medios, con una jerarquía clara." },
+      { img: "ds-cards.jpg", t: "Cards", d: "Tres tamaños estándar y variantes destacada e inline." },
+    ],
+    dsLink: "Ver el design system completo",
+
+    processKicker: "Proceso",
+    processTitle: "Cómo lo <em>hice</em>",
+    steps: [
+      { tool: "Research", title: "Entender a los usuarios", desc: "Qué necesita un tutor y qué necesita la clínica en su día a día." },
+      { tool: "Arquitectura", title: "Dos perfiles", desc: "Navegación y flujos separados para tutor y veterinario." },
+      { tool: "Design system", title: "Base visual", desc: "Paleta, tipografía, tokens y componentes reutilizables." },
+      { tool: "Lovable", title: "Construcción con IA", desc: "Pantallas funcionando, iterando diseño y lógica a la vez." },
+      { tool: "Publicación", title: "App en vivo", desc: "Demo navegable y publicada para probarla desde el celular." },
+    ],
+
+    resultKicker: "Resultado",
+    resultTitle: "Una app <em>lista para probar</em>",
+    resultBody: "PawCare está publicada como demo navegable: se puede entrar como tutor o como veterinario y recorrer todas las pantallas desde el celular.",
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "Flok · Family Planner",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Mobile app · 2026",
+    title: "PawCare · <em>Vet app</em>",
+    lede: "An app for a veterinary clinic that brings appointments, vaccines, prescriptions, test results and chat together, with one experience for pet owners and another for the vet team.",
+    tags: ["App Design", "UX/UI", "AI Native", "Lovable", "Design system"],
+    meta: [
+      { k: "Project", v: "PawCare" },
+      { k: "Industry", v: "Animal health · Vet clinic" },
+      { k: "My role", v: "UX/UI design and AI-assisted build" },
+      { k: "Scope", v: "2 profiles · app + design system" },
+    ],
+    live: "View the live app",
+    videoCaption: "Walkthrough of the app's landing page, on mobile.",
+    coverCaption: "Landing page on desktop.",
+
+    contextKicker: "The project",
+    contextTitle: "Your pet's health, <em>in your pocket</em>",
+    contextBody: [
+      "Keeping track of a pet's health is usually scattered across paperwork, loose messages and calls to the clinic: when the next vaccine is due, which prescription is missing, when the appointment is.",
+      "PawCare puts it all in one app. Owners see their pets, appointments and health record, and can message the clinic. Vets get a dashboard to see patients, answer chats, manage prescriptions and never miss a follow-up.",
+    ],
+    goalsTitle: "The challenges",
+    goals: [
+      "Design two different experiences, owner and vet, inside the same app.",
+      "Make urgent things easy to find: an SOS button that's always visible.",
+      "Show clinical information clearly and warmly, without feeling cold.",
+      "Build a working app, with a design system that keeps it consistent.",
+    ],
+
+    featKicker: "Features",
+    featTitle: "Built for <em>everyday use</em>",
+    features: [
+      { t: "Pet owners", d: "Their pets, upcoming appointments, vaccine record and chat with the clinic." },
+      { t: "Vets", d: "Daily dashboard, patients, calendar, chats and prescription management." },
+      { t: "SOS", d: "Emergencies in one tap: call the on-duty vet, WhatsApp and what to do while you wait." },
+      { t: "Reminders", d: "Overdue vaccines, suggested follow-ups and results to review." },
+    ],
+
+    tutorKicker: "Pet owner experience",
+    tutorTitle: "Everything about <em>your pet</em>",
+    tutorLede: "The home screen sums up what matters: pets, appointments and active prescriptions, with SOS always at hand.",
+    tutorShots: [
+      { img: "tutor-home.jpg", t: "Home", d: "Summary of pets, appointments and prescriptions." },
+      { img: "tutor-turnos.jpg", t: "My pets & appointments", d: "Each pet's status and upcoming appointments." },
+      { img: "tutor-chat.jpg", t: "Chat with the clinic", d: "Questions and follow-up with the team." },
+      { img: "sos.jpg", t: "Emergency", d: "Call, WhatsApp and clear instructions." },
+    ],
+
+    vetKicker: "Vet experience",
+    vetTitle: "A dashboard to <em>care better</em>",
+    vetLede: "Tools to organize the clinic's work: patients, conversations, prescriptions and reminders.",
+    vetShots: [
+      { img: "vet-chats.jpg", t: "Chat inbox", d: "Conversations with owners, with an urgent filter." },
+      { img: "vet-pacientes.jpg", t: "Patients", d: "Search and filters across the pet registry." },
+      { img: "vet-recordatorios.jpg", t: "Reminders", d: "Overdue vaccines and pending follow-ups." },
+      { img: "vet-recetas.jpg", t: "Prescriptions", d: "Approve, deliver or reject requests." },
+    ],
+
+    flowKicker: "Sign-in & settings",
+    flowTitle: "From landing <em>to settings</em>",
+    flowLede: "The landing introduces the app, sign-in splits the two profiles, and settings include light or dark theme, language and notifications.",
+    flowShots: [
+      { img: "landing.jpg", t: "Landing", d: "What PawCare is and who it's for." },
+      { img: "login.jpg", t: "Sign in", d: "Choose a profile: owner or vet." },
+      { img: "ajustes.jpg", t: "Settings", d: "Account, security and biometrics." },
+      { img: "ajustes-preferencias.jpg", t: "Preferences", d: "Theme, language and notifications." },
+    ],
+
+    dsKicker: "Design system",
+    dsTitle: "A foundation <em>to grow on</em>",
+    dsLede: "I built a design system published inside the app itself: principles, color tokens, typography, buttons with all their states and cards. Every new screen keeps the same visual language.",
+    dsMain: { img: "ds-top.jpg", t: "Foundations", d: "Warm and human, legible first and consistent." },
+    dsShots: [
+      { img: "ds-colores.jpg", t: "Color", d: "Semantic tokens that adapt to light and dark mode." },
+      { img: "ds-botones.jpg", t: "Buttons", d: "Sizes, variants and the states of each one." },
+      { img: "ds-tipografia.jpg", t: "Typography", d: "Poppins in medium weights, with a clear hierarchy." },
+      { img: "ds-cards.jpg", t: "Cards", d: "Three standard sizes plus featured and inline variants." },
+    ],
+    dsLink: "See the full design system",
+
+    processKicker: "Process",
+    processTitle: "How I <em>made it</em>",
+    steps: [
+      { tool: "Research", title: "Understand the users", desc: "What an owner needs and what the clinic needs day to day." },
+      { tool: "Architecture", title: "Two profiles", desc: "Separate navigation and flows for owner and vet." },
+      { tool: "Design system", title: "Visual foundation", desc: "Palette, typography, tokens and reusable components." },
+      { tool: "Lovable", title: "AI-assisted build", desc: "Working screens, iterating design and logic together." },
+      { tool: "Publishing", title: "Live app", desc: "Clickable demo, published to try from your phone." },
+    ],
+
+    resultKicker: "Result",
+    resultTitle: "An app <em>ready to try</em>",
+    resultBody: "PawCare is published as a clickable demo: you can sign in as an owner or as a vet and go through every screen from your phone.",
+
+    nextLabel: "Next case",
+    nextTitle: "Flok · Family Planner",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+const External = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+);
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">{c.meta.map(m => <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>)}</dl>
+      <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+    </div>
+    <div className="container pc-hero-devices reveal">
+      <figure className="pc-hero-desktop">
+        <div className="cs-browser">
+          <div className="cs-browser-bar" aria-hidden="true"><span></span><span></span><span></span><div className="cs-browser-url">care-critter-link.lovable.app</div></div>
+          <img src={`${IMG}cover.jpg`} alt={c.coverCaption} />
+        </div>
+        <figcaption>{c.coverCaption}</figcaption>
+      </figure>
+      <figure className="pc-hero-phone">
+        <div className="pc-phone">
+          <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption}>
+            <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
+          </video>
+        </div>
+        <figcaption>{c.videoCaption}</figcaption>
+      </figure>
+    </div>
+  </section>
+);
+
+const Context = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.contextKicker}</div>
+      <Rich as="h2" html={c.contextTitle} />
+    </div>
+    <div className="container cs-two-col">
+      <div className="reveal">{c.contextBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}</div>
+      <div className="cs-goals reveal"><h3>{c.goalsTitle}</h3><ul>{c.goals.map(g => <li key={g}>{g}</li>)}</ul></div>
+    </div>
+  </section>
+);
+
+const Features = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.featKicker}</div>
+        <Rich as="h2" html={c.featTitle} />
+      </div>
+      <div className="cs-cards">
+        {c.features.map((r, i) => (
+          <article key={r.t} className="cs-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="cs-card-num">0{i + 1}</div>
+            <h3>{r.t}</h3>
+            <p>{r.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// Pantallas del celular, de a cuatro
+const Phones = ({ kicker, title, lede, shots, tint }) => (
+  <section className={`cs-section ${tint ? "cs-tint" : ""}`}>
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{kicker}</div>
+        <Rich as="h2" html={title} />
+        <p>{lede}</p>
+      </div>
+      <div className="pc-phones">
+        {shots.map((s, i) => (
+          <figure key={s.img} className="pc-shot reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <a href={IMG + s.img} target="_blank" rel="noopener" className="pc-phone"><img src={IMG + s.img} alt={s.t} loading="lazy" /></a>
+            <figcaption><h3>{s.t}</h3><p>{s.d}</p></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const DesignSystem = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.dsKicker}</div>
+        <Rich as="h2" html={c.dsTitle} />
+        <p>{c.dsLede}</p>
+      </div>
+      <figure className="cs-shot pc-ds-main reveal">
+        <a href={IMG + c.dsMain.img} target="_blank" rel="noopener" className="cs-shot-img"><img src={IMG + c.dsMain.img} alt={c.dsMain.t} loading="lazy" /></a>
+        <figcaption><h3>{c.dsMain.t}</h3><p>{c.dsMain.d}</p></figcaption>
+      </figure>
+      <div className="cs-gallery pc-ds">
+        {c.dsShots.map(s => (
+          <figure key={s.img} className="cs-shot reveal">
+            <a href={IMG + s.img} target="_blank" rel="noopener" className="cs-shot-img"><img src={IMG + s.img} alt={s.t} loading="lazy" /></a>
+            <figcaption><h3>{s.t}</h3><p>{s.d}</p></figcaption>
+          </figure>
+        ))}
+      </div>
+      <div className="pc-ds-link reveal">
+        <a href={`${SITE_URL}design-system`} target="_blank" rel="noopener" className="btn btn-outline">{c.dsLink} <External /></a>
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={i} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span><h3>{s.title}</h3><p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
+const Result = ({ c }) => (
+  <section className="cs-result cs-result-light">
+    <div className="container-narrow reveal">
+      <div className="eyebrow">{c.resultKicker}</div>
+      <Rich as="h2" html={c.resultTitle} />
+      <p>{c.resultBody}</p>
+      <div className="cs-result-ctas">
+        <a href={SITE_URL} target="_blank" rel="noopener" className="btn btn-primary">{c.live} <External /></a>
+      </div>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-flok.html" className="cs-next-link"><span>{c.nextLabel}</span><strong>{c.nextTitle} <Arrow size={20} /></strong></a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Context c={c} />
+      <Features c={c} />
+      <Phones kicker={c.tutorKicker} title={c.tutorTitle} lede={c.tutorLede} shots={c.tutorShots} />
+      <Phones kicker={c.vetKicker} title={c.vetTitle} lede={c.vetLede} shots={c.vetShots} tint />
+      <Phones kicker={c.flowKicker} title={c.flowTitle} lede={c.flowLede} shots={c.flowShots} />
+      <DesignSystem c={c} />
+      <Process c={c} />
+      <Result c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

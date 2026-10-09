@@ -83,14 +83,14 @@
    Cards: alternan lila → verde → amarillo. Botones y pills: lila. */
 :root,
 .btn, .pill, .chip-link, .slider-arrow, .work-arrow,
-.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid, .paper-card {
+.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .pc-shot, .polaroid, .paper-card {
   --glow: 0 0 0 1px rgba(var(--glow-c), 0.55), 0 18px 40px -12px rgba(var(--glow-c), 0.9), 0 0 64px -10px rgba(var(--glow-c), 0.75);
   --glow-soft: 0 0 0 1px rgba(var(--glow-c), 0.5), 0 12px 28px -10px rgba(var(--glow-c), 0.8), 0 0 44px -10px rgba(var(--glow-c), 0.65);
   --glow-border: rgba(var(--glow-c), 0.75);
 }
-:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid):nth-child(3n+1) { --glow-c: 196, 172, 240; } /* lila */
-:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid):nth-child(3n+2) { --glow-c: 150, 210, 162; } /* verde */
-:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .polaroid):nth-child(3n)   { --glow-c: 244, 212, 96; }  /* amarillo */
+:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .pc-shot, .polaroid):nth-child(3n+1) { --glow-c: 196, 172, 240; } /* lila */
+:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .pc-shot, .polaroid):nth-child(3n+2) { --glow-c: 150, 210, 162; } /* verde */
+:is(.service-card, .work-card, .cs-card, .cs-step, .cs-shot, .pc-shot, .polaroid):nth-child(3n)   { --glow-c: 244, 212, 96; }  /* amarillo */
 
 html, body {
   margin: 0;
@@ -2070,4 +2070,45 @@ a.cs-shot-img { display: block; }
   .nav-links .lang-switch button.active { color: var(--indigo) !important; }
   .nav.menu-open .nav-logo { position: relative; z-index: 60; color: var(--ink) !important; }
   body.menu-open { overflow: hidden; }
+}
+
+/* ============================================
+   CASO PAWCARE — pantallas de celular
+   ============================================ */
+.pc-hero-devices { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; margin-top: 56px; }
+.pc-hero-devices figure { margin: 0; }
+.pc-hero-devices figcaption { text-align: center; font-size: 13.5px; color: var(--ink-mute); margin-top: 14px; }
+.pc-hero-desktop img { display: block; width: 100%; height: auto; }
+.pc-phone {
+  display: block;
+  padding: 9px;
+  background: #1c1a3a;
+  border-radius: 38px;
+  box-shadow: 0 40px 80px -40px rgba(28, 26, 58, 0.5);
+  transition: transform 0.45s var(--ease), box-shadow 0.5s var(--ease);
+}
+.pc-phone img, .pc-phone video { display: block; width: 100%; height: auto; aspect-ratio: 900 / 1693; object-fit: cover; object-position: top; border-radius: 30px; background: #fff; }
+.pc-hero-phone .pc-phone { width: 280px; }
+.pc-hero-phone .pc-phone video { aspect-ratio: 390 / 844; }
+.pc-phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 28px; }
+.pc-shot { margin: 0; }
+.pc-shot:hover .pc-phone { transform: translateY(-6px); box-shadow: var(--glow); }
+.pc-shot figcaption { padding: 18px 4px 0; text-align: center; }
+.pc-shot h3 { font-family: var(--font-display); font-weight: 500; font-size: 18px; letter-spacing: -0.02em; margin-bottom: 4px; }
+.pc-shot p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+.pc-ds-main { margin-bottom: 36px; }
+.pc-ds-main .cs-shot-img { aspect-ratio: 1440 / 900; }
+.pc-ds { align-items: start; }
+.pc-ds .cs-shot-img { aspect-ratio: auto; }
+.pc-ds .cs-shot-img img { height: auto; }
+.pc-ds-link { display: flex; justify-content: center; margin-top: 40px; }
+@media (max-width: 1000px) {
+  .pc-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pc-hero-devices { grid-template-columns: 1fr; justify-items: center; }
+}
+@media (max-width: 520px) {
+  .pc-phones { gap: 28px 16px; }
+  .pc-phone { padding: 6px; border-radius: 26px; }
+  .pc-phone img { border-radius: 21px; }
+  .pc-hero-phone .pc-phone { width: 240px; }
 }
