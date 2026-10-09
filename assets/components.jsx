@@ -230,7 +230,7 @@ const TweaksPanel = () => {
 // Se envía con Web3Forms (web3forms.com), que reenvía las respuestas al mail asociado a la clave.
 // La clave se pide gratis en web3forms.com con el mail de contacto; es pública por diseño (va en el front).
 // Mientras esté vacía, el formulario abre el programa de mail con las respuestas ya escritas.
-const WEB3FORMS_KEY = "";
+const WEB3FORMS_KEY = "df34c0dc-bd1a-4c0c-89cf-ba1af7c2dac3";
 
 // Etiquetas legibles para el mail
 const FIELD_LABELS = {
