@@ -23,35 +23,35 @@
 <script type="text/babel">
 const allProjects = [
   {
-    id: "protocol", year: "2026", title: "Protocol · Health Club", subtitle: "Salud · Web + IA",
+    id: "protocol", year: "2026", en: { subtitle: "Health · Web + AI", desc: "Website for a health club with bloodwork, physicians and personalized protocols, featuring AI-generated product photography and video.", metricLabel: "protocolhealthclub.com" }, title: "Protocol · Health Club", subtitle: "Salud · Web + IA",
     desc: "Web de un club de salud con análisis, médicos y protocolos personalizados, con fotografía y video de producto generados con IA.",
     tags: ["UX/UI", "AI Native", "AI Generation"], metric: "Live", metricLabel: "protocolhealthclub.com",
     color: "var(--indigo)",
     href: "case-protocol.html", rotate: 0, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/protocol/prod-semaglutide.jpg",
   },
   {
-    id: "ctp", year: "2026", title: "CompraTuParcela", subtitle: "Marketplace · Producto digital",
+    id: "ctp", year: "2026", en: { subtitle: "Marketplace · Digital product", desc: "Platform to buy and sell land plots: public site and dashboards for individuals, agencies, brokers and admins.", metricLabel: "screens" }, title: "CompraTuParcela", subtitle: "Marketplace · Producto digital",
     desc: "Plataforma para comprar y vender parcelas: sitio público y paneles para personas, inmobiliarias, brokers y administración.",
     tags: ["UX/UI", "Marketplace", "Dashboards"], metric: "+20", metricLabel: "pantallas",
     color: "var(--indigo)",
     href: "case-ctp.html", rotate: 0, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/ctp/home.jpg",
   },
   {
-    id: "alicia", year: "2026", title: "Alicia Erickson · VIP Community", subtitle: "Coaching · Landing page",
+    id: "alicia", year: "2026", en: { desc: "Design and development of a women's coaching community landing page: from Figma to a live site on its own domain.", metricLabel: "aliciagroupcoaching.com" }, title: "Alicia Erickson · VIP Community", subtitle: "Coaching · Landing page",
     desc: "Diseño y desarrollo de la landing de una comunidad de coaching para mujeres: de Figma a un sitio publicado con dominio propio.",
     tags: ["Landing Page", "UX/UI", "AI Native"], metric: "Live", metricLabel: "aliciagroupcoaching.com",
     color: "var(--indigo)",
     href: "case-alicia.html", rotate: 0, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/alicia/recorrido-poster.jpg",
   },
   {
-    id: "nor", year: "2026", title: "NØR · Kayaks de la Patagonia", subtitle: "Kayaks · Branding",
+    id: "nor", year: "2026", en: { title: "NØR · Kayaks from Patagonia", desc: "Visual identity for a kayak brand from Argentine Patagonia, with AI-generated photography and video.", metric: "AI", metricLabel: "photos & video" }, title: "NØR · Kayaks de la Patagonia", subtitle: "Kayaks · Branding",
     desc: "Identidad visual para una marca de kayaks de la Patagonia argentina, con fotografía y video generados con IA.",
     tags: ["Branding", "Identity", "AI Generation"], metric: "IA", metricLabel: "fotos y video",
     color: "var(--indigo)",
     href: "case-nor.html", rotate: 0, category: "Branding", isPhoto: true, photoSrc: "assets/photos/nor/video-poster.jpg",
   },
   {
-    id: "hisoil", year: "2025", title: "Hisoil · Rediseño Web", subtitle: "Agro / Sustratos · Web Design",
+    id: "hisoil", year: "2025", en: { title: "Hisoil · Web Redesign", subtitle: "Agro / Substrates · Web Design", desc: "Full website redesign for a substrate company with 22 years in the field. From generic WooCommerce to a technical reference platform. In collaboration with Shifra Studio.", metricLabel: "product lines" }, title: "Hisoil · Rediseño Web", subtitle: "Agro / Sustratos · Web Design",
     desc: "Rediseño completo de sitio web para empresa de sustratos con 22 años de trayectoria. De WooCommerce genérico a plataforma técnica de referencia. En colaboración con Shifra Studio.",
     tags: ["Web Design", "UX/UI", "Benchmark"], metric: "5", metricLabel: "líneas de producto",
     color: "var(--olive)",
@@ -59,7 +59,7 @@ const allProjects = [
     href: "case-hisoil.html", rotate: -2, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/hisoil/video-poster.jpg",
   },
   {
-    id: "aleo", year: "2024", title: "ALEO Brandbook", subtitle: "Indumentaria deportiva · Branding",
+    id: "aleo", year: "2024", en: { subtitle: "Sportswear · Branding", desc: "Full visual identity for an Argentine sportswear brand: logo, palette, digital and print brandbook.", metricLabel: "new followers" }, title: "ALEO Brandbook", subtitle: "Indumentaria deportiva · Branding",
     desc: "Identidad visual completa para marca argentina de ropa deportiva: logo, paleta, brandbook digital e impreso.",
     tags: ["Branding", "Identity", "Print"], metric: "+2k", metricLabel: "seguidores nuevos",
     color: "var(--rust)",
@@ -67,7 +67,7 @@ const allProjects = [
     href: "case-aleo.html", rotate: 2, category: "Branding", isPhoto: true, photoSrc: "assets/photos/aleo-cover.jpg",
   },
   {
-    id: "flok", year: "2025", title: "Flok · Family Planner", subtitle: "App familiar · UX/UI",
+    id: "flok", year: "2025", en: { subtitle: "Family app · UX/UI", desc: "Complete UX and interface design for a family planner app, including research, wireframes, UI kit and final screens.", metricLabel: "start to finish" }, title: "Flok · Family Planner", subtitle: "App familiar · UX/UI",
     desc: "Diseño completo de UX e interfaz para una app de planner familiar. Incluye research, wireframes, UI kit y pantallas finales.",
     tags: ["UX Research", "UI Design", "Mobile"], metric: "UX+UI", metricLabel: "de inicio a fin",
     color: "var(--olive)",
@@ -89,19 +89,19 @@ const WorkHero = () => (
 </ParallaxSticker>
     <div className="container-narrow" style={{ textAlign: "center" }}>
       <div className="mono" style={{ marginBottom: 20 }}>
-        <a href="index.html" className="link-animated" style={{ color: "var(--rust)" }}>← volver al inicio</a>
+        <a href="index.html" className="link-animated" style={{ color: "var(--rust)" }}><Tx es="← volver al inicio" en="← back to home" /></a>
       </div>
-      <div className="mono" style={{ color: "var(--rust)", marginBottom: 18, letterSpacing: "0.12em" }}>— ARCHIVO · 2022–2026</div>
+      <div className="mono" style={{ color: "var(--rust)", marginBottom: 18, letterSpacing: "0.12em" }}><Tx es="— ARCHIVO · 2022–2026" en="— ARCHIVE · 2022–2026" /></div>
       <h1 style={{ fontSize: "clamp(60px, 8vw, 110px)", marginBottom: 24, lineHeight: 1 }}>
-        Todos los <span className="underline-wavy">trabajos</span>
+        <Tx es="Todos los " en="All " /><span className="underline-wavy"><Tx es="trabajos" en="work" /></span>
       </h1>
       <p style={{ fontSize: 19, color: "var(--ink-soft)", maxWidth: 600, margin: "0 auto" }}>
-        Un recorrido completo por los proyectos en los que dejé huella. Desde startups tempranas hasta plataformas con millones de usuarios.
+        <Tx es="Una selección de proyectos de producto, web, branding e imágenes con IA, de punta a punta." en="A selection of product, web, branding and AI imagery projects, end to end." />
       </p>
       <div style={{ display: "flex", justifyContent: "center", gap: 40, marginTop: 40, flexWrap: "wrap" }}>
-        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--rust)", lineHeight: 1 }}>40+</div><div className="mono" style={{ color: "var(--ink-mute)" }}>proyectos</div></div>
-        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--olive)", lineHeight: 1 }}>6</div><div className="mono" style={{ color: "var(--ink-mute)" }}>países</div></div>
-        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--mustard)", lineHeight: 1 }}>+4</div><div className="mono" style={{ color: "var(--ink-mute)" }}>años</div></div>
+        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--rust)", lineHeight: 1 }}>40+</div><div className="mono" style={{ color: "var(--ink-mute)" }}><Tx es="proyectos" en="projects" /></div></div>
+        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--olive)", lineHeight: 1 }}>6</div><div className="mono" style={{ color: "var(--ink-mute)" }}><Tx es="países" en="countries" /></div></div>
+        <div><div style={{ fontFamily: "var(--font-hand)", fontSize: 48, color: "var(--mustard)", lineHeight: 1 }}>+4</div><div className="mono" style={{ color: "var(--ink-mute)" }}><Tx es="años" en="years" /></div></div>
       </div>
     </div>
   </section>
@@ -118,13 +118,16 @@ const Filters = ({ active, onChange }) => (
           color: active === c ? "var(--cream)" : "var(--ink-soft)",
           fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.05em",
           cursor: "pointer", transition: "all 0.2s",
-        }}>{c}</button>
+        }}>{c === "Todos" ? <Tx es="Todos" en="All" /> : c}</button>
       ))}
     </div>
   </div>
 );
 
-const ProjectCard = ({ p, i }) => (
+const ProjectCard = ({ p: base, i }) => {
+  const { lang } = useT();
+  const p = lang === "en" && base.en ? { ...base, ...base.en } : base;
+  return (
   <a href={p.href} className="reveal polaroid" style={{
     padding: "16px 16px 30px",
     transform: `rotate(${p.rotate}deg)`,
@@ -159,10 +162,11 @@ const ProjectCard = ({ p, i }) => (
     <div className="mono" style={{ color: p.color, marginBottom: 10, fontSize: 12 }}>{p.subtitle}</div>
     <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 16 }}>{p.desc}</p>
     <span className="link-animated" style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink)" }}>
-      {p.href === "#" ? "Próximamente ↗" : "Ver caso de estudio ↗"}
+      <Tx es="Ver caso de estudio ↗" en="View case study ↗" />
     </span>
   </a>
-);
+  );
+};
 
 const WorkGrid = () => {
   const [filter, setFilter] = React.useState("Todos");
@@ -176,8 +180,8 @@ const WorkGrid = () => {
           {filtered.map((p, i) => <ProjectCard key={p.id} p={p} i={i} />)}
         </div>
         <div className="older-work reveal">
-          <p>Estos son mis proyectos más recientes. Los anteriores están en Behance.</p>
-          <a href="https://www.behance.net/melinachinni" target="_blank" rel="noopener" className="btn btn-outline">Ver trabajos anteriores en Behance ↗</a>
+          <p><Tx es="Estos son mis proyectos más recientes. Los anteriores están en Behance." en="These are my most recent projects. Earlier work is on Behance." /></p>
+          <a href="https://www.behance.net/melinachinni" target="_blank" rel="noopener" className="btn btn-outline"><Tx es="Ver trabajos anteriores en Behance ↗" en="See earlier work on Behance ↗" /></a>
         </div>
       </div>
     </section>

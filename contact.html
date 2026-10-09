@@ -31,13 +31,13 @@ const SERVICES = [
       </svg>
     ),
     label: "UX / UI Design",
-    desc: "Apps, webs y dashboards pensados desde el usuario, con interfaces claras y consistentes.",
+    desc: { es: "Apps, webs y dashboards pensados desde el usuario, con interfaces claras y consistentes.", en: "Apps, websites and dashboards built around the user, with clear and consistent interfaces." },
     color: "var(--indigo)",
     process: [
-      { step: "01", title: "Descubrir", body: "Entender el problema, el negocio y a quién está dirigido antes de abrir Figma." },
-      { step: "02", title: "Wireframes", body: "Flujos y estructura en baja fidelidad para validar rápido antes de entrar en detalle." },
-      { step: "03", title: "Diseño visual", body: "Interfaz en alta fidelidad, componentes y prototipo navegable." },
-      { step: "04", title: "Handoff", body: "Entrega a desarrollo con especificaciones claras y documentación." },
+      { step: "01", title: { es: "Descubrir", en: "Discover" }, body: { es: "Entender el problema, el negocio y a quién está dirigido antes de abrir Figma.", en: "Understand the problem, the business and who it's for before opening Figma." } },
+      { step: "02", title: "Wireframes", body: { es: "Flujos y estructura en baja fidelidad para validar rápido antes de entrar en detalle.", en: "Low-fidelity flows and structure to validate fast before getting into detail." } },
+      { step: "03", title: { es: "Diseño visual", en: "Visual design" }, body: { es: "Interfaz en alta fidelidad, componentes y prototipo navegable.", en: "High-fidelity interface, components and a clickable prototype." } },
+      { step: "04", title: "Handoff", body: { es: "Entrega a desarrollo con especificaciones claras y documentación.", en: "Delivery to development with clear specs and documentation." } },
     ],
   },
   {
@@ -47,13 +47,13 @@ const SERVICES = [
       </svg>
     ),
     label: "AI Native Designer",
-    desc: "Diseño desde cero y lo dejo funcionando: del prototipo al sitio publicado, con IA en cada paso.",
+    desc: { es: "Diseño desde cero y lo dejo funcionando: del prototipo al sitio publicado, con IA en cada paso.", en: "I design from scratch and ship it working: from prototype to live site, with AI at every step." },
     color: "var(--moss)",
     process: [
-      { step: "01", title: "Diseño", body: "Estructura y diseño visual en Figma o Figma Make." },
-      { step: "02", title: "Desarrollo con IA", body: "Construcción del sitio con Claude, sección por sección, a partir del diseño." },
-      { step: "03", title: "Código y versiones", body: "Repositorio en GitHub para ordenar cambios y revisiones." },
-      { step: "04", title: "Publicación", body: "Deploy en Vercel y conexión del dominio propio." },
+      { step: "01", title: { es: "Diseño", en: "Design" }, body: { es: "Estructura y diseño visual en Figma o Figma Make.", en: "Structure and visual design in Figma or Figma Make." } },
+      { step: "02", title: { es: "Desarrollo con IA", en: "AI-assisted build" }, body: { es: "Construcción del sitio con Claude, sección por sección, a partir del diseño.", en: "Building the site with Claude, section by section, from the design." } },
+      { step: "03", title: { es: "Código y versiones", en: "Code & versions" }, body: { es: "Repositorio en GitHub para ordenar cambios y revisiones.", en: "GitHub repository to keep changes and revisions organized." } },
+      { step: "04", title: { es: "Publicación", en: "Publishing" }, body: { es: "Deploy en Vercel y conexión del dominio propio.", en: "Deploy on Vercel and custom domain setup." } },
     ],
   },
   {
@@ -62,14 +62,14 @@ const SERVICES = [
         <path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>
       </svg>
     ),
-    label: "Diseño de e‑commerce",
-    desc: "Tiendas online que guían la compra, desde la home hasta el checkout.",
+    label: { es: "Diseño de e‑commerce", en: "E‑commerce design" },
+    desc: { es: "Tiendas online que guían la compra, desde la home hasta el checkout.", en: "Online stores that guide the purchase, from homepage to checkout." },
     color: "var(--orchid)",
     process: [
-      { step: "01", title: "Análisis", body: "Revisión de la tienda actual, el catálogo y el recorrido de compra." },
-      { step: "02", title: "Estructura", body: "Navegación, categorías y fichas de producto pensadas para encontrar rápido." },
-      { step: "03", title: "Diseño", body: "Home, listados, ficha y checkout, con foco en la experiencia mobile." },
-      { step: "04", title: "Implementación", body: "Entrega lista para Shopify, Tiendanube o la plataforma que uses." },
+      { step: "01", title: { es: "Análisis", en: "Analysis" }, body: { es: "Revisión de la tienda actual, el catálogo y el recorrido de compra.", en: "Review of the current store, catalog and purchase journey." } },
+      { step: "02", title: { es: "Estructura", en: "Structure" }, body: { es: "Navegación, categorías y fichas de producto pensadas para encontrar rápido.", en: "Navigation, categories and product pages designed to find things fast." } },
+      { step: "03", title: { es: "Diseño", en: "Design" }, body: { es: "Home, listados, ficha y checkout, con foco en la experiencia mobile.", en: "Homepage, listings, product page and checkout, with a mobile-first focus." } },
+      { step: "04", title: { es: "Implementación", en: "Implementation" }, body: { es: "Entrega lista para Shopify, Tiendanube o la plataforma que uses.", en: "Delivery ready for Shopify, Tiendanube or the platform you use." } },
     ],
   },
   {
@@ -79,13 +79,13 @@ const SERVICES = [
       </svg>
     ),
     label: "Branding",
-    desc: "Identidades visuales con personalidad, coherentes en pantalla, impresas y en redes.",
+    desc: { es: "Identidades visuales con personalidad, coherentes en pantalla, impresas y en redes.", en: "Visual identities with personality, consistent on screen, in print and on social." },
     color: "var(--mauve)",
     process: [
-      { step: "01", title: "Brief", body: "Entender el negocio, el público y qué tiene que transmitir la marca." },
-      { step: "02", title: "Moodboard", body: "Dirección visual y referencias para alinear antes de diseñar." },
-      { step: "03", title: "Identidad", body: "Logo, paleta, tipografías y elementos gráficos." },
-      { step: "04", title: "Brandbook", body: "Guía de marca con reglas de uso y aplicaciones, incluidas piezas para anuncios." },
+      { step: "01", title: "Brief", body: { es: "Entender el negocio, el público y qué tiene que transmitir la marca.", en: "Understand the business, the audience and what the brand needs to convey." } },
+      { step: "02", title: "Moodboard", body: { es: "Dirección visual y referencias para alinear antes de diseñar.", en: "Visual direction and references to align before designing." } },
+      { step: "03", title: { es: "Identidad", en: "Identity" }, body: { es: "Logo, paleta, tipografías y elementos gráficos.", en: "Logo, palette, typography and graphic elements." } },
+      { step: "04", title: "Brandbook", body: { es: "Guía de marca con reglas de uso y aplicaciones, incluidas piezas para anuncios.", en: "Brand guide with usage rules and applications, including ad pieces." } },
     ],
   },
   {
@@ -94,14 +94,14 @@ const SERVICES = [
         <path d="M12 3c.6 4.2 1.8 5.4 6 6-4.2.6-5.4 1.8-6 6-.6-4.2-1.8-5.4-6-6 4.2-.6 5.4-1.8 6-6z"/><path d="M18.5 15c.3 2 .9 2.6 2.9 2.9-2 .3-2.6.9-2.9 2.9-.3-2-.9-2.6-2.9-2.9 2-.3 2.6-.9 2.9-2.9z"/>
       </svg>
     ),
-    label: "Imágenes y video con IA",
-    desc: "Contenido visual generado con IA, dirigido con criterio de marca.",
+    label: { es: "Imágenes y video con IA", en: "AI images & video" },
+    desc: { es: "Contenido visual generado con IA, dirigido con criterio de marca.", en: "AI-generated visual content, art-directed with a brand eye." },
     color: "#3f7fa3",
     process: [
-      { step: "01", title: "Concepto", body: "Objetivo, formato y estética de las piezas." },
-      { step: "02", title: "Dirección", body: "Referencias, escenas y estilo para que todo se vea de la misma marca." },
-      { step: "03", title: "Generación", body: "Imágenes y videos con herramientas de IA, iterando hasta el resultado." },
-      { step: "04", title: "Entrega", body: "Archivos listos en los formatos de cada red o campaña." },
+      { step: "01", title: { es: "Concepto", en: "Concept" }, body: { es: "Objetivo, formato y estética de las piezas.", en: "Goal, format and look of the pieces." } },
+      { step: "02", title: { es: "Dirección", en: "Direction" }, body: { es: "Referencias, escenas y estilo para que todo se vea de la misma marca.", en: "References, scenes and style so everything looks like the same brand." } },
+      { step: "03", title: { es: "Generación", en: "Generation" }, body: { es: "Imágenes y videos con herramientas de IA, iterando hasta el resultado.", en: "Images and videos with AI tools, iterating until it's right." } },
+      { step: "04", title: { es: "Entrega", en: "Delivery" }, body: { es: "Archivos listos en los formatos de cada red o campaña.", en: "Files ready in the formats each platform or campaign needs." } },
     ],
   },
 ];
@@ -148,14 +148,14 @@ const ContactHero = () => (
   <section className="contact-hero">
     <div className="container-narrow" style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
       <div style={{ marginBottom: 20 }}>
-        <a href="index.html" className="contact-hero-back">← volver al inicio</a>
+        <a href="index.html" className="contact-hero-back"><Tx es="← volver al inicio" en="← back to home" /></a>
       </div>
-      <div className="eyebrow">Contacto</div>
+      <div className="eyebrow"><Tx es="Contacto" en="Contact" /></div>
       <h1>
-        Hablemos de tu <em>proyecto</em>
+        <Tx es="Hablemos de tu " en="Let's talk about your " /><em><Tx es="proyecto" en="project" /></em>
       </h1>
       <p>
-        Respondo en menos de 24hs. Si tenés un proyecto o una idea, escribime.
+        <Tx es="Respondo en menos de 24hs. Si tenés un proyecto o una idea, escribime." en="I reply within 24 hours. If you have a project or an idea, write to me." />
       </p>
     </div>
   </section>
@@ -206,6 +206,8 @@ const ContactCards = () => (
 // ── Service card with expandable process ──────────────────────────────────────
 const ServiceCard = ({ icon, label, desc, color, process: steps, index }) => {
   const [open, setOpen] = React.useState(false);
+  const { lang } = useT();
+  const R = v => (v && typeof v === "object" ? (v[lang] || v.es) : v);
   return (
     <div className="reveal" style={{ transitionDelay: `${index * 70}ms`, height: "100%" }}>
       <div style={{
@@ -236,12 +238,12 @@ const ServiceCard = ({ icon, label, desc, color, process: steps, index }) => {
               transition: "color 0.2s", letterSpacing: "0.06em",
               display: "flex", alignItems: "center", gap: 6,
             }}>
-              {open ? "cerrar" : "ver proceso"}
+              {open ? (lang === "en" ? "close" : "cerrar") : (lang === "en" ? "see process" : "ver proceso")}
               <span style={{ display: "inline-block", transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.25s", fontSize: 13 }}>↓</span>
             </span>
           </div>
-          <h3 style={{ fontSize: 20, margin: 0, lineHeight: 1.2, color: "var(--ink)" }}>{label}</h3>
-          <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.6, margin: 0 }}>{desc}</p>
+          <h3 style={{ fontSize: 20, margin: 0, lineHeight: 1.2, color: "var(--ink)" }}>{R(label)}</h3>
+          <p style={{ fontSize: 15, color: "var(--ink-soft)", lineHeight: 1.6, margin: 0 }}>{R(desc)}</p>
         </button>
 
         {/* expandable process */}
@@ -255,7 +257,7 @@ const ServiceCard = ({ icon, label, desc, color, process: steps, index }) => {
             borderTop: `1px solid rgba(43,36,32,0.08)`,
             paddingTop: 20,
           }}>
-            <div className="mono" style={{ fontSize: 10, color: color, letterSpacing: "0.12em", marginBottom: 16 }}>— MI PROCESO</div>
+            <div className="mono" style={{ fontSize: 10, color: color, letterSpacing: "0.12em", marginBottom: 16 }}>{lang === "en" ? "— MY PROCESS" : "— MI PROCESO"}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {steps.map(({ step, title, body }) => (
                 <div key={step} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
@@ -264,8 +266,8 @@ const ServiceCard = ({ icon, label, desc, color, process: steps, index }) => {
                     lineHeight: 1, flexShrink: 0, width: 28,
                   }}>{step}</div>
                   <div>
-                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink)", marginBottom: 3, letterSpacing: "0.04em" }}>{title}</div>
-                    <div style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55 }}>{body}</div>
+                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--ink)", marginBottom: 3, letterSpacing: "0.04em" }}>{R(title)}</div>
+                    <div style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.55 }}>{R(body)}</div>
                   </div>
                 </div>
               ))}
@@ -301,22 +303,22 @@ const Services = () => {
     <section style={{ paddingTop: 20, paddingBottom: 100, position: "relative" }}>
       <div className="container">
         <div className="section-head reveal">
-          <div className="eyebrow">Servicios</div>
-          <h2>Servicios que <em>ofrezco</em></h2>
-          <p>Hacé click en cada servicio para ver cómo trabajo.</p>
+          <div className="eyebrow"><Tx es="Servicios" en="Services" /></div>
+          <h2><Tx es="Servicios que " en="Services I " /><em><Tx es="ofrezco" en="offer" /></em></h2>
+          <p><Tx es="Hacé click en cada servicio para ver cómo trabajo." en="Click each service to see how I work." /></p>
         </div>
       </div>
       <div className="slider reveal">
         <div className="slider-track svc-track" ref={trackRef} onScroll={updateEdges}>
           {SERVICES.map((s, i) => (
-            <div key={s.label} className="svc-slide"><ServiceCard {...s} index={i} /></div>
+            <div key={s.label.es || s.label} className="svc-slide"><ServiceCard {...s} index={i} /></div>
           ))}
         </div>
         <div className="slider-nav">
-          <button type="button" className="slider-arrow" onClick={() => step(-1)} disabled={edges.start} aria-label="Servicio anterior">
+          <button type="button" className="slider-arrow" onClick={() => step(-1)} disabled={edges.start} aria-label="Previous service">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
           </button>
-          <button type="button" className="slider-arrow" onClick={() => step(1)} disabled={edges.end} aria-label="Servicio siguiente">
+          <button type="button" className="slider-arrow" onClick={() => step(1)} disabled={edges.end} aria-label="Next service">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </button>
         </div>

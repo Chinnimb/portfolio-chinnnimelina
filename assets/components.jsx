@@ -21,8 +21,16 @@ const Logo = ({ size = 40 }) => (
 
 // === Nav ===
 const Nav = ({ active = "home", overlay = false }) => {
-  const { t } = useT();
+  const { t, lang } = useT();
   const [scrolled, setScrolled] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  // Menú mobile: bloquea el scroll de fondo y se cierra con Escape
+  React.useEffect(() => {
+    document.body.classList.toggle("menu-open", menuOpen);
+    const onKey = e => { if (e.key === "Escape") setMenuOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
@@ -30,17 +38,19 @@ const Nav = ({ active = "home", overlay = false }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <nav className={`nav ${overlay ? "overlay" : ""} ${scrolled ? "scrolled" : ""}`}>
+    <nav className={`nav ${overlay ? "overlay" : ""} ${scrolled ? "scrolled" : ""} ${menuOpen ? "menu-open" : ""}`}>
       <div className="nav-inner">
         <a href="index.html" className="nav-logo">
           <Logo size={44} />
           chinni studio
         </a>
-        <div className="nav-links">
-          <a href="index.html" className={`link-animated ${active === "home" ? "active" : ""}`}>{t.nav.home}</a>
-          <a href="work.html" className={`link-animated ${active === "work" ? "active" : ""}`}>{t.nav.work}</a>
-          <a href="about.html" className={`link-animated ${active === "about" ? "active" : ""}`}>{t.nav.about}</a>
-          <a href="contact.html" className={`link-animated ${active === "contact" ? "active" : ""}`}>{t.nav.contact}</a>
+        <button type="button" className="nav-burger" aria-label={menuOpen ? (lang === "en" ? "Close menu" : "Cerrar menú") : (lang === "en" ? "Open menu" : "Abrir menú")} aria-expanded={menuOpen} aria-controls="nav-links" onClick={() => setMenuOpen(o => !o)}>
+          <span></span><span></span><span></span>
+        </button>
+        <div className="nav-links" id="nav-links">
+          {[["home", "index.html"], ["work", "work.html"], ["about", "about.html"], ["contact", "contact.html"]].map(([key, href]) => (
+            <a key={key} href={href} data-label={t.nav[key]} className={`link-animated ${active === key ? "active" : ""}`} aria-current={active === key ? "page" : undefined} onClick={() => setMenuOpen(false)}>{t.nav[key]}</a>
+          ))}
           <LangSwitch />
         </div>
       </div>

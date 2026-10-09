@@ -263,6 +263,9 @@ const LangProvider = ({ children }) => {
 };
 
 const useT = () => React.useContext(LangContext);
+// Texto bilingüe suelto: <Tx es="Hola" en="Hi" /> o, dentro de un componente, const L = useL(); L("Hola", "Hi")
+const useL = () => { const { lang } = useT(); return (es, en) => (lang === "en" ? en : es); };
+const Tx = ({ es, en }) => { const L = useL(); return L(es, en); };
 
 const LangSwitch = () => {
   const { lang, setLang } = useT();
@@ -285,4 +288,4 @@ const LangSwitch = () => {
   );
 };
 
-Object.assign(window, { LangProvider, LangContext, useT, LangSwitch, TRANSLATIONS });
+Object.assign(window, { LangProvider, LangContext, useT, useL, Tx, LangSwitch, TRANSLATIONS });

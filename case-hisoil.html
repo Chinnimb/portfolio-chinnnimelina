@@ -175,11 +175,11 @@ const CaseHero = ({ c }) => {
       {/* Video de marca generado con IA (techo verde con sustrato Hisoil) */}
       <div className="container cs-video-wrap" style={{ marginTop: 0 }}>
         <div className="nor-media">
-          <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}video-poster.jpg`} aria-label="Video de marca de Hisoil generado con IA">
+          <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}video-poster.jpg`} aria-label="Hisoil brand video (AI-generated)">
             <source src={`${IMG}video.mp4`} type="video/mp4" />
           </video>
         </div>
-        <p className="cs-caption">Hisoil · Sustratos de alta calidad · Pilar, Buenos Aires · Video generado con IA</p>
+        <p className="cs-caption"><Tx es="Hisoil · Sustratos de alta calidad · Pilar, Buenos Aires · Video generado con IA" en="Hisoil · High-quality substrates · Pilar, Buenos Aires · AI-generated video" /></p>
       </div>
     </section>
   );
@@ -196,16 +196,16 @@ const Overview = ({ c }) => (
       </div>
       <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
         {[
-          { label: "Cliente", value: "Hisoil" },
-          { label: "Año", value: "2025" },
-          { label: "Duración", value: "2 meses" },
-          { label: "Industria", value: "Agro / Sustratos" },
-          { label: "Mi rol", value: "UX/UI Design" },
-          { label: "Desarrollo", value: "Shifra Studio" },
+          { label: "Cliente", labelEn: "Client", value: "Hisoil", valueEn: "Hisoil" },
+          { label: "Año", labelEn: "Year", value: "2025", valueEn: "2025" },
+          { label: "Duración", labelEn: "Duration", value: "2 meses", valueEn: "2 months" },
+          { label: "Industria", labelEn: "Industry", value: "Agro / Sustratos", valueEn: "Agro / Substrates" },
+          { label: "Mi rol", labelEn: "My role", value: "UX/UI Design", valueEn: "UX/UI Design" },
+          { label: "Desarrollo", labelEn: "Development", value: "Shifra Studio", valueEn: "Shifra Studio" },
         ].map(item => (
           <div key={item.label} style={{ background: "var(--cream)", padding: "20px", borderRadius: 12 }}>
-            <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginBottom: 6, letterSpacing: "0.1em" }}>{item.label.toUpperCase()}</div>
-            <div style={{ fontFamily: "var(--font-serif)", fontSize: 20, color: "var(--ink)" }}>{item.value}</div>
+            <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginBottom: 6, letterSpacing: "0.1em" }}><Tx es={item.label.toUpperCase()} en={item.labelEn.toUpperCase()} /></div>
+            <div style={{ fontFamily: "var(--font-serif)", fontSize: 20, color: "var(--ink)" }}><Tx es={item.value} en={item.valueEn} /></div>
           </div>
         ))}
       </div>
@@ -261,10 +261,10 @@ const BeforeAfter = ({ c }) => {
       <div className="container">
         <div className="reveal" style={{ textAlign: "center", marginBottom: 40 }}>
           <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{c.beforeAfter}</div>
-          <h2>La transformación visual</h2>
+          <h2><Tx es="La transformación visual" en="The visual transformation" /></h2>
           <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 28 }}>
-            <button style={tabStyle(tab === "antes")} onClick={() => setTab("antes")}>← Antes · WooCommerce</button>
-            <button style={tabStyle(tab === "despues")} onClick={() => setTab("despues")}>Después · Nuevo diseño →</button>
+            <button style={tabStyle(tab === "antes")} onClick={() => setTab("antes")}><Tx es="← Antes · WooCommerce" en="← Before · WooCommerce" /></button>
+            <button style={tabStyle(tab === "despues")} onClick={() => setTab("despues")}><Tx es="Después · Nuevo diseño →" en="After · New design →" /></button>
           </div>
         </div>
 
@@ -328,7 +328,7 @@ const Process = ({ c }) => (
     <div className="container">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 56 }}>
         <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{c.process.label}</div>
-        <h2>Cómo lo hice</h2>
+        <h2><Tx es="Cómo lo hice" en="How I did it" /></h2>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
         {c.process.steps.map((s, i) => {
@@ -358,31 +358,31 @@ const MoodboardsSection = () => (
   <section>
     <div className="container">
       <div className="reveal" style={{ textAlign: "center", marginBottom: 48 }}>
-        <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>3 DIRECCIONES · 1 DECISIÓN</div>
-        <h2>Los moodboards</h2>
+        <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}><Tx es="3 DIRECCIONES · 1 DECISIÓN" en="3 DIRECTIONS · 1 DECISION" /></div>
+        <h2><Tx es="Los moodboards" en="The moodboards" /></h2>
         <p style={{ color: "var(--ink-soft)", marginTop: 12, maxWidth: 520, margin: "12px auto 0", lineHeight: 1.6 }}>
-          Antes de diseñar una sola pantalla, presenté tres caminos visuales posibles para que el cliente eligiera el que más lo representaba.
+          <Tx es="Antes de diseñar una sola pantalla, presenté tres caminos visuales posibles para que el cliente eligiera el que más lo representaba." en="Before designing a single screen, I presented three possible visual directions so the client could choose the one that represented them best." />
         </p>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
         {[
           {
             n: "01", name: "Bosque Profundo",
-            desc: "Autoridad, precisión y liderazgo sostenible. Verde oscuro premium con acentos lima técnicos sobre fondos casi negros.",
+            desc: "Autoridad, precisión y liderazgo sostenible. Verde oscuro premium con acentos lima técnicos sobre fondos casi negros.", descEn: "Authority, precision and sustainable leadership. Premium dark green with technical lime accents on near-black backgrounds.", nameEn: "Deep Forest", keywordsEn: ["Premium", "Authority", "Technical", "Leader"],
             colors: ["#0e2a14", "#1a4a22", "#2d6b35", "#b4e645", "#f0ece2"],
             keywords: ["Premium", "Autoridad", "Técnico", "Referente"],
             rotate: -2,
           },
           {
             n: "02", name: "Campo Vivo",
-            desc: "Energía, movimiento y optimismo agrícola. Verde lima y amarillo canola capturan la vitalidad del campo en florecimiento.",
+            desc: "Energía, movimiento y optimismo agrícola. Verde lima y amarillo canola capturan la vitalidad del campo en florecimiento.", descEn: "Energy, movement and agricultural optimism. Lime green and canola yellow capture the vitality of fields in bloom.", nameEn: "Living Field", keywordsEn: ["Energy", "Modern", "Growth", "Fresh"],
             colors: ["#4a7c2a", "#8ab83a", "#c4e845", "#f5f000", "#1a2a0a"],
             keywords: ["Energía", "Moderno", "Crecimiento", "Fresco"],
             rotate: 1.5,
           },
           {
             n: "03", name: "Tierra Cálida",
-            desc: "Una identidad que nace del suelo. Verde oliva militar, crema cálido y cobres terrosos. Auténtico y cercano al productor.",
+            desc: "Una identidad que nace del suelo. Verde oliva militar, crema cálido y cobres terrosos. Auténtico y cercano al productor.", descEn: "An identity born from the soil. Military olive green, warm cream and earthy coppers. Authentic and close to the grower.", nameEn: "Warm Earth", keywordsEn: ["Authentic", "Handcrafted", "Organic", "Approachable"],
             colors: ["#4a5a2a", "#8a7a3a", "#c8a860", "#e8d4a8", "#2a1e0a"],
             keywords: ["Auténtico", "Artesanal", "Orgánico", "Cercano"],
             rotate: -1.5,
@@ -395,18 +395,18 @@ const MoodboardsSection = () => (
           }}>
             <WashiTape width={70} rotate={-6} style={{ position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)" }} />
             {/* Moodboard real; click para verlo en grande */}
-            <a href={`${IMG}moodboard-${i + 1}.jpg`} target="_blank" rel="noopener" className="hs-mood-img" aria-label={`Ver moodboard ${mb.name} en grande`}>
+            <a href={`${IMG}moodboard-${i + 1}.jpg`} target="_blank" rel="noopener" className="hs-mood-img" aria-label={`Moodboard `}>
               <img src={`${IMG}moodboard-${i + 1}.jpg`} alt={`Moodboard ${mb.name}`} loading="lazy" />
               <div className="hs-mood-swatches">
                 {mb.colors.map(c => <span key={c} style={{ background: c }} />)}
               </div>
             </a>
             <div className="mono" style={{ fontSize: 10, color: "var(--ink-mute)", marginBottom: 6, letterSpacing: "0.1em" }}>MOODBOARD {mb.n}</div>
-            <h3 style={{ fontSize: 22, marginBottom: 8, lineHeight: 1.1 }}>{mb.name}</h3>
-            <p style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 12 }}>{mb.desc}</p>
+            <h3 style={{ fontSize: 22, marginBottom: 8, lineHeight: 1.1 }}><Tx es={mb.name} en={mb.nameEn} /></h3>
+            <p style={{ fontSize: 13, color: "var(--ink-soft)", lineHeight: 1.55, marginBottom: 12 }}><Tx es={mb.desc} en={mb.descEn} /></p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {mb.keywords.map(k => (
-                <span key={k} className="mono" style={{ fontSize: 10, padding: "3px 10px", borderRadius: 100, background: "var(--cream)", border: "1px solid rgba(28,43,58,0.1)", color: "var(--ink-soft)" }}>{k}</span>
+              {mb.keywords.map((k, ki) => (
+                <span key={k} className="mono" style={{ fontSize: 10, padding: "3px 10px", borderRadius: 100, background: "var(--cream)", border: "1px solid rgba(28,43,58,0.1)", color: "var(--ink-soft)" }}><Tx es={k} en={mb.keywordsEn[ki]} /></span>
               ))}
             </div>
           </div>
@@ -479,7 +479,7 @@ const Deliverables = ({ c }) => (
     <div className="container" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
       <div className="reveal">
         <div className="mono" style={{ color: "var(--rust)", marginBottom: 16, letterSpacing: "0.12em" }}>{c.deliverables.label}</div>
-        <h2 style={{ marginBottom: 32, fontSize: "clamp(28px, 3.5vw, 44px)" }}>Qué incluye el proyecto</h2>
+        <h2 style={{ marginBottom: 32, fontSize: "clamp(28px, 3.5vw, 44px)" }}><Tx es="Qué incluye el proyecto" en="What the project includes" /></h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {c.deliverables.items.map((item, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, padding: "14px 0", borderBottom: "1px dashed rgba(28,43,58,0.12)" }}>
@@ -497,11 +497,11 @@ const Deliverables = ({ c }) => (
         }}>
           <div style={{ fontFamily: "'Caveat', cursive", fontSize: 13, color: "#b4e645", letterSpacing: "0.1em", marginBottom: 12, opacity: 0.8 }}>HISOIL · 2025</div>
           <div style={{ fontFamily: "var(--font-serif)", fontSize: 36, lineHeight: 1.1, marginBottom: 16, fontStyle: "italic" }}>
-            Energía para<br/>cultivar el futuro.
+            <Tx es="Energía para" en="Energy to" /><br/><Tx es="cultivar el futuro." en="grow the future." />
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {["Agricultura", "Horticultura", "Jardinería", "Infraestructura", "Sustratos"].map(l => (
-              <span key={l} style={{ fontFamily: "var(--font-mono)", fontSize: 10, padding: "3px 10px", borderRadius: 100, background: "rgba(180,230,69,0.15)", border: "1px solid rgba(180,230,69,0.3)", color: "#b4e645", letterSpacing: "0.05em" }}>{l}</span>
+            {[["Agricultura","Agriculture"], ["Horticultura","Horticulture"], ["Jardinería","Gardening"], ["Infraestructura","Infrastructure"], ["Sustratos","Substrates"]].map(([l, le]) => (
+              <span key={l} style={{ fontFamily: "var(--font-mono)", fontSize: 10, padding: "3px 10px", borderRadius: 100, background: "rgba(180,230,69,0.15)", border: "1px solid rgba(180,230,69,0.3)", color: "#b4e645", letterSpacing: "0.05em" }}><Tx es={l} en={le} /></span>
             ))}
           </div>
           <div style={{ position: "absolute", bottom: -20, right: -10, fontFamily: "'Caveat', cursive", fontSize: 120, color: "rgba(180,230,69,0.06)", lineHeight: 1, userSelect: "none" }}>Hi.</div>
@@ -553,7 +553,7 @@ const Results = ({ c }) => (
         onMouseEnter={e => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--cream)"; }}
         onMouseLeave={e => { e.currentTarget.style.background = "var(--cream)"; e.currentTarget.style.color = "var(--ink)"; }}
         >
-          Ver el sitio live ↗
+          <Tx es="Ver el sitio en vivo ↗" en="Visit the live site ↗" />
         </a>
       </div>
     </div>
