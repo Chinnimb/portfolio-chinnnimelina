@@ -975,7 +975,6 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   display: grid;
   place-items: center;
   padding: 24px 16px;
-  overflow-y: auto;
   animation: fade-in 0.3s var(--ease);
 }
 .modal {
@@ -988,12 +987,25 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   box-shadow: 0 30px 80px -20px rgba(23, 22, 58, 0.45);
   animation: pop-in 0.4s var(--ease);
   text-align: left;
+  /* El formulario scrollea adentro del modal, con barra visible */
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--lilac) transparent;
 }
+.modal::-webkit-scrollbar { width: 8px; }
+.modal::-webkit-scrollbar-track { background: transparent; margin: 22px 0; }
+.modal::-webkit-scrollbar-thumb { background: var(--lilac); border-radius: 8px; }
 @keyframes fade-in { from { opacity: 0; } }
 @keyframes pop-in { from { opacity: 0; transform: translateY(14px) scale(0.98); } }
 .modal-close {
-  position: absolute;
-  top: 18px; right: 18px;
+  /* Fija arriba a la derecha mientras el formulario scrollea */
+  position: sticky;
+  top: 0;
+  float: right;
+  margin: -22px -22px -40px 12px;
+  z-index: 2;
   width: 40px; height: 40px;
   border-radius: 50%;
   display: grid; place-items: center;
@@ -1028,9 +1040,20 @@ body.home::after { display: none; } /* en el home los gradientes van por secció
   transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 }
 .field textarea { resize: vertical; min-height: 104px; }
+/* Chevron propio del select, con aire respecto del borde */
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%236b6888%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  cursor: pointer;
+}
 .field input:focus,
 .field select:focus,
-.field textarea:focus { outline: none; background: #fff; border-color: var(--periwinkle); box-shadow: 0 0 0 4px rgba(170, 197, 251, 0.35); }
+.field textarea:focus { outline: none; background-color: #fff; border-color: var(--periwinkle); box-shadow: 0 0 0 4px rgba(170, 197, 251, 0.35); }
 .choice-row { display: flex; flex-wrap: wrap; gap: 8px; }
 .choice { position: relative; cursor: pointer; }
 .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
