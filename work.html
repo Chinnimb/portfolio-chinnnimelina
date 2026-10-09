@@ -27,28 +27,28 @@ const allProjects = [
     desc: "Web de un club de salud con análisis, médicos y protocolos personalizados, con fotografía y video de producto generados con IA.",
     tags: ["UX/UI", "AI Native", "AI Generation"], metric: "Live", metricLabel: "protocolhealthclub.com",
     color: "var(--indigo)",
-    href: "case-protocol.html", rotate: 0, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/protocol/prod-semaglutide.jpg",
+    href: "case-protocol.html", rotate: 0, category: ["Web Design", "E-commerce"], isPhoto: true, photoSrc: "assets/photos/protocol/prod-semaglutide.jpg",
   },
   {
     id: "ctp", year: "2026", en: { subtitle: "Marketplace · Digital product", desc: "Platform to buy and sell land plots: public site and dashboards for individuals, agencies, brokers and admins.", metricLabel: "screens" }, title: "CompraTuParcela", subtitle: "Marketplace · Producto digital",
     desc: "Plataforma para comprar y vender parcelas: sitio público y paneles para personas, inmobiliarias, brokers y administración.",
     tags: ["UX/UI", "Marketplace", "Dashboards"], metric: "+20", metricLabel: "pantallas",
     color: "var(--indigo)",
-    href: "case-ctp.html", rotate: 0, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/ctp/home.jpg",
+    href: "case-ctp.html", rotate: 0, category: ["Web Design", "App"], isPhoto: true, photoSrc: "assets/photos/ctp/home.jpg",
   },
   {
     id: "alicia", year: "2026", en: { desc: "Design and development of a women's coaching community landing page: from Figma to a live site on its own domain.", metricLabel: "aliciagroupcoaching.com" }, title: "Alicia Erickson · VIP Community", subtitle: "Coaching · Landing page",
     desc: "Diseño y desarrollo de la landing de una comunidad de coaching para mujeres: de Figma a un sitio publicado con dominio propio.",
     tags: ["Landing Page", "UX/UI", "AI Native"], metric: "Live", metricLabel: "aliciagroupcoaching.com",
     color: "var(--indigo)",
-    href: "case-alicia.html", rotate: 0, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/alicia/recorrido-poster.jpg",
+    href: "case-alicia.html", rotate: 0, category: ["Web Design"], isPhoto: true, photoSrc: "assets/photos/alicia/recorrido-poster.jpg",
   },
   {
     id: "nor", year: "2026", en: { title: "NØR · Kayaks from Patagonia", desc: "Visual identity for a kayak brand from Argentine Patagonia, with AI-generated photography and video.", metric: "AI", metricLabel: "photos & video" }, title: "NØR · Kayaks de la Patagonia", subtitle: "Kayaks · Branding",
     desc: "Identidad visual para una marca de kayaks de la Patagonia argentina, con fotografía y video generados con IA.",
     tags: ["Branding", "Identity", "AI Generation"], metric: "IA", metricLabel: "fotos y video",
     color: "var(--indigo)",
-    href: "case-nor.html", rotate: 0, category: "Branding", isPhoto: true, photoSrc: "assets/photos/nor/video-poster.jpg",
+    href: "case-nor.html", rotate: 0, category: ["Branding"], isPhoto: true, photoSrc: "assets/photos/nor/video-poster.jpg",
   },
   {
     id: "hisoil", year: "2025", en: { title: "Hisoil · Web Redesign", subtitle: "Agro / Substrates · Web Design", desc: "Full website redesign for a substrate company with 22 years in the field. From generic WooCommerce to a technical reference platform. In collaboration with Shifra Studio.", metricLabel: "product lines" }, title: "Hisoil · Rediseño Web", subtitle: "Agro / Sustratos · Web Design",
@@ -56,7 +56,7 @@ const allProjects = [
     tags: ["Web Design", "UX/UI", "Benchmark"], metric: "5", metricLabel: "líneas de producto",
     color: "var(--olive)",
     bg: "linear-gradient(135deg, #0e2a14 0%, #1a4a22 50%, #2d6b35 100%)",
-    href: "case-hisoil.html", rotate: -2, category: "Web Design", isPhoto: true, photoSrc: "assets/photos/hisoil/video-poster.jpg",
+    href: "case-hisoil.html", rotate: -2, category: ["Web Design", "E-commerce"], isPhoto: true, photoSrc: "assets/photos/hisoil/video-poster.jpg",
   },
   {
     id: "aleo", year: "2024", en: { subtitle: "Sportswear · Branding", desc: "Full visual identity for an Argentine sportswear brand: logo, palette, digital and print brandbook.", metricLabel: "new followers" }, title: "ALEO Brandbook", subtitle: "Indumentaria deportiva · Branding",
@@ -64,7 +64,7 @@ const allProjects = [
     tags: ["Branding", "Identity", "Print"], metric: "+2k", metricLabel: "seguidores nuevos",
     color: "var(--rust)",
     bg: "linear-gradient(135deg, #e8a070 0%, #c07898 50%, #9878c0 100%)",
-    href: "case-aleo.html", rotate: 2, category: "Branding", isPhoto: true, photoSrc: "assets/photos/aleo-cover.jpg",
+    href: "case-aleo.html", rotate: 2, category: ["Branding"], isPhoto: true, photoSrc: "assets/photos/aleo-cover.jpg",
   },
   {
     id: "flok", year: "2025", en: { subtitle: "Family app · UX/UI", desc: "Complete UX and interface design for a family planner app, including research, wireframes, UI kit and final screens.", metricLabel: "start to finish" }, title: "Flok · Family Planner", subtitle: "App familiar · UX/UI",
@@ -72,11 +72,12 @@ const allProjects = [
     tags: ["UX Research", "UI Design", "Mobile"], metric: "UX+UI", metricLabel: "de inicio a fin",
     color: "var(--olive)",
     bg: "linear-gradient(135deg, #a8c5d8 0%, #7aa8c0 40%, #5a8fa8 100%)",
-    href: "case-flok.html", rotate: -2, category: "Mobile", isPhoto: true, photoSrc: "assets/photos/Image 1.jpg",
+    href: "case-flok.html", rotate: -2, category: ["App"], isPhoto: true, photoSrc: "assets/photos/Image 1.jpg",
   },
 ];
 
-const categories = ["Todos", ...new Set(allProjects.map(p => p.category))];
+// Orden fijo de los filtros; cada proyecto puede estar en varias categorías
+const categories = ["Todos", "Web Design", "App", "E-commerce", "Branding"];
 
 const WorkHero = () => (
   <section style={{ paddingTop: 60, paddingBottom: 40, position: "relative", overflow: "hidden" }}>
@@ -170,7 +171,7 @@ const ProjectCard = ({ p: base, i }) => {
 
 const WorkGrid = () => {
   const [filter, setFilter] = React.useState("Todos");
-  const filtered = filter === "Todos" ? allProjects : allProjects.filter(p => p.category === filter);
+  const filtered = filter === "Todos" ? allProjects : allProjects.filter(p => p.category.includes(filter));
 
   return (
     <section style={{ paddingTop: 20, paddingBottom: 80, position: "relative" }}>
