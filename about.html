@@ -198,7 +198,11 @@ const Hero = ({ c }) => (
 
 // Solo texto a la izquierda; de fondo, la escena de noche con Bandido durmiendo a la derecha
 const Approach = ({ c }) => (
-  <section className="about-approach-band">
+  <section className="about-approach-band has-bg-video">
+      {/* Bandido respira y la lava de la lámpara se mueve (video en loop generado con IA a partir de la foto) */}
+      <video className="bg-video" autoPlay muted loop playsInline preload="metadata" poster="assets/photos/bandido-durmiendo.jpg" aria-hidden="true">
+        <source src="assets/video/bandido-lava.mp4" type="video/mp4" media="(min-width: 761px)" />
+      </video>
     <div className="container">
       <div className="about-approach-copy reveal">
         <div className="eyebrow">{c.approachKicker}</div>
@@ -401,7 +405,11 @@ const TOOL_GLYPHS = {
 };
 
 const Tools = ({ c }) => (
-  <section className="cs-section about-tools-band">
+  <section className="cs-section about-tools-band has-bg-video">
+      {/* Las lucecitas de la pared titilan (video en loop generado con IA a partir de la foto) */}
+      <video className="bg-video" autoPlay muted loop playsInline preload="metadata" poster="assets/photos/pared-estudio.jpg" aria-hidden="true">
+        <source src="assets/video/pared-luces.mp4" type="video/mp4" />
+      </video>
     <div className="container">
       <div className="section-head reveal">
         <div className="eyebrow">{c.toolsKicker}</div>

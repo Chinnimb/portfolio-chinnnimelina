@@ -2173,3 +2173,34 @@ a.cs-shot-img { display: block; }
     linear-gradient(180deg, rgba(23, 22, 58, 0.55) 0%, rgba(23, 22, 58, 0.3) 45%, rgba(23, 22, 58, 0.6) 100%);
 }
 @media (prefers-reduced-motion: reduce) { .bg-video { display: none; } }
+
+/* Sobre mí · enfoque (Bandido durmiendo + lámpara de lava) */
+.about-approach-band .bg-video { object-position: 70% center; }
+.about-approach-band.has-bg-video::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, var(--paper) 30%, rgba(251, 250, 248, 0.82) 44%, rgba(251, 250, 248, 0.15) 62%, rgba(251, 250, 248, 0) 72%),
+    linear-gradient(180deg, var(--paper) 0%, rgba(251, 250, 248, 0) 18%, rgba(251, 250, 248, 0) 82%, var(--paper) 100%),
+    radial-gradient(ellipse 40% 60% at 20% 50%, rgba(227, 204, 242, 0.45) 0%, transparent 70%);
+}
+/* En celular la foto va abajo del texto con otro encuadre: se deja la foto quieta */
+@media (max-width: 760px) {
+  .about-approach-band .bg-video { display: none; }
+  .about-approach-band.has-bg-video::before { content: none; }
+}
+
+/* Sobre mí · herramientas (pared con lucecitas) */
+.about-tools-band .bg-video { object-position: center top; }
+.about-tools-band.has-bg-video::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(23, 22, 58, 0.45) 0%, rgba(23, 22, 58, 0.25) 40%, rgba(23, 22, 58, 0.45) 100%);
+}
+
+/* Contacto · hero (escritorio desde arriba, luz que cambia de color) */
+.contact-hero .bg-video { object-position: center; }
+.contact-hero.has-bg-video::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(23, 22, 58, 0.6) 0%, rgba(23, 22, 58, 0.3) 100%),
+    linear-gradient(180deg, rgba(23, 22, 58, 0.55) 0%, rgba(23, 22, 58, 0.35) 50%, rgba(23, 22, 58, 0.7) 100%);
+}

@@ -145,7 +145,11 @@ const CONTACT_LINKS = [
 // ── Hero ──────────────────────────────────────────────────────────────────────
 // Fondo: escritorio desde arriba con la agenda (generado con IA en Higgsfield)
 const ContactHero = () => (
-  <section className="contact-hero">
+  <section className="contact-hero has-bg-video">
+      {/* La luz de la lámpara cambia de color de a poco (video en loop generado con IA a partir de la foto) */}
+      <video className="bg-video" autoPlay muted loop playsInline preload="metadata" poster="assets/photos/contacto-hero.jpg" aria-hidden="true">
+        <source src="assets/video/contacto-luz.mp4" type="video/mp4" />
+      </video>
     <div className="container-narrow" style={{ textAlign: "center", position: "relative", zIndex: 2 }}>
       <div style={{ marginBottom: 20 }}>
         <a href="index.html" className="contact-hero-back"><Tx es="← volver al inicio" en="← back to home" /></a>
