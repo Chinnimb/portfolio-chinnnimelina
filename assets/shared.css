@@ -2071,6 +2071,8 @@ a.cs-shot-img { display: block; }
   .nav-links .lang-switch button.active { color: var(--indigo) !important; }
   .nav.menu-open .nav-logo { position: relative; z-index: 60; color: var(--ink) !important; }
   body.menu-open { overflow: hidden; }
+  /* El blur de la barra al scrollear encierra al panel fijo dentro de la barra: se apaga con el menú abierto */
+  .nav.menu-open { backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
 
 /* ============================================
