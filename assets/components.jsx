@@ -151,7 +151,11 @@ const ContactCTA = () => {
   const c = t.cta;
   const [modal, setModal] = React.useState(null); // null | "contact" | "form"
   return (
-    <section className="contact-band" id="contacto">
+    <section className="contact-band has-bg-video" id="contacto">
+      {/* La lava de la lámpara se mueve en loop (video generado con IA a partir de la foto) */}
+      <video className="bg-video" autoPlay muted loop playsInline preload="metadata" poster="assets/photos/cta-escritorio.jpg" aria-hidden="true">
+        <source src="assets/video/cta-lava.mp4" type="video/mp4" />
+      </video>
       <div className="container-narrow reveal">
         <div className="eyebrow">{c.kicker}</div>
         <h2 dangerouslySetInnerHTML={{ __html: c.title }} />

@@ -1826,7 +1826,6 @@ body:not(.home) h2 em {
   .work-card { width: 82vw; }
   .work-body { padding: 20px; }
   .work-card h3 { font-size: 22px !important; }
-  .contact-band::before { width: 380px; height: 380px; }
 }
 
 /* ============================================
@@ -2151,3 +2150,26 @@ a.cs-shot-img { display: block; }
 .contact-form-cta p { margin: 2px 0 0; font-size: 14px; color: var(--ink-soft); }
 .contact-form-cta .btn { white-space: nowrap; }
 @media (max-width: 520px) { .contact-form-cta .btn { width: 100%; justify-content: center; } }
+
+/* ============================================
+   Fondos animados (videos en loop generados con IA)
+   La imagen sigue como fondo y póster: si el video no carga o el usuario
+   prefiere menos movimiento, se ve la foto quieta.
+   ============================================ */
+.has-bg-video { position: relative; isolation: isolate; }
+.bg-video {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.contact-band .bg-video { object-position: center 60%; }
+@media (max-width: 760px) { .contact-band .bg-video { object-position: 97% 60%; } } /* en celular se encuadra la lámpara */
+/* Los degradados que oscurecen la foto van por encima del video */
+.contact-band.has-bg-video::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 42% 55% at 50% 55%, rgba(23, 22, 58, 0.5) 0%, rgba(23, 22, 58, 0.15) 100%),
+    linear-gradient(180deg, rgba(23, 22, 58, 0.55) 0%, rgba(23, 22, 58, 0.3) 45%, rgba(23, 22, 58, 0.6) 100%);
+}
+@media (prefers-reduced-motion: reduce) { .bg-video { display: none; } }
