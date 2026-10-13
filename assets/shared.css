@@ -2239,3 +2239,8 @@ a.cs-shot-img { display: block; }
   .hs-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
   .hs-tabs .pill { flex-shrink: 0; }
 }
+/* Proceso de Hisoil: 5 pasos en una sola fila, sin una tarjeta suelta abajo */
+.hs-process { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.hs-process > div { padding: 26px 22px !important; }
+@media (max-width: 1100px) { .hs-process { grid-template-columns: repeat(6, minmax(0, 1fr)); } .hs-process > div { grid-column: span 2; } .hs-process > div:nth-child(4) { grid-column: 2 / span 2; } }
+@media (max-width: 700px) { .hs-process { grid-template-columns: 1fr; } .hs-process > div, .hs-process > div:nth-child(4) { grid-column: auto; } }

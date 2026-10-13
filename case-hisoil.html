@@ -338,7 +338,7 @@ const Process = ({ c }) => (
         <div className="mono" style={{ color: "var(--ink-mute)", marginBottom: 16, letterSpacing: "0.15em" }}>{c.process.label}</div>
         <h2><Tx es="Cómo lo hice" en="How I did it" /></h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
+      <div className="hs-process">
         {c.process.steps.map((s, i) => {
           const colors = ["var(--sage-soft)", "var(--mustard-soft)", "var(--rust-soft)", "var(--clay)", "var(--sage-soft)"];
           return (
@@ -351,7 +351,7 @@ const Process = ({ c }) => (
             }}>
               <WashiTape width={60} rotate={-8} style={{ position: "absolute", top: -10, left: 20 }} />
               <div className="mono" style={{ color: "var(--ink-soft)", marginBottom: 16, fontSize: 11 }}>{s.n}</div>
-              <h3 style={{ fontSize: 24, marginBottom: 10 }}>{s.title}</h3>
+              <h3 style={{ fontSize: 22, marginBottom: 10, lineHeight: 1.15 }}>{s.title}</h3>
               <p style={{ fontSize: 14, color: "var(--ink-soft)", lineHeight: 1.6 }}>{s.desc}</p>
             </div>
           );
