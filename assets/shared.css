@@ -2204,3 +2204,38 @@ a.cs-shot-img { display: block; }
     radial-gradient(ellipse 50% 60% at 50% 50%, rgba(23, 22, 58, 0.6) 0%, rgba(23, 22, 58, 0.3) 100%),
     linear-gradient(180deg, rgba(23, 22, 58, 0.55) 0%, rgba(23, 22, 58, 0.35) 50%, rgba(23, 22, 58, 0.7) 100%);
 }
+
+/* ============================================
+   CASO HISOIL — explorador de páginas y componentes
+   ============================================ */
+.hs-tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 26px; }
+.hs-page { height: 640px; }
+.hs-page img { display: block; width: 100%; height: auto; }
+.hs-subtitle { font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.03em; }
+.hs-subtitle em { font-style: normal; font-weight: 400; background: linear-gradient(90deg, #8aa6f0 0%, #b996e6 55%, #d78bd6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hs-phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; justify-items: center; }
+.hs-phones figure { margin: 0; width: 100%; max-width: 260px; }
+.hs-phones .cs-phone { width: 100%; }
+.hs-phones .cs-scroll { height: 520px; }
+.hs-phones figcaption { text-align: center; font-size: 13.5px; color: var(--ink-mute); margin-top: 14px; }
+.hs-comp-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 14px; }
+.hs-comp-wide { background: #fff; border-radius: 22px; padding: 22px 24px 26px; border: 1px solid rgba(28,26,58,.07); margin-bottom: 22px; }
+.hs-comp-wide img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 30px -18px rgba(28,26,58,.35); }
+.hs-bento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.hs-comp { margin: 0; background: #fff; border-radius: 22px; padding: 22px 24px 26px; border: 1px solid rgba(28,26,58,.07); transition: transform .45s var(--ease), box-shadow .5s var(--ease); }
+.hs-comp:hover { transform: translateY(-4px); box-shadow: var(--glow); }
+.hs-comp img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.hs-span { grid-column: 1 / -1; }
+.hs-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.hs-cards img { box-shadow: 0 10px 26px -16px rgba(28,26,58,.4); }
+.hs-comp, .hs-comp-wide { --glow-c: 150, 210, 162; --glow: 0 0 0 1px rgba(var(--glow-c), .55), 0 18px 40px -12px rgba(var(--glow-c), .9); }
+@media (max-width: 900px) {
+  .hs-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hs-bento { grid-template-columns: 1fr; }
+  .hs-page { height: 480px; }
+}
+@media (max-width: 520px) {
+  .hs-phones .cs-scroll { height: 420px; }
+  .hs-tabs { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; }
+  .hs-tabs .pill { flex-shrink: 0; }
+}

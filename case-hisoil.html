@@ -453,6 +453,99 @@ const Walkthrough = () => {
   );
 };
 
+/* ─── PÁGINAS DEL SITIO (explorador con pestañas, desktop + mobile) ──────────*/
+const SITE = IMG + "site/";
+const SITE_PAGES = [
+  { id: "home", es: "Home", en: "Home", path: "" },
+  { id: "productos", es: "Productos", en: "Products", path: "productos" },
+  { id: "productos-compost", es: "Ficha de producto", en: "Product page", path: "productos/compost" },
+  { id: "servicios", es: "Servicios", en: "Services", path: "servicios" },
+  { id: "portfolio", es: "Casos", en: "Case studies", path: "portfolio" },
+  { id: "nosotros", es: "Nosotros", en: "About", path: "nosotros" },
+  { id: "contacto", es: "Contacto", en: "Contact", path: "contacto" },
+];
+const SitePages = () => {
+  const { lang } = React.useContext(LangContext);
+  const es = lang !== "en";
+  const [active, setActive] = React.useState("home");
+  const scrollRef = React.useRef(null);
+  const page = SITE_PAGES.find(p => p.id === active);
+  const pick = (id) => { setActive(id); if (scrollRef.current) scrollRef.current.scrollTop = 0; };
+  return (
+    <section className="cs-section">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{es ? "El diseño, página por página" : "The design, page by page"}</div>
+          <h2>{es ? <>Todo el sitio, <em>para recorrer</em></> : <>The whole site, <em>to explore</em></>}</h2>
+          <p>{es ? "Diseñé las siete páginas del sitio y las fichas de cada producto con un mismo sistema visual. Elegí una página y scrolleá dentro de la ventana." : "I designed all seven pages and every product page with one visual system. Pick a page and scroll inside the window."}</p>
+        </div>
+        <div className="hs-tabs reveal" role="tablist" aria-label={es ? "Páginas del sitio" : "Site pages"}>
+          {SITE_PAGES.map(p => (
+            <button key={p.id} type="button" role="tab" aria-selected={active === p.id} className={`pill ${active === p.id ? "active" : ""}`} onClick={() => pick(p.id)}>{es ? p.es : p.en}</button>
+          ))}
+        </div>
+        <div className="cs-browser reveal">
+          <div className="cs-browser-bar" aria-hidden="true"><span></span><span></span><span></span><div className="cs-browser-url">hisoil.vercel.app/{page.path}</div></div>
+          <div className="cs-scroll hs-page" ref={scrollRef} tabIndex={0} aria-label={es ? page.es : page.en}>
+            <img key={page.id} src={`${SITE}page-${page.id}.jpg`} alt={es ? `Página ${page.es} del sitio de Hisoil` : `Hisoil ${page.en} page`} />
+          </div>
+        </div>
+
+        <div className="section-head reveal" style={{ marginTop: 100 }}>
+          <div className="eyebrow">{es ? "Responsive" : "Responsive"}</div>
+          <h3 className="hs-subtitle">{es ? <>Pensado también <em>para el celular</em></> : <>Designed for <em>mobile</em> too</>}</h3>
+        </div>
+        <div className="hs-phones">
+          {[["home", "Home", "Home"], ["productos-compost", "Ficha de producto", "Product page"], ["servicios", "Servicios", "Services"], ["contacto", "Contacto", "Contact"]].map(([id, l, le]) => (
+            <figure key={id} className="reveal">
+              <div className="cs-phone"><div className="cs-scroll" tabIndex={0} aria-label={es ? l : le}><img src={`${SITE}mobile-${id}.jpg`} alt="" loading="lazy" /></div></div>
+              <figcaption>{es ? l : le}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ─── COMPONENTES DEL SISTEMA ────────────────────────────────────────────────*/
+const Components = () => {
+  const { lang } = React.useContext(LangContext);
+  const es = lang !== "en";
+  const T = (a, b) => (es ? a : b);
+  return (
+    <section className="cs-section cs-tint">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{T("Sistema de componentes", "Component system")}</div>
+          <h2>{es ? <>Piezas que <em>se reutilizan</em></> : <>Pieces that <em>scale</em></>}</h2>
+          <p>{T("El sitio se arma con un set de componentes consistentes: navegación, tarjetas de producto, bloques de servicios y casos, llamados a la acción y formularios. Así cada página nueva mantiene el mismo lenguaje.", "The site is built from a consistent component set: navigation, product cards, service and case blocks, calls to action and forms. Every new page keeps the same language.")}</p>
+        </div>
+        <div className="hs-comp-wide reveal">
+          <div className="hs-comp-label">{T("Navegación", "Navigation")}</div>
+          <img src={`${SITE}header.jpg`} alt={T("Barra de navegación", "Navigation bar")} loading="lazy" />
+        </div>
+        <div className="hs-bento">
+          <figure className="hs-comp reveal"><div className="hs-comp-label">{T("Tarjetas de producto", "Product cards")}</div>
+            <div className="hs-cards"><img src={`${SITE}product-card.jpg`} alt="" loading="lazy" /><img src={`${SITE}product-card-2.jpg`} alt="" loading="lazy" /></div></figure>
+          <figure className="hs-comp reveal"><div className="hs-comp-label">{T("Formulario de presupuesto", "Quote form")}</div>
+            <img src={`${SITE}form.jpg`} alt="" loading="lazy" /></figure>
+          <figure className="hs-comp hs-span reveal"><div className="hs-comp-label">{T("Producto destacado", "Featured product")}</div>
+            <img src={`${SITE}featured-product.jpg`} alt="" loading="lazy" /></figure>
+          <figure className="hs-comp reveal"><div className="hs-comp-label">{T("Bloque de servicios", "Services block")}</div>
+            <img src={`${SITE}services.jpg`} alt="" loading="lazy" /></figure>
+          <figure className="hs-comp reveal"><div className="hs-comp-label">{T("Casos y proyectos", "Cases & projects")}</div>
+            <img src={`${SITE}cases.jpg`} alt="" loading="lazy" /></figure>
+          <figure className="hs-comp reveal"><div className="hs-comp-label">{T("Llamado a la acción", "Call to action")}</div>
+            <img src={`${SITE}cta.jpg`} alt="" loading="lazy" /></figure>
+          <figure className="hs-comp reveal"><div className="hs-comp-label">Footer</div>
+            <img src={`${SITE}footer.jpg`} alt="" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 /* ─── IMÁGENES GENERADAS CON IA ──────────────────────────────────────────────*/
 const AI_IMAGES = [
   "ia-arandanos-campo.jpg", "ia-mulch-borde.jpg", "ia-almacigos.jpg", "ia-compost-huerta.jpg",
@@ -595,6 +688,8 @@ const CaseHeroWrapper = () => {
       <Challenge c={c} />
       <BeforeAfter c={c} />
       <Walkthrough />
+      <SitePages />
+      <Components />
       <Process c={c} />
       <MoodboardsSection />
       <AIImages />
