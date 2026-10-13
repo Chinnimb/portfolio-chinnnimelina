@@ -196,7 +196,7 @@ const Hero = ({ c }) => (
     </div>
     <div className="container cs-video-wrap reveal">
       <BrowserFrame url="befit · fuerza en el gym">
-        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption}>
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption} style={{ aspectRatio: "16 / 9" }}>
           <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
         </video>
       </BrowserFrame>
