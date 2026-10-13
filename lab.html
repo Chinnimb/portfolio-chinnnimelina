@@ -36,7 +36,7 @@ const SERVICE = { es: "Imágenes y video con IA", en: "AI images & video" };
 
 // Videos generados con IA (todos están en el sitio)
 const VIDEOS = [
-  { src: "assets/video/cta-lava.mp4", es: "Lámpara de lava en loop", en: "Lava lamp loop" },
+  { src: "assets/video/cta-lava.mp4", es: "Lámpara de lava en loop", en: "Lava lamp loop", pos: "97% 60%" },
   { src: "assets/photos/cards/pawcare.mp4", es: "Personajes animados · PawCare", en: "Animated characters · PawCare" },
   { src: "assets/photos/nor/video.mp4", es: "Video de marca · NØR", en: "Brand video · NØR" },
   { src: "assets/video/bandido-lava.mp4", es: "Escena con movimiento sutil", en: "Subtle motion scene" },
@@ -84,7 +84,7 @@ const STEPS = [
   { es: ["Entrega", "Recibís todo en alta resolución y en cada formato, listo para publicar."], en: ["Delivery", "You get everything in high resolution and every format, ready to publish."] },
 ];
 
-const Lazy = ({ src, label }) => {
+const Lazy = ({ src, label, pos }) => {
   // El video recién se carga y reproduce cuando entra en pantalla
   const ref = React.useRef(null);
   React.useEffect(() => {
@@ -92,7 +92,7 @@ const Lazy = ({ src, label }) => {
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { if (!v.src) v.src = src; v.play().catch(() => {}); } else v.pause(); }, { threshold: 0.2 });
     io.observe(v); return () => io.disconnect();
   }, [src]);
-  return <video ref={ref} muted loop playsInline preload="none" aria-label={label} />;
+  return <video ref={ref} muted loop playsInline preload="none" aria-label={label} style={pos ? { objectPosition: pos } : undefined} />;
 };
 
 const Page = () => {
@@ -128,7 +128,7 @@ const Page = () => {
           <div className="lab-videos">
             {VIDEOS.map((v, i) => (
               <figure key={v.src} className={`lab-video reveal ${i === 0 ? "lab-video-big" : i === VIDEOS.length - 1 ? "lab-video-wide" : ""}`}>
-                <Lazy src={v.src} label={es ? v.es : v.en} />
+                <Lazy src={v.src} label={es ? v.es : v.en} pos={v.pos} />
                 <figcaption>{es ? v.es : v.en}</figcaption>
               </figure>
             ))}
