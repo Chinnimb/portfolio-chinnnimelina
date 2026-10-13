@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Befit · Fuerza en el Gym · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: landing de lanzamiento de Fuerza en el Gym, el programa de entrenamiento de fuerza de Befit, diseñada y construida con IA en Lovable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P88WH6NYHT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-P88WH6NYHT");
+</script>
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const IMG = "assets/photos/befit/";
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · Landing page · 2026",
+    title: "Befit · <em>Fuerza en el Gym</em>",
+    lede: "Diseño y construcción de la landing de lanzamiento de Fuerza en el Gym, el nuevo programa de entrenamiento de fuerza de la app Befit para mujeres que quieren dejar de improvisar en el gimnasio.",
+    tags: ["UX/UI", "Landing page", "AI Native", "Lovable", "Desktop + Mobile"],
+    meta: [
+      { k: "Cliente", v: "Befit" },
+      { k: "Rubro", v: "Fitness · App de entrenamiento" },
+      { k: "Mi rol", v: "Diseño UX/UI y construcción" },
+      { k: "Herramienta", v: "Lovable" },
+    ],
+    videoCaption: "Recorrido por la landing, versión escritorio.",
+
+    contextKicker: "El proyecto",
+    contextTitle: "Un lanzamiento que <em>convierta</em>",
+    contextBody: [
+      "Befit lanzaba Fuerza en el Gym, un plan de 8 semanas incluido en su suscripción, pensado para mujeres que ya van al gimnasio pero entrenan sin una estructura clara.",
+      "La landing tenía que presentar el programa, explicar qué incluye y llevar a una sola acción: probar la app 7 días gratis. Diseñé la página a partir de la identidad de Befit (colores, tipografía y tono) y la construí con IA en Lovable, lista para usar.",
+    ],
+    goalsTitle: "Los objetivos",
+    goals: [
+      "Que en segundos quede claro qué es el programa y para quién es.",
+      "Mostrar todo lo que incluye sin saturar.",
+      "Llevar cada sección a una misma acción: la prueba gratuita.",
+      "Respetar la identidad visual de Befit en escritorio y celular.",
+    ],
+
+    decisionsKicker: "Decisiones de diseño",
+    decisionsTitle: "Cómo lo <em>resolví</em>",
+    decisions: [
+      { title: "Un hero con energía", desc: "Foto de entrenamiento real a pantalla completa, título directo y el beneficio principal en una línea. Las pastillas resumen el programa de un vistazo." },
+      { title: "Primero el problema", desc: "Antes de vender, la página nombra lo que le pasa a la usuaria: ir al gym sin saber cuándo subir peso ni cómo medir el progreso." },
+      { title: "Para quién sí, y para quién no", desc: "Dos tarjetas que filtran a quien no corresponde. Decir \"no es ideal si…\" genera confianza y evita frustraciones después." },
+      { title: "Un solo camino", desc: "El mismo llamado a la acción en el hero y al cierre, con la tarjeta del programa para mostrar qué se desbloquea dentro de la app." },
+    ],
+
+    sectionsKicker: "Secciones",
+    sectionsTitle: "La landing, <em>bloque por bloque</em>",
+    sections: [
+      { img: "hero.jpg", title: "Hero", desc: "Título, beneficio principal, CTA a la prueba gratuita y resumen del programa." },
+      { img: "problema.jpg", title: "El problema", desc: "Por qué entrenar con un plan es distinto a solo ir al gimnasio." },
+      { img: "que-incluye.jpg", title: "Qué incluye", desc: "Carrusel con el plan, los entrenamientos, los videos, la guía y las cápsulas." },
+      { img: "para-quien.jpg", title: "Para quién es", desc: "Para quién sí y para quién no, con una alternativa para principiantes." },
+      { img: "acceso.jpg", title: "Acceso incluido", desc: "Cierre con el CTA y la tarjeta del programa dentro de la app." },
+    ],
+
+    devicesKicker: "Responsive",
+    devicesTitle: "Pensada para <em>el celular</em>",
+    devicesLede: "La mayoría de las usuarias llega desde Instagram, así que la versión mobile mantiene la jerarquía y el CTA siempre a mano. Podés scrollear dentro de cada pantalla.",
+    desktop: "Escritorio",
+    mobile: "Celular",
+
+    processKicker: "Proceso",
+    processTitle: "Cómo lo <em>hice</em>",
+    steps: [
+      { tool: "Brief", title: "Entender el programa", desc: "Objetivo del lanzamiento, público y qué incluye el plan." },
+      { tool: "Estructura", title: "Arquitectura", desc: "Orden de secciones pensado para llevar a la prueba gratuita." },
+      { tool: "Identidad", title: "Sistema visual", desc: "Colores, tipografía y tono de Befit aplicados a la landing." },
+      { tool: "Lovable", title: "Diseño y construcción con IA", desc: "Página funcionando, ajustando diseño y responsive a la vez." },
+      { tool: "Entrega", title: "Lista para usar", desc: "Landing publicada y entregada al equipo de Befit." },
+    ],
+
+    credits: "Fotos y textos provistos por Befit. Diseño UX/UI y construcción de la landing por Chinni Design Studio.",
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "Flok · Family Planner",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Landing page · 2026",
+    title: "Befit · <em>Fuerza en el Gym</em>",
+    lede: "Design and build of the launch landing page for Fuerza en el Gym, the new strength training program in the Befit app for women who want to stop improvising at the gym.",
+    tags: ["UX/UI", "Landing page", "AI Native", "Lovable", "Desktop + Mobile"],
+    meta: [
+      { k: "Client", v: "Befit" },
+      { k: "Industry", v: "Fitness · Training app" },
+      { k: "My role", v: "UX/UI design and build" },
+      { k: "Tool", v: "Lovable" },
+    ],
+    videoCaption: "Walkthrough of the landing page, desktop version.",
+
+    contextKicker: "The project",
+    contextTitle: "A launch that <em>converts</em>",
+    contextBody: [
+      "Befit was launching Fuerza en el Gym, an 8-week plan included in its subscription, designed for women who already go to the gym but train without a clear structure.",
+      "The landing page had to present the program, explain what's included and lead to a single action: trying the app free for 7 days. I designed the page from Befit's identity (colors, typography and tone) and built it with AI in Lovable, ready to use.",
+    ],
+    goalsTitle: "The goals",
+    goals: [
+      "Make it clear within seconds what the program is and who it's for.",
+      "Show everything it includes without overwhelming.",
+      "Lead every section to the same action: the free trial.",
+      "Stay true to Befit's visual identity on desktop and mobile.",
+    ],
+
+    decisionsKicker: "Design decisions",
+    decisionsTitle: "How I <em>solved it</em>",
+    decisions: [
+      { title: "A hero with energy", desc: "A real training photo full-bleed, a direct headline and the main benefit in one line. Pills sum up the program at a glance." },
+      { title: "Problem first", desc: "Before selling, the page names what the user is going through: going to the gym without knowing when to add weight or how to track progress." },
+      { title: "Who it's for, and who it isn't", desc: "Two cards that filter out the wrong audience. Saying \"not ideal if…\" builds trust and avoids frustration later." },
+      { title: "One single path", desc: "The same call to action in the hero and at the close, with the program card showing what unlocks inside the app." },
+    ],
+
+    sectionsKicker: "Sections",
+    sectionsTitle: "The landing, <em>block by block</em>",
+    sections: [
+      { img: "hero.jpg", title: "Hero", desc: "Headline, main benefit, free-trial CTA and program summary." },
+      { img: "problema.jpg", title: "The problem", desc: "Why training with a plan is different from just going to the gym." },
+      { img: "que-incluye.jpg", title: "What's included", desc: "A carousel with the plan, workouts, videos, guide and tips." },
+      { img: "para-quien.jpg", title: "Who it's for", desc: "Who it's for and who it isn't, with an alternative for beginners." },
+      { img: "acceso.jpg", title: "Access included", desc: "Closing with the CTA and the program card inside the app." },
+    ],
+
+    devicesKicker: "Responsive",
+    devicesTitle: "Designed for <em>mobile</em>",
+    devicesLede: "Most users arrive from Instagram, so the mobile version keeps the hierarchy and the CTA always at hand. You can scroll inside each screen.",
+    desktop: "Desktop",
+    mobile: "Mobile",
+
+    processKicker: "Process",
+    processTitle: "How I <em>made it</em>",
+    steps: [
+      { tool: "Brief", title: "Understand the program", desc: "Launch goal, audience and what the plan includes." },
+      { tool: "Structure", title: "Architecture", desc: "Section order designed to lead to the free trial." },
+      { tool: "Identity", title: "Visual system", desc: "Befit's colors, typography and tone applied to the page." },
+      { tool: "Lovable", title: "AI-assisted design & build", desc: "A working page, refining design and responsive together." },
+      { tool: "Delivery", title: "Ready to use", desc: "Landing page published and handed off to the Befit team." },
+    ],
+
+    credits: "Photos and copy provided by Befit. Landing page UX/UI design and build by Chinni Design Studio.",
+
+    nextLabel: "Next case",
+    nextTitle: "Flok · Family Planner",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+const BrowserFrame = ({ children, url }) => (
+  <div className="cs-browser">
+    <div className="cs-browser-bar" aria-hidden="true"><span></span><span></span><span></span><div className="cs-browser-url">{url}</div></div>
+    {children}
+  </div>
+);
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">{c.meta.map(m => <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>)}</dl>
+    </div>
+    <div className="container cs-video-wrap reveal">
+      <BrowserFrame url="befit · fuerza en el gym">
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}recorrido-poster.jpg`} aria-label={c.videoCaption}>
+          <source src={`${IMG}recorrido.mp4`} type="video/mp4" />
+        </video>
+      </BrowserFrame>
+      <p className="cs-caption">{c.videoCaption}</p>
+    </div>
+  </section>
+);
+
+const Context = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.contextKicker}</div>
+      <Rich as="h2" html={c.contextTitle} />
+    </div>
+    <div className="container cs-two-col">
+      <div className="reveal">{c.contextBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}</div>
+      <div className="cs-goals reveal"><h3>{c.goalsTitle}</h3><ul>{c.goals.map(g => <li key={g}>{g}</li>)}</ul></div>
+    </div>
+  </section>
+);
+
+const Decisions = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.decisionsKicker}</div>
+        <Rich as="h2" html={c.decisionsTitle} />
+      </div>
+      <div className="cs-cards">
+        {c.decisions.map((d, i) => (
+          <article key={d.title} className="cs-card reveal" style={{ transitionDelay: `${i * 80}ms` }}>
+            <div className="cs-card-num">0{i + 1}</div>
+            <h3>{d.title}</h3>
+            <p>{d.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Sections = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.sectionsKicker}</div>
+        <Rich as="h2" html={c.sectionsTitle} />
+      </div>
+      <div className="cs-gallery">
+        {c.sections.map(s => (
+          <figure key={s.img} className="cs-shot reveal">
+            <a href={IMG + s.img} target="_blank" rel="noopener" className="cs-shot-img" style={{ aspectRatio: "16 / 9" }}><img src={IMG + s.img} alt={s.title} loading="lazy" /></a>
+            <figcaption><h3>{s.title}</h3><p>{s.desc}</p></figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Devices = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.devicesKicker}</div>
+        <Rich as="h2" html={c.devicesTitle} />
+        <p>{c.devicesLede}</p>
+      </div>
+      <div className="cs-devices reveal">
+        <figure className="cs-device-desktop">
+          <BrowserFrame url="befit · fuerza en el gym">
+            <div className="cs-scroll" tabIndex={0} aria-label={c.desktop}>
+              <img src={`${IMG}desktop-full.jpg`} alt="" loading="lazy" />
+            </div>
+          </BrowserFrame>
+          <figcaption>{c.desktop}</figcaption>
+        </figure>
+        <figure className="cs-device-mobile">
+          <div className="cs-phone">
+            <div className="cs-scroll" tabIndex={0} aria-label={c.mobile}>
+              <img src={`${IMG}mobile-full.jpg`} alt="" loading="lazy" />
+            </div>
+          </div>
+          <figcaption>{c.mobile}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={i} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span><h3>{s.title}</h3><p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+      <p className="cs-caption reveal" style={{ marginTop: 40 }}>{c.credits}</p>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-flok.html" className="cs-next-link"><span>{c.nextLabel}</span><strong>{c.nextTitle} <Arrow size={20} /></strong></a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Context c={c} />
+      <Decisions c={c} />
+      <Sections c={c} />
+      <Devices c={c} />
+      <Process c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
