@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Lab · Imágenes y video con IA · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Lab de Chinni Design Studio: fotografía de producto, escenas, ilustraciones y videos generados con IA, con dirección de arte. Packs de imágenes y videos en todos los formatos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P88WH6NYHT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-P88WH6NYHT");
+</script>
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const L = "assets/photos/lab/";
+// Servicio del formulario al que se asocian los packs (mismo título que en i18n)
+const SERVICE = { es: "Imágenes y video con IA", en: "AI images & video" };
+
+// Videos generados con IA (todos están en el sitio)
+const VIDEOS = [
+  { src: "assets/video/cta-lava.mp4", es: "Lámpara de lava en loop", en: "Lava lamp loop" },
+  { src: "assets/photos/cards/pawcare.mp4", es: "Personajes animados · PawCare", en: "Animated characters · PawCare" },
+  { src: "assets/photos/nor/video.mp4", es: "Video de marca · NØR", en: "Brand video · NØR" },
+  { src: "assets/video/bandido-lava.mp4", es: "Escena con movimiento sutil", en: "Subtle motion scene" },
+  { src: "assets/photos/protocol/video-sermorelin.mp4", es: "Video de producto · Protocol", en: "Product video · Protocol" },
+  { src: "assets/video/pared-luces.mp4", es: "Ambientación para fondos web", en: "Ambient web background" },
+  { src: "assets/photos/hisoil/video.mp4", es: "Video de marca · Hisoil", en: "Brand video · Hisoil" },
+  { src: "assets/video/contacto-luz.mp4", es: "Luz que cambia de color", en: "Color-shifting light" },
+];
+
+// Fotografía de producto y escenas (masonry)
+const PHOTOS = [
+  ["lab/escritorio-lava.jpg", "Night Studio"], ["protocol/prod-semaglutide.jpg", "Protocol"], ["nor/foto-kayaks.jpg", "NØR"],
+  ["lab/mate-noche.jpg", "Night Studio"], ["hisoil/ia-arandanos-campo.jpg", "Hisoil"], ["lab/flatlay-bocetos.jpg", "Night Studio"],
+  ["protocol/prod-nad.jpg", "Protocol"], ["nor/foto-atardecer.jpg", "NØR"], ["lab/lava-bokeh.jpg", "Night Studio"],
+  ["hisoil/ia-vivero-citrus.jpg", "Hisoil"], ["lab/estudio-estantes.jpg", "Night Studio"], ["protocol/vida-alegria.jpg", "Protocol"],
+  ["lab/moodboard.jpg", "Night Studio"], ["nor/foto-aerea.jpg", "NØR"], ["lab/libros-pastel.jpg", "Night Studio"],
+];
+
+const FORMATS = [
+  { img: "fmt-1x1.jpg", ratio: "1 / 1", label: "1:1", es: "Feed", en: "Feed" },
+  { img: "fmt-4x5.jpg", ratio: "4 / 5", label: "4:5", es: "Instagram", en: "Instagram" },
+  { img: "fmt-9x16.jpg", ratio: "9 / 16", label: "9:16", es: "Stories y Reels", en: "Stories & Reels" },
+  { img: "fmt-16x9.jpg", ratio: "16 / 9", label: "16:9", es: "Web y banners", en: "Web & banners" },
+];
+
+const PACKS = [
+  {
+    id: "esencial", es: { name: "Pack Esencial", tag: "Para arrancar", items: ["10 imágenes", "En 4 formatos: 1:1, 4:5, 9:16 y 16:9", "1 video corto (5–8 s)", "1 ronda de ajustes", "Entrega en 5 días hábiles"] },
+    en: { name: "Essential Pack", tag: "To get started", items: ["10 images", "In 4 formats: 1:1, 4:5, 9:16 and 16:9", "1 short video (5–8 s)", "1 round of revisions", "Delivered in 5 business days"] },
+  },
+  {
+    id: "marca", featured: true, es: { name: "Pack Marca", tag: "El más elegido", items: ["25 imágenes", "En 4 formatos: 1:1, 4:5, 9:16 y 16:9", "3 videos cortos (5–10 s)", "Dirección de arte con tu paleta y estilo", "2 rondas de ajustes", "Entrega en 7 días hábiles"] },
+    en: { name: "Brand Pack", tag: "Most popular", items: ["25 images", "In 4 formats: 1:1, 4:5, 9:16 and 16:9", "3 short videos (5–10 s)", "Art direction with your palette and style", "2 rounds of revisions", "Delivered in 7 business days"] },
+  },
+  {
+    id: "campana", es: { name: "Pack Campaña", tag: "Lanzamientos", items: ["50 imágenes", "En 4 formatos: 1:1, 4:5, 9:16 y 16:9", "6 videos (hasta 15 s)", "Guía de estilo visual para tu marca", "3 rondas de ajustes", "Entrega por etapas"] },
+    en: { name: "Campaign Pack", tag: "Launches", items: ["50 images", "In 4 formats: 1:1, 4:5, 9:16 and 16:9", "6 videos (up to 15 s)", "Visual style guide for your brand", "3 rounds of revisions", "Delivered in stages"] },
+  },
+];
+
+const STEPS = [
+  { es: ["Brief", "Me contás tu marca, el producto y dónde vas a usar las piezas."], en: ["Brief", "Tell me about your brand, product and where the pieces will live."] },
+  { es: ["Dirección de arte", "Defino estilo, paleta, escenas y referencias para que todo se vea de la misma marca."], en: ["Art direction", "I define style, palette, scenes and references so everything looks on-brand."] },
+  { es: ["Generación y curaduría", "Genero con IA, elijo las mejores, las corrijo y quito cualquier detalle que no sirva."], en: ["Generation & curation", "I generate with AI, pick the best, refine them and remove anything that doesn't work."] },
+  { es: ["Entrega", "Recibís todo en alta resolución y en cada formato, listo para publicar."], en: ["Delivery", "You get everything in high resolution and every format, ready to publish."] },
+];
+
+const Lazy = ({ src, label }) => {
+  // El video recién se carga y reproduce cuando entra en pantalla
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const v = ref.current; if (!v) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { if (!v.src) v.src = src; v.play().catch(() => {}); } else v.pause(); }, { threshold: 0.2 });
+    io.observe(v); return () => io.disconnect();
+  }, [src]);
+  return <video ref={ref} muted loop playsInline preload="none" aria-label={label} />;
+};
+
+const Page = () => {
+  const { lang } = useT();
+  const es = lang !== "en";
+  const T = (a, b) => (es ? a : b);
+  const [request, setRequest] = React.useState(null); // { pack } abierto en el formulario
+  useReveal();
+  return (
+    <>
+      <section className="lab-hero">
+        <video className="bg-video" autoPlay muted loop playsInline preload="metadata" poster="assets/photos/cta-escritorio.jpg" aria-hidden="true">
+          <source src="assets/video/cta-lava.mp4" type="video/mp4" />
+        </video>
+        <div className="container-narrow lab-hero-inner">
+          <div className="eyebrow">Lab · {T("Imágenes y video con IA", "AI images & video")}</div>
+          <h1>{es ? <>Contenido visual <em>con IA</em>, con criterio de diseño</> : <>AI visuals, <em>art-directed</em> by a designer</>}</h1>
+          <p>{T("Fotografía de producto, escenas, ilustraciones y videos para tu marca, generados con IA y cuidados como cualquier pieza de diseño. En todos los formatos que necesitás.", "Product photography, scenes, illustrations and videos for your brand, generated with AI and crafted like any design piece. In every format you need.")}</p>
+          <div className="lab-hero-ctas">
+            <a href="#packs" className="btn btn-light">{T("Ver packs", "See packs")}</a>
+            <a href="#videos" className="btn btn-ghost-light">{T("Ver ejemplos", "See examples")}</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="cs-section" id="videos">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="eyebrow">{T("Video", "Video")}</div>
+            <h2>{es ? <>Imágenes que <em>cobran vida</em></> : <>Images that <em>come alive</em></>}</h2>
+            <p>{T("Loops para fondos web, videos de producto y personajes animados. Movimiento sutil que no distrae y vuelve a empezar sin cortes.", "Loops for web backgrounds, product videos and animated characters. Subtle motion that doesn't distract and loops seamlessly.")}</p>
+          </div>
+          <div className="lab-videos">
+            {VIDEOS.map((v, i) => (
+              <figure key={v.src} className={`lab-video reveal ${i === 0 ? "lab-video-big" : i === VIDEOS.length - 1 ? "lab-video-wide" : ""}`}>
+                <Lazy src={v.src} label={es ? v.es : v.en} />
+                <figcaption>{es ? v.es : v.en}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cs-section cs-tint">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="eyebrow">{T("Fotografía", "Photography")}</div>
+            <h2>{es ? <>Producto y escenas <em>sin sesión de fotos</em></> : <>Product & scenes, <em>no photoshoot</em></>}</h2>
+            <p>{T("Packshots, escenas de uso y ambientaciones con la luz y la paleta de cada marca.", "Packshots, lifestyle scenes and settings with each brand's light and palette.")}</p>
+          </div>
+          <div className="nor-masonry">
+            {PHOTOS.map(([f, brand]) => (
+              <figure key={f} className="nor-photo lab-photo reveal"><img src={`assets/photos/${f}`} alt="" loading="lazy" /><span>{brand}</span></figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cs-section">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="eyebrow">{T("Ilustración", "Illustration")}</div>
+            <h2>{es ? <>Un universo <em>ilustrado</em></> : <>An <em>illustrated</em> universe</>}</h2>
+            <p>{T("Ilustraciones sueltas en PNG, patrones repetibles y escenas completas, todo con un mismo estilo para que funcione como sistema.", "Standalone PNG illustrations, seamless patterns and full scenes, all in one style so it works as a system.")}</p>
+          </div>
+          <div className="lab-illu">
+            <div className="lab-illu-items reveal">
+              {["lava-lamp", "pothos-pot", "sleeping-frenchie", "mate-thermos", "record-player", "coffee-mug"].map(n => <img key={n} src={`${L}ilu-${n}.png`} alt="" loading="lazy" />)}
+            </div>
+            <figure className="lab-illu-scene reveal"><img src={`${L}ilu-escena.jpg`} alt="" loading="lazy" /></figure>
+            <figure className="lab-illu-pattern reveal" style={{ backgroundImage: `url(${L}pattern-pets.jpg)` }} aria-label={T("Patrón repetible", "Seamless pattern")}></figure>
+          </div>
+        </div>
+      </section>
+
+      <section className="cs-section cs-tint">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="eyebrow">{T("Formatos", "Formats")}</div>
+            <h2>{es ? <>Una imagen, <em>todos los tamaños</em></> : <>One image, <em>every size</em></>}</h2>
+            <p>{T("Cada pieza se entrega recortada y compuesta para cada uso: no solo achicada, sino pensada para que lo importante siempre quede en cuadro.", "Every piece is delivered cropped and composed for each use: not just resized, but framed so what matters always stays in view.")}</p>
+          </div>
+          <div className="lab-formats reveal">
+            {FORMATS.map(f => (
+              <figure key={f.label}>
+                <div className="lab-format-img" style={{ aspectRatio: f.ratio }}><img src={L + f.img} alt="" loading="lazy" /></div>
+                <figcaption><strong>{f.label}</strong> {es ? f.es : f.en}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="cs-section" id="packs">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="eyebrow">{T("Packs", "Packs")}</div>
+            <h2>{es ? <>Elegí tu <em>pack</em></> : <>Choose your <em>pack</em></>}</h2>
+            <p>{T("Todos incluyen dirección de arte, imágenes en alta resolución y uso comercial. Pedí el tuyo y te paso la propuesta con precio.", "All include art direction, high-resolution images and commercial use. Request yours and I'll send you a proposal with pricing.")}</p>
+          </div>
+          <div className="lab-packs">
+            {PACKS.map((p, i) => {
+              const c = es ? p.es : p.en;
+              return (
+                <article key={p.id} className={`lab-pack reveal ${p.featured ? "featured" : ""}`} style={{ transitionDelay: `${i * 80}ms` }}>
+                  <div className="lab-pack-tag">{c.tag}</div>
+                  <h3>{c.name}</h3>
+                  <ul>{c.items.map(it => <li key={it}>{it}</li>)}</ul>
+                  <button type="button" className={`btn ${p.featured ? "btn-primary" : "btn-outline"}`} onClick={() => setRequest({ pack: c.name })}>
+                    {T("Pedir este pack", "Request this pack")}
+                    <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </button>
+                </article>
+              );
+            })}
+          </div>
+          <div className="lab-custom reveal">
+            <div><strong>{T("¿Necesitás otra cantidad o algo puntual?", "Need a different amount or something specific?")}</strong><p>{T("Armamos un pack a medida: solo videos, una colección de ilustraciones o fotos para un lanzamiento.", "Let's build a custom pack: video only, an illustration collection or photos for a launch.")}</p></div>
+            <button type="button" className="btn btn-outline" onClick={() => setRequest({ pack: T("A medida", "Custom") })}>{T("Pedir pack a medida", "Request a custom pack")}</button>
+          </div>
+        </div>
+      </section>
+
+      <section className="cs-section cs-tint">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="eyebrow">{T("Proceso", "Process")}</div>
+            <h2>{es ? <>Cómo <em>trabajo</em></> : <>How I <em>work</em></>}</h2>
+          </div>
+          <ol className="cs-steps lab-steps">
+            {STEPS.map((s, i) => {
+              const [t, d] = es ? s.es : s.en;
+              return <li key={t} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}><span className="cs-step-tool">0{i + 1}</span><h3>{t}</h3><p>{d}</p></li>;
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {request && <RequestModal service={es ? SERVICE.es : SERVICE.en} pack={request.pack} onClose={() => setRequest(null)} />}
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="lab" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

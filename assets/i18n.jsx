@@ -1,7 +1,7 @@
 // === i18n: ES / EN ===
 const TRANSLATIONS = {
   es: {
-    nav: { home: "inicio", work: "trabajos", about: "sobre mí", contact: "contacto" },
+    nav: { home: "inicio", work: "trabajos", lab: "lab", about: "sobre mí", contact: "contacto" },
     hero: {
       kicker: "PORTFOLIO · 2026",
       role: "UX/UI · Visual Design · Branding",
@@ -131,7 +131,7 @@ const TRANSLATIONS = {
     footer: "© 2026 Chinni Design Studio · Melina Chinni",
   },
   en: {
-    nav: { home: "home", work: "work", about: "about", contact: "contact" },
+    nav: { home: "home", work: "work", lab: "lab", about: "about", contact: "contact" },
     hero: {
       kicker: "PORTFOLIO · 2026",
       role: "UX/UI · Visual Design · Branding",

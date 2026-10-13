@@ -48,7 +48,7 @@ const Nav = ({ active = "home", overlay = false }) => {
           <span></span><span></span><span></span>
         </button>
         <div className="nav-links" id="nav-links">
-          {[["home", "index.html"], ["work", "work.html"], ["about", "about.html"], ["contact", "contact.html"]].map(([key, href]) => (
+          {[["home", "index.html"], ["work", "work.html"], ["lab", "lab.html"], ["about", "about.html"], ["contact", "contact.html"]].map(([key, href]) => (
             <a key={key} href={href} data-label={t.nav[key]} className={`link-animated ${active === key ? "active" : ""}`} aria-current={active === key ? "page" : undefined} onClick={() => setMenuOpen(false)}>{t.nav[key]}</a>
           ))}
           <LangSwitch />
@@ -292,11 +292,12 @@ const WEB3FORMS_KEY = "df34c0dc-bd1a-4c0c-89cf-ba1af7c2dac3";
 // Etiquetas legibles para el mail
 const FIELD_LABELS = {
   nombre: "Nombre", marca: "Marca o empresa", email: "Email", telefono: "Teléfono / WhatsApp",
-  servicio: "Servicio", detalle_servicio: "Detalle del servicio", tipo_de_proyecto: "Tipo de proyecto", necesidad: "Qué necesita",
+  servicio: "Servicio", paquete: "Paquete", detalle_servicio: "Detalle del servicio", tipo_de_proyecto: "Tipo de proyecto", necesidad: "Qué necesita",
   plazo: "Plazo", presupuesto: "Presupuesto", marca_o_contenido: "Marca o contenido", links: "Web o redes",
 };
 
-const RequestModal = ({ service, onClose }) => {
+// pack: opcional, el paquete elegido en la página Lab (viaja como campo oculto)
+const RequestModal = ({ service, pack, onClose }) => {
   const { t } = useT();
   const s = t.studio;
   const f = s.form;
@@ -401,6 +402,7 @@ const RequestModal = ({ service, onClose }) => {
             <div className="eyebrow">{s.requestCta}</div>
             <h3 id="request-title">{f.title}</h3>
             <p className="modal-intro">{f.intro}</p>
+            {pack && (<><input type="hidden" name="paquete" value={pack} /><div className="modal-pack">{pack}</div></>)}
 
             <input type="text" name="_honey" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
