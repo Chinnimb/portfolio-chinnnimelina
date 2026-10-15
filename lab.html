@@ -43,7 +43,10 @@ const VIDEOS = [
   { src: "assets/photos/protocol/video-sermorelin.mp4", es: "Video de producto · Protocol", en: "Product video · Protocol" },
   { src: "assets/video/pared-luces.mp4", es: "Ambientación para fondos web", en: "Ambient web background" },
   { src: "assets/photos/hisoil/video.mp4", es: "Video de marca · Hisoil", en: "Brand video · Hisoil" },
-  { src: "assets/video/contacto-luz.mp4", es: "Luz que cambia de color", en: "Color-shifting light" },
+  { src: "assets/photos/mordi/video-snowboard.mp4", es: "Lifestyle con producto · Mordi", en: "Product lifestyle · Mordi", pos: "center 40%" },
+  { src: "assets/photos/mordi/video-chocolate.mp4", es: "Producto en detalle · Mordi", en: "Product close-up · Mordi" },
+  { src: "assets/video/contacto-luz.mp4", es: "Luz que cambia de color", en: "Color-shifting light", wide: true },
+  { src: "assets/photos/mordi/video.mp4", es: "Packaging en movimiento · Mordi", en: "Packaging in motion · Mordi", wide: true },
 ];
 
 // Fotografía de producto y escenas (masonry)
@@ -127,7 +130,7 @@ const Page = () => {
           </div>
           <div className="lab-videos">
             {VIDEOS.map((v, i) => (
-              <figure key={v.src} className={`lab-video reveal ${i === 0 ? "lab-video-big" : i === VIDEOS.length - 1 ? "lab-video-wide" : ""}`}>
+              <figure key={v.src} className={`lab-video reveal ${i === 0 ? "lab-video-big" : v.wide ? "lab-video-wide" : ""}`}>
                 <Lazy src={v.src} label={es ? v.es : v.en} pos={v.pos} />
                 <figcaption>{es ? v.es : v.en}</figcaption>
               </figure>
