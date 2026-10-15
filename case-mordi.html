@@ -40,9 +40,9 @@ const FLAVORS = [
   { es: "Frutos rojos", en: "Berries", bg: "#6C2BE6", logo: "#C4F64E" },
   { es: "Coco", en: "Coconut", bg: "#3BAAEE", logo: "#FFFFFF" },
 ];
-const BOOK = Array.from({ length: 13 }, (_, i) => `bb-${String(i + 1).padStart(2, "0")}.jpg`);
+const BOOK = Array.from({ length: 12 }, (_, i) => `bb-${String(i + 1).padStart(2, "0")}.jpg`);
 // Fotos generadas con IA (Higgsfield); el orden arma el mosaico
-const PHOTOS = ["foto-te4.jpg", "foto-ph-1.jpg", "foto-te2.jpg", "foto-f1.jpg", "foto-ph-3.jpg", "foto-te1.jpg", "foto-f2.jpg", "foto-ph-4.jpg", "foto-te3.jpg", "foto-f3.jpg", "foto-ph-5.jpg"];
+const PHOTOS = ["foto-te4.jpg", "foto-ph-1.jpg", "foto-f1.jpg", "foto-ph-3.jpg", "foto-te1.jpg", "foto-f2.jpg", "foto-ph-4.jpg", "foto-te3.jpg", "foto-f3.jpg", "foto-ph-5.jpg"];
 const POSTS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const CONTENT = {
@@ -85,7 +85,7 @@ const CONTENT = {
 
     bookKicker: "Brandbook",
     bookTitle: "El sistema <em>completo</em>",
-    bookBody: "Trece láminas para ver la marca en acción: logo, color, tipografía, packaging, vía pública, Instagram, stories y fotografía.",
+    bookBody: "Doce láminas para ver la marca en acción: logo, color, tipografía, packaging, vía pública, Instagram, stories y fotografía.",
 
     lineKicker: "Packaging",
     lineTitle: "Cinco sabores, <em>una familia</em>",
@@ -159,7 +159,7 @@ const CONTENT = {
 
     bookKicker: "Brandbook",
     bookTitle: "The <em>complete</em> system",
-    bookBody: "Thirteen boards showing the brand in action: logo, color, typography, packaging, street posters, Instagram, stories and photography.",
+    bookBody: "Twelve boards showing the brand in action: logo, color, typography, packaging, street posters, Instagram, stories and photography.",
 
     lineKicker: "Packaging",
     lineTitle: "Five flavors, <em>one family</em>",
@@ -251,7 +251,7 @@ const LogoSection = ({ c }) => (
         <p>{c.logoBody}</p>
       </div>
       <div className="mordi-boards">
-        {["bb-02.jpg", "bb-08.jpg"].map(f => (
+        {["bb-02.jpg", "bb-07.jpg"].map(f => (
           <figure key={f} className="nor-board reveal"><img src={IMG + f} alt="Lámina de logo de Mordi" loading="lazy" /></figure>
         ))}
       </div>
@@ -324,7 +324,7 @@ const Line = ({ c }) => (
         <p>{c.lineBody}</p>
       </div>
       <figure className="nor-board reveal"><img src={IMG + "linea.jpg"} alt="Los cinco sabores de Mordi" loading="lazy" /></figure>
-      <figure className="nor-board reveal" style={{ marginTop: 16 }}><img src={IMG + "bb-07.jpg"} alt="Packaging de Mordi frutos rojos" loading="lazy" /></figure>
+      <figure className="nor-board reveal" style={{ marginTop: 16 }}><img src={IMG + "bb-06.jpg"} alt="Packaging de Mordi frutos rojos" loading="lazy" /></figure>
     </div>
   </section>
 );
