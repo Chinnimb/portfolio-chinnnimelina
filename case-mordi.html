@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mordi · Barritas de cereal · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: identidad visual, packaging, brandbook, fotografía, video y redes de Mordi, una marca de barritas de cereal con proteína creada como proyecto propio, con imágenes generadas con IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P88WH6NYHT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-P88WH6NYHT");
+</script>
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const IMG = "assets/photos/mordi/";
+
+// Un color de fondo y uno de logo por sabor (medidos del packaging)
+const FLAVORS = [
+  { es: "Frutilla", en: "Strawberry", bg: "#F28DB2", logo: "#E8112D" },
+  { es: "Chocolate", en: "Chocolate", bg: "#F77A12", logo: "#5A1A08" },
+  { es: "Maní", en: "Peanut", bg: "#F7BE00", logo: "#1240D0" },
+  { es: "Frutos rojos", en: "Berries", bg: "#6C2BE6", logo: "#C4F64E" },
+  { es: "Coco", en: "Coconut", bg: "#3BAAEE", logo: "#FFFFFF" },
+];
+const BOOK = Array.from({ length: 13 }, (_, i) => `bb-${String(i + 1).padStart(2, "0")}.jpg`);
+// Fotos generadas con IA (Higgsfield); el orden arma el mosaico
+const PHOTOS = ["foto-te4.jpg", "foto-ph-1.jpg", "foto-te2.jpg", "foto-f1.jpg", "foto-ph-3.jpg", "foto-te1.jpg", "foto-f2.jpg", "foto-ph-4.jpg", "foto-te3.jpg", "foto-f3.jpg", "foto-ph-5.jpg"];
+const POSTS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · Branding · 2026",
+    title: "Mordi · <em>Barritas de cereal</em>",
+    lede: "Una marca propia, de punta a punta: identidad, packaging para cinco sabores, brandbook, fotografía y video con IA, y una línea de redes con letra hecha a mano.",
+    tags: ["Branding", "Packaging", "Brandbook", "AI Generation", "Redes"],
+    meta: [
+      { k: "Marca", v: "Mordi" },
+      { k: "Rubro", v: "Snacks · Alimentos" },
+      { k: "Tipo", v: "Proyecto propio" },
+      { k: "Año", v: "2026" },
+    ],
+    videoCaption: "El paquete abriéndose: video de producto generado con IA.",
+
+    conceptKicker: "El concepto",
+    conceptTitle: "Snack para chicas <em>que no paran</em>",
+    conceptBody: [
+      "Mordi es una barrita de cereal con proteína pensada para chicas activas: suben montañas, cruzan ríos, van a la oficina y vuelven a salir. Sin TACC, sin azúcar agregada y con 10g de proteína.",
+      "Las barritas suelen comunicarse con verdes apagados y promesas de dieta. Mordi va para el otro lado: colores saturados, humor y cero culpa. Comer rico también es parte de la aventura.",
+      "Lo creé como proyecto propio para mostrar el proceso completo de una marca de consumo masivo, de la idea a las piezas listas para publicar.",
+    ],
+    personalityTitle: "Personalidad",
+    personality: [
+      { t: "Colorida", d: "Un color por sabor, sin miedo a saturar." },
+      { t: "Directa", d: "Frases cortas, sin sermones ni letra chica." },
+      { t: "Divertida", d: "Habla como una amiga con energía." },
+      { t: "Aventurera", d: "Siempre afuera, siempre en movimiento." },
+    ],
+
+    logoKicker: "Logo",
+    logoTitle: "Redondo, gordito <em>y blando</em>",
+    logoBody: "Un logotipo con letras infladas que se apoyan entre sí, como una mordida. Siempre en minúscula y en una sola línea: la forma no cambia nunca, el color cambia con cada sabor.",
+
+    paletteKicker: "Color",
+    paletteTitle: "Un color <em>por sabor</em>",
+    paletteBody: "Cada sabor tiene su par: un fondo y un color para el logo. Así la góndola se lee de lejos y cada paquete se reconoce sin leer el nombre.",
+
+    bookKicker: "Brandbook",
+    bookTitle: "El sistema <em>completo</em>",
+    bookBody: "Trece láminas con todo lo necesario para usar la marca: esencia, logo y usos incorrectos, color, tipografía, packaging, tono de voz, fotografía y redes.",
+
+    lineKicker: "Packaging",
+    lineTitle: "Cinco sabores, <em>una familia</em>",
+    lineBody: "Misma estructura en todos los paquetes: logo grande en el color del sabor, el nombre del sabor arriba, tres sellos redondos (sin TACC, 10g de proteína, 0% azúcar) y una foto real del producto.",
+
+    photoKicker: "Fotografía con IA",
+    photoTitle: "Chicas reales, <em>afuera</em>",
+    photoBody: "Todas las fotos se generaron con IA en Higgsfield. Para que el packaging se viera tal cual es, recorté cada paquete y lo usé como referencia en cada imagen: luz natural, lente 24mm, viñeta suave y grano de película.",
+
+    videoKicker: "Video",
+    videoTitle: "La marca <em>en movimiento</em>",
+    videos: [
+      { f: "video-snowboard", t: "La barrita a cámara" },
+      { f: "video-chocolate", t: "Chocolate, partida al medio" },
+    ],
+
+    socialKicker: "Redes",
+    socialTitle: "Foto + frase a mano <em>+ garabatos</em>",
+    socialBody: "Para redes, la marca se vuelve desprolija a propósito: títulos con marcador, letras un poco torcidas, flechas, círculos y estrellas que señalan el producto.",
+
+    processKicker: "Proceso y herramientas",
+    processTitle: "De la idea a la <em>marca completa</em>",
+    steps: [
+      { tool: "Research", title: "Concepto", desc: "Referencias de snacks, deportes outdoor y marcas de consumo con mucho color." },
+      { tool: "Higgsfield", title: "Logo y packaging", desc: "El logotipo y los cinco paquetes, ajustados hasta que cada sabor tuviera su par de colores." },
+      { tool: "Figma", title: "Brandbook", desc: "Esencia, logo, color, tipografía, packaging, voz, fotografía y redes." },
+      { tool: "Higgsfield", title: "Fotos y video con IA", desc: "Escenas de nieve y trekking con el packaging real como referencia, y videos de producto." },
+      { tool: "Código", title: "Redes", desc: "Posteos armados encima de las fotos, con tipografía de marcador y garabatos." },
+    ],
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "Flok · Family Planner",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Branding · 2026",
+    title: "Mordi · <em>Cereal bars</em>",
+    lede: "A brand of my own, end to end: identity, packaging for five flavors, brandbook, AI photography and video, and a social media line with hand-drawn lettering.",
+    tags: ["Branding", "Packaging", "Brandbook", "AI Generation", "Social media"],
+    meta: [
+      { k: "Brand", v: "Mordi" },
+      { k: "Industry", v: "Snacks · Food" },
+      { k: "Type", v: "Personal project" },
+      { k: "Year", v: "2026" },
+    ],
+    videoCaption: "The wrapper opening: AI-generated product video.",
+
+    conceptKicker: "The concept",
+    conceptTitle: "A snack for girls <em>who never stop</em>",
+    conceptBody: [
+      "Mordi is a protein cereal bar for active girls: they climb mountains, cross rivers, go to the office and head out again. Gluten free, no added sugar and 10g of protein.",
+      "Cereal bars usually speak in muted greens and diet promises. Mordi goes the other way: saturated colors, humor and zero guilt. Eating well is part of the adventure too.",
+      "I created it as a personal project to show the full process of a consumer brand, from the first idea to pieces ready to publish.",
+    ],
+    personalityTitle: "Personality",
+    personality: [
+      { t: "Colorful", d: "One color per flavor, not afraid to saturate." },
+      { t: "Straightforward", d: "Short lines, no lectures, no fine print." },
+      { t: "Fun", d: "Talks like an energetic friend." },
+      { t: "Adventurous", d: "Always outdoors, always moving." },
+    ],
+
+    logoKicker: "Logo",
+    logoTitle: "Round, chubby <em>and soft</em>",
+    logoBody: "A wordmark with puffy letters leaning on each other, like a bite. Always lowercase and on a single line: the shape never changes, the color changes with every flavor.",
+
+    paletteKicker: "Color",
+    paletteTitle: "One color <em>per flavor</em>",
+    paletteBody: "Each flavor has its pair: a background and a logo color. That way the shelf reads from afar and every pack is recognized without reading its name.",
+
+    bookKicker: "Brandbook",
+    bookTitle: "The <em>complete</em> system",
+    bookBody: "Thirteen boards with everything needed to use the brand: essence, logo and misuse, color, typography, packaging, tone of voice, photography and social media.",
+
+    lineKicker: "Packaging",
+    lineTitle: "Five flavors, <em>one family</em>",
+    lineBody: "Same structure on every pack: a big logo in the flavor color, the flavor name on top, three round badges (gluten free, 10g protein, 0% sugar) and a real product photo.",
+
+    photoKicker: "AI photography",
+    photoTitle: "Real girls, <em>outdoors</em>",
+    photoBody: "Every photo was generated with AI in Higgsfield. To keep the packaging exactly as designed, I cut out each wrapper and used it as a reference in every image: natural light, 24mm lens, soft vignette and film grain.",
+
+    videoKicker: "Video",
+    videoTitle: "The brand <em>in motion</em>",
+    videos: [
+      { f: "video-snowboard", t: "The bar to camera" },
+      { f: "video-chocolate", t: "Chocolate, broken in half" },
+    ],
+
+    socialKicker: "Social media",
+    socialTitle: "Photo + handwritten line <em>+ doodles</em>",
+    socialBody: "On social media the brand gets messy on purpose: marker headlines, slightly crooked letters, arrows, circles and stars pointing at the product.",
+
+    processKicker: "Process & tools",
+    processTitle: "From idea to a <em>complete brand</em>",
+    steps: [
+      { tool: "Research", title: "Concept", desc: "References from snacks, outdoor sports and bold, colorful consumer brands." },
+      { tool: "Higgsfield", title: "Logo & packaging", desc: "The wordmark and the five packs, refined until each flavor had its color pair." },
+      { tool: "Figma", title: "Brandbook", desc: "Essence, logo, color, typography, packaging, voice, photography and social." },
+      { tool: "Higgsfield", title: "AI photos & video", desc: "Snow and trekking scenes using the real packaging as reference, plus product videos." },
+      { tool: "Code", title: "Social media", desc: "Posts built on top of the photos, with marker lettering and doodles." },
+    ],
+
+    nextLabel: "Next case",
+    nextTitle: "Flok · Family Planner",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">
+        {c.meta.map(m => <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>)}
+      </dl>
+    </div>
+    <div className="container cs-video-wrap reveal">
+      <div className="nor-media mordi-media">
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}video-poster.jpg`} aria-label={c.videoCaption}>
+          <source src={`${IMG}video.mp4`} type="video/mp4" />
+        </video>
+      </div>
+      <p className="cs-caption">{c.videoCaption}</p>
+    </div>
+  </section>
+);
+
+const Concept = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.conceptKicker}</div>
+      <Rich as="h2" html={c.conceptTitle} />
+    </div>
+    <div className="container cs-two-col">
+      <div className="reveal">{c.conceptBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}</div>
+      <div className="cs-goals reveal">
+        <h3>{c.personalityTitle}</h3>
+        <ul className="nor-personality mordi-personality">
+          {c.personality.map(p => <li key={p.t}><strong>{p.t}</strong><span>{p.d}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+);
+
+const LogoSection = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.logoKicker}</div>
+        <Rich as="h2" html={c.logoTitle} />
+        <p>{c.logoBody}</p>
+      </div>
+      <div className="mordi-boards">
+        {["bb-04.jpg", "bb-05.jpg"].map(f => (
+          <figure key={f} className="nor-board reveal"><img src={IMG + f} alt="Lámina de logo de Mordi" loading="lazy" /></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Palette = ({ c, lang }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.paletteKicker}</div>
+        <Rich as="h2" html={c.paletteTitle} />
+        <p>{c.paletteBody}</p>
+      </div>
+      <div className="mordi-swatches reveal">
+        {FLAVORS.map(f => (
+          <div key={f.es} className="mordi-swatch" style={{ background: f.bg }}>
+            <span className="mordi-swatch-logo" style={{ background: f.logo }} />
+            <strong style={{ color: f.logo === "#FFFFFF" ? "#fff" : f.logo }}>{lang === "en" ? f.en : f.es}</strong>
+            <span style={{ color: f.logo === "#FFFFFF" ? "#fff" : f.logo }}>{f.bg} · {f.logo}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Book = ({ c }) => {
+  const [i, setI] = React.useState(0);
+  const go = d => setI(v => (v + d + BOOK.length) % BOOK.length);
+  return (
+    <section className="cs-section cs-tint">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{c.bookKicker}</div>
+          <Rich as="h2" html={c.bookTitle} />
+          <p>{c.bookBody}</p>
+        </div>
+        <div className="mordi-book reveal">
+          <div className="mordi-book-frame">
+            {BOOK.map((f, n) => (
+              <img key={f} src={IMG + f} alt={`Brandbook Mordi, lámina ${n + 1}`} loading={n < 2 ? "eager" : "lazy"} className={n === i ? "on" : ""} />
+            ))}
+          </div>
+          <div className="mordi-book-nav">
+            <button type="button" onClick={() => go(-1)} aria-label="Anterior">←</button>
+            <span>{i + 1} / {BOOK.length}</span>
+            <button type="button" onClick={() => go(1)} aria-label="Siguiente">→</button>
+          </div>
+          <div className="mordi-book-thumbs">
+            {BOOK.map((f, n) => (
+              <button key={f} type="button" className={n === i ? "on" : ""} onClick={() => setI(n)} aria-label={`Lámina ${n + 1}`}>
+                <img src={IMG + f} alt="" loading="lazy" />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Line = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.lineKicker}</div>
+        <Rich as="h2" html={c.lineTitle} />
+        <p>{c.lineBody}</p>
+      </div>
+      <figure className="nor-board reveal"><img src={IMG + "linea.jpg"} alt="Los cinco sabores de Mordi" loading="lazy" /></figure>
+      <figure className="nor-board reveal" style={{ marginTop: 16 }}><img src={IMG + "bb-09.jpg"} alt="Anatomía del packaging de Mordi" loading="lazy" /></figure>
+    </div>
+  </section>
+);
+
+const Photos = ({ c }) => (
+  <section className="cs-section mordi-dark">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.photoKicker}</div>
+        <Rich as="h2" html={c.photoTitle} />
+        <p>{c.photoBody}</p>
+      </div>
+      <div className="nor-masonry">
+        {PHOTOS.map(f => (
+          <figure key={f} className="nor-photo reveal">
+            <img src={IMG + f} alt="" loading="lazy" width="1000" height={f.startsWith("foto-ph") ? 1250 : 1340} />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Videos = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.videoKicker}</div>
+        <Rich as="h2" html={c.videoTitle} />
+      </div>
+      <div className="mordi-videos">
+        {c.videos.map(v => (
+          <figure key={v.f} className="reveal">
+            <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}${v.f}-poster.jpg`} aria-label={v.t}>
+              <source src={`${IMG}${v.f}.mp4`} type="video/mp4" />
+            </video>
+            <figcaption>{v.t}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Social = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.socialKicker}</div>
+        <Rich as="h2" html={c.socialTitle} />
+        <p>{c.socialBody}</p>
+      </div>
+      <div className="mordi-posts">
+        {POSTS.map((n, i) => (
+          <figure key={n} className="reveal" style={{ transitionDelay: `${(i % 3) * 60}ms` }}>
+            <img src={`${IMG}post-${n}.jpg`} alt={`Posteo de Mordi ${n}`} loading="lazy" width="720" height="900" />
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={i} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-flok.html" className="cs-next-link">
+        <span>{c.nextLabel}</span>
+        <strong>{c.nextTitle} <Arrow size={20} /></strong>
+      </a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Concept c={c} />
+      <LogoSection c={c} />
+      <Palette c={c} lang={lang} />
+      <Book c={c} />
+      <Line c={c} />
+      <Photos c={c} />
+      <Videos c={c} />
+      <Social c={c} />
+      <Process c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

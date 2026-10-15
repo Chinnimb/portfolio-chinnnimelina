@@ -1892,6 +1892,55 @@ body:not(.home) h2 em {
   .nor-swatch { min-height: 120px; }
 }
 
+/* Caso Mordi */
+.mordi-media { background: #F28DB2; }
+.mordi-personality li::before { background: #E8112D; }
+.mordi-boards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.mordi-swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.mordi-swatch { border-radius: 18px; min-height: 220px; padding: 18px; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; position: relative; }
+.mordi-swatch-logo { position: absolute; top: 18px; left: 18px; width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35); }
+.mordi-swatch strong { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
+.mordi-swatch span:last-child { font-size: 12.5px; letter-spacing: 0.04em; opacity: 0.85; }
+.mordi-book { max-width: 1040px; margin: 0 auto; }
+.mordi-book-frame { position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; box-shadow: 0 30px 60px -30px rgba(28, 26, 58, 0.45); background: #FFF4E2; }
+.mordi-book-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
+.mordi-book-frame img.on { opacity: 1; }
+.mordi-book-nav { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 18px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.1em; }
+.mordi-book-nav button { background: none; border: 1px solid rgba(28, 26, 58, 0.15); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 16px; color: var(--ink); transition: background 0.2s; }
+.mordi-book-nav button:hover { background: rgba(28, 26, 58, 0.06); }
+.mordi-book-thumbs { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 6px; margin-top: 16px; }
+.mordi-book-thumbs button { padding: 0; border: 2px solid transparent; border-radius: 6px; overflow: hidden; cursor: pointer; background: none; opacity: 0.55; transition: opacity 0.2s, border-color 0.2s; aspect-ratio: 16 / 9; }
+.mordi-book-thumbs button.on { opacity: 1; border-color: #6C2BE6; }
+.mordi-book-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mordi-dark { background: #6C2BE6; color: #fff; }
+.mordi-dark .section-head h2 { color: #fff; }
+.mordi-dark .section-head h2 em { color: #C4F64E; }
+.mordi-dark .section-head p { color: rgba(255, 255, 255, 0.82); }
+.mordi-dark .eyebrow { color: #C4F64E; }
+.mordi-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 340px)); justify-content: center; gap: 24px; }
+.mordi-videos figure { margin: 0; }
+.mordi-videos video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 20px; display: block; background: #1E1A17; box-shadow: 0 30px 60px -30px rgba(28, 26, 58, 0.5); }
+.mordi-videos figcaption { margin-top: 12px; text-align: center; font-size: 14px; color: var(--ink-soft); }
+.mordi-posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 980px; margin: 0 auto; }
+.mordi-posts figure { margin: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 36px -24px rgba(28, 26, 58, 0.5); }
+.mordi-posts img { width: 100%; height: auto; display: block; transition: transform 0.9s var(--ease); }
+.mordi-posts figure:hover img { transform: scale(1.03); }
+
+@media (max-width: 1000px) {
+  .mordi-swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mordi-book-thumbs { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .mordi-boards { grid-template-columns: 1fr; }
+  .mordi-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mordi-swatch { min-height: 150px; }
+  .mordi-book-thumbs { display: none; }
+  .mordi-videos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .mordi-posts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .mordi-dark .nor-masonry { columns: 2; column-gap: 8px; }
+  .mordi-dark .nor-photo { margin-bottom: 8px; border-radius: 12px; }
+}
+
 /* Caso Hisoil: moodboards reales */
 .hs-mood-img { display: block; position: relative; aspect-ratio: 1440 / 1024; border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
 .hs-mood-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s var(--ease); }
