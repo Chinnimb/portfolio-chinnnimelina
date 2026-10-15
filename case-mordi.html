@@ -85,7 +85,7 @@ const CONTENT = {
 
     bookKicker: "Brandbook",
     bookTitle: "El sistema <em>completo</em>",
-    bookBody: "Trece láminas con todo lo necesario para usar la marca: esencia, logo y usos incorrectos, color, tipografía, packaging, tono de voz, fotografía y redes.",
+    bookBody: "Trece láminas para ver la marca en acción: logo, color, tipografía, packaging, vía pública, Instagram, stories y fotografía.",
 
     lineKicker: "Packaging",
     lineTitle: "Cinco sabores, <em>una familia</em>",
@@ -159,7 +159,7 @@ const CONTENT = {
 
     bookKicker: "Brandbook",
     bookTitle: "The <em>complete</em> system",
-    bookBody: "Thirteen boards with everything needed to use the brand: essence, logo and misuse, color, typography, packaging, tone of voice, photography and social media.",
+    bookBody: "Thirteen boards showing the brand in action: logo, color, typography, packaging, street posters, Instagram, stories and photography.",
 
     lineKicker: "Packaging",
     lineTitle: "Five flavors, <em>one family</em>",
@@ -251,7 +251,7 @@ const LogoSection = ({ c }) => (
         <p>{c.logoBody}</p>
       </div>
       <div className="mordi-boards">
-        {["bb-04.jpg", "bb-05.jpg"].map(f => (
+        {["bb-02.jpg", "bb-08.jpg"].map(f => (
           <figure key={f} className="nor-board reveal"><img src={IMG + f} alt="Lámina de logo de Mordi" loading="lazy" /></figure>
         ))}
       </div>
@@ -324,7 +324,7 @@ const Line = ({ c }) => (
         <p>{c.lineBody}</p>
       </div>
       <figure className="nor-board reveal"><img src={IMG + "linea.jpg"} alt="Los cinco sabores de Mordi" loading="lazy" /></figure>
-      <figure className="nor-board reveal" style={{ marginTop: 16 }}><img src={IMG + "bb-09.jpg"} alt="Anatomía del packaging de Mordi" loading="lazy" /></figure>
+      <figure className="nor-board reveal" style={{ marginTop: 16 }}><img src={IMG + "bb-07.jpg"} alt="Packaging de Mordi frutos rojos" loading="lazy" /></figure>
     </div>
   </section>
 );
