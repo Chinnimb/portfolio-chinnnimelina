@@ -52,6 +52,9 @@ const GUMMIES = [
   { f: "g-twin", es: "Estrellas gemelas · Social", en: "Twin Stars · Social" },
 ];
 const FLAVOR_VIDEOS = ["v-moon-mix", "v-blueberry", "v-grape", "v-mint", "v-star-mix", "v-strawberry", "v-orange", "v-lemon"];
+const BOOK = Array.from({ length: 13 }, (_, i) => `bb-${String(i + 1).padStart(2, "0")}.jpg`);
+const POSTS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const REELS = ["reel-moon", "reel-stars", "reel-flavors"];
 const PHOTOS = ["gal-hand.jpg", "gal-cloud.jpg", "gal-spill.jpg", "life-moon.jpg", "gal-picnic.jpg", "life-stars.jpg"];
 
 const CONTENT = {
@@ -113,6 +116,12 @@ const CONTENT = {
     photoTitle: "Un mundo <em>arriba de las nubes</em>",
     photoBody: "Todas las imágenes y videos se generaron con IA en Higgsfield, usando el packaging final como referencia en cada pieza para que el producto se vea siempre igual.",
 
+    bookKicker: "Mini brandbook",
+    bookTitle: "La marca <em>en 13 láminas</em>",
+    bookBody: "Concepto, logo y versiones, color, tipografía, packaging, sabores, fotografía y web.",
+    igKicker: "Instagram",
+    igTitle: "Posteos y <em>reels</em>",
+    igBody: "Una grilla que alterna fondos lisos con fotos, y reels verticales con los envases abriéndose.",
     processKicker: "Proceso y herramientas",
     processTitle: "De la idea a la <em>landing publicada</em>",
     steps: [
@@ -184,6 +193,12 @@ const CONTENT = {
     photoTitle: "A world <em>above the clouds</em>",
     photoBody: "Every image and video was generated with AI in Higgsfield, using the final packaging as a reference in each piece so the product always looks the same.",
 
+    bookKicker: "Mini brandbook",
+    bookTitle: "The brand <em>in 13 boards</em>",
+    bookBody: "Concept, logo and versions, color, typography, packaging, flavors, photography and web.",
+    igKicker: "Instagram",
+    igTitle: "Posts and <em>reels</em>",
+    igBody: "A grid that alternates flat color with photos, plus vertical reels with the packs opening.",
     processKicker: "Process & tools",
     processTitle: "From idea to a <em>live landing</em>",
     steps: [
@@ -355,6 +370,53 @@ const Photos = ({ c }) => (
   </section>
 );
 
+const Book = ({ c }) => {
+  const [i, setI] = React.useState(0);
+  const go = d => setI(v => (v + d + BOOK.length) % BOOK.length);
+  return (
+    <section className="cs-section cs-tint">
+      <div className="container">
+        <div className="section-head reveal">
+          <div className="eyebrow">{c.bookKicker}</div>
+          <Rich as="h2" html={c.bookTitle} />
+          <p>{c.bookBody}</p>
+        </div>
+        <div className="mordi-book reveal">
+          <div className="mordi-book-frame">
+            {BOOK.map((f, n) => <img key={f} src={IMG + f} alt={`Spacey brandbook ${n + 1}`} loading={n < 2 ? "eager" : "lazy"} className={n === i ? "on" : ""} />)}
+          </div>
+          <div className="mordi-book-nav">
+            <button type="button" onClick={() => go(-1)} aria-label="Anterior">←</button>
+            <span>{i + 1} / {BOOK.length}</span>
+            <button type="button" onClick={() => go(1)} aria-label="Siguiente">→</button>
+          </div>
+          <div className="mordi-book-thumbs" style={{ gridTemplateColumns: "repeat(13, minmax(0, 1fr))" }}>
+            {BOOK.map((f, n) => <button key={f} type="button" className={n === i ? "on" : ""} onClick={() => setI(n)} aria-label={`Lámina ${n + 1}`}><img src={IMG + f} alt="" loading="lazy" /></button>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Instagram = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.igKicker}</div>
+        <Rich as="h2" html={c.igTitle} />
+        <p>{c.igBody}</p>
+      </div>
+      <div className="mordi-posts">
+        {POSTS.map((n, k) => <figure key={n} className="reveal" style={{ transitionDelay: `${(k % 3) * 60}ms` }}><img src={`${IMG}ig-${n}.jpg`} alt={`Spacey Instagram post ${n}`} loading="lazy" width="720" height="900" /></figure>)}
+      </div>
+      <div className="sp-reels">
+        {REELS.map(r => <figure key={r} className="reveal"><Lazy src={`${IMG}${r}.mp4`} poster={`${IMG}${r}.jpg`} label={r} /></figure>)}
+      </div>
+    </div>
+  </section>
+);
+
 const Process = ({ c }) => (
   <section className="cs-section">
     <div className="container">
@@ -400,6 +462,8 @@ const Page = () => {
       <Landing c={c} />
       <Flavors c={c} />
       <Photos c={c} />
+      <Book c={c} />
+      <Instagram c={c} />
       <Process c={c} />
       <Next c={c} />
     </>
