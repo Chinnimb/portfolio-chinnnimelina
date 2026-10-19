@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Spacey · Gomitas de cannabis · Chinni Design Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Caso de estudio: marca, packaging y landing page de Spacey, gomitas de cannabis con forma de luna y estrella, con fotografía y video generados con IA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/logo/favicon.png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/shared.css">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P88WH6NYHT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-P88WH6NYHT");
+</script>
+</head>
+<body class="case" data-palette="niebla" data-fonts="default">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="assets/i18n.jsx"></script>
+<script type="text/babel" src="assets/components.jsx"></script>
+
+<script type="text/babel">
+const IMG = "spacey/assets/";
+const LANDING = "spacey/";
+
+const LINES = [
+  { es: "Moon Mix", en: "Moon Mix", bg: "#2E1A5C", ink: "#E6DAFF" },
+  { es: "Star Mix", en: "Star Mix", bg: "#5A1240", ink: "#FFE0EC" },
+  { es: "Blueberry", en: "Blueberry", bg: "#2F4FC9", ink: "#DCE6FF" },
+  { es: "Grape", en: "Grape", bg: "#7A3FB8", ink: "#F0E4FF" },
+  { es: "Mint", en: "Mint", bg: "#3FA88A", ink: "#E2FFF4" },
+  { es: "Strawberry", en: "Strawberry", bg: "#E2324F", ink: "#FFE3EA" },
+  { es: "Orange", en: "Orange", bg: "#F07A1E", ink: "#FFF1E2" },
+  { es: "Lemon", en: "Lemon", bg: "#F5C912", ink: "#1E2A5A" },
+];
+const GUMMIES = [
+  { f: "g-crescent", es: "Creciente · 2,5 mg", en: "Crescent · 2.5 mg" },
+  { f: "g-half", es: "Media luna · 5 mg", en: "Half Moon · 5 mg" },
+  { f: "g-full", es: "Luna llena · 10 mg", en: "Full Moon · 10 mg" },
+  { f: "g-shooting", es: "Estrella fugaz · Lift", en: "Shooting Star · Lift" },
+  { f: "g-north", es: "Estrella polar · Focus", en: "North Star · Focus" },
+  { f: "g-twin", es: "Estrellas gemelas · Social", en: "Twin Stars · Social" },
+];
+const FLAVOR_VIDEOS = ["v-moon-mix", "v-blueberry", "v-grape", "v-mint", "v-star-mix", "v-strawberry", "v-orange", "v-lemon"];
+const PHOTOS = ["gal-hand.jpg", "gal-cloud.jpg", "gal-spill.jpg", "life-moon.jpg", "gal-picnic.jpg", "life-stars.jpg"];
+
+const CONTENT = {
+  es: {
+    back: "← Volver a trabajos",
+    kicker: "Caso de estudio · Branding + Landing page · 2026",
+    title: "Spacey · <em>Gomitas de cannabis</em>",
+    lede: "Una marca de gomitas de cannabis con forma de luna y estrella: concepto, logo, packaging para dos líneas y ocho sabores, fotografía y video con IA, y una landing interactiva en inglés.",
+    tags: ["Branding", "Packaging", "Landing page", "UX/UI", "AI Generation"],
+    meta: [
+      { k: "Marca", v: "Spacey" },
+      { k: "Rubro", v: "Cannabis · Comestibles" },
+      { k: "Mi rol", v: "Concepto, branding, web e IA" },
+      { k: "Año", v: "2026" },
+    ],
+    videoCaption: "Video del hero de la landing, generado con IA.",
+
+    problemKicker: "El problema",
+    problemTitle: "¿Cuánto tomo? <em>¿Cómo me va a hacer sentir?</em>",
+    problemBody: [
+      "El error más común con los comestibles de cannabis es no saber cuánto tomar. La regla de la industria es \"start low, go slow\" (empezá bajo y andá despacio), pero casi ningún packaging lo hace fácil de entender.",
+      "Además, la mayoría de las marcas hablan en términos técnicos (índica, sativa, cepas) que no le dicen nada a alguien que solo quiere relajarse o salir con amigos.",
+    ],
+    ideaTitle: "La idea",
+    ideas: [
+      { t: "La forma es la dosis", d: "En la Moon Line cada fase de la luna es una dosis: creciente 2,5 mg, media 5 mg, llena 10 mg." },
+      { t: "La forma es el efecto", d: "En la Star Line cada estrella es un efecto: Lift, Focus y Social." },
+      { t: "Dos cielos", d: "\"Moon to stay in. Stars to go out.\" Luna para quedarse, estrellas para salir." },
+    ],
+
+    gummiesKicker: "El producto",
+    gummiesTitle: "Seis formas, <em>seis decisiones</em>",
+    gummiesBody: "Las lunas tienen azúcar por fuera, suaves y \"dormidas\". Las estrellas son brillantes y \"despiertas\". Ese contraste de textura también separa las dos líneas.",
+
+    packKicker: "Packaging",
+    packTitle: "Oscuro para el surtido, <em>color de fruta para cada sabor</em>",
+    packBody: "La Moon Line viene en una lata redonda con ventanita que deja ver la gomita; la Star Line, en un tubo con tapa a rosca. Las dos tienen cierre a prueba de chicos, obligatorio en el rubro. El Mix va en un tono oscuro y cada sabor toma el color de su fruta.",
+
+    landingKicker: "La landing",
+    landingTitle: "Una página que <em>cambia de cielo</em>",
+    landingBody: "La interacción principal es un interruptor Moon / Stars que cambia los colores, los productos, las fotos y los textos de toda la página. En la Moon Line, un selector de dosis transforma la luna y muestra cuánto tarda en hacer efecto y cuánto dura.",
+    landingCta: "Ver landing en vivo",
+    landingNote: "La landing está en inglés, pensada para el mercado de EE.UU.",
+    features: [
+      { t: "Aviso +21", d: "Verificación de edad antes de entrar, como exige el rubro." },
+      { t: "Selector de dosis", d: "La luna cambia de fase y se actualizan dosis, tiempo de efecto y duración." },
+      { t: "Moon / Stars", d: "Un interruptor que cambia el cielo y el contenido de toda la página." },
+      { t: "Todo en movimiento", d: "Hero en video, sabores en loop y envases que se abren." },
+    ],
+
+    flavorsKicker: "Sabores en video",
+    flavorsTitle: "Cada envase <em>flota</em>",
+
+    photoKicker: "Fotografía con IA",
+    photoTitle: "Un mundo <em>arriba de las nubes</em>",
+    photoBody: "Todas las imágenes y videos se generaron con IA en Higgsfield, usando el packaging final como referencia en cada pieza para que el producto se vea siempre igual.",
+
+    processKicker: "Proceso y herramientas",
+    processTitle: "De la idea a la <em>landing publicada</em>",
+    steps: [
+      { tool: "Research", title: "Concepto", desc: "Marcas líderes del rubro, regulación de comestibles y el problema de la dosis." },
+      { tool: "Higgsfield", title: "Logo y packaging", desc: "Logo, gomitas, lata, tubo y las variantes de color por sabor." },
+      { tool: "Higgsfield", title: "Fotos y video", desc: "Hero en loop, envases flotando, envases que se abren y escenas lifestyle." },
+      { tool: "Código", title: "Landing", desc: "Diseño y desarrollo de la landing interactiva, responsive y liviana." },
+    ],
+
+    nextLabel: "Siguiente caso",
+    nextTitle: "Mordi · Barritas de cereal",
+    allWork: "Ver todos los trabajos",
+  },
+  en: {
+    back: "← Back to work",
+    kicker: "Case study · Branding + Landing page · 2026",
+    title: "Spacey · <em>Cannabis gummies</em>",
+    lede: "A cannabis gummy brand shaped like moons and stars: concept, logo, packaging for two lines and eight flavors, AI photography and video, and an interactive landing page.",
+    tags: ["Branding", "Packaging", "Landing page", "UX/UI", "AI Generation"],
+    meta: [
+      { k: "Brand", v: "Spacey" },
+      { k: "Industry", v: "Cannabis · Edibles" },
+      { k: "My role", v: "Concept, branding, web & AI" },
+      { k: "Year", v: "2026" },
+    ],
+    videoCaption: "Landing hero video, generated with AI.",
+
+    problemKicker: "The problem",
+    problemTitle: "How much do I take? <em>How will it feel?</em>",
+    problemBody: [
+      "The most common mistake with cannabis edibles is not knowing how much to take. The industry rule is \"start low, go slow\", but almost no packaging makes that easy to understand.",
+      "On top of that, most brands speak in technical terms (indica, sativa, strains) that mean nothing to someone who just wants to relax or go out with friends.",
+    ],
+    ideaTitle: "The idea",
+    ideas: [
+      { t: "The shape is the dose", d: "On the Moon Line every moon phase is a dose: crescent 2.5 mg, half 5 mg, full 10 mg." },
+      { t: "The shape is the effect", d: "On the Star Line every star is an effect: Lift, Focus and Social." },
+      { t: "Two skies", d: "\"Moon to stay in. Stars to go out.\"" },
+    ],
+
+    gummiesKicker: "The product",
+    gummiesTitle: "Six shapes, <em>six decisions</em>",
+    gummiesBody: "Moons are sugar-coated, soft and \"sleepy\". Stars are glossy and \"awake\". That texture contrast also sets the two lines apart.",
+
+    packKicker: "Packaging",
+    packTitle: "Dark for the mix, <em>fruit colors for each flavor</em>",
+    packBody: "The Moon Line comes in a round tin with a window showing the gummy; the Star Line in a twist-cap tube. Both are child resistant, as the industry requires. The Mix comes in a dark tone and each flavor takes the color of its fruit.",
+
+    landingKicker: "The landing",
+    landingTitle: "A page that <em>changes its sky</em>",
+    landingBody: "The core interaction is a Moon / Stars switch that changes the colors, products, photos and copy of the whole page. On the Moon Line, a dose selector morphs the moon and shows onset time and duration.",
+    landingCta: "See the live landing",
+    landingNote: "The landing is in English, designed for the US market.",
+    features: [
+      { t: "21+ gate", d: "Age verification before entering, as the industry requires." },
+      { t: "Dose selector", d: "The moon changes phase and updates dose, onset and duration." },
+      { t: "Moon / Stars", d: "A switch that changes the sky and content of the whole page." },
+      { t: "Everything moves", d: "Video hero, looping flavors and packs that open up." },
+    ],
+
+    flavorsKicker: "Flavors in motion",
+    flavorsTitle: "Every pack <em>floats</em>",
+
+    photoKicker: "AI photography",
+    photoTitle: "A world <em>above the clouds</em>",
+    photoBody: "Every image and video was generated with AI in Higgsfield, using the final packaging as a reference in each piece so the product always looks the same.",
+
+    processKicker: "Process & tools",
+    processTitle: "From idea to a <em>live landing</em>",
+    steps: [
+      { tool: "Research", title: "Concept", desc: "Leading brands, edibles regulation and the dosing problem." },
+      { tool: "Higgsfield", title: "Logo & packaging", desc: "Logo, gummies, tin, tube and color variants per flavor." },
+      { tool: "Higgsfield", title: "Photos & video", desc: "Looping hero, floating packs, opening packs and lifestyle scenes." },
+      { tool: "Code", title: "Landing", desc: "Design and development of the interactive, responsive, lightweight landing." },
+    ],
+
+    nextLabel: "Next case",
+    nextTitle: "Mordi · Cereal bars",
+    allWork: "See all work",
+  },
+};
+
+const Rich = ({ as: Tag = "span", html, ...rest }) => <Tag {...rest} dangerouslySetInnerHTML={{ __html: html }} />;
+const Arrow = ({ size = 16 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+);
+
+const Lazy = ({ src, poster, label }) => {
+  // El video recién se carga cuando entra en pantalla
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const v = ref.current; if (!v) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { if (!v.src) v.src = src; v.play().catch(() => {}); } else v.pause(); }, { threshold: 0.2 });
+    io.observe(v); return () => io.disconnect();
+  }, [src]);
+  return <video ref={ref} muted loop playsInline preload="none" poster={poster} aria-label={label} />;
+};
+
+const Hero = ({ c }) => (
+  <section className="cs-hero">
+    <div className="container">
+      <a href="work.html" className="cs-back">{c.back}</a>
+      <div className="eyebrow">{c.kicker}</div>
+      <Rich as="h1" html={c.title} className="cs-title" />
+      <p className="cs-lede">{c.lede}</p>
+      <div className="cs-tags">{c.tags.map(t => <span key={t} className="cs-tag">{t}</span>)}</div>
+      <dl className="cs-meta">
+        {c.meta.map(m => <div key={m.k}><dt>{m.k}</dt><dd>{m.v}</dd></div>)}
+      </dl>
+    </div>
+    <div className="container cs-video-wrap reveal">
+      <div className="nor-media sp-media">
+        <video autoPlay muted loop playsInline preload="metadata" poster={`${IMG}hero.jpg`} aria-label={c.videoCaption}>
+          <source src={`${IMG}hero-loop.mp4`} type="video/mp4" />
+        </video>
+      </div>
+      <p className="cs-caption">{c.videoCaption}</p>
+    </div>
+  </section>
+);
+
+const Problem = ({ c }) => (
+  <section className="cs-section">
+    <div className="container cs-context-head reveal">
+      <div className="eyebrow">{c.problemKicker}</div>
+      <Rich as="h2" html={c.problemTitle} />
+    </div>
+    <div className="container cs-two-col">
+      <div className="reveal">{c.problemBody.map((p, i) => <p key={i} className="cs-body">{p}</p>)}</div>
+      <div className="cs-goals reveal">
+        <h3>{c.ideaTitle}</h3>
+        <ul className="nor-personality sp-personality">
+          {c.ideas.map(p => <li key={p.t}><strong>{p.t}</strong><span>{p.d}</span></li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+);
+
+const Gummies = ({ c, lang }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.gummiesKicker}</div>
+        <Rich as="h2" html={c.gummiesTitle} />
+        <p>{c.gummiesBody}</p>
+      </div>
+      <div className="sp-gummies">
+        {GUMMIES.map((g, i) => (
+          <figure key={g.f} className="reveal" style={{ transitionDelay: `${(i % 3) * 60}ms` }}>
+            <img src={`${IMG}${g.f}.webp`} alt={lang === "en" ? g.en : g.es} loading="lazy" />
+            <figcaption>{lang === "en" ? g.en : g.es}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Pack = ({ c, lang }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.packKicker}</div>
+        <Rich as="h2" html={c.packTitle} />
+        <p>{c.packBody}</p>
+      </div>
+      <div className="sp-pack reveal">
+        <Lazy src={`${IMG}v-open-moon.mp4`} poster={`${IMG}pk-moon-dark.jpg`} label="Moon tin opening" />
+        <Lazy src={`${IMG}v-open-stars.mp4`} poster={`${IMG}pk-star-dark.jpg`} label="Star tube opening" />
+      </div>
+      <div className="sp-swatches reveal">
+        {LINES.map(l => (
+          <div key={l.es} style={{ background: l.bg, color: l.ink }}><strong>{lang === "en" ? l.en : l.es}</strong><span>{l.bg}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Landing = ({ c }) => (
+  <section className="cs-section cs-tint">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.landingKicker}</div>
+        <Rich as="h2" html={c.landingTitle} />
+        <p>{c.landingBody}</p>
+      </div>
+      <div className="sp-browser reveal">
+        <div className="sp-browser-bar"><i></i><i></i><i></i><span>spacey.com</span></div>
+        <iframe src={LANDING} title="Spacey landing page" loading="lazy"></iframe>
+      </div>
+      <div className="sp-landing-cta reveal">
+        <a href={LANDING} target="_blank" rel="noopener" className="btn btn-primary">{c.landingCta} <Arrow /></a>
+        <span>{c.landingNote}</span>
+      </div>
+      <div className="sp-features">
+        {c.features.map((f, i) => (
+          <div key={f.t} className="reveal" style={{ transitionDelay: `${i * 60}ms` }}><h3>{f.t}</h3><p>{f.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Flavors = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.flavorsKicker}</div>
+        <Rich as="h2" html={c.flavorsTitle} />
+      </div>
+      <div className="sp-flavors">
+        {FLAVOR_VIDEOS.map(f => (
+          <figure key={f} className="reveal"><Lazy src={`${IMG}${f}.mp4`} poster={`${IMG}${f === "v-moon-mix" ? "pk-moon-dark" : f === "v-star-mix" ? "pk-star-dark" : "f-" + f.slice(2)}.jpg`} label={f} /></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Photos = ({ c }) => (
+  <section className="cs-section sp-dark">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.photoKicker}</div>
+        <Rich as="h2" html={c.photoTitle} />
+        <p>{c.photoBody}</p>
+      </div>
+      <div className="nor-masonry">
+        {PHOTOS.map(f => (
+          <figure key={f} className="nor-photo reveal"><img src={IMG + f} alt="" loading="lazy" /></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const Process = ({ c }) => (
+  <section className="cs-section">
+    <div className="container">
+      <div className="section-head reveal">
+        <div className="eyebrow">{c.processKicker}</div>
+        <Rich as="h2" html={c.processTitle} />
+      </div>
+      <ol className="cs-steps">
+        {c.steps.map((s, i) => (
+          <li key={i} className="cs-step reveal" style={{ transitionDelay: `${i * 70}ms` }}>
+            <span className="cs-step-tool">{s.tool}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);
+
+const Next = ({ c }) => (
+  <section className="cs-next">
+    <div className="container cs-next-inner">
+      <a href="work.html" className="btn btn-outline">{c.allWork}</a>
+      <a href="case-mordi.html" className="cs-next-link">
+        <span>{c.nextLabel}</span>
+        <strong>{c.nextTitle} <Arrow size={20} /></strong>
+      </a>
+    </div>
+  </section>
+);
+
+const Page = () => {
+  const { lang } = useT();
+  const c = CONTENT[lang] || CONTENT.es;
+  useReveal();
+  return (
+    <>
+      <Hero c={c} />
+      <Problem c={c} />
+      <Gummies c={c} lang={lang} />
+      <Pack c={c} lang={lang} />
+      <Landing c={c} />
+      <Flavors c={c} />
+      <Photos c={c} />
+      <Process c={c} />
+      <Next c={c} />
+    </>
+  );
+};
+
+const App = () => (
+  <LangProvider>
+    <Nav active="work" />
+    <Page />
+    <ContactCTA />
+    <Footer />
+  </LangProvider>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
