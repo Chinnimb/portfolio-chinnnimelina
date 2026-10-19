@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<base href="/spacey/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Spacey · Cannabis gummies shaped by the sky</title>
 <meta name="description" content="Spacey cannabis gummies: Moon Line to stay in, Star Line to go out. Dose by moon phase, choose your effect by star.">
@@ -592,6 +593,9 @@
 </footer>
 
 <script>
+  // Links internos: con <base> irían a otra URL, así que hacemos scroll a mano
+  document.addEventListener("click", e => { const a = e.target.closest("a[href^=\"#\"]"); if (!a) return; e.preventDefault(); const t = document.querySelector(a.getAttribute("href")); if (t) t.scrollIntoView({ behavior: "smooth" }); });
+
   // Age gate (se recuerda por sesión)
   const gate = document.getElementById('gate');
   let ok = false; try { ok = sessionStorage.getItem('spacey21') === '1'; } catch (e) {}
