@@ -51,8 +51,19 @@
 .crumbs { font-size: 14px; color: var(--ink-soft); margin-bottom: 22px; }
 .crumbs a:hover { text-decoration: underline; }
 .pdp-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 70px); align-items: start; }
-.pdp-media { position: sticky; top: 96px; display: grid; grid-template-columns: 76px 1fr; gap: 12px; }
-.pdp-thumbs { display: grid; gap: 10px; align-content: start; }
+.pdp-media { position: sticky; top: 96px; display: grid; gap: 12px; min-width: 0; }
+.pdp-stage { position: relative; }
+.pdp-thumbs { order: 2; display: flex; gap: 10px; overflow-x: auto; scroll-behavior: smooth; padding: 4px 2px; scrollbar-width: none; }
+.pdp-thumbs::-webkit-scrollbar { display: none; }
+.pdp-thumbs button { flex: none; }
+.pdp-nav { position: absolute; top: 50%; z-index: 2; width: 48px; height: 48px; margin-top: -24px; border-radius: 50%; background: rgba(255, 255, 255, .85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #2E1A5C; display: grid; place-items: center; box-shadow: 0 10px 24px -12px rgba(46, 26, 92, .5); transition: transform .25s var(--ease), background .2s; }
+.pdp-nav:hover { background: #fff; transform: scale(1.06); }
+.pdp-nav svg { width: 20px; height: 20px; }
+.pdp-prev { left: 14px; }
+.pdp-next { right: 14px; }
+.pdp-dots { position: absolute; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; gap: 6px; z-index: 2; }
+.pdp-dots i { width: 7px; height: 7px; border-radius: 100px; background: rgba(255, 255, 255, .6); transition: width .3s, background .3s; }
+.pdp-dots i.on { width: 20px; background: #fff; }
 .pdp-thumbs button { width: 76px; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #fff; position: relative; transition: box-shadow .2s; }
 .pdp-thumbs button.on { box-shadow: 0 0 0 2px var(--ink); }
 .pdp-thumbs img { width: 100%; height: 100%; object-fit: cover; }
@@ -146,9 +157,9 @@
 
 @media (max-width: 960px) {
   .pdp-grid, .co-grid { grid-template-columns: 1fr; }
-  .pdp-media { position: static; grid-template-columns: 1fr; }
-  .pdp-thumbs { grid-auto-flow: column; grid-auto-columns: 64px; order: 2; overflow-x: auto; }
+  .pdp-media { position: static; }
   .pdp-thumbs button { width: 64px; }
+  .pdp-nav { width: 40px; height: 40px; margin-top: -20px; }
   .pair-card { grid-template-columns: 1fr; }
   .pair-card > div { padding: 0 24px 28px; }
   .co-summary { position: static; }

@@ -44,8 +44,13 @@
     <div class="crumbs"><a href="./">Home</a> / <a href="./#flavors">Shop</a> / <span id="crumb"></span></div>
     <div class="pdp-grid">
       <div class="pdp-media">
+        <div class="pdp-stage">
+          <div class="pdp-main" id="main"></div>
+          <button type="button" class="pdp-nav pdp-prev" id="prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button type="button" class="pdp-nav pdp-next" id="next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="pdp-dots" id="dots"></div>
+        </div>
         <div class="pdp-thumbs" id="thumbs"></div>
-        <div class="pdp-main" id="main"></div>
       </div>
 
       <div class="pdp-info">
@@ -118,7 +123,8 @@
     main.innerHTML = m.kind === 'video'
       ? `<video src="assets/${m.src}" poster="assets/${m.poster}" autoplay muted loop playsinline></video>`
       : `<img src="assets/${m.src}" alt="">`;
-    document.querySelectorAll('#thumbs button').forEach((b, k) => b.classList.toggle('on', k === i));
+    document.querySelectorAll('#thumbs button').forEach((b, k) => { b.classList.toggle('on', k === i); if (k === i) { const t = b.parentElement; t.scrollLeft = b.offsetLeft - (t.clientWidth - b.offsetWidth) / 2; } });
+    document.getElementById('dots').innerHTML = mediaList().map((_, k) => `<i class='${k === i ? 'on' : ''}'></i>`).join('');
   }
 
   function render() {
@@ -158,6 +164,14 @@
   }
 
   document.getElementById('swatches').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; flavor = b.dataset.f; media = 0; render(); });
+  const step = d => { const n = mediaList().length; showMedia((media + d + n) % n); };
+  document.getElementById('prev').onclick = () => step(-1);
+  document.getElementById('next').onclick = () => step(1);
+  addEventListener('keydown', e => { if (e.key === 'ArrowLeft') step(-1); if (e.key === 'ArrowRight') step(1); });
+  // Deslizar con el dedo en celular
+  let x0 = null; const stage = document.querySelector('.pdp-stage');
+  stage.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1); x0 = null; });
   document.getElementById('thumbs').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) showMedia(+b.dataset.i); });
   document.getElementById('plans').addEventListener('change', e => { plan = e.target.value; document.querySelectorAll('.plan').forEach(p => p.classList.toggle('on', p.querySelector('input').checked)); render(); });
   document.getElementById('q-minus').onclick = () => { qty = Math.max(1, qty - 1); document.getElementById('q-val').textContent = qty; };
