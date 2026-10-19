@@ -158,7 +158,7 @@
 
     const other = line === 'moon' ? 'stars' : 'moon', O = LINES[other];
     document.getElementById('pair').innerHTML = `<img src="assets/${O.flavors.mix.img}" alt="${O.name}">
-      <div><div class="eyebrow">Complete your sky</div><h2>${other === 'stars' ? 'Going out <em>later?</em>' : 'Staying in <em>tonight?</em>'}</h2>
+      <div><div class="eyebrow">Complete your sky</div><h2>${other === 'stars' ? 'Sunny afternoon <em>ahead?</em>' : 'Slowing down <em>tonight?</em>'}</h2>
       <p>${O.blurb}</p><div class="row"><button type="button" class="btn" data-add="${other}:mix">Add ${O.flavors.mix.name} · ${money(O.price)}</button>
       <a class="btn btn-ghost" href="product.html#line=${other}">View ${O.name}</a></div></div>`;
   }

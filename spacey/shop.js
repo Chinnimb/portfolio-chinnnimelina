@@ -3,7 +3,7 @@
   const LINES = {
     moon: {
       name: 'Moon Line', short: 'Moon', strain: 'Indica', pack: 'tin', price: 26,
-      tagline: 'To stay in. Unwind, recover, sleep.',
+      tagline: 'To rest. Unwind, recover, sleep.',
       blurb: 'Sugar-coated moon gummies dosed by phase. A round, child-resistant tin with a window to peek at the moon inside.',
       contents: '10 gummies · 50 mg THC total',
       flavors: {
@@ -17,7 +17,7 @@
     },
     stars: {
       name: 'Star Line', short: 'Stars', strain: 'Sativa', pack: 'tube', price: 24,
-      tagline: 'To go out. Lift, focus, connect.',
+      tagline: 'To enjoy. Lift, focus, connect.',
       blurb: 'Glossy star gummies tuned by effect. A slim twist tube that fits any pocket, with a child-resistant cap.',
       contents: '10 gummies · 50 mg THC total',
       flavors: {
@@ -27,7 +27,7 @@
         lemon: { name: 'Lemon', note: 'Sparkling lemon', img: 'f-lemon.jpg', video: 'v-lemon.mp4', bg: '#F5C912', ink: '#1E2A5A' },
       },
       gummies: ['g-shooting.webp', 'g-north.webp', 'g-twin.webp'],
-      life: 'life-stars.jpg', extra: ['gal-spill.jpg', 'gal-picnic.jpg'],
+      life: 'life-stars.jpg', extra: ['life-paint.jpg', 'gal-spill.jpg', 'gal-picnic.jpg'],
     },
   };
   const SUB_OFF = 0.15, FREE_SHIP = 50;
