@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/spacey/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spacey · Shop</title>
+<meta name="description" content="Shop Spacey cannabis gummies: Moon Line tins and Star Line tubes in assorted and single flavors.">
+<link rel="icon" type="image/webp" href="assets/g-crescent.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="shop.css">
+</head>
+<body data-sky="moon">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5c.6 5.6 4.9 9.9 10.5 10.5-5.6.6-9.9 4.9-10.5 10.5C11.4 16.9 7.1 12.6 1.5 12 7.1 11.4 11.4 7.1 12 1.5Z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 8h14l-1.2 12H6.2L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Main">
+  <a href="./" aria-label="Spacey home"><span class="logo"></span></a>
+  <div class="nav-links">
+    <a href="product.html#line=moon">Moon Line</a>
+    <a href="product.html#line=stars">Star Line</a>
+    <a href="./#how">How it works</a>
+    <a href="./#faq">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <div class="switch" role="group" aria-label="Choose your line">
+      <span class="thumb"></span>
+      <button type="button" data-line="moon" data-set="moon"><svg><use href="#i-moon"/></svg>Moon</button>
+      <button type="button" data-line="stars" data-set="stars"><svg><use href="#i-star"/></svg>Stars</button>
+    </div>
+    <button type="button" class="cart-btn" aria-label="Open cart"><svg><use href="#i-bag"/></svg><span class="cart-count" hidden>0</span></button>
+  </div>
+</nav>
+
+<main class="pdp">
+  <div class="wrap">
+    <div class="crumbs"><a href="./">Home</a> / <a href="./#flavors">Shop</a> / <span id="crumb"></span></div>
+    <div class="pdp-grid">
+      <div class="pdp-media">
+        <div class="pdp-thumbs" id="thumbs"></div>
+        <div class="pdp-main" id="main"></div>
+      </div>
+
+      <div class="pdp-info">
+        <div class="eyebrow" id="p-eyebrow"></div>
+        <h1 id="p-title"></h1>
+        <p class="pdp-tagline" id="p-tagline"></p>
+        <p class="pdp-contents" id="p-contents"></p>
+        <div class="pdp-price" id="p-price"></div>
+
+        <div class="opt-label">Flavor: <span id="p-flavor"></span></div>
+        <div class="swatches" id="swatches"></div>
+
+        <div class="opt-label">Purchase</div>
+        <div class="plans" id="plans">
+          <label class="plan on"><input type="radio" name="plan" value="once" checked><div><b>One-time purchase</b><span>Ships in 2–4 business days</span></div><strong id="pl-once"></strong></label>
+          <label class="plan"><input type="radio" name="plan" value="sub"><div><b>Subscribe &amp; save 15%</b><span>Delivered monthly · skip or cancel anytime</span></div><strong id="pl-sub"></strong></label>
+        </div>
+
+        <div class="buy-row">
+          <div class="qty" aria-label="Quantity"><button type="button" id="q-minus" aria-label="Less">−</button><em id="q-val">1</em><button type="button" id="q-plus" aria-label="More">+</button></div>
+          <button type="button" class="btn" id="atc">Add to cart</button>
+        </div>
+        <div class="pdp-perks"><span>Free shipping over $50</span><span>Lab tested</span><span>Child-resistant pack</span></div>
+
+        <div class="pdp-acc">
+          <details open><summary>Dose &amp; effects</summary><div id="acc-dose"></div></details>
+          <details><summary>Ingredients</summary><div>Organic cane sugar, tapioca syrup, apple pectin, real fruit juice, natural flavors, citric acid, full-spectrum cannabis extract, sunflower lecithin. Vegan and gluten free.</div></details>
+          <details><summary>How to take it</summary><div>Start with one gummy and wait at least two hours before taking more. Effects usually begin in 30–90 minutes and last 4–6 hours. Do not drive or operate machinery.</div></details>
+          <details><summary>Lab results</summary><div>Every batch is third-party tested for potency, pesticides, heavy metals and microbials. Scan the QR code under the lid to see the certificate of analysis for your batch.</div></details>
+        </div>
+      </div>
+    </div>
+
+    <section class="pair">
+      <div class="pair-card" id="pair"></div>
+    </section>
+  </div>
+</main>
+
+<div class="sticky-buy"><b id="sb-name"></b><button type="button" class="btn" id="sb-atc">Add to cart</button></div>
+
+<footer>
+  <div class="wrap">
+    <div class="legal" style="margin-top:0; border-top:0; padding-top:0">
+      <span>For adults 21+ only. Keep out of reach of children and pets. Do not drive or operate machinery. These statements have not been evaluated by the FDA.</span>
+      <span>Concept store · Brand &amp; web design: <a href="https://www.chinnidesignstudio.com" style="text-decoration:underline">Chinni Design Studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="shop.js"></script>
+<script>
+  const { LINES, SUB_OFF, money, add } = window.Spacey;
+  const qs = new URLSearchParams(location.hash.slice(1) || location.search.slice(1));
+  let line = LINES[qs.get('line')] ? qs.get('line') : 'moon';
+  let flavor = 'mix', qty = 1, plan = 'once', media = 0;
+
+  function mediaList() {
+    const L = LINES[line], F = L.flavors[flavor];
+    const list = [{ kind: 'img', src: F.img }, { kind: 'video', src: F.video, poster: F.img }];
+    if (flavor === 'mix') list.push({ kind: 'video', src: L.flavors.mix.open, poster: F.img });
+    L.gummies.forEach(g => list.push({ kind: 'cut', src: g }));
+    list.push({ kind: 'img', src: L.life });
+    L.extra.forEach(x => list.push({ kind: 'img', src: x }));
+    return list;
+  }
+  function showMedia(i) {
+    media = i; const m = mediaList()[i], main = document.getElementById('main');
+    main.className = 'pdp-main' + (m.kind === 'cut' ? ' cut' : '');
+    main.innerHTML = m.kind === 'video'
+      ? `<video src="assets/${m.src}" poster="assets/${m.poster}" autoplay muted loop playsinline></video>`
+      : `<img src="assets/${m.src}" alt="">`;
+    document.querySelectorAll('#thumbs button').forEach((b, k) => b.classList.toggle('on', k === i));
+  }
+
+  function render() {
+    const L = LINES[line], F = L.flavors[flavor], price = L.price, sub = price * (1 - SUB_OFF);
+    document.body.dataset.sky = line;
+    document.title = `${L.name} · ${F.name} · Spacey`;
+    history.replaceState(null, '', location.pathname + `#line=${line}&flavor=${flavor}`);
+    document.getElementById('crumb').textContent = `${L.name} · ${F.name}`;
+    document.getElementById('p-eyebrow').textContent = `${L.name} · ${L.strain}`;
+    document.getElementById('p-title').innerHTML = `${F.name}<br><em>${L.short === 'Moon' ? 'moon' : 'star'} gummies</em>`;
+    document.getElementById('p-tagline').textContent = L.tagline;
+    document.getElementById('p-contents').textContent = `${L.contents} · ${L.pack === 'tin' ? 'Round tin' : 'Twist tube'} · ${F.note}`;
+    document.getElementById('p-price').innerHTML = plan === 'sub' ? `${money(sub)} <s>${money(price)}</s> <small>Save 15%</small>` : money(price);
+    document.getElementById('p-flavor').textContent = F.name;
+    document.getElementById('pl-once').textContent = money(price);
+    document.getElementById('pl-sub').textContent = money(sub);
+    document.getElementById('swatches').innerHTML = Object.entries(L.flavors).map(([k, f]) =>
+      `<button type="button" data-f="${k}" class="${k === flavor ? 'on' : ''}" aria-pressed="${k === flavor}"><i style="background:${f.bg}"></i>${f.name}</button>`).join('');
+    document.getElementById('thumbs').innerHTML = mediaList().map((m, i) =>
+      `<button type="button" data-kind="${m.kind}" data-i="${i}" aria-label="View image ${i + 1}"><img src="assets/${m.kind === 'video' ? m.poster : m.src}" alt=""></button>`).join('');
+    showMedia(Math.min(media, mediaList().length - 1));
+    document.getElementById('sb-name').textContent = `${F.name} · ${money(plan === 'sub' ? sub : price)}`;
+
+    const doses = line === 'moon'
+      ? [['g-crescent.webp', 'Crescent', '2.5 mg · Unwind'], ['g-half.webp', 'Half Moon', '5 mg · Recover'], ['g-full.webp', 'Full Moon', '10 mg · Sleep']]
+      : [['g-shooting.webp', 'Shooting Star', 'Lift'], ['g-north.webp', 'North Star', 'Focus'], ['g-twin.webp', 'Twin Stars', 'Social']];
+    document.getElementById('acc-dose').innerHTML = (line === 'moon'
+      ? 'Each tin holds a mix of phases so you can choose your dose: start with a Crescent and move up only if you need to.'
+      : 'Each tube holds 5 mg stars tuned for different moods. Pick the star that matches your plans.')
+      + `<div class="dose-mini">${doses.map(d => `<div><img src="assets/${d[0]}" alt=""><b>${d[1]}</b>${d[2]}</div>`).join('')}</div>`;
+
+    const other = line === 'moon' ? 'stars' : 'moon', O = LINES[other];
+    document.getElementById('pair').innerHTML = `<img src="assets/${O.flavors.mix.img}" alt="${O.name}">
+      <div><div class="eyebrow">Complete your sky</div><h2>${other === 'stars' ? 'Going out <em>later?</em>' : 'Staying in <em>tonight?</em>'}</h2>
+      <p>${O.blurb}</p><div class="row"><button type="button" class="btn" data-add="${other}:mix">Add ${O.flavors.mix.name} · ${money(O.price)}</button>
+      <a class="btn btn-ghost" href="product.html#line=${other}">View ${O.name}</a></div></div>`;
+  }
+
+  document.getElementById('swatches').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (!b) return; flavor = b.dataset.f; media = 0; render(); });
+  document.getElementById('thumbs').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) showMedia(+b.dataset.i); });
+  document.getElementById('plans').addEventListener('change', e => { plan = e.target.value; document.querySelectorAll('.plan').forEach(p => p.classList.toggle('on', p.querySelector('input').checked)); render(); });
+  document.getElementById('q-minus').onclick = () => { qty = Math.max(1, qty - 1); document.getElementById('q-val').textContent = qty; };
+  document.getElementById('q-plus').onclick = () => { qty = Math.min(9, qty + 1); document.getElementById('q-val').textContent = qty; };
+  const buy = () => add(line, flavor, qty, plan === 'sub');
+  document.getElementById('atc').onclick = buy;
+  document.getElementById('sb-atc').onclick = buy;
+  document.querySelectorAll('[data-line]').forEach(b => b.addEventListener('click', () => { line = b.dataset.line; flavor = 'mix'; media = 0; render(); scrollTo({ top: 0, behavior: 'smooth' }); }));
+
+  const f0 = qs.get('flavor'); if (f0 && LINES[line].flavors[f0]) flavor = f0;
+  render();
+  // Links entre productos en la misma página (cambia solo el hash)
+  addEventListener("hashchange", () => { const p = new URLSearchParams(location.hash.slice(1)); if (LINES[p.get("line")]) { line = p.get("line"); flavor = LINES[line].flavors[p.get("flavor")] ? p.get("flavor") : "mix"; media = 0; render(); scrollTo({ top: 0, behavior: "smooth" }); } });
+</script>
+</body>
+</html>

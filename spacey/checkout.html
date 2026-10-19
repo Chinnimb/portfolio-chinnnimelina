@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/spacey/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout · Spacey</title>
+<link rel="icon" type="image/webp" href="assets/g-crescent.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="shop.css">
+</head>
+<body data-sky="moon">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-bag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 8h14l-1.2 12H6.2L5 8Zm4 0V6.5a3 3 0 0 1 6 0V8"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Main">
+  <a href="./" aria-label="Spacey home"><span class="logo"></span></a>
+  <div class="nav-right">
+    <a href="product.html#line=moon" class="nav-back">&larr; Keep shopping</a>
+    <button type="button" class="cart-btn" aria-label="Open cart"><svg><use href="#i-bag"/></svg><span class="cart-count" hidden>0</span></button>
+  </div>
+</nav>
+
+<main id="co-main" class="co">
+  <div class="wrap">
+    <h1>Checkout</h1>
+    <span class="co-demo">Concept store · this demo checkout doesn't process real payments</span>
+    <form class="co-grid" id="co-form" novalidate>
+      <div>
+        <section class="co-step">
+          <h2><i>1</i>Contact</h2>
+          <div class="fields">
+            <label class="full">Email<input type="email" name="email" placeholder="you@example.com" autocomplete="off"></label>
+            <label class="full" style="grid-template-columns:auto 1fr; align-items:center; font-size:14px"><input type="checkbox" checked style="height:18px; width:18px; accent-color:#2E1A5C"> I'm 21 or older and agree to show a valid ID on delivery</label>
+          </div>
+        </section>
+        <section class="co-step">
+          <h2><i>2</i>Shipping</h2>
+          <div class="fields">
+            <label>First name<input name="first" autocomplete="off"></label>
+            <label>Last name<input name="last" autocomplete="off"></label>
+            <label class="full">Address<input name="addr" autocomplete="off"></label>
+            <label>City<input name="city" autocomplete="off"></label>
+            <label>State<select name="state"><option>California</option><option>Colorado</option><option>Michigan</option><option>Nevada</option><option>New York</option><option>Oregon</option><option>Washington</option></select></label>
+          </div>
+          <div class="ship-opts" style="margin-top:14px">
+            <label class="plan on"><input type="radio" name="ship" value="std" checked><div><b>Standard</b><span>3–5 business days</span></div><strong id="ship-std"></strong></label>
+            <label class="plan"><input type="radio" name="ship" value="exp"><div><b>Express</b><span>1–2 business days</span></div><strong>$9.00</strong></label>
+          </div>
+        </section>
+        <section class="co-step">
+          <h2><i>3</i>Payment</h2>
+          <div class="fields">
+            <label class="full">Card number<input inputmode="numeric" placeholder="Demo only · no card needed" autocomplete="off" disabled></label>
+            <label>Expiry<input placeholder="MM / YY" autocomplete="off" disabled></label>
+            <label>CVC<input placeholder="•••" autocomplete="off" disabled></label>
+          </div>
+        </section>
+      </div>
+
+      <aside class="co-summary">
+        <h2>Order summary</h2>
+        <ul id="co-items"></ul>
+        <div class="co-empty" id="co-empty" hidden><p>Your cart is empty.</p><a href="product.html#line=moon" class="btn" style="margin-top:14px">Shop gummies</a></div>
+        <div id="co-totals">
+          <div class="co-lines">
+            <div><span>Subtotal</span><span id="t-sub"></span></div>
+            <div><span>Shipping</span><span id="t-ship"></span></div>
+            <div><span>Estimated tax</span><span id="t-tax"></span></div>
+            <div class="co-total"><span>Total</span><span id="t-total"></span></div>
+          </div>
+          <button type="submit" class="btn co-place">Place order</button>
+          <p class="co-note">Secure checkout · ID verified on delivery</p>
+        </div>
+      </aside>
+    </form>
+  </div>
+</main>
+
+<script src="shop.js"></script>
+<script>
+  const { LINES, money, unit, subtotal, FREE_SHIP } = window.Spacey;
+  let ship = 'std';
+  function render() {
+    if (!document.getElementById("co-items")) return;
+    const cart = window.Spacey.cart, sub = subtotal();
+    document.getElementById('co-items').innerHTML = cart.map(it => {
+      const L = LINES[it.line], F = L.flavors[it.flavor];
+      return `<li><img src="assets/${F.img}" alt=""><div><b>${L.name} · ${F.name}</b><span>${it.qty} × ${it.sub ? 'Subscribe & save' : 'One-time'}</span></div><b>${money(unit(it) * it.qty)}</b></li>`;
+    }).join('');
+    const empty = !cart.length;
+    document.getElementById('co-empty').hidden = !empty;
+    document.getElementById('co-totals').hidden = empty;
+    const std = sub >= FREE_SHIP ? 0 : 5;
+    const s = ship === 'exp' ? 9 : std, tax = sub * 0.0825;
+    document.getElementById('ship-std').textContent = std ? money(std) : 'Free';
+    document.getElementById('t-sub').textContent = money(sub);
+    document.getElementById('t-ship').textContent = s ? money(s) : 'Free';
+    document.getElementById('t-tax').textContent = money(tax);
+    document.getElementById('t-total').textContent = money(sub + s + tax);
+  }
+  document.querySelectorAll('input[name=ship]').forEach(r => r.addEventListener('change', () => { ship = r.value; document.querySelectorAll('.ship-opts .plan').forEach(p => p.classList.toggle('on', p.querySelector('input').checked)); render(); }));
+  // El carrito puede cambiar desde el drawer
+  document.addEventListener('click', () => setTimeout(render, 0));
+  document.getElementById('co-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = 'SP-' + Math.floor(100000 + Math.random() * 900000);
+    window.Spacey.clear();
+    document.getElementById('co-main').outerHTML = `<main class="done"><img src="assets/g-full.webp" alt=""><div class="eyebrow">Order ${n}</div>
+      <h1>You're all set. <em class="serif">Now float.</em></h1>
+      <p>Thanks for your order! This is a concept store, so nothing will ship, but in real life you'd get a confirmation email and an ID check on delivery.</p>
+      <a href="./" class="btn">Back to the sky</a></main>`;
+    scrollTo(0, 0);
+  });
+  render();
+</script>
+</body>
+</html>
